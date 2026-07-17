@@ -241,6 +241,11 @@ section.block.alt{background:var(--papel-2)}
 .contact-top .contact-list{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin:0}
 @media (max-width:620px){.contact-top .contact-list{grid-template-columns:1fr}}
 
+.nav-links a.priv{display:inline-flex;align-items:center;gap:5px}
+.nav-links a svg{flex:0 0 auto}
+.visitas-wrap{font-size:12px;color:var(--gris-claro);margin:8px 0 0;display:inline-flex;align-items:center;gap:5px}
+.visitas-wrap i{font-size:13px}
+
 /* footer */
 .site-footer{padding:30px 0;text-align:center;color:var(--gris);font-size:13px}
 .site-footer a{color:var(--gris)}

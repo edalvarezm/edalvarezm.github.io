@@ -44,7 +44,7 @@
     if(!grid) return;
     var L=window.LANG||'es';
     grid.innerHTML='';
-    (window.PROJECTS||[]).forEach(function(p){
+    (window.PROJECTS||[]).filter(function(p){return !p.hidden;}).forEach(function(p){
       var card=document.createElement('div');
       card.className='gate-card';
       card.innerHTML=

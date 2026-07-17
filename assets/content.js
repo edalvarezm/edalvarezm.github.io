@@ -11,6 +11,7 @@ window.SITE = {
     nav_pubs:       { es:"Publicaciones", en:"Publications" },
     nav_projects:   { es:"Proyectos", en:"Projects" },
     nav_contact:    { es:"Contacto", en:"Contact" },
+    nav_private:    { es:"Acceso Privado", en:"Private access" },
 
     hero_role: { es:"Académico · Facultad de Ingeniería · Universidad de Talca",
                  en:"Academic · Faculty of Engineering · University of Talca" },

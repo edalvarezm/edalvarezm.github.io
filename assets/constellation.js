@@ -6,7 +6,7 @@
    ========================================================================== */
 (function(){
   // País (afiliación) de coautores INTERNACIONALES. Los chilenos no llevan bandera.
-  var COUNTRY={"M. Sinnl":"at","M. Luipersbeck":"at","H. Farhan":"at","I. Ljubić":"fr","P. Toth":"it","V. Cacchiani":"it","T. Parriani":"it","A. Lodi":"it","S. Raghavan":"us","P. Mutzel":"de","D.R. Schmidt":"de","M. Jünger":"de","F. Liers":"de","V. Hermoso":"es","M. Vilà":"es","E. Fernández":"es","E. Carrizosa":"es","J. Salgado-Rojas":"es","J. Pereira":"es","J. Garcia-Gonzalo":"pt","S. Barreiro":"pt","N. Maculan":"br","R. Verma":"in","X. Hu":"cn","X.-D. Hu":"cn","X. Chen":"cn","X.-J. Chen":"cn","B. Li":"cn","J. Hu":"cn","R.Z. Ríos-Mercado":"mx","J.A. Díaz":"mx","S.-W. Son":"kr","F. Jalil-Vega":"gb"};
+  var COUNTRY={"M. Sinnl":"at","M. Luipersbeck":"at","H. Farhan":"at","I. Ljubić":"fr","P. Toth":"it","V. Cacchiani":"it","T. Parriani":"it","A. Lodi":"it","S. Raghavan":"us","P. Mutzel":"de","D.R. Schmidt":"de","M. Jünger":"de","F. Liers":"de","V. Hermoso":"es","M. Vilà":"es","E. Fernández":"es","E. Carrizosa":"es","J. Salgado-Rojas":"es","J. Pereira":"es","J. Garcia-Gonzalo":"pt","S. Barreiro":"pt","N. Maculan":"br","R. Verma":"in","X. Hu":"cn","X.-D. Hu":"cn","X. Chen":"cn","X.-J. Chen":"cn","B. Li":"cn","J. Hu":"cn","R.Z. Ríos-Mercado":"mx","J.A. Díaz":"mx","S.-W. Son":"kr","F. Jalil-Vega":"gb","K. Tanınmış":"tr","M. Lanzas":"es","T. Dorneth":"de"};
   var FLAG={
     fr:'<rect width="6" height="12" fill="#0055A4"/><rect x="6" width="6" height="12" fill="#fff"/><rect x="12" width="6" height="12" fill="#EF4135"/>',
     it:'<rect width="6" height="12" fill="#009246"/><rect x="6" width="6" height="12" fill="#fff"/><rect x="12" width="6" height="12" fill="#CE2B37"/>',
@@ -20,7 +20,8 @@
     kr:'<rect width="18" height="12" fill="#fff"/><path d="M6.6 6a2.4 2.4 0 0 1 4.8 0z" fill="#CD2E3A"/><path d="M6.6 6a2.4 2.4 0 0 0 4.8 0z" fill="#0047A0"/>',
     cn:'<rect width="18" height="12" fill="#DE2910"/><path d="M3.6 1.6l.62 1.5 1.62.08-1.25 1.02.42 1.56-1.43-.9-1.43.9.42-1.56L1.36 3.18l1.62-.08z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="7" cy="1.6" r=".5"/><circle cx="8.2" cy="3" r=".5"/><circle cx="8" cy="5" r=".5"/><circle cx="6.6" cy="6.1" r=".5"/></g>',
     us:'<rect width="18" height="12" fill="#fff"/><g fill="#B22234"><rect width="18" height=".92"/><rect y="1.85" width="18" height=".92"/><rect y="3.7" width="18" height=".92"/><rect y="5.54" width="18" height=".92"/><rect y="7.38" width="18" height=".92"/><rect y="9.23" width="18" height=".92"/><rect y="11.08" width="18" height=".92"/></g><rect width="8" height="6.46" fill="#3C3B6E"/><g fill="#fff"><circle cx="1.6" cy="1.4" r=".45"/><circle cx="3.6" cy="1.4" r=".45"/><circle cx="5.6" cy="1.4" r=".45"/><circle cx="2.6" cy="3.1" r=".45"/><circle cx="4.6" cy="3.1" r=".45"/><circle cx="1.6" cy="4.8" r=".45"/><circle cx="3.6" cy="4.8" r=".45"/><circle cx="5.6" cy="4.8" r=".45"/></g>',
-    gb:'<rect width="18" height="12" fill="#012169"/><path d="M0 0L18 12M18 0L0 12" stroke="#fff" stroke-width="2.4"/><path d="M0 0L18 12M18 0L0 12" stroke="#C8102E" stroke-width="1"/><path d="M9 0V12M0 6H18" stroke="#fff" stroke-width="3.2"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="1.7"/>'
+    gb:'<rect width="18" height="12" fill="#012169"/><path d="M0 0L18 12M18 0L0 12" stroke="#fff" stroke-width="2.4"/><path d="M0 0L18 12M18 0L0 12" stroke="#C8102E" stroke-width="1"/><path d="M9 0V12M0 6H18" stroke="#fff" stroke-width="3.2"/><path d="M9 0V12M0 6H18" stroke="#C8102E" stroke-width="1.7"/>',
+    tr:'<rect width="18" height="12" fill="#E30A17"/><circle cx="7.3" cy="6" r="3.1" fill="#fff"/><circle cx="8.3" cy="6" r="2.5" fill="#E30A17"/><path d="M11.5 4.5l.48 1.15 1.24.1-.94.82.3 1.2-1.08-.66-1.08.66.3-1.2-.94-.82 1.24-.1z" fill="#fff"/>'
   };
   function flagSVG(cc){return FLAG[cc]?'<svg width="18" height="12" viewBox="0 0 18 12" style="display:block;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(22,24,29,.18)">'+FLAG[cc]+'</svg>':'';}
   var TOPICS={
@@ -55,7 +56,7 @@
     var pcn={};order.forEach(function(k){pcn[k]=0;});nodes.forEach(function(n){pcn[n.cl]=(pcn[n.cl]||0)+1;});
     sector={};var start=-Math.PI/2,tot=nodes.length||1;order.forEach(function(k){var span=(pcn[k]||0.4)/tot*Math.PI*2;sector[k]={a0:start,a1:start+span,mid:start+span/2};start+=span;});
     amap={};nodes.forEach(function(n){n.au=[];String(n.authors||'').split(', ').forEach(function(tk){var k=na(tk);if(!k)return;if(!amap[k])amap[k]={key:k,sur:sur(k),n:0,cl:{},pubs:[]};amap[k].n++;amap[k].pubs.push(n.i);(n.topics||[]).forEach(function(t){amap[k].cl[t]=(amap[k].cl[t]||0)+1;});n.au.push(k);});});
-    auth=Object.keys(amap).map(function(k){return amap[k];}).filter(function(a){return a.n>=2;});
+    auth=Object.keys(amap).map(function(k){return amap[k];}).filter(function(a){return a.n>=2||COUNTRY[a.key];});
     auth.forEach(function(a){var best='redes',bc=-1;for(var t in a.cl){if(a.cl[t]>bc){bc=a.cl[t];best=t;}}a.cl0=best;a.r=3+Math.min(a.n,9)*0.8;});
     var byS={};auth.forEach(function(a){(byS[a.cl0]=byS[a.cl0]||[]).push(a);});
     Object.keys(byS).forEach(function(k){var arr=byS[k].sort(function(x,y){return y.n-x.n;});var s=sector[k];var pad=(s.a1-s.a0)*0.08;var a0=s.a0+pad,a1=s.a1-pad;arr.forEach(function(a,ix){a.ang=arr.length===1?(a0+a1)/2:a0+(a1-a0)*(ix/(arr.length-1));});});

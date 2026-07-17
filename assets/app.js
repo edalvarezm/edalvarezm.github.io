@@ -175,6 +175,7 @@
     renderContact();
     if(window.ProjectsModule) window.ProjectsModule.render();
     if(window.ScholarModule) window.ScholarModule.render();
+    if(window.ConstellationModule) window.ConstellationModule.render();
   }
 
   function setLang(lang){ window.LANG=lang; localStorage.setItem('eam-lang',lang); renderAll(); }

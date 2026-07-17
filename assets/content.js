@@ -8,6 +8,7 @@ window.SITE = {
   ui: {
     nav_trajectory: { es:"Experiencia", en:"Experience" },
     nav_research:   { es:"Investigación", en:"Research" },
+    nav_collab:     { es:"Colaboración", en:"Collaboration" },
     nav_pubs:       { es:"Publicaciones", en:"Publications" },
     nav_projects:   { es:"Proyectos", en:"Projects" },
     nav_contact:    { es:"Contacto", en:"Contact" },
@@ -45,6 +46,10 @@ window.SITE = {
                       en:"Competitively funded projects, international networks, and advanced human-capital training." },
     research_ir:    { es:"Proyectos como investigador responsable", en:"Projects as principal investigator" },
     research_intl:  { es:"Redes internacionales", en:"International networks" },
+
+    collab_title: { es:"Colaboración", en:"Collaboration" },
+    collab_lead:  { es:"Mapa de mis publicaciones y coautores: cada estrella es un artículo, agrupado por línea de investigación; en el anillo exterior están mis coautores recurrentes y su país.",
+                    en:"A map of my publications and co-authors: each star is a paper, grouped by research line; the outer ring gathers my recurring co-authors and their country." },
 
     pubs_title: { es:"Publicaciones", en:"Publications" },
     pubs_lead:  { es:"Artículos en revistas de investigación de operaciones, conservación, energía y ciencia de datos. Cada título enlaza a la publicación.",
@@ -117,13 +122,13 @@ window.SITE = {
   ],
 
   management: [
-    { yr:"2022–2026",ti:{es:"Director General de Aseguramiento de la Calidad y Planificación",en:"Director of Quality Assurance & Planning"},desc:{es:"U. de Talca",en:"U. of Talca"},note:{es:"Cargo ejercido durante el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",en:"Led the 5th institutional accreditation process, concluded in June 2026 with the CNA's decision to accredit the institution for 7 years."} },
+    { yr:"2022–2026",ti:{es:"Director General de Aseguramiento de la Calidad y Planificación",en:"Director of Quality Assurance & Planning"},desc:{es:"U. de Talca",en:"U. of Talca"},note:{es:"Lideró el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",en:"Led the 5th institutional accreditation process, concluded in June 2026 with the CNA's decision to accredit the institution for 7 years."} },
     { yr:"2018–2022",ti:{es:"Director de Investigación",en:"Director of Research"},desc:{es:"U. de Talca",en:"U. of Talca"} },
     { yr:"2017–2018",ti:{es:"Director del Depto. de Ingeniería Industrial",en:"Head, Dept. of Industrial Engineering"},desc:{es:"U. de Talca",en:"U. of Talca"} },
     { yr:"2015–2016",ti:{es:"Director del Depto. de Ingeniería Industrial",en:"Head, Dept. of Industrial Engineering"},desc:{es:"U. de Talca",en:"U. of Talca"} }
   ],
 
-  managementNote: { es:"Cargo ejercido durante el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",
+  managementNote: { es:"Lideró el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",
                     en:"Led the 5th institutional accreditation process, concluded in June 2026 with the CNA's decision to accredit the institution for 7 years." },
 
   institutes: [

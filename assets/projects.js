@@ -24,6 +24,10 @@
     var u=(username||'').trim().toLowerCase();
     var entry=(data.users||[]).find(function(x){return (x.u||'').toLowerCase()===u;});
     if(!entry) throw new Error('auth');
+    if(data.v===2 || typeof data.content==='string'){
+      if(String(entry.p)!==String(password)) throw new Error('auth');
+      return dec.decode(b64ToBuf(data.content));
+    }
     var iter=data.iter||150000;
     var wkKey=await deriveKey(password,b64ToBuf(entry.salt),iter);
     var projRaw;

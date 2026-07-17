@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="assets/styles.css?v=20260717">
+<link rel="stylesheet" href="assets/styles.css?v=20260718">
 </head>
 <body>
 
@@ -27,6 +27,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#trayectoria" data-i18n="nav_trajectory">Experiencia</a></li>
       <li><a href="#investigacion" data-i18n="nav_research">Investigación</a></li>
+      <li><a href="#colaboracion" data-i18n="nav_collab">Colaboración</a></li>
       <li><a href="#publicaciones" data-i18n="nav_pubs">Publicaciones</a></li>
       <li><a href="#proyectos" class="lock"><i class="ti ti-lock" aria-hidden="true"></i><span data-i18n="nav_projects">Proyectos</span></a></li>
       <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
@@ -101,6 +102,16 @@
     <h3 class="subhead" data-i18n="research_intl">Redes internacionales</h3>
     <div class="intl-list" id="proj-intl"></div>
     <div class="stats" id="teach-stats" style="border-top:1px solid var(--linea);margin-top:38px"></div>
+  </div>
+</section>
+
+<!-- ============ COLABORACIÓN ============ -->
+<section class="block" id="colaboracion">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="collab_title">Colaboración</p>
+    <h2 class="section-title" data-i18n="collab_title">Colaboración</h2>
+    <p class="section-lead" data-i18n="collab_lead"></p>
+    <div id="constellation-wrap"></div>
   </div>
 </section>
 
@@ -187,13 +198,14 @@
   <iframe id="viewer-frame" title="Proyecto" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
 </div>
 
-<script src="assets/content.js?v=20260717"></script>
-<script src="assets/publications.js?v=20260717"></script>
-<script src="assets/projects-index.js?v=20260717"></script>
-<script src="assets/hero.js?v=20260717"></script>
-<script src="assets/projects.js?v=20260717"></script>
-<script src="assets/scholar.js?v=20260717"></script>
-<script src="assets/app.js?v=20260717"></script>
+<script src="assets/content.js?v=20260718"></script>
+<script src="assets/publications.js?v=20260718"></script>
+<script src="assets/constellation.js?v=20260718"></script>
+<script src="assets/projects-index.js?v=20260718"></script>
+<script src="assets/hero.js?v=20260718"></script>
+<script src="assets/projects.js?v=20260718"></script>
+<script src="assets/scholar.js?v=20260718"></script>
+<script src="assets/app.js?v=20260718"></script>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>

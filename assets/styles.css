@@ -8,7 +8,7 @@
   --papel-2:#F3F1EA;
   --tinta:#16181D;
   --tinta-70:#3A3C42;
-  --cobalto:#2743C7;
+  --cobalto:#3047c7;
   --cobalto-oscuro:#1F35A3;
   --cobalto-claro:#6F80D9;
   --gris:#6E7076;
@@ -198,7 +198,7 @@ section.block.alt{background:var(--papel-2)}
   width:100%;font-family:var(--font);font-size:14px;padding:10px 12px;border:1px solid var(--linea-2);
   border-radius:var(--radio);background:var(--papel);margin-bottom:14px;color:var(--tinta);
 }
-.modal input:focus{outline:none;border-color:var(--cobalto);box-shadow:0 0 0 3px rgba(39,67,199,.12)}
+.modal input:focus{outline:none;border-color:var(--cobalto);box-shadow:0 0 0 3px rgba(48,71,199,.12)}
 .modal .btn{width:100%;justify-content:center}
 .modal .err{color:#A32D2D;font-size:12.5px;margin:0 0 12px;display:none;background:#FCEBEB;border-radius:var(--radio);padding:8px 11px}
 .modal .err.show{display:block}

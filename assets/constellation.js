@@ -24,7 +24,7 @@
   };
   function flagSVG(cc){return FLAG[cc]?'<svg width="18" height="12" viewBox="0 0 18 12" style="display:block;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(22,24,29,.18)">'+FLAG[cc]+'</svg>':'';}
   var TOPICS={
-    redes:{es:"Network design & robust opt.",en:"Network design & robust opt.",c:"#2743C7"},
+    redes:{es:"Network design & robust opt.",en:"Network design & robust opt.",c:"#3047c7"},
     conservacion:{es:"Conservación",en:"Conservation",c:"#1EA463"},
     energia:{es:"Energía",en:"Energy",c:"#D98A00"},
     lineas:{es:"Logística y operaciones",en:"Logistics & operations",c:"#E0688A"},

@@ -116,7 +116,7 @@ window.SITE = {
   ],
 
   management: [
-    { yr:"2022–2026",ti:{es:"Director General de Aseguramiento de la Calidad y Planificación",en:"Director of Quality Assurance & Planning"},desc:{es:"U. de Talca",en:"U. of Talca"} },
+    { yr:"2022–2026",ti:{es:"Director General de Aseguramiento de la Calidad y Planificación",en:"Director of Quality Assurance & Planning"},desc:{es:"U. de Talca",en:"U. of Talca"},note:{es:"Lideró el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",en:"Led the 5th institutional accreditation process, concluded in June 2026 with the CNA's decision to accredit the institution for 7 years."} },
     { yr:"2018–2022",ti:{es:"Director de Investigación",en:"Director of Research"},desc:{es:"U. de Talca",en:"U. of Talca"} },
     { yr:"2017–2018",ti:{es:"Director del Depto. de Ingeniería Industrial",en:"Head, Dept. of Industrial Engineering"},desc:{es:"U. de Talca",en:"U. of Talca"} },
     { yr:"2015–2016",ti:{es:"Director del Depto. de Ingeniería Industrial",en:"Head, Dept. of Industrial Engineering"},desc:{es:"U. de Talca",en:"U. of Talca"} }

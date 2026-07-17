@@ -74,7 +74,8 @@
   function tl(list){
     return list.map(function(x){
       return '<li><div class="yr">'+ (x.yr||'') +'</div><div class="tl-role">'+L(x.ti)+'</div>'+
-             (x.desc?'<div class="desc">'+L(x.desc)+'</div>':'')+'</li>';
+             (x.desc?'<div class="desc">'+L(x.desc)+'</div>':'')+
+             (x.note?'<div class="callout" style="margin-top:12px"><p>'+L(x.note)+'</p></div>':'')+'</li>';
     }).join('');
   }
   function renderTrajectory(){
@@ -86,7 +87,6 @@
       '</div>'+
       '<div>'+
         '<h3 class="sub">'+T('traj_mgmt')+'</h3><ul class="tl">'+tl(S.management)+'</ul>'+
-        '<div class="callout"><p>'+L(S.managementNote)+'</p></div>'+
         '<h3 class="sub" style="margin-top:34px">'+T('traj_edu')+'</h3><ul class="tl">'+tl(S.education)+'</ul>'+
       '</div>';
   }
@@ -145,9 +145,8 @@
 
   /* ---------- contact ---------- */
   function renderContact(){
-    var box=document.getElementById('contact-info'); if(!box)return;
     var c=S.contact;
-    box.innerHTML=
+    var html=
       '<ul class="contact-list">'+
       '<li><span class="ic"><i class="ti ti-mail"></i></span><span class="k">'+T('contact_email_p')+'</span><a href="mailto:'+c.emailPersonal+'">'+c.emailPersonal+'</a></li>'+
       '<li><span class="ic"><i class="ti ti-building-bank"></i></span><span class="k">'+T('contact_email_i')+'</span><a href="mailto:'+c.emailInst+'">'+c.emailInst+'</a></li>'+
@@ -157,6 +156,8 @@
       '<div class="links-row" style="margin-top:20px">'+
       c.links.map(function(k){return '<a class="link-btn" href="'+k.url+'" target="_blank" rel="noopener">'+(k.svg||'')+'<span>'+k.label+'</span></a>';}).join('')+
       '</div>';
+    var box=document.getElementById('contact-info'); if(box) box.innerHTML=html;
+    var top=document.getElementById('contact-top'); if(top) top.innerHTML=html;
     var foot=document.getElementById('footer-links');
     if(foot){ foot.innerHTML=c.links.map(function(k){
       return '<a href="'+k.url+'" target="_blank" rel="noopener" title="'+k.label+'" aria-label="'+k.label+'">'+(k.svg||'')+'</a>';

@@ -73,7 +73,7 @@ h2.section-title{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--linea)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:center;min-height:420px;padding:56px 0 40px}
 .hero-copy{max-width:520px}
-.hero h1{font-size:46px;letter-spacing:-.02em;margin:0 0 18px}
+.hero h1{font-size:46px;letter-spacing:-.02em;margin:0 0 18px;white-space:nowrap}
 .hero .role{color:var(--gris);font-size:14px;margin:0 0 14px;font-weight:500}
 .hero .tagline{font-size:17px;color:var(--tinta-70);margin:0 0 28px;line-height:1.6}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
@@ -237,6 +237,10 @@ section.block.alt{background:var(--papel-2)}
 .viewer-bar button:hover{border-color:var(--cobalto);color:var(--cobalto)}
 .viewer iframe{flex:1;width:100%;border:0;background:#fff}
 
+.contact-top{border-top:1px solid var(--linea);margin-top:12px;padding-top:22px}
+.contact-top .contact-list{display:grid;grid-template-columns:1fr 1fr;gap:0 34px;margin:0}
+@media (max-width:620px){.contact-top .contact-list{grid-template-columns:1fr}}
+
 /* footer */
 .site-footer{padding:30px 0;text-align:center;color:var(--gris);font-size:13px}
 .site-footer a{color:var(--gris)}
@@ -267,7 +271,7 @@ section.block.alt{background:var(--papel-2)}
   .nav-links li:last-child a{border-bottom:0}
   .nav-toggle{display:block}
   .lines-grid,.intl-list{grid-template-columns:1fr}
-  .hero h1{font-size:31px}
+  .hero h1{font-size:31px;white-space:normal}
   h2.section-title{font-size:24px}
   .lang-toggle{margin-top:8px}
   .contact-list .k{min-width:120px}

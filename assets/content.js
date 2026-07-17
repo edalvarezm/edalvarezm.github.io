@@ -123,7 +123,7 @@ window.SITE = {
     { yr:"2015–2016",ti:{es:"Director del Depto. de Ingeniería Industrial",en:"Head, Dept. of Industrial Engineering"},desc:{es:"U. de Talca",en:"U. of Talca"} }
   ],
 
-  managementNote: { es:"Lideró el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",
+  managementNote: { es:"Cargo ejercido durante el 5° proceso de acreditación institucional, concluido en junio de 2026 con la decisión de la CNA de acreditar la institución por 7 años.",
                     en:"Led the 5th institutional accreditation process, concluded in June 2026 with the CNA's decision to accredit the institution for 7 years." },
 
   institutes: [

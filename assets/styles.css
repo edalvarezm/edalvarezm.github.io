@@ -281,3 +281,34 @@ section.block.alt{background:var(--papel-2)}
   .lang-toggle{margin-top:8px}
   .contact-list .k{min-width:120px}
 }
+
+/* ---- Citado por (Google Scholar) ---- */
+.scholar-card{margin-top:30px;background:var(--papel-2);border:1px solid var(--linea);border-radius:16px;padding:22px 24px}
+.sch-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.sch-head h3{font-size:15px;font-weight:600;color:var(--tinta)}
+.sch-view{font-size:13px;font-weight:600;color:var(--cobalto);white-space:nowrap}
+.sch-view:hover{text-decoration:underline}
+.sch-grid{display:grid;grid-template-columns:minmax(200px,238px) 1fr;gap:28px;align-items:start}
+.sch-tbl{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+.sch-tbl th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);font-weight:600;text-align:right;padding:0 0 8px;border-bottom:1px solid var(--linea-2)}
+.sch-tbl th:first-child{text-align:left}
+.sch-tbl td{padding:9px 0;text-align:right;color:var(--tinta-70);border-bottom:1px solid var(--linea)}
+.sch-tbl tr:last-child td{border-bottom:0}
+.sch-tbl .sch-lbl{text-align:left;color:var(--tinta);font-weight:500}
+.sch-tbl .sch-big{color:var(--cobalto);font-weight:700;font-size:15px}
+.sch-chart{min-width:0}
+.sch-chart-t{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--gris);font-weight:600;margin-bottom:8px}
+.sch-scroll{overflow-x:auto}
+.sch-plot{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:16px;min-width:360px}
+.sch-col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-width:16px}
+.sch-bar{position:relative;background:var(--cobalto);border-radius:3px 3px 0 0;transition:background .15s}
+.sch-col:hover .sch-bar{background:var(--cobalto-oscuro)}
+.sch-val{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:9.5px;color:var(--gris);font-variant-numeric:tabular-nums}
+.sch-xaxis{display:flex;gap:6px;margin-top:7px;min-width:360px}
+.sch-xaxis span{flex:1;text-align:center;font-size:10px;color:var(--gris-claro);min-width:16px}
+.sch-foot{margin-top:14px;font-size:11.5px;color:var(--gris-claro)}
+@media (max-width:720px){
+  .scholar-card{padding:18px 16px;margin-top:24px}
+  .sch-grid{grid-template-columns:1fr;gap:18px}
+  .sch-val{display:none}
+}

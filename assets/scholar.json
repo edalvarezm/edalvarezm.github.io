@@ -1,0 +1,13 @@
+{
+  "updated": "2026-07-17",
+  "profile": "https://scholar.google.cl/citations?user=9XlvJEIAAAAJ&hl=es",
+  "since_year": 2021,
+  "citations": { "all": 1703, "since": 1241 },
+  "h_index":   { "all": 24,   "since": 21 },
+  "i10_index": { "all": 50,   "since": 41 },
+  "per_year": {
+    "2013": 10, "2014": 20, "2015": 43, "2016": 40, "2017": 51,
+    "2018": 58, "2019": 100, "2020": 129, "2021": 124, "2022": 177,
+    "2023": 200, "2024": 254, "2025": 321, "2026": 161
+  }
+}

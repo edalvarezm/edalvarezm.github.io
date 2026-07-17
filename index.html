@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Álvarez-Miranda — Analítica avanzada · Conservación · Políticas públicas</title>
+<meta name="description" content="Eduardo Álvarez-Miranda — Académico, Facultad de Ingeniería, Universidad de Talca. Modelos de analítica avanzada aplicados a la conservación de la biodiversidad, gestión sanitaria, energía y políticas públicas.">
+<meta property="og:title" content="Eduardo Álvarez-Miranda">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.ealvarez.cl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="#top" class="brand">E. Álvarez-Miranda</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menú"><i class="ti ti-menu-2"></i></button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#trayectoria" data-i18n="nav_trajectory">Experiencia</a></li>
+      <li><a href="#investigacion" data-i18n="nav_research">Investigación</a></li>
+      <li><a href="#publicaciones" data-i18n="nav_pubs">Publicaciones</a></li>
+      <li><a href="#proyectos" class="lock"><i class="ti ti-lock" aria-hidden="true"></i><span data-i18n="nav_projects">Proyectos</span></a></li>
+      <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+      <li>
+        <span class="lang-toggle">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+        </span>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="role" data-i18n="hero_role">Académico · Facultad de Ingeniería · Universidad de Talca</p>
+      <h1>Eduardo Álvarez-Miranda</h1>
+      <p class="tagline" data-i18n="hero_tagline">Modelos de analítica avanzada aplicados a la conservación de la biodiversidad, la gestión sanitaria, la energía y las políticas públicas.</p>
+      <div class="hero-cta">
+        <a href="#investigacion" class="btn btn-primary"><span data-i18n="hero_cta1">Ver investigación</span><i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        <a href="#contacto" class="btn btn-ghost"><i class="ti ti-download" aria-hidden="true"></i><span data-i18n="hero_cta2">Descargar CV</span></a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg id="hero-cake" viewBox="0 0 370 380" aria-hidden="true"></svg>
+      <p class="hero-cap" data-i18n="hero_cap">Priorización espacial sistemática: capas de datos y capa-solución de áreas prioritarias.</p>
+    </div>
+  </div>
+  <div class="wrap"><div class="stats">
+    <div class="stat"><div class="num">72</div><div class="lbl" data-i18n="stat_pubs">publicaciones científicas</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl" data-i18n="stat_ir">proyectos como IR</div></div>
+    <div class="stat"><div class="num">40+</div><div class="lbl" data-i18n="stat_hc">tesistas y memoristas</div></div>
+    <div class="stat"><div class="num">8+</div><div class="lbl" data-i18n="stat_acc">años de experiencia en gestión institucional</div></div>
+  </div></div>
+</section>
+
+<!-- ============ LÍNEAS ============ -->
+<section class="block" id="lineas">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="lines_title">Líneas de investigación</p>
+    <h2 class="section-title" data-i18n="lines_title">Líneas de investigación</h2>
+    <p class="section-lead" data-i18n="lines_lead"></p>
+    <div class="lines-grid" id="lines-grid"></div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section class="block alt" id="trayectoria">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="traj_title">Experiencia</p>
+    <h2 class="section-title" data-i18n="traj_title">Experiencia</h2>
+    <p class="section-lead" data-i18n="traj_lead"></p>
+    <div class="traj" id="traj-wrap"></div>
+  </div>
+</section>
+
+<!-- ============ INVESTIGACIÓN ============ -->
+<section class="block" id="investigacion">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="research_title">Investigación</p>
+    <h2 class="section-title" data-i18n="research_title">Investigación</h2>
+    <p class="section-lead" data-i18n="research_lead"></p>
+    <h3 class="subhead" data-i18n="research_ir">Proyectos como investigador responsable</h3>
+    <div class="proj-grid" id="proj-ir"></div>
+    <h3 class="subhead" data-i18n="research_intl">Redes internacionales</h3>
+    <div class="intl-list" id="proj-intl"></div>
+    <div class="stats" id="teach-stats" style="border-top:1px solid var(--linea);margin-top:38px"></div>
+  </div>
+</section>
+
+<!-- ============ PUBLICACIONES ============ -->
+<section class="block alt" id="publicaciones">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="pubs_title">Publicaciones</p>
+    <h2 class="section-title" data-i18n="pubs_title">Publicaciones</h2>
+    <p class="section-lead" data-i18n="pubs_lead"></p>
+    <div class="pub-tools" id="pub-chips"></div>
+    <div id="pub-list"></div>
+  </div>
+</section>
+
+<!-- ============ PROYECTOS (restringido) ============ -->
+<section class="block" id="proyectos">
+  <div class="wrap">
+    <p class="eyebrow"><i class="ti ti-lock" aria-hidden="true"></i> <span data-i18n="projects_title">Proyectos</span></p>
+    <h2 class="section-title" data-i18n="projects_title">Proyectos</h2>
+    <p class="section-lead" data-i18n="projects_lead"></p>
+    <div class="gate-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="block alt" id="contacto">
+  <div class="wrap">
+    <div class="contact-block">
+      <p class="eyebrow" data-i18n="contact_title">Contacto</p>
+      <h2 class="section-title" data-i18n="contact_title">Contacto</h2>
+      <div id="contact-info"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links" id="footer-links"></div>
+    <p>© <span id="year"></span> Eduardo Álvarez-Miranda · <span data-i18n="footer">Modelos de analítica avanzada para decisiones públicas y ambientales.</span></p>
+  </div>
+</footer>
+
+<!-- ============ CLUSTER MODAL (publicaciones por línea) ============ -->
+<div class="cluster-modal" id="cluster-modal">
+  <div class="cluster-box">
+    <div class="cluster-head">
+      <div>
+        <h3 id="cluster-title"></h3>
+        <div class="cnt" id="cluster-count"></div>
+      </div>
+      <button id="cluster-close" aria-label="Cerrar"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="cluster-body" id="cluster-body"></div>
+  </div>
+</div>
+
+<!-- ============ MODAL LOGIN ============ -->
+<div class="modal-backdrop" id="login-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <p class="eyebrow2"><i class="ti ti-lock" aria-hidden="true"></i> <span data-i18n="login_eyebrow">Acceso restringido</span></p>
+      <button id="m-close" aria-label="Cerrar"><i class="ti ti-x"></i></button>
+    </div>
+    <h3 id="m-title">Proyecto</h3>
+    <form id="login-form">
+      <div class="err" id="m-err"></div>
+      <label for="m-user" data-i18n="login_user">Usuario</label>
+      <input type="text" id="m-user" autocomplete="username" spellcheck="false">
+      <label for="m-pass" data-i18n="login_pass">Contraseña</label>
+      <input type="password" id="m-pass" autocomplete="current-password">
+      <button type="submit" class="btn btn-primary" id="m-btn" data-i18n="login_btn">Ingresar</button>
+      <p class="hint" data-i18n="login_hint">Cada proyecto tiene sus propios usuarios autorizados.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ VIEWER ============ -->
+<div class="viewer" id="viewer">
+  <div class="viewer-bar">
+    <span class="vt"><i class="ti ti-lock-open" aria-hidden="true"></i> <span id="viewer-title"></span></span>
+    <button id="viewer-close"><i class="ti ti-x" aria-hidden="true"></i> <span data-i18n="viewer_close">Cerrar</span></button>
+  </div>
+  <iframe id="viewer-frame" title="Proyecto" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+</div>
+
+<script src="assets/content.js"></script>
+<script src="assets/publications.js"></script>
+<script src="assets/projects-index.js"></script>
+<script src="assets/hero.js"></script>
+<script src="assets/projects.js"></script>
+<script src="assets/app.js"></script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>

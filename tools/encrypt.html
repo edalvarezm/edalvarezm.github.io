@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herramienta — Cifrar proyecto</title>
+<style>
+  :root{--papel:#FAF9F6;--tinta:#16181D;--cobalto:#2743C7;--cobalto-osc:#1F35A3;--gris:#6E7076;--linea:#ECEAE3;--linea2:#D9D7CF}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Plus Jakarta Sans',-apple-system,Segoe UI,Roboto,sans-serif;background:var(--papel);color:var(--tinta);line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 22px 80px}
+  h1{font-size:24px;margin:0 0 4px}
+  .lead{color:var(--gris);font-size:14px;margin:0 0 26px}
+  .card{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:22px;margin-bottom:20px}
+  .card h2{font-size:15px;margin:0 0 16px;display:flex;align-items:center;gap:8px}
+  .num{width:22px;height:22px;border-radius:50%;background:#EEF0FB;color:var(--cobalto);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+  label{display:block;font-size:12.5px;color:var(--gris);font-weight:600;margin:0 0 5px}
+  input,textarea{width:100%;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--linea2);border-radius:8px;background:var(--papel);color:var(--tinta);margin-bottom:14px}
+  textarea{min-height:120px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+  input:focus,textarea:focus{outline:none;border-color:var(--cobalto);box-shadow:0 0 0 3px rgba(39,67,199,.12)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .user-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:start;margin-bottom:6px}
+  .btn{font-family:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:var(--cobalto);color:#fff}.btn-primary:hover{background:var(--cobalto-osc)}
+  .btn-ghost{background:#fff;border-color:var(--linea2);color:var(--tinta)}
+  .btn-ghost:hover{border-color:var(--cobalto);color:var(--cobalto)}
+  .btn-sm{padding:8px 12px;font-size:13px}
+  .del{background:#fff;border:1px solid var(--linea2);color:#a33;border-radius:8px;cursor:pointer;padding:9px 12px;font-size:13px}
+  .out{background:#0f1116;color:#e8e8ea;border-radius:10px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:12px;white-space:pre-wrap;word-break:break-all;max-height:220px;overflow:auto;margin-top:6px}
+  .muted{font-size:12.5px;color:var(--gris)}
+  .ok{color:#2f7d51;font-weight:600}
+  .warn{background:#FEF6E7;border:1px solid #F3D89B;border-radius:8px;padding:10px 13px;font-size:12.5px;color:#7a5a12;margin-top:10px}
+  code{background:#EEF0FB;color:var(--cobalto);padding:1px 6px;border-radius:5px;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cifrar un proyecto</h1>
+  <p class="lead">Genera el archivo cifrado y la línea de índice para publicar un nuevo proyecto con acceso por usuario y contraseña. Todo ocurre en tu navegador — nada se sube a internet. No requiere instalar nada.</p>
+
+  <div class="card">
+    <h2><span class="num">1</span> Datos del proyecto</h2>
+    <label>ID (sin espacios, ej. <code>conservacion</code>)</label>
+    <input id="pid" placeholder="mi-proyecto" spellcheck="false">
+    <div class="row">
+      <div><label>Título (español)</label><input id="tes" placeholder="Priorización espacial"></div>
+      <div><label>Título (inglés)</label><input id="ten" placeholder="Spatial prioritization"></div>
+    </div>
+    <div class="row">
+      <div><label>Categoría (español)</label><input id="ces" placeholder="Medioambiente · equipo"></div>
+      <div><label>Categoría (inglés)</label><input id="cen" placeholder="Environment · team"></div>
+    </div>
+    <label>Ícono (nombre Tabler, ej. <code>map-pin</code>, <code>chart-dots-3</code>, <code>bolt</code>)</label>
+    <input id="icon" value="map-pin" spellcheck="false">
+  </div>
+
+  <div class="card">
+    <h2><span class="num">2</span> Contenido HTML del proyecto</h2>
+    <label>Sube el archivo .html…</label>
+    <input type="file" id="file" accept=".html,.htm,text/html">
+    <label>…o pega el HTML aquí</label>
+    <textarea id="html" placeholder="<!DOCTYPE html>..."></textarea>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">3</span> Usuarios autorizados</h2>
+    <div id="users"></div>
+    <button class="btn btn-ghost btn-sm" id="addUser">+ Agregar usuario</button>
+    <div class="warn">Usa contraseñas robustas. En un sitio estático, cualquiera puede descargar el archivo cifrado e intentar adivinar la clave sin conexión; una contraseña larga lo hace inviable.</div>
+  </div>
+
+  <button class="btn btn-primary" id="gen">Generar archivo cifrado</button>
+
+  <div id="result" style="display:none;margin-top:24px">
+    <div class="card">
+      <h2><span class="num">4</span> Resultado</h2>
+      <p class="muted">Se descargó <code id="fname"></code>. Guárdalo en la carpeta <code>projects/</code> de tu sitio.</p>
+      <p class="muted" style="margin-top:16px">Luego agrega esta línea al arreglo <code>window.PROJECTS</code> en <code>assets/projects-index.js</code>:</p>
+      <div class="out" id="snippet"></div>
+      <button class="btn btn-ghost btn-sm" id="copySnip" style="margin-top:10px">Copiar línea</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var ITER=150000, enc=new TextEncoder();
+function b64(buf){var u=new Uint8Array(buf),s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
+function addUserRow(u,p){
+  var wrap=document.getElementById('users');
+  var d=document.createElement('div');d.className='user-row';
+  d.innerHTML='<input placeholder="usuario" class="uu" spellcheck="false" value="'+(u||'')+'">'+
+              '<input placeholder="contraseña" class="up" value="'+(p||'')+'">'+
+              '<button class="del">✕</button>';
+  d.querySelector('.del').onclick=function(){d.remove();};
+  wrap.appendChild(d);
+}
+document.getElementById('addUser').onclick=function(){addUserRow();};
+addUserRow();
+
+document.getElementById('file').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(){document.getElementById('html').value=r.result;};r.readAsText(f);
+});
+
+async function deriveKey(pass,salt){
+  var base=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt']);
+}
+
+document.getElementById('gen').onclick=async function(){
+  var id=document.getElementById('pid').value.trim();
+  var html=document.getElementById('html').value;
+  if(!id){alert('Falta el ID del proyecto.');return;}
+  if(!html.trim()){alert('Falta el contenido HTML.');return;}
+  var users=[];
+  document.querySelectorAll('#users .user-row').forEach(function(r){
+    var u=r.querySelector('.uu').value.trim(),p=r.querySelector('.up').value;
+    if(u&&p)users.push({u:u,p:p});
+  });
+  if(!users.length){alert('Agrega al menos un usuario con contraseña.');return;}
+
+  var projRaw=crypto.getRandomValues(new Uint8Array(32));
+  var projKey=await crypto.subtle.importKey('raw',projRaw,{name:'AES-GCM'},false,['encrypt']);
+  var cIv=crypto.getRandomValues(new Uint8Array(12));
+  var ct=await crypto.subtle.encrypt({name:'AES-GCM',iv:cIv},projKey,enc.encode(html));
+  var uEntries=[];
+  for(var i=0;i<users.length;i++){
+    var salt=crypto.getRandomValues(new Uint8Array(16));
+    var iv=crypto.getRandomValues(new Uint8Array(12));
+    var k=await deriveKey(users[i].p,salt);
+    var wk=await crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,projRaw);
+    uEntries.push({u:users[i].u,salt:b64(salt),iv:b64(iv),wk:b64(wk)});
+  }
+  var data={v:1,id:id,iter:ITER,content:{iv:b64(cIv),ct:b64(ct)},users:uEntries};
+  var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=id+'.enc.json';a.click();
+
+  function esc(s){return (s||'').replace(/"/g,'\\"');}
+  var snip='{ id:"'+esc(id)+'", icon:"'+esc(document.getElementById('icon').value.trim()||'map-pin')+'", file:"projects/'+esc(id)+'.enc.json",\n'+
+    '  title:{es:"'+esc(document.getElementById('tes').value)+'",en:"'+esc(document.getElementById('ten').value)+'"},\n'+
+    '  cat:{es:"'+esc(document.getElementById('ces').value)+'",en:"'+esc(document.getElementById('cen').value)+'"} },';
+  document.getElementById('fname').textContent=id+'.enc.json';
+  document.getElementById('snippet').textContent=snip;
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('copySnip').onclick=function(){
+  navigator.clipboard.writeText(document.getElementById('snippet').textContent);
+  this.textContent='¡Copiado!';var t=this;setTimeout(function(){t.textContent='Copiar línea';},1500);
+};
+</script>
+</body>
+</html>

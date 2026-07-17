@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Publicaciones científicas. Cada entrada: [año, título, coautores, revista, [temas]]
+   Los temas son un arreglo: una publicación puede pertenecer a varias líneas.
+   Temas: conservacion | distritos | redes | salud | energia | lineas | educacion | decision
+   ========================================================================== */
+window.PUBLICATIONS = [
+  [2026,"Hydrogen production supported on nuclear cogeneration: An energy planning view","P. Vargas-Ferrer, C. Tenreiro, D. Olave-Rojas","International Journal of Hydrogen Energy, 235, 155074",["energia"]],
+  [2026,"Competing for the most profitable tour: The orienteering interdiction game","M. Sinnl, K. Tanınmış","Computers & Industrial Engineering, 214, 111900",["redes"]],
+  [2026,"Rethinking governance for the Global Biodiversity Framework: Legal gaps and lessons from Chile","M. Martínez-Harms et al.","Environmental Science & Policy, 177, 104313",["conservacion"]],
+  [2026,"Ecosystem risk management: A MIP approach to spatial prioritization of multiple management actions","M. Moreno-Faguett, J. Salgado-Rojas, V. Hermoso, M. Martínez-Harms, B. Larraín","Omega, 103507",["conservacion"]],
+  [2025,"Optimising management against dynamic threats: A spatially explicit approach based on integer programming","J. Salgado-Rojas, V. Hermoso","Methods in Ecology and Evolution, 16(8), 1868-1885",["conservacion"]],
+  [2025,"prioriactions: Multi-action management planning in R","J. Salgado-Rojas, V. Hermoso","Methods in Ecology and Evolution, 16(6), 1028-1039",["conservacion"]],
+  [2025,"A mixed integer programming approach to address cumulative threats in multi action management plans for biodiversity recovery","J. Salgado-Rojas, V. Hermoso","Omega, 133, 103282",["conservacion"]],
+  [2025,"A multi-criteria districting approach with a lexicographic compactness metric: An application to the Chilean postal service","R. Epstein, J. Pereira, M. Sinnl, R. Urrutia","Computers and Operations Research, 173, 106845",["distritos"]],
+  [2024,"Conservation triage in action: Planning, governance and knowledge co-production for biodiversity protection","M.J. Martínez-Harms, R.A. Estévez","Journal of Applied Ecology, 61(10), 2328-2334",["conservacion"]],
+  [2024,"A branch, bound and remember algorithm for maximizing the production rate in the simple assembly line balancing problem","J. Pereira, M. Vilà","Computers and Operations Research, 166, 106597",["lineas"]],
+  [2024,"Multiple-attribute group decision-making using power aggregation operators with CRITIC-WASPAS under 2-D linguistic intuitionistic fuzzy framework","R. Verma","Applied Soft Computing, 157, 111466",["decision"]],
+  [2023,"Group decision-making based on advanced aggregation operators with entropy and divergence measures under 2-tuple linguistic Pythagorean fuzzy environment","R. Verma","Expert Systems with Applications, 231, 120584",["decision"]],
+  [2023,"Analysis of the simple assembly line balancing problem complexity","J. Pereira, M. Vilà","Computers and Operations Research, 159, 106323",["lineas"]],
+  [2023,"Integration of high levels of electrolytic hydrogen production: Impact on power systems planning","P. Vargas-Ferrer, C. Tenreiro, F. Jalil-Vega","Journal of Cleaner Production, 409, 137110",["energia"]],
+  [2023,"Variable-depth local search heuristic for assembly line balancing problems","J. Pereira, C. Vargas, M. Vilà","International Journal of Production Research, 61(9), 3102-3120",["lineas"]],
+  [2022,"A novel districting design approach for on-time last-mile delivery: An application on an express postal company","M.G. Sandoval, J. Pereira, R.Z. Ríos-Mercado, J.A. Díaz","Omega, 113, 102687",["distritos","lineas"]],
+  [2022,"Assessing flexibility for integrating renewable energies into carbon neutral multi-regional systems: The Chilean power system","P. Vargas-Ferrer, C. Tenreiro, F. Jalil-Vega","Energy for Sustainable Development, 70, 442-455",["energia"]],
+  [2022,"Spatial prioritisation of management for biodiversity conservation across the EU","V. Hermoso, J. Salgado-Rojas, M. Lanzas","Biological Conservation, 272, 109638",["conservacion"]],
+  [2021,"Towards a complex investment evaluation framework for renewable energy systems: A 2-level heuristic approach","D. Olave-Rojas","Energy, 228, 120530",["energia"]],
+  [2021,"The Generalized Reserve Set Covering Problem with Connectivity and Buffer Requirements","M. Goycoolea, I. Ljubić, M. Sinnl","European Journal of Operational Research, 289(3), 1013-1029",["conservacion","redes"]],
+  [2021,"Exact and heuristic algorithms for the weighted total domination problem","M. Sinnl","Computers and Operations Research, 127",["redes"]],
+  [2021,"Assembly line balancing with parallel workstations","S. Chace, J. Pereira","International Journal of Production Research, 59(21), 6486-6506",["lineas"]],
+  [2021,"A districting application with a quality-of-service objective","J. Pereira","Mathematics, 10(1), 13",["distritos"]],
+  [2021,"A Hybrid Genetic Algorithm for the Simple Assembly Line Balancing Problem with a Fixed Number of Workstations","J. Pereira, H. Torrez-Meruvia, M. Vilà","Mathematics, 9(17), 2157",["lineas"]],
+  [2021,"The Impact of Candidates' Profile and Campaign Decisions in Electoral Results: A Data Analytics Approach","C. Campos-Valdés, M. Morales Quiroga, J. Pereira, F. Liberona Durán","Mathematics, 9(8), 902",["distritos"]],
+  [2021,"Analysis of first-year university student dropout through machine learning models: A comparison between universities","D. Opazo, S. Moreno, J. Pereira","Mathematics, 9(20), 2599",["educacion"]],
+  [2021,"Patients' Prioritization on Surgical Waiting Lists: A Decision Support System","C.A. Astudillo, L. González-Martínez, J.G. Ledezma","Mathematics, 9(10), 1097",["salud"]],
+  [2020,"Optimising the storage assignment and order-picking for the compact drive-in storage system","D. Revillot-Narváez, F. Pérez-Galarce","International Journal of Production Research, 58(22), 6949-6969",["lineas"]],
+  [2020,"On the data to know the prioritization and vulnerability of patients on surgical waiting lists","F. Silva-Aravena, C.A. Astudillo, L. González-Martínez, J.G. Ledezma","Data in Brief, 29",["salud"]],
+  [2020,"An integer programming method for the design of multi-criteria multi-action conservation plans","J. Salgado-Rojas, V. Hermoso, J. Garcia-Gonzalo, A. Weintraub","Omega, 92",["conservacion"]],
+  [2020,"Multicriteria saliency detection: a (exact) robust network design approach","J. Díaz-Guerrero","Annals of Operations Research, 286(1-2), 649-668",["redes"]],
+  [2020,"A mixed integer programming approach for multi-action planning for threat management","J. Salgado-Rojas, V. Hermoso, J. Garcia-Gonzalo, A. Weintraub","Ecological Modelling, 418",["conservacion"]],
+  [2020,"A branch-and-cut algorithm for the maximum covering cycle problem","M. Sinnl","Annals of Operations Research, 284(2), 487-499",["redes"]],
+  [2020,"Inventory management at a Chilean hospital pharmacy: Case study of a dynamic decision-aid tool","F. Silva-Aravena, I. Ceballos-Fuentealba","Mathematics, 8(11), 1962",["salud"]],
+  [2020,"A Multi-Criteria Pen for Drawing Fair Districts: When Democratic and Demographic Fairness Matter","C. Campos-Valdés, M. Morales-Quiroga, M. Moreno-Faguett, J. Pereira","Mathematics, 8(9), 1404",["distritos"]],
+  [2019,"A simulation and optimisation methodology for choosing energy efficiency measures in non-residential buildings","I. Ceballos-Fuentealba, C. Torres-Fuchslocher, M.L. del Campo-Hitschfeld, J. Díaz-Guerrero","Applied Energy, 256",["energia"]],
+  [2019,"Mixed-integer programming approaches for the tree t*-spanner problem","M. Sinnl","Optimization Letters, 13(7), 1693-1709",["redes"]],
+  [2019,"On the complexity of assembly line balancing problems","J. Pereira","Computers and Operations Research, 108, 182-186",["lineas"]],
+  [2019,"An exact solution framework for the multiple gradual cover location problem","M. Sinnl","Computers and Operations Research, 108, 82-96",["redes"]],
+  [2019,"A note on computational aspects of the Steiner traveling salesman problem","M. Sinnl","International Transactions in Operational Research, 26(4), 1396-1401",["redes"]],
+  [2019,"A multicriteria stochastic optimization framework for sustainable forest decision making under uncertainty","J. Garcia-Gonzalo, C. Pais, A. Weintraub","Forest Policy and Economics, 103, 112-122",["conservacion"]],
+  [2018,"An exact solution framework for the minimum cost dominating tree problem","M. Luipersbeck, M. Sinnl","Optimization Letters, 12(7), 1669-1681",["redes"]],
+  [2018,"A multicriteria optimization model for sustainable forest management under climate change uncertainty: An application in Portugal","J. Garcia-Gonzalo, F. Ulloa-Fierro, A. Weintraub, S. Barreiro","European Journal of Operational Research, 269(1), 79-98",["conservacion"]],
+  [2018,"An exact approach for the robust assembly line balancing problem","J. Pereira","Omega, 78, 85-98",["lineas"]],
+  [2018,"Gotta (efficiently) catch them all: Pokémon GO meets Orienteering Problems","M. Luipersbeck, M. Sinnl","European Journal of Operational Research, 265(2), 779-794",["redes"]],
+  [2018,"In-depth data on the network structure and hourly activity of the central Chilean power grid","H. Kim, D. Olave-Rojas, S.-W. Son","Scientific Data, 5(1), 1-10",["energia","redes"]],
+  [2017,"A Relax-and-Cut framework for large-scale maximum weight connected subgraph problems","M. Sinnl","Computers and Operations Research, 87, 63-82",["redes"]],
+  [2017,"A bi-objective network design approach for discovering functional modules linking Golgi apparatus fragmentation and neuronal death","H. Farhan, M. Luipersbeck, M. Sinnl","Annals of Operations Research, 258(1), 5-30",["redes"]],
+  [2017,"Optimization of the harvest planning in the olive oil production: A case study in Chile","C. Herrera-Cáceres, F. Pérez-Galarce, A. Candia-Véjar","Computers and Electronics in Agriculture, 141, 147-159",["lineas"]],
+  [2017,"Lagrangian and branch-and-cut approaches for upgrading spanning tree problems","M. Sinnl","Computers and Operations Research, 83, 13-27",["redes"]],
+  [2017,"Solving minimum-cost shared arborescence problems","I. Ljubić, M. Luipersbeck, M. Sinnl","European Journal of Operational Research, 258(3), 887-901",["redes"]],
+  [2017,"Designing and constructing networks under uncertainty in the construction stage: Definition and exact algorithmic approach","J. Pereira","Computers and Operations Research, 81, 178-191",["redes"]],
+  [2017,"An optimization framework for investment evaluation of complex renewable energy systems","D. Olave-Rojas, A. Rodríguez, C. Tenreiro","Energies, 10(7), 1062",["energia"]],
+  [2016,"Optimal upgrading schemes for effective shortest paths in networks","M. Luipersbeck, M. Sinnl","Lecture Notes in Computer Science, 9676, 406-420",["redes"]],
+  [2016,"Robust unit commitment including frequency stability constraints","F. Pérez-Illanes, C. Rahmann, C. Campos-Valdés","Energies, 9(11), 957",["energia"]],
+  [2015,"The recoverable robust two-level network design problem","I. Ljubić, S. Raghavan, P. Toth","INFORMS Journal on Computing, 27(1), 1-19",["redes"]],
+  [2015,"The recoverable robust facility location problem","E. Fernández, I. Ljubić","Transportation Research Part B: Methodological, 79, 93-120",["redes"]],
+  [2015,"Two-stage robust UC including a novel scenario-based uncertainty model for wind power applications","C. Campos-Valdés, C. Rahmann","Energy Conversion and Management, 101, 94-105",["energia"]],
+  [2015,"Alteration of Golgi structure by stress: A link to neurodegeneration?","M. Sinnl, H. Farhan","Frontiers in Neuroscience, 9",["salud"]],
+  [2014,"Single-commodity robust network design problem: Complexity, instances and heuristic solutions","V. Cacchiani, A. Lodi, T. Parriani, D.R. Schmidt","European Journal of Operational Research, 238(3), 711-723",["redes"]],
+  [2014,"On exact solutions for the Minmax Regret Spanning Tree problem","F. Pérez-Galarce, A. Candia-Véjar, P. Toth","Computers and Operations Research, 47, 114-122",["redes"]],
+  [2014,"Risk models for the Prize Collecting Steiner Tree problems with interval data","A. Candia-Véjar, X.-J. Chen, X.-D. Hu, B. Li","Acta Mathematicae Applicatae Sinica, 30(1), 1-26",["redes"]],
+  [2014,"Vulnerability assessment of spatial networks: Models and solutions","A. Candia-Véjar, E. Carrizosa, F. Pérez-Galarce","Lecture Notes in Computer Science, 8596, 433-444",["redes"]],
+  [2013,"Exact approaches for solving robust prize-collecting Steiner tree problems","I. Ljubić, P. Toth","European Journal of Operational Research, 229(3), 599-612",["redes"]],
+  [2013,"A note on the Bertsimas & Sim algorithm for robust combinatorial optimization problems","I. Ljubić, P. Toth","4OR, 11(4), 349-360",["redes"]],
+  [2013,"The rooted maximum node-weight connected subgraph problem","I. Ljubić, P. Mutzel","Lecture Notes in Computer Science, 7874, 300-315",["redes"]],
+  [2013,"The maximum weight connected subgraph problem","I. Ljubić, P. Mutzel","Facets of Combinatorial Optimization: Festschrift for Martin Grötschel, 245-270",["redes"]],
+  [2012,"Models and algorithms for robust network design with several traffic scenarios","V. Cacchiani, T. Dorneth, M. Jünger, F. Liers, A. Lodi, T. Parriani, D.R. Schmidt","Lecture Notes in Computer Science, 7422, 261-272",["redes"]],
+  [2011,"Deterministic risk control for cost-effective network connections","X. Chen, J. Hu, X. Hu, A. Candia-Véjar","Theoretical Computer Science, 412(3), 257-264",["redes"]],
+  [2011,"Minmax regret combinatorial optimization problems: An Algorithmic Perspective","A. Candia-Véjar, N. Maculan","RAIRO - Operations Research, 45(2), 101-129",["redes"]],
+  [2011,"Exact solutions for the robust prize-collecting Steiner tree problem","I. Ljubić, P. Toth","Int. Congress on Ultra Modern Telecommunications and Control Systems",["redes"]],
+  [2010,"Efficient algorithms for the prize collecting Steiner Tree problems with interval data","A. Candia, X. Chen, X. Hu, B. Li","Lecture Notes in Computer Science, 6124, 13-24",["redes"]]
+];
+
+window.PUB_TOPICS = {
+  conservacion:{es:"Conservación",en:"Conservation"},
+  distritos:{es:"Diseño de distritos",en:"Districting"},
+  redes:{es:"Network design & robust opt.",en:"Network design & robust opt."},
+  salud:{es:"Gestión sanitaria",en:"Healthcare"},
+  energia:{es:"Energía",en:"Energy"},
+  lineas:{es:"Logística y operaciones",en:"Logistics & operations"},
+  educacion:{es:"Educación",en:"Education"},
+  decision:{es:"Decisión multicriterio",en:"Multicriteria decision"}
+};
+
+/* Enlace de acceso a cada publicación (búsqueda exacta en Google Scholar).
+   Puedes reemplazarlo por el DOI directo si lo prefieres. */
+window.pubLink = function(title){
+  return 'https://scholar.google.com/scholar?q=' + encodeURIComponent('"' + title + '"');
+};

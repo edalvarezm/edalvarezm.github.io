@@ -150,7 +150,7 @@
     <div class="card">
       <h2><span class="num">·</span> Mostrar u ocultar proyectos</h2>
       <p class="hint">Los proyectos ocultos no aparecen en el sitio, pero se conservan (puedes volver a mostrarlos cuando quieras).</p>
-      <div id="vis-list" class="proj-list"></div>
+      <div id="vis-list" class="proj-list"><p class="muted">Cargando proyectos…</p></div>
       <button class="btn btn-primary btn-sm" id="genIndex" style="margin-top:16px">Generar índice</button>
       <div id="vis-result" style="display:none;margin-top:14px">
         <div class="warn"><strong>Importante:</strong> el cambio recién se ve en el sitio cuando este archivo se sube a GitHub. Descárgalo y súbelo a <code>assets/</code> reemplazando <code>projects-index.js</code> — o pídeme que lo suba yo.</div>
@@ -162,20 +162,31 @@
 
 </div></div>
 
-<script src="../assets/projects-index.js"></script>
 <script>
 var ITER=150000, enc=new TextEncoder(), dec=new TextDecoder();
 var ADMIN_USER='ealvarez';
 var ADMIN_HASH='09cb758b7f60809c489788249540873d5e0e94f120ede435d351886cf4238741';
+var PROJECTS_LIST=[];
 function b64(buf){var u=new Uint8Array(buf),s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
 function b64d(s){var bin=atob(s),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u;}
 async function sha256hex(s){var b=await crypto.subtle.digest('SHA-256',enc.encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
 async function deriveKey(pass,salt,use){var base=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,use);}
 function download(name,content,type){var blob=new Blob([content],{type:type||'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();}
 
-function unlockApp(){
+/* Lee la lista de proyectos FRESCA desde el sitio (evita el caché del navegador) */
+async function loadProjects(){
+  try{
+    var txt=await (await fetch('../assets/projects-index.js?nc='+Date.now(),{cache:'no-store'})).text();
+    var w={}; (new Function('window',txt))(w);
+    if(Array.isArray(w.PROJECTS)) return w.PROJECTS;
+  }catch(e){}
+  return (window.PROJECTS||[]);
+}
+
+async function unlockApp(){
   document.getElementById('gate').style.display='none';
   document.getElementById('app').style.display='block';
+  PROJECTS_LIST = await loadProjects();
   initExisting(); initVisibility();
 }
 document.getElementById('gate-form').addEventListener('submit',async function(e){
@@ -248,8 +259,8 @@ document.getElementById('copySnip').onclick=function(){navigator.clipboard.write
 /* ---------- EXISTENTES ---------- */
 function initExisting(){
   var host=document.getElementById('ex-list'); if(!host)return;
-  var PR=window.PROJECTS||[];
-  if(!PR.length){host.innerHTML='<p class="muted">No se pudo leer la lista de proyectos.</p>';return;}
+  var PR=PROJECTS_LIST;
+  if(!PR.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Ábrelo desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.</p>';return;}
   host.innerHTML='';
   PR.forEach(function(p){
     var d=document.createElement('div');d.className='proj-item';
@@ -302,9 +313,9 @@ function renderEditor(p, ed, data){
 /* ---------- VISIBILIDAD ---------- */
 var visState=[];
 function initVisibility(){
-  visState=(window.PROJECTS||[]).map(function(p){return JSON.parse(JSON.stringify(p));});
+  visState=PROJECTS_LIST.map(function(p){return JSON.parse(JSON.stringify(p));});
   var host=document.getElementById('vis-list'); if(!host)return; host.innerHTML='';
-  if(!visState.length){host.innerHTML='<p class="muted">No se pudo leer la lista de proyectos.</p>';return;}
+  if(!visState.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Ábrelo desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.</p>';return;}
   visState.forEach(function(p){
     var d=document.createElement('div');d.className='proj-item';
     d.innerHTML='<div class="ph"><div><div class="pt">'+(p.title&&(p.title.es||p.title))+'</div><div class="pc">'+p.id+'</div></div>'+
@@ -319,10 +330,11 @@ function genIndexText(){
   return '/* Índice PÚBLICO de proyectos (sin secretos). Generado por el mantenedor. */\nwindow.PROJECTS = [\n'+body+'\n];\n';
 }
 document.getElementById('genIndex').onclick=function(){
+  if(!visState.length){ alert('No hay proyectos cargados, no se puede generar. Abre el mantenedor desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.'); return; }
   document.getElementById('vis-out').textContent=genIndexText();
   document.getElementById('vis-result').style.display='block';
 };
-document.getElementById('dlIndex').onclick=function(){ download('projects-index.js', genIndexText(), 'text/javascript'); };
+document.getElementById('dlIndex').onclick=function(){ if(!visState.length){alert('No hay proyectos cargados.');return;} download('projects-index.js', genIndexText(), 'text/javascript'); };
 document.getElementById('copyIndex').onclick=function(){navigator.clipboard.writeText(document.getElementById('vis-out').textContent);this.textContent='¡Copiado!';var t=this;setTimeout(function(){t.textContent='Copiar todo';},1500);};
 </script>
 </body>

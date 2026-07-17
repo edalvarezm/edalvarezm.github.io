@@ -38,6 +38,30 @@
     return dec.decode(htmlBuf);
   }
 
+  // ---- Notificación de acceso por correo (Web3Forms) ----
+  // Clave de acceso de Web3Forms, ligada a eduardo.alvmir@gmail.com.
+  // El aviso incluye proyecto + usuario + fecha/hora; NUNCA la contraseña.
+  var NOTIFY_KEY='7f602270-14aa-4275-a8d9-baaf08861d77';
+  function notifyLogin(p,username){
+    if(!NOTIFY_KEY || NOTIFY_KEY.indexOf('YOUR_')===0) return;
+    var title=(p&&p.title&&(p.title.es||p.title))||(p&&p.id)||'proyecto';
+    var when;
+    try{ when=new Date().toLocaleString('es-CL',{timeZone:'America/Santiago'}); }catch(e){ when=new Date().toString(); }
+    var payload={
+      access_key:NOTIFY_KEY,
+      subject:'Acceso a proyecto: '+title,
+      from_name:'Sitio ealvarez.cl',
+      proyecto:title,
+      id_proyecto:(p&&p.id)||'',
+      usuario:username||'',
+      fecha_hora:when,
+      navegador:(navigator&&navigator.userAgent)||''
+    };
+    try{
+      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+    }catch(e){}
+  }
+
   // ---- UI wiring ----
   var state={ current:null };
 
@@ -99,6 +123,7 @@
       if(!res.ok) throw new Error('fetch');
       var data=await res.json();
       var html=await unlock(data,mUser.value,mPass.value);
+      notifyLogin(state.current,(mUser.value||'').trim());
       openViewer(state.current,html);
       closeModal();
     }catch(err){

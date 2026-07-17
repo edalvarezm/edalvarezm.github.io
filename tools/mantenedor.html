@@ -17,18 +17,17 @@
   .card h2{font-size:15px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
   .card .hint{font-size:12.5px;color:var(--gris);margin:0 0 16px}
   .num{width:23px;height:23px;border-radius:50%;background:#EEF0FB;color:var(--cobalto);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
-  label{display:block;font-size:12.5px;color:var(--gris);font-weight:600;margin:0 0 5px}
-  input,textarea,select{width:100%;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--linea2);border-radius:8px;background:var(--papel);color:var(--tinta);margin-bottom:14px}
+  label{display:block;font-size:12.5px;color:var(--gris);font-weight:600;margin:0 0 6px}
+  input,textarea{width:100%;font-family:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--linea2);border-radius:8px;background:var(--papel);color:var(--tinta);margin-bottom:12px}
   textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
-  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--cobalto);box-shadow:0 0 0 3px rgba(39,67,199,.12)}
+  input:focus,textarea:focus{outline:none;border-color:var(--cobalto);box-shadow:0 0 0 3px rgba(39,67,199,.12)}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .user-row{display:grid;grid-template-columns:1fr 1fr auto auto;gap:10px;align-items:center;margin-bottom:8px}
-  .see{border:1px solid var(--linea2);background:#fff;border-radius:8px;cursor:pointer;padding:9px 11px;font-size:13px;color:var(--gris)}
   .btn{font-family:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:10px 18px;cursor:pointer;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
   .btn-primary{background:var(--cobalto);color:#fff}.btn-primary:hover{background:var(--cobalto-osc)}
   .btn-ghost{background:#fff;border-color:var(--linea2);color:var(--tinta)}.btn-ghost:hover{border-color:var(--cobalto);color:var(--cobalto)}
   .btn-sm{padding:8px 13px;font-size:13px}
-  .del{background:#fff;border:1px solid var(--linea2);color:#a33;border-radius:8px;cursor:pointer;padding:9px 12px;font-size:13px}
+  .del{background:#FCEBEB;border:1px solid #f3c4c4;color:#a33;border-radius:8px;cursor:pointer;padding:9px 14px;font-size:13px;font-weight:600;white-space:nowrap}
+  .del:hover{background:#f7d7d7}
   .out{background:#0f1116;color:#e8e8ea;border-radius:10px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:12px;white-space:pre-wrap;word-break:break-all;max-height:280px;overflow:auto;margin-top:6px}
   .muted{font-size:12.5px;color:var(--gris)}
   .warn{background:#FEF6E7;border:1px solid #F3D89B;border-radius:8px;padding:10px 13px;font-size:12.5px;color:#7a5a12;margin-top:12px}
@@ -48,10 +47,11 @@
   .switch.on::after{left:18px}
   .badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#EEF0FB;color:var(--cobalto)}
   .badge.hid{background:#F1EFE8;color:var(--gris)}
-  .editor{margin-top:12px;border-top:1px solid var(--linea);padding-top:12px;display:none}
+  .editor{margin-top:12px;border-top:1px solid var(--linea);padding-top:14px;display:none}
   .editor.open{display:block}
-  .ulist{display:flex;flex-direction:column;gap:6px;margin:6px 0 12px}
-  .urow{display:flex;justify-content:space-between;align-items:center;background:var(--papel);border:1px solid var(--linea);border-radius:8px;padding:7px 12px;font-size:13px}
+  .urow2{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;margin-bottom:8px}
+  .urow2 input{margin-bottom:0}
+  .uhead{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;font-size:11.5px;color:var(--gris);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
   #gate{position:fixed;inset:0;background:var(--papel);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;flex-direction:column;gap:14px}
   .gatebox{background:#fff;border:1px solid var(--linea);border-radius:14px;box-shadow:0 8px 30px rgba(22,24,29,.1);padding:28px;max-width:340px;width:100%;text-align:center}
   .gatebox .sol{color:var(--cobalto);margin-bottom:6px}
@@ -88,16 +88,26 @@
     <h1>Mantenedor de accesos a proyectos</h1>
     <a class="btn btn-ghost btn-sm" href="../index.html">← Volver a inicio</a>
   </div>
-  <p class="lead">Gestiona usuarios/contraseñas de los proyectos restringidos, crea proyectos nuevos y controla su visibilidad. Todo ocurre en tu navegador. Ábrelo siempre desde el sitio publicado (botón “Acceso Privado”).</p>
+  <p class="lead">Agrega o quita usuarios de cada proyecto, con las contraseñas siempre a la vista. Crea proyectos nuevos y controla su visibilidad. Ábrelo siempre desde el sitio publicado (botón “Acceso Privado”).</p>
+  <div class="warn" style="margin:0 0 18px">Nota: en este modo las contraseñas quedan visibles y el contenido del proyecto no va cifrado (es un portón de acceso, no una caja fuerte). Cualquiera con conocimientos técnicos podría acceder al contenido sin la clave.</div>
 
   <div class="tabs">
-    <button class="tab active" data-mode="nuevo">Proyecto nuevo</button>
-    <button class="tab" data-mode="existente">Gestionar existentes</button>
+    <button class="tab active" data-mode="existente">Gestionar usuarios</button>
+    <button class="tab" data-mode="nuevo">Proyecto nuevo</button>
     <button class="tab" data-mode="visibilidad">Visibilidad</button>
   </div>
 
+  <!-- ===== EXISTENTE ===== -->
+  <div id="m-existente">
+    <div class="card">
+      <h2><span class="num">·</span> Usuarios de cada proyecto</h2>
+      <p class="hint">Pulsa “Gestionar usuarios”, edita usuarios y contraseñas (visibles), agrega o quita filas, y descarga el archivo. Luego súbelo a <code>projects/</code> reemplazando el actual — o pídeme que lo suba yo.</p>
+      <div id="ex-list" class="proj-list"><p class="muted">Cargando proyectos…</p></div>
+    </div>
+  </div>
+
   <!-- ===== NUEVO ===== -->
-  <div id="m-nuevo">
+  <div id="m-nuevo" style="display:none">
     <div class="card">
       <h2><span class="num">1</span> Datos del proyecto</h2>
       <label>ID (sin espacios, ej. <code>plataforma-arancelaria</code>)</label>
@@ -122,11 +132,11 @@
     </div>
     <div class="card">
       <h2><span class="num">3</span> Usuarios autorizados</h2>
-      <div id="users"></div>
+      <div class="uhead"><span>Usuario</span><span>Contraseña</span><span></span></div>
+      <div id="new-users"></div>
       <button class="btn btn-ghost btn-sm" id="addUser">+ Agregar usuario</button>
-      <div class="warn">Usa contraseñas robustas. En un sitio estático, cualquiera puede descargar el archivo cifrado e intentar adivinar la clave sin conexión.</div>
     </div>
-    <button class="btn btn-primary" id="gen">Generar archivo cifrado</button>
+    <button class="btn btn-primary" id="gen">Generar archivo del proyecto</button>
     <div id="result" style="display:none;margin-top:24px"><div class="card">
       <h2><span class="num">4</span> Resultado</h2>
       <p class="muted">Se descargó <code id="fname"></code>. Súbelo a la carpeta <code>projects/</code>.</p>
@@ -134,15 +144,6 @@
       <div class="out" id="snippet"></div>
       <button class="btn btn-ghost btn-sm" id="copySnip" style="margin-top:10px">Copiar línea</button>
     </div></div>
-  </div>
-
-  <!-- ===== EXISTENTE ===== -->
-  <div id="m-existente" style="display:none">
-    <div class="card">
-      <h2><span class="num">·</span> Gestionar usuarios de proyectos existentes</h2>
-      <p class="hint">Selecciona un proyecto, revisa quién tiene acceso y agrega o quita usuarios. Para <strong>agregar</strong> uno nuevo, necesitas la contraseña de un usuario que ya tenga acceso (para poder recifrar). <strong>Quitar</strong> no requiere contraseña. Al terminar, descarga el <code>.enc.json</code> y súbelo a <code>projects/</code> reemplazando el actual.</p>
-      <div id="ex-list" class="proj-list"><p class="muted">Cargando proyectos…</p></div>
-    </div>
   </div>
 
   <!-- ===== VISIBILIDAD ===== -->
@@ -163,17 +164,16 @@
 </div></div>
 
 <script>
-var ITER=150000, enc=new TextEncoder(), dec=new TextDecoder();
+var enc=new TextEncoder(), dec=new TextDecoder();
 var ADMIN_USER='ealvarez';
 var ADMIN_HASH='09cb758b7f60809c489788249540873d5e0e94f120ede435d351886cf4238741';
 var PROJECTS_LIST=[];
-function b64(buf){var u=new Uint8Array(buf),s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
-function b64d(s){var bin=atob(s),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return u;}
+function b64(bytes){var u=new Uint8Array(bytes),s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
+function b64dText(s){var bin=atob(s),u=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u[i]=bin.charCodeAt(i);return dec.decode(u);}
 async function sha256hex(s){var b=await crypto.subtle.digest('SHA-256',enc.encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
-async function deriveKey(pass,salt,use){var base=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:salt,iterations:ITER,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,use);}
 function download(name,content,type){var blob=new Blob([content],{type:type||'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-/* Lee la lista de proyectos FRESCA desde el sitio (evita el caché del navegador) */
 async function loadProjects(){
   try{
     var txt=await (await fetch('../assets/projects-index.js?nc='+Date.now(),{cache:'no-store'})).text();
@@ -182,7 +182,6 @@ async function loadProjects(){
   }catch(e){}
   return (window.PROJECTS||[]);
 }
-
 async function unlockApp(){
   document.getElementById('gate').style.display='none';
   document.getElementById('app').style.display='block';
@@ -192,8 +191,7 @@ async function unlockApp(){
 document.getElementById('gate-form').addEventListener('submit',async function(e){
   e.preventDefault();
   var u=document.getElementById('g-user').value.trim().toLowerCase();
-  var p=document.getElementById('g-pass').value;
-  var h=await sha256hex(p);
+  var h=await sha256hex(document.getElementById('g-pass').value);
   if(u===ADMIN_USER && h===ADMIN_HASH){ try{sessionStorage.setItem('mant-ok','1');}catch(_){} unlockApp(); }
   else { document.getElementById('gate-err').classList.add('show'); document.getElementById('g-pass').value=''; }
 });
@@ -204,52 +202,45 @@ document.querySelectorAll('.tab').forEach(function(t){
     document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
     t.classList.add('active');
     var m=t.getAttribute('data-mode');
-    document.getElementById('m-nuevo').style.display=m==='nuevo'?'block':'none';
     document.getElementById('m-existente').style.display=m==='existente'?'block':'none';
+    document.getElementById('m-nuevo').style.display=m==='nuevo'?'block':'none';
     document.getElementById('m-visibilidad').style.display=m==='visibilidad'?'block':'none';
   };
 });
 
-/* ---------- NUEVO ---------- */
-function addUserRow(wrapId,u,p){
-  var wrap=document.getElementById(wrapId);
-  var d=document.createElement('div');d.className='user-row';
-  d.innerHTML='<input placeholder="usuario" class="uu" spellcheck="false" value="'+(u||'')+'">'+
-              '<input placeholder="contraseña" class="up" type="password" value="'+(p||'')+'">'+
-              '<button class="see" type="button">👁</button><button class="del" type="button">✕</button>';
-  d.querySelector('.del').onclick=function(){d.remove();};
-  d.querySelector('.see').onclick=function(){var i=d.querySelector('.up');i.type=i.type==='password'?'text':'password';};
-  wrap.appendChild(d);
+/* ---------- Filas de usuario (usuario + contraseña visible + quitar) ---------- */
+function userRow(u,p){
+  var r=document.createElement('div'); r.className='urow2';
+  r.innerHTML='<input class="ru" placeholder="usuario" spellcheck="false" value="'+esc(u)+'">'+
+              '<input class="rp" placeholder="contraseña" spellcheck="false" value="'+esc(p)+'">'+
+              '<button class="del rq" type="button">Quitar</button>';
+  r.querySelector('.rq').onclick=function(){ r.remove(); };
+  return r;
 }
-document.getElementById('addUser').onclick=function(){addUserRow('users');};
-addUserRow('users');
-document.getElementById('file').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){document.getElementById('html').value=r.result;};r.readAsText(f);});
+function collectUsers(container){
+  var users=[];
+  container.querySelectorAll('.urow2').forEach(function(r){
+    var u=r.querySelector('.ru').value.trim(), p=r.querySelector('.rp').value;
+    if(u) users.push({u:u,p:p});
+  });
+  return users;
+}
 
-async function encryptNew(id,html,users){
-  var projRaw=crypto.getRandomValues(new Uint8Array(32));
-  var projKey=await crypto.subtle.importKey('raw',projRaw,{name:'AES-GCM'},false,['encrypt']);
-  var cIv=crypto.getRandomValues(new Uint8Array(12));
-  var ct=await crypto.subtle.encrypt({name:'AES-GCM',iv:cIv},projKey,enc.encode(html));
-  var uE=[];
-  for(var i=0;i<users.length;i++){
-    var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
-    var k=await deriveKey(users[i].p,salt,['encrypt']);
-    var wk=await crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,projRaw);
-    uE.push({u:users[i].u,salt:b64(salt),iv:b64(iv),wk:b64(wk)});
-  }
-  return {v:1,id:id,iter:ITER,content:{iv:b64(cIv),ct:b64(ct)},users:uE};
-}
-document.getElementById('gen').onclick=async function(){
+/* ---------- NUEVO ---------- */
+var newUsersBox=document.getElementById('new-users');
+newUsersBox.appendChild(userRow('',''));
+document.getElementById('addUser').onclick=function(){ newUsersBox.appendChild(userRow('','')); };
+document.getElementById('file').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){document.getElementById('html').value=r.result;};r.readAsText(f);});
+document.getElementById('gen').onclick=function(){
   var id=document.getElementById('pid').value.trim(), html=document.getElementById('html').value;
   if(!id){alert('Falta el ID.');return;} if(!html.trim()){alert('Falta el HTML.');return;}
-  var users=[];document.querySelectorAll('#users .user-row').forEach(function(r){var u=r.querySelector('.uu').value.trim(),p=r.querySelector('.up').value;if(u&&p)users.push({u:u,p:p});});
+  var users=collectUsers(newUsersBox);
   if(!users.length){alert('Agrega al menos un usuario.');return;}
-  var data=await encryptNew(id,html,users);
-  download(id+'.enc.json',JSON.stringify(data));
-  function esc(s){return (s||'').replace(/"/g,'\\"');}
-  var snip='{ id:"'+esc(id)+'", icon:"'+esc(document.getElementById('icon').value.trim()||'calculator')+'", file:"projects/'+esc(id)+'.enc.json",\n'+
-    '  title:{es:"'+esc(document.getElementById('tes').value)+'",en:"'+esc(document.getElementById('ten').value)+'"},\n'+
-    '  cat:{es:"'+esc(document.getElementById('ces').value)+'",en:"'+esc(document.getElementById('cen').value)+'"} },';
+  var data={ v:2, users:users, content: b64(enc.encode(html)) };
+  download(id+'.enc.json', JSON.stringify(data));
+  var snip='{ id:"'+id.replace(/"/g,'\\"')+'", icon:"'+(document.getElementById('icon').value.trim()||'calculator').replace(/"/g,'\\"')+'", file:"projects/'+id.replace(/"/g,'\\"')+'.enc.json",\n'+
+    '  title:{es:"'+document.getElementById('tes').value.replace(/"/g,'\\"')+'",en:"'+document.getElementById('ten').value.replace(/"/g,'\\"')+'"},\n'+
+    '  cat:{es:"'+document.getElementById('ces').value.replace(/"/g,'\\"')+'",en:"'+document.getElementById('cen').value.replace(/"/g,'\\"')+'"} },';
   document.getElementById('fname').textContent=id+'.enc.json';
   document.getElementById('snippet').textContent=snip;
   document.getElementById('result').style.display='block';
@@ -259,18 +250,18 @@ document.getElementById('copySnip').onclick=function(){navigator.clipboard.write
 /* ---------- EXISTENTES ---------- */
 function initExisting(){
   var host=document.getElementById('ex-list'); if(!host)return;
-  var PR=PROJECTS_LIST;
-  if(!PR.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Ábrelo desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.</p>';return;}
+  if(!PROJECTS_LIST.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Ábrelo desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.</p>';return;}
   host.innerHTML='';
-  PR.forEach(function(p){
+  PROJECTS_LIST.forEach(function(p){
     var d=document.createElement('div');d.className='proj-item';
-    d.innerHTML='<div class="ph"><div><div class="pt">'+(p.title&&(p.title.es||p.title))+'</div><div class="pc">'+p.id+(p.hidden?' · <span class="badge hid">oculto</span>':'')+'</div></div>'+
+    d.innerHTML='<div class="ph"><div><div class="pt">'+esc(p.title&&(p.title.es||p.title))+'</div><div class="pc">'+esc(p.id)+(p.hidden?' · <span class="badge hid">oculto</span>':'')+'</div></div>'+
       '<button class="btn btn-ghost btn-sm ex-load">Gestionar usuarios</button></div>'+
-      '<div class="editor" id="ed-'+p.id+'"></div>';
-    d.querySelector('.ex-load').onclick=function(){ loadProject(p, d.querySelector('#ed-'+p.id)); };
+      '<div class="editor" id="ed-'+esc(p.id)+'"></div>';
+    d.querySelector('.ex-load').onclick=function(){ loadProject(p, d.querySelector('#ed-'+cssEsc(p.id))); };
     host.appendChild(d);
   });
 }
+function cssEsc(s){ return (window.CSS&&CSS.escape)?CSS.escape(s):s; }
 async function loadProject(p, ed){
   ed.classList.toggle('open');
   if(ed.dataset.done){return;}
@@ -278,36 +269,29 @@ async function loadProject(p, ed){
   try{
     var data=await (await fetch('../'+p.file+'?t='+Date.now(),{cache:'no-store'})).json();
     ed.dataset.done='1'; renderEditor(p, ed, data);
-  }catch(e){ ed.innerHTML='<p class="warn">No se pudo cargar el archivo cifrado. Abre este mantenedor desde el sitio publicado (no como archivo local).</p>'; }
+  }catch(e){ ed.innerHTML='<p class="warn">No se pudo cargar el archivo. Abre este mantenedor desde el sitio publicado (no como archivo local).</p>'; }
 }
 function renderEditor(p, ed, data){
-  var uhtml=data.users.map(function(u){return '<div class="urow"><span>'+u.u+'</span><button class="del" data-u="'+u.u+'">Quitar</button></div>';}).join('');
+  if(!(data.v===2 || typeof data.content==='string')){
+    ed.innerHTML='<div class="warn">Este proyecto usa el formato cifrado antiguo (contraseñas no visibles). Para gestionarlo con contraseñas a la vista, vuelve a crearlo en la pestaña “Proyecto nuevo” con el mismo ID, o pídeme que lo convierta.</div>';
+    return;
+  }
   ed.innerHTML=
-    '<label>Usuarios con acceso</label><div class="ulist">'+(uhtml||'<span class="muted">Sin usuarios</span>')+'</div>'+
-    '<label>Agregar usuario nuevo</label>'+
-    '<div class="row"><div><input class="au-existing" placeholder="usuario existente (para recifrar)"></div><div><input class="au-existing-pass" type="password" placeholder="contraseña de ese usuario"></div></div>'+
-    '<div class="row"><div><input class="au-new" placeholder="nuevo usuario"></div><div><input class="au-new-pass" type="password" placeholder="contraseña del nuevo usuario"></div></div>'+
-    '<button class="btn btn-ghost btn-sm au-add" type="button">+ Agregar este usuario</button>'+
-    '<div style="margin-top:14px"><button class="btn btn-primary btn-sm dl" type="button">Descargar '+p.id+'.enc.json actualizado</button></div>';
-  ed.querySelectorAll('.del').forEach(function(b){ b.onclick=function(){ var uu=b.getAttribute('data-u'); data.users=data.users.filter(function(x){return x.u!==uu;}); renderEditor(p,ed,data); }; });
-  ed.querySelector('.au-add').onclick=async function(){
-    var eu=ed.querySelector('.au-existing').value.trim(), ep=ed.querySelector('.au-existing-pass').value;
-    var nu=ed.querySelector('.au-new').value.trim(), np=ed.querySelector('.au-new-pass').value;
-    if(!nu||!np){alert('Completa el nuevo usuario y su contraseña.');return;}
-    if(!eu||!ep){alert('Necesitas un usuario existente y su contraseña para poder agregar.');return;}
-    try{
-      var e=data.users.find(function(x){return x.u.toLowerCase()===eu.toLowerCase();});
-      if(!e){alert('Ese usuario existente no está en la lista.');return;}
-      var wkKey=await deriveKey(ep,b64d(e.salt),['decrypt']);
-      var projRaw=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64d(e.iv)},wkKey,b64d(e.wk)));
-      var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
-      var k=await deriveKey(np,salt,['encrypt']);
-      var wk=await crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,projRaw);
-      data.users.push({u:nu,salt:b64(salt),iv:b64(iv),wk:b64(wk)});
-      renderEditor(p,ed,data);
-    }catch(err){ alert('No se pudo agregar: la contraseña del usuario existente parece incorrecta.'); }
+    '<label>Usuarios con acceso (usuario y contraseña visibles)</label>'+
+    '<div class="uhead"><span>Usuario</span><span>Contraseña</span><span></span></div>'+
+    '<div class="ulist2"></div>'+
+    '<button class="btn btn-ghost btn-sm add-u" type="button">+ Agregar usuario</button>'+
+    '<div style="margin-top:16px"><button class="btn btn-primary btn-sm dl" type="button">Descargar '+esc(p.id)+'.enc.json actualizado</button></div>';
+  var ul=ed.querySelector('.ulist2');
+  (data.users||[]).forEach(function(x){ ul.appendChild(userRow(x.u,x.p)); });
+  if(!(data.users||[]).length) ul.appendChild(userRow('',''));
+  ed.querySelector('.add-u').onclick=function(){ ul.appendChild(userRow('','')); };
+  ed.querySelector('.dl').onclick=function(){
+    var users=collectUsers(ul);
+    if(!users.length){alert('Debe quedar al menos un usuario.');return;}
+    var out={ v:2, users:users, content:data.content };
+    download(p.id+'.enc.json', JSON.stringify(out));
   };
-  ed.querySelector('.dl').onclick=function(){ download(p.id+'.enc.json',JSON.stringify(data)); };
 }
 
 /* ---------- VISIBILIDAD ---------- */
@@ -315,10 +299,10 @@ var visState=[];
 function initVisibility(){
   visState=PROJECTS_LIST.map(function(p){return JSON.parse(JSON.stringify(p));});
   var host=document.getElementById('vis-list'); if(!host)return; host.innerHTML='';
-  if(!visState.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Ábrelo desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.</p>';return;}
+  if(!visState.length){host.innerHTML='<p class="warn">No se pudo leer la lista de proyectos. Recarga con Ctrl+F5.</p>';return;}
   visState.forEach(function(p){
     var d=document.createElement('div');d.className='proj-item';
-    d.innerHTML='<div class="ph"><div><div class="pt">'+(p.title&&(p.title.es||p.title))+'</div><div class="pc">'+p.id+'</div></div>'+
+    d.innerHTML='<div class="ph"><div><div class="pt">'+esc(p.title&&(p.title.es||p.title))+'</div><div class="pc">'+esc(p.id)+'</div></div>'+
       '<span class="toggle"><span class="vlabel">'+(p.hidden?'Oculto':'Visible')+'</span><span class="switch '+(p.hidden?'':'on')+'"></span></span></div>';
     var sw=d.querySelector('.switch'), lb=d.querySelector('.vlabel');
     sw.onclick=function(){ p.hidden=!p.hidden; sw.classList.toggle('on',!p.hidden); lb.textContent=p.hidden?'Oculto':'Visible'; };
@@ -330,7 +314,7 @@ function genIndexText(){
   return '/* Índice PÚBLICO de proyectos (sin secretos). Generado por el mantenedor. */\nwindow.PROJECTS = [\n'+body+'\n];\n';
 }
 document.getElementById('genIndex').onclick=function(){
-  if(!visState.length){ alert('No hay proyectos cargados, no se puede generar. Abre el mantenedor desde el sitio publicado (botón “Acceso Privado”) y recarga con Ctrl+F5.'); return; }
+  if(!visState.length){ alert('No hay proyectos cargados. Recarga con Ctrl+F5.'); return; }
   document.getElementById('vis-out').textContent=genIndexText();
   document.getElementById('vis-result').style.display='block';
 };

@@ -73,8 +73,8 @@ h2.section-title{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--linea)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:center;min-height:420px;padding:56px 0 40px}
 .hero-copy{max-width:520px}
-.hero h1{font-size:46px;letter-spacing:-.02em;margin:0 0 18px;white-space:nowrap}
-.hero .role{color:var(--gris);font-size:14px;margin:0 0 14px;font-weight:500}
+.hero h1{font-size:46px;letter-spacing:-.02em;margin:0 0 8px;white-space:nowrap}
+.hero .role{color:var(--cobalto);font-size:14px;margin:0 0 18px;font-weight:700}
 .hero .tagline{font-size:17px;color:var(--tinta-70);margin:0 0 28px;line-height:1.6}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .btn{

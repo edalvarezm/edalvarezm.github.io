@@ -5,6 +5,13 @@
    ========================================================================== */
 window.PROJECTS = [
   {
+    id:"plataforma-arancelaria",
+    icon:"calculator",
+    file:"projects/plataforma-arancelaria.enc.json",
+    title:{es:"Plataforma de Cálculo y Validación de las Bases Técnicas Generalizadas y Parametrizadas para la Regulación Arancelaria (Ley 21.091) [versión beta]",en:"Calculation & Validation Platform for the Generalized and Parametrized Technical Bases for Tariff Regulation (Law 21,091) [beta]"},
+    cat:{es:"Regulación arancelaria · Ley 21.091",en:"Tariff regulation · Law 21,091"}
+  },
+  {
     id:"conservacion",
     icon:"map-pin",
     file:"projects/conservacion.enc.json",

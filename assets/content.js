@@ -48,8 +48,8 @@ window.SITE = {
     research_intl:  { es:"Redes internacionales", en:"International networks" },
 
     collab_title: { es:"Colaboración", en:"Collaboration" },
-    collab_lead:  { es:"Mapa de mis publicaciones y coautores: cada estrella es un artículo, agrupado por línea de investigación; en el anillo exterior están mis coautores recurrentes y su país.",
-                    en:"A map of my publications and co-authors: each star is a paper, grouped by research line; the outer ring gathers my recurring co-authors and their country." },
+    collab_lead:  { es:"Mapa de publicaciones y coautorías: cada nodo es un artículo, agrupado por línea de investigación; en el anillo exterior están las coautorías recurrentes y su país.",
+                    en:"A map of publications and co-authorships: each node is a paper, grouped by research line; the outer ring shows recurring co-authorships and their country." },
 
     pubs_title: { es:"Publicaciones", en:"Publications" },
     pubs_lead:  { es:"Artículos en revistas de investigación de operaciones, conservación, energía y ciencia de datos. Cada título enlaza a la publicación.",

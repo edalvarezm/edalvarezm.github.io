@@ -59,11 +59,11 @@
     amap={};nodes.forEach(function(n){n.au=[];String(n.authors||'').split(', ').forEach(function(tk){var k=na(tk);if(!k)return;k=ALIAS[k]||k;if(!amap[k])amap[k]={key:k,sur:sur(k),n:0,cl:{},pubs:[]};amap[k].n++;amap[k].pubs.push(n.i);(n.topics||[]).forEach(function(t){amap[k].cl[t]=(amap[k].cl[t]||0)+1;});n.au.push(k);});});
     auth=Object.keys(amap).map(function(k){return amap[k];}).filter(function(a){return a.n>=2||COUNTRY[a.key];});
     var surC={};auth.forEach(function(a){surC[a.sur]=(surC[a.sur]||0)+1;});
-    auth.forEach(function(a){a.disp=surC[a.sur]>1?(a.key.trim().charAt(0)+'. '+a.sur):a.sur;});
+    auth.forEach(function(a){a.ring=true;a.disp=surC[a.sur]>1?(a.key.trim().charAt(0)+'. '+a.sur):a.sur;});
     auth.forEach(function(a){var best='redes',bc=-1;for(var t in a.cl){if(a.cl[t]>bc){bc=a.cl[t];best=t;}}a.cl0=best;a.r=3+Math.min(a.n,9)*0.8;});
     var byS={};auth.forEach(function(a){(byS[a.cl0]=byS[a.cl0]||[]).push(a);});
     Object.keys(byS).forEach(function(k){var arr=byS[k].sort(function(x,y){return y.n-x.n;});var s=sector[k];var pad=(s.a1-s.a0)*0.08;var a0=s.a0+pad,a1=s.a1-pad;arr.forEach(function(a,ix){a.ang=arr.length===1?(a0+a1)/2:a0+(a1-a0)*(ix/(arr.length-1));});});
-    blinks=[];nodes.forEach(function(n){n.au.forEach(function(k){if(amap[k].n>=2)blinks.push({p:n.i,a:amap[k]});});});
+    blinks=[];nodes.forEach(function(n){n.au.forEach(function(k){if(amap[k].ring)blinks.push({p:n.i,a:amap[k]});});});
     var byc={};nodes.forEach(function(n){(byc[n.cl]=byc[n.cl]||[]).push(n);});
     links=[];Object.keys(byc).forEach(function(k){var a=byc[k].slice().sort(function(x,y){return x.year-y.year;});for(var j=1;j<a.length;j++)links.push({s:a[j-1].i,t:a[j].i,cl:k});});
     nodes.forEach(function(n){for(var k=1;k<(n.topics||[]).length;k++){var t=n.topics[k];var arr=byc[t];if(arr&&arr.length){var best=arr[0],bd=1e9;arr.forEach(function(m){var d=Math.abs(m.year-n.year);if(d<bd){bd=d;best=m;}});links.push({s:n.i,t:best.i,cl:t,bridge:true});}}});
@@ -113,12 +113,11 @@
   function pubLink(t){return (window.pubLink?window.pubLink(t):'https://scholar.google.com/scholar?q='+encodeURIComponent('"'+t+'"'));}
   function onClick(){try{if(hov)window.open(pubLink(hov.title),'_blank');else if(hovA)window.open('https://scholar.google.com/scholar?q='+encodeURIComponent(hovA.key),'_blank');}catch(e){}}
 
-  function buildLegend(){leg.innerHTML='';var L=LG();order.forEach(function(k){var el=document.createElement('div');el.style.cssText='display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#3A3C42;cursor:pointer;user-select:none';el.innerHTML='<span style="width:9px;height:9px;border-radius:50%;background:'+TOPICS[k].c+'"></span>'+TOPICS[k][L];el.addEventListener('click',function(){focus=(focus===k)?null:k;dirty=true;Array.prototype.forEach.call(leg.children,function(c){c.style.opacity=(!focus||c===el)?'1':'0.4';});});leg.appendChild(el);});}
+  function buildLegend(){leg.innerHTML='';var L=LG();order.forEach(function(k){var el=document.createElement('div');el.style.cssText='display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#3A3C42;cursor:pointer;user-select:none';el.innerHTML='<span style="width:9px;height:9px;border-radius:50%;background:'+TOPICS[k].c+'"></span>'+TOPICS[k][L];el.addEventListener('click',function(){focus=(focus===k)?null:k;dirty=true;Array.prototype.forEach.call(leg.children,function(c){c.style.opacity=(!focus||c===el)?'1':'0.4';});});leg.appendChild(el);});}
 
   function build(h){
     host=h;
     host.innerHTML='<div style="position:relative;border-radius:16px;overflow:hidden;background:#FAF9F6;border:1px solid #ECEAE3">'+
-      '<div class="cst-hint" style="position:absolute;top:12px;left:16px;z-index:3;pointer-events:none;font-size:11px;color:#6E7076;max-width:70%"></div>'+
       '<canvas class="cst-cv" style="display:block;width:100%"></canvas>'+
       '<div class="cst-lab" style="position:absolute;inset:0;z-index:2;pointer-events:none"></div>'+
       '<div class="cst-tip" style="position:absolute;z-index:5;pointer-events:none;display:none;max-width:250px;background:#fff;border:1px solid #E4E2DA;border-radius:10px;padding:9px 11px;box-shadow:0 10px 28px rgba(22,24,29,.16)"></div>'+
@@ -134,7 +133,7 @@
     size();window.addEventListener('resize',size);
     if(!running){running=true;requestAnimationFrame(tick);}
   }
-  function applyLang(){if(hintEl)hintEl.textContent=STR.hint[LG()];buildLegend();focus=null;}
+  function applyLang(){buildLegend();focus=null;}
 
   window.ConstellationModule={render:function(){var h=document.getElementById('constellation-wrap');if(!h)return;if(!(window.PUBLICATIONS&&window.PUBLICATIONS.length)){h.style.display='none';return;}if(!built){build(h);built=true;}applyLang();}};
 })();

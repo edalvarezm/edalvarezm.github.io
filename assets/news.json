@@ -1,0 +1,33 @@
+{
+  "updated": "2026-07-17",
+  "items": [
+    { "topic":"conservacion", "source":"Mongabay", "date":"abr 2026", "lang":"EN",
+      "url":"https://news.mongabay.com/2026/04/as-global-30x30-goal-lags-colombia-shows-how-progress-can-be-made/",
+      "title":"As global 30×30 goal lags, Colombia shows how progress can be made",
+      "summary":"Colombia's coordinated, ambitious plan illustrates how spatial prioritization can advance the lagging 30×30 protected-area target." },
+    { "topic":"distritos", "source":"The Conversation", "date":"2026", "lang":"EN",
+      "url":"https://theconversation.com/supreme-courts-voting-rights-act-ruling-makes-it-harder-to-protect-minority-voting-power-and-alters-the-landscape-of-future-elections-281817",
+      "title":"Voting Rights Act ruling reshapes how electoral districts are drawn",
+      "summary":"A weakened Voting Rights Act changes the constraints and fairness criteria behind partisan and minority-representation districting." },
+    { "topic":"redes", "source":"Quanta Magazine", "date":"ago 2025", "lang":"EN",
+      "url":"https://www.quantamagazine.org/new-method-is-the-fastest-way-to-find-the-best-routes-20250806/",
+      "title":"New method is the fastest way to find the best routes",
+      "summary":"A shortest-path algorithm breaks a 40-year “sorting barrier,” finding optimal routes across networks faster than ever." },
+    { "topic":"salud", "source":"OCDE", "date":"2025", "lang":"EN",
+      "url":"https://www.oecd.org/en/publications/health-at-a-glance-2025_8f9e3f98-en/full-report/waiting-times_3a1021fa.html",
+      "title":"Waiting times — Health at a Glance 2025",
+      "summary":"Cross-country evidence on elective-surgery waiting times and the clinical prioritization policies that make them fairer." },
+    { "topic":"energia", "source":"IEA", "date":"2026", "lang":"EN",
+      "url":"https://www.iea.org/reports/electricity-2026/grids",
+      "title":"Grids — Electricity 2026",
+      "summary":"Grid investment and storage must scale sharply to connect stalled renewables and meet demand under growing uncertainty." },
+    { "topic":"lineas", "source":"Supply Chain Dive", "date":"2026", "lang":"EN",
+      "url":"https://www.supplychaindive.com/news/2026-logistics-outlook-ai-bankruptcies-ocean-air-last-mile-rail-trucking-operational-volatility/810429/",
+      "title":"5 logistics trends to watch in 2026",
+      "summary":"AI-driven planning, rising last-mile rates and store-based fulfillment top the operations and logistics agenda for 2026." },
+    { "topic":"educacion", "source":"OCDE", "date":"2026", "lang":"EN",
+      "url":"https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0340",
+      "title":"Quality provision in cross-border higher education (OECD 2026 report)",
+      "summary":"OECD's 2026 review finds external quality-assurance systems widely adopted, with gaps remaining for cross-border programmes." }
+  ]
+}

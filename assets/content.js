@@ -9,6 +9,7 @@ window.SITE = {
     nav_trajectory: { es:"Experiencia", en:"Experience" },
     nav_research:   { es:"Investigación", en:"Research" },
     nav_collab:     { es:"Colaboración", en:"Collaboration" },
+    news_nav:       { es:"Noticias", en:"News" },
     nav_pubs:       { es:"Publicaciones", en:"Publications" },
     nav_projects:   { es:"Proyectos", en:"Projects" },
     nav_contact:    { es:"Contacto", en:"Contact" },
@@ -50,6 +51,10 @@ window.SITE = {
     collab_title: { es:"Colaboración", en:"Collaboration" },
     collab_lead:  { es:"Mapa de publicaciones y coautorías: cada nodo es un artículo, agrupado por línea de investigación; en el anillo exterior están las coautorías recurrentes y su país.",
                     en:"A map of publications and co-authorships: each node is a paper, grouped by research line; the outer ring shows recurring co-authorships and their country." },
+
+    news_title: { es:"Noticias de interés", en:"News of interest" },
+    news_lead:  { es:"Una noticia relevante por área de investigación, actualizada a diario, desde portales de ciencia, difusión científica y organismos internacionales.",
+                  en:"A relevant news item per research area, updated daily, from science, scientific-outreach and international-organization portals." },
 
     pubs_title: { es:"Publicaciones", en:"Publications" },
     pubs_lead:  { es:"Artículos en revistas de investigación de operaciones, conservación, energía y ciencia de datos. Cada título enlaza a la publicación.",

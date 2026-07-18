@@ -179,8 +179,12 @@ window.SITE = {
         svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#00CCBB"/><text x="12" y="16.3" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="10.5" fill="#fff">RG</text></svg>' },
       { label:"Scopus", url:"https://www.scopus.com/authid/detail.uri?authorId=39260996600",
         svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#E9711C"/><text x="12" y="16.6" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="13" fill="#fff">S</text></svg>' },
+      { label:"DBLP", url:"https://dblp.org/pid/12/4945.html",
+        svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 12 2.6 6.9 9.4 1.6z" fill="#1C5AA8"/><path d="M12 12 21.6 8.9 17.6 18.4z" fill="#2E7D6B"/><path d="M12 12 9.6 22.6 2.9 16.4z" fill="#F2C800"/></svg>' },
       { label:"LinkedIn", url:"https://www.linkedin.com/in/eduardo-alvarez-miranda/",
-        svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0A66C2"/><path fill="#fff" d="M6.94 8.5H4.5V18h2.44V8.5zM5.72 7.4a1.42 1.42 0 1 0 0-2.85 1.42 1.42 0 0 0 0 2.85zM18 18h-2.44v-4.4c0-1.05-.02-2.4-1.47-2.4-1.47 0-1.7 1.15-1.7 2.33V18H9.95V8.5h2.34v1.3h.03c.33-.62 1.13-1.27 2.32-1.27 2.48 0 2.94 1.63 2.94 3.76V18z"/></svg>' }
+        svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#0A66C2"/><path fill="#fff" d="M6.94 8.5H4.5V18h2.44V8.5zM5.72 7.4a1.42 1.42 0 1 0 0-2.85 1.42 1.42 0 0 0 0 2.85zM18 18h-2.44v-4.4c0-1.05-.02-2.4-1.47-2.4-1.47 0-1.7 1.15-1.7 2.33V18H9.95V8.5h2.34v1.3h.03c.33-.62 1.13-1.27 2.32-1.27 2.48 0 2.94 1.63 2.94 3.76V18z"/></svg>' },
+      { label:"ISCI", url:"https://isci.cl/",
+        svg:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#2E3192"/><text x="12" y="15.6" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="7.6" letter-spacing="0.3" fill="#fff">ISCI</text></svg>' }
     ]
   }
 };

@@ -1,0 +1,24 @@
+# robots.txt — ealvarez.cl
+# Permite el rastreo completo del sitio público y bloquea las zonas privadas.
+
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /projects/
+
+# Los buscadores de IA también pueden leer el sitio (aumenta la visibilidad
+# en respuestas de ChatGPT, Perplexity, Claude, etc.). Si algún día prefieres
+# excluirlos, cambia "Allow: /" por "Disallow: /" en los bloques de abajo.
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.ealvarez.cl/sitemap.xml

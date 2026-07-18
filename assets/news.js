@@ -42,8 +42,9 @@
         '<div style="font-size:12px;color:#6E7076;line-height:1.45">'+esc(it.summary||'')+'</div>'+
       '</div>';
     }).join('');
-    host.innerHTML='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:14px">'+cards+'</div>'+
-      '<div style="font-size:11.5px;color:#9aa0a8;margin-top:16px">'+LAB[L].updated+': '+esc(fmtDate(DATA.updated))+'</div>';
+    host.innerHTML='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:14px">'+cards+'</div>';
+    var up=document.getElementById('news-updated');
+    if(up) up.textContent=LAB[L].updated+': '+fmtDate(DATA.updated);
     host.style.display='';
   }
 

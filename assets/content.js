@@ -53,8 +53,8 @@ window.SITE = {
                     en:"A map of publications and co-authorships: each node is a paper, grouped by research line; the outer ring shows recurring co-authorships and their country." },
 
     news_title: { es:"Noticias de interés", en:"News of interest" },
-    news_lead:  { es:"Una noticia relevante por área de investigación, actualizada a diario, desde portales de ciencia, difusión científica y organismos internacionales.",
-                  en:"A relevant news item per research area, updated daily, from science, scientific-outreach and international-organization portals." },
+    news_lead:  { es:"Noticias relevantes de avances y resultados en las áreas de interés. Las noticias se actualizan diariamente.",
+                  en:"Relevant news on advances and results in the areas of interest. Updated daily." },
 
     pubs_title: { es:"Publicaciones", en:"Publications" },
     pubs_lead:  { es:"Artículos en revistas de investigación de operaciones, conservación, energía y ciencia de datos. Cada título enlaza a la publicación.",

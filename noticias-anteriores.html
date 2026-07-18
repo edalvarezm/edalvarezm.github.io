@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noticias anteriores — Eduardo Álvarez-Miranda</title>
+<meta name="description" content="Registro histórico de las noticias de interés por área de investigación — Eduardo Álvarez-Miranda.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --cobalto:#3047c7; --tinta:#16181D; --gris:#6E7076; --linea:#ECEAE3; }
+  *{box-sizing:border-box}
+  body{margin:0;background:#F6F4EE;color:var(--tinta);font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  .bar{display:flex;align-items:center;gap:16px;background:#fff;border-bottom:1px solid var(--linea);padding:15px 0}
+  .bar .brand{font-weight:700;font-size:15px;color:var(--tinta);text-decoration:none;letter-spacing:-.01em}
+  .bar .sp{margin-left:auto}
+  #a-back{font-size:13.5px;font-weight:600;color:var(--cobalto);text-decoration:none}
+  .lang{display:inline-flex;border:1px solid var(--linea);border-radius:8px;overflow:hidden;margin-left:14px}
+  .lang button{border:0;background:#fff;color:var(--gris);font:inherit;font-size:12px;font-weight:700;padding:6px 10px;cursor:pointer}
+  .lang button.active{background:var(--cobalto);color:#fff}
+  header.hd{padding:40px 0 8px}
+  header.hd h1{font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:0 0 8px}
+  header.hd p{color:var(--gris);font-size:15px;max-width:640px;margin:0}
+  main{padding:26px 0 70px}
+  .period{margin-top:34px}
+  .period-h{font-size:15px;font-weight:700;color:var(--cobalto);margin:0 0 14px;padding-bottom:9px;border-bottom:2px solid rgba(48,71,199,.16);text-transform:capitalize}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:14px}
+  .card{border:1px solid var(--linea);border-radius:13px;background:#fff;padding:14px 15px}
+  .card .top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+  .area{font-size:12px;font-weight:700;color:var(--tinta);line-height:1.2}
+  .tag{margin-left:auto;font-size:9px;font-weight:700;color:#fff;border-radius:20px;padding:2px 7px}
+  .card a.t{font-size:13.5px;font-weight:600;color:var(--cobalto);line-height:1.35;text-decoration:none;display:block}
+  .meta{font-size:11px;color:#9aa0a8;margin:5px 0 6px}
+  .sum{font-size:12px;color:var(--gris);line-height:1.45}
+  .empty{color:var(--gris);font-size:15px;padding:40px 0}
+  @media(max-width:560px){header.hd h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap" style="display:flex;align-items:center;gap:14px;width:100%">
+    <a href="index.html" class="brand">E. Álvarez-Miranda</a>
+    <span class="sp"></span>
+    <a href="index.html#noticias" id="a-back">← Volver al inicio</a>
+    <span class="lang" id="lang">
+      <button data-lang="es">ES</button>
+      <button data-lang="en">EN</button>
+    </span>
+  </div>
+</div>
+
+<header class="hd">
+  <div class="wrap">
+    <h1 id="a-title">Noticias anteriores</h1>
+    <p id="a-sub">Registro histórico de las noticias de interés, organizadas por período.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap"><div id="arch"></div></div>
+</main>
+
+<script src="assets/content.js?v=20260728"></script>
+<script>
+(function(){
+  var COL={conservacion:'#1EA463',distritos:'#E0552C',redes:'#3047c7',salud:'#0E97AE',energia:'#D98A00',lineas:'#E0688A',educacion:'#7A57E6'};
+  var LABELS={
+    es:{title:'Noticias anteriores', sub:'Registro histórico de las noticias de interés, organizadas por período.', back:'Volver al inicio', empty:'Aún no hay noticias anteriores archivadas.', period:'Semana del'},
+    en:{title:'Past news', sub:'Historical archive of the news of interest, organized by period.', back:'Back to home', empty:'No past news archived yet.', period:'Week of'}
+  };
+  var DATA=null;
+  var LANG=(function(){try{return localStorage.getItem('eam-lang')||'es';}catch(e){return 'es';}})();
+  function LG(){return LANG==='en'?'en':'es';}
+  function qs(s){return document.querySelector(s);}
+  function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function fmtDate(s){var p=String(s||'').split('-');var d=new Date(+p[0],(+p[1]||1)-1,+p[2]||1);try{return d.toLocaleDateString(LG()==='en'?'en-US':'es-CL',{day:'numeric',month:'long',year:'numeric'});}catch(e){return s;}}
+
+  function card(rl,it,L){
+    var c=COL[rl.topic]||'#3047c7';
+    var area=(rl.t&&(rl.t[L]||rl.t.es))||rl.topic;
+    return '<div class="card">'+
+      '<div class="top">'+
+        '<span class="dot" style="background:'+c+'"></span>'+
+        '<span class="area">'+esc(area)+'</span>'+
+        (it.lang?'<span class="tag" style="background:'+c+'">'+esc(it.lang)+'</span>':'')+
+      '</div>'+
+      '<a class="t" href="'+esc(it.url)+'" target="_blank" rel="noopener">'+esc(it.title)+' ↗</a>'+
+      '<div class="meta">'+esc(it.source)+' · '+esc(it.date)+'</div>'+
+      '<div class="sum">'+esc(it.summary||'')+'</div>'+
+    '</div>';
+  }
+
+  function render(){
+    var L=LG();
+    document.documentElement.lang=L;
+    qs('#a-title').textContent=LABELS[L].title;
+    qs('#a-sub').textContent=LABELS[L].sub;
+    qs('#a-back').textContent='← '+LABELS[L].back;
+    document.title=LABELS[L].title+' — Eduardo Álvarez-Miranda';
+    Array.prototype.forEach.call(document.querySelectorAll('#lang button'),function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang')===L);
+    });
+    var lines=(window.SITE&&window.SITE.researchLines)||[];
+    var host=qs('#arch');
+    var snaps=(DATA&&DATA.snapshots)||[];
+    if(!snaps.length){ host.innerHTML='<p class="empty">'+LABELS[L].empty+'</p>'; return; }
+    host.innerHTML=snaps.map(function(sn){
+      var byTopic={}; (sn.items||[]).forEach(function(it){byTopic[it.topic]=it;});
+      var cards=lines.map(function(rl){ var it=byTopic[rl.topic]; return it?card(rl,it,L):''; }).join('');
+      return '<section class="period"><h2 class="period-h">'+LABELS[L].period+' '+fmtDate(sn.date)+'</h2><div class="grid">'+cards+'</div></section>';
+    }).join('');
+  }
+
+  function setLang(l){ LANG=l; try{localStorage.setItem('eam-lang',l);}catch(e){} render(); }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    Array.prototype.forEach.call(document.querySelectorAll('#lang button'),function(b){
+      b.addEventListener('click',function(){ setLang(b.getAttribute('data-lang')); });
+    });
+    render();
+    fetch('assets/news-archive.json?nc='+Date.now(),{cache:'no-store'})
+      .then(function(r){return r.json();})
+      .then(function(j){ DATA=j; render(); })
+      .catch(function(){ DATA={snapshots:[]}; render(); });
+  });
+})();
+</script>
+</body>
+</html>

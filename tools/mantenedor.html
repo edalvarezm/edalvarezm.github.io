@@ -216,6 +216,7 @@ function handleGoogle(resp){
   var email=p?String(p.email||'').toLowerCase():'';
   if(p && p.email_verified && GOOGLE_ALLOWED.indexOf(email)>=0){
     try{sessionStorage.setItem('mant-ok','1');}catch(_){}
+    try{localStorage.setItem('eam-gauth', JSON.stringify({name:p.name||p.given_name||'', email:email, picture:p.picture||'', ts:Date.now()}));}catch(_){}
     unlockApp();
   } else {
     var ge=document.getElementById('gate-err');

@@ -13,8 +13,14 @@
 
   function render(){
     var slot=document.getElementById('gauth-nav'); if(!slot) return;
+    var priv=document.getElementById('priv-nav');
     var u=getUser();
-    if(!u || !u.email || ALLOWED.indexOf(String(u.email).toLowerCase())<0){ slot.style.display='none'; slot.innerHTML=''; return; }
+    if(!u || !u.email || ALLOWED.indexOf(String(u.email).toLowerCase())<0){
+      slot.style.display='none'; slot.innerHTML='';
+      if(priv) priv.style.display='';          /* sin sesión: mostrar "Acceso Privado" */
+      return;
+    }
+    if(priv) priv.style.display='none';         /* con sesión: ocultar "Acceso Privado" (se accede por el avatar) */
     var L=LG();
     var name=u.name||u.email;
     var initial=(name||'?').trim().charAt(0).toUpperCase();

@@ -62,7 +62,13 @@
   .gatebox .err.show{display:block}
   .backlink{font-size:13px;color:var(--gris)}
   #app{display:none}
+  #g-signin{margin-bottom:2px}
+  #g-btn{display:flex;justify-content:center;min-height:44px;margin-bottom:14px}
+  .gate-or{display:flex;align-items:center;text-align:center;color:var(--gris);font-size:11.5px;margin:0 0 14px}
+  .gate-or::before,.gate-or::after{content:"";flex:1;height:1px;background:var(--linea)}
+  .gate-or span{padding:0 10px}
 </style>
+<script src="https://accounts.google.com/gsi/client" async></script>
 </head>
 <body>
 
@@ -72,6 +78,10 @@
     <div class="sol"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.24 1.03 5.96L12 17.98l-5.38 2.82 1.03-5.96L3.3 9.6l6-.9z"/></svg></div>
     <h2>Acceso privado</h2>
     <p>Mantenedor de accesos a proyectos</p>
+    <div id="g-signin">
+      <div id="g-btn"></div>
+      <div class="gate-or"><span>o con usuario y contraseña</span></div>
+    </div>
     <div class="err" id="gate-err">Usuario o contraseña incorrectos.</div>
     <label>Usuario</label>
     <input id="g-user" autocomplete="username" spellcheck="false">
@@ -193,9 +203,38 @@ document.getElementById('gate-form').addEventListener('submit',async function(e)
   var u=document.getElementById('g-user').value.trim().toLowerCase();
   var h=await sha256hex(document.getElementById('g-pass').value);
   if(u===ADMIN_USER && h===ADMIN_HASH){ try{sessionStorage.setItem('mant-ok','1');}catch(_){} unlockApp(); }
-  else { document.getElementById('gate-err').classList.add('show'); document.getElementById('g-pass').value=''; }
+  else { var ge=document.getElementById('gate-err'); ge.textContent='Usuario o contraseña incorrectos.'; ge.classList.add('show'); document.getElementById('g-pass').value=''; }
 });
 try{ if(sessionStorage.getItem('mant-ok')==='1'){ unlockApp(); } }catch(_){}
+
+/* ---------- Entrar con Google (mismo portón; valida el correo autorizado) ---------- */
+var GOOGLE_CLIENT_ID='145201385255-plu0mijfa3mjc6qs9o2il3adi00bv4lk.apps.googleusercontent.com';
+var GOOGLE_ALLOWED=['eduardo.alvmir@gmail.com'];
+function jwtPayload(t){ try{ var p=(t||'').split('.')[1].replace(/-/g,'+').replace(/_/g,'/'); return JSON.parse(decodeURIComponent(escape(atob(p)))); }catch(e){ return null; } }
+function handleGoogle(resp){
+  var p=jwtPayload(resp&&resp.credential);
+  var email=p?String(p.email||'').toLowerCase():'';
+  if(p && p.email_verified && GOOGLE_ALLOWED.indexOf(email)>=0){
+    try{sessionStorage.setItem('mant-ok','1');}catch(_){}
+    unlockApp();
+  } else {
+    var ge=document.getElementById('gate-err');
+    ge.textContent = email ? ('La cuenta '+email+' no está autorizada.') : 'No se pudo validar la cuenta de Google.';
+    ge.classList.add('show');
+    try{ google.accounts.id.disableAutoSelect(); }catch(_){}
+  }
+}
+function initGoogle(){
+  var box=document.getElementById('g-signin');
+  if(!GOOGLE_CLIENT_ID || GOOGLE_CLIENT_ID.indexOf('.apps.googleusercontent.com')<0){ if(box)box.style.display='none'; return; }
+  if(!(window.google && google.accounts && google.accounts.id)){ return setTimeout(initGoogle,300); }
+  try{
+    google.accounts.id.initialize({ client_id:GOOGLE_CLIENT_ID, callback:handleGoogle, auto_select:true, cancel_on_tap_outside:false, context:'signin' });
+    google.accounts.id.renderButton(document.getElementById('g-btn'), { type:'standard', theme:'outline', size:'large', text:'signin_with', shape:'pill', logo_alignment:'center', width:280 });
+    google.accounts.id.prompt();
+  }catch(e){ if(box)box.style.display='none'; }
+}
+initGoogle();
 
 document.querySelectorAll('.tab').forEach(function(t){
   t.onclick=function(){

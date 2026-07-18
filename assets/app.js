@@ -177,6 +177,7 @@
     if(window.ScholarModule) window.ScholarModule.render();
     if(window.ConstellationModule) window.ConstellationModule.render();
     if(window.NewsModule) window.NewsModule.render();
+    if(window.AuthModule) window.AuthModule.render();
   }
 
   function setLang(lang){ window.LANG=lang; localStorage.setItem('eam-lang',lang); renderAll(); }

@@ -100,6 +100,14 @@
           '<h3>'+L(p.t)+'</h3>'));
       });
     }
+    var coi=document.getElementById('proj-coi'); if(coi){ coi.innerHTML='';
+      (S.projectsCoI||[]).forEach(function(p){
+        coi.appendChild(el('div','proj-item',
+          '<div class="tagrow"><span class="code">'+p.code+'</span><span class="yrs">'+p.yrs+'</span></div>'+
+          '<h3>'+L(p.t)+'</h3>'+
+          (p.lead?'<p class="lead-by">'+(S.ui.research_leadby?L(S.ui.research_leadby):'IR')+': '+p.lead+'</p>':'')));
+      });
+    }
     var intl=document.getElementById('proj-intl'); if(intl){ intl.innerHTML='';
       S.intlProjects.forEach(function(p){
         intl.appendChild(el('div','intl-card',

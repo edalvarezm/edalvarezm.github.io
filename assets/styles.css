@@ -153,6 +153,7 @@ section.block.alt{background:var(--papel-2)}
 .proj-item .yrs{font-size:12px;color:var(--gris)}
 .proj-item h3{font-size:15px;margin:0 0 6px;line-height:1.4}
 .proj-item p{font-size:13px;color:var(--gris);margin:0}
+.proj-item .lead-by{font-size:12.5px;color:var(--gris-claro);margin-top:8px;padding-top:8px;border-top:1px solid var(--linea)}
 .subhead{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--cobalto);font-weight:600;margin:38px 0 16px}
 
 .intl-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}

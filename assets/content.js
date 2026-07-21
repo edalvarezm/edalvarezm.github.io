@@ -48,7 +48,9 @@ window.SITE = {
     research_title: { es:"Investigación", en:"Research" },
     research_lead:  { es:"Proyectos con financiamiento externo competitivo, redes internacionales y formación de capital humano avanzado.",
                       en:"Competitively funded projects, international networks, and advanced human-capital training." },
-    research_ir:    { es:"Proyectos como investigador responsable", en:"Projects as principal investigator" },
+    research_ir:    { es:"Proyectos como Director / Investigador Responsable", en:"Projects as Director / Principal Investigator" },
+    research_coi:   { es:"Proyectos como Director Alterno / Co-Investigador", en:"Projects as Alternate Director / Co-Investigator" },
+    research_leadby:{ es:"Investigador Responsable", en:"Principal Investigator" },
     research_intl:  { es:"Redes internacionales", en:"International networks" },
 
     collab_title: { es:"Colaboración", en:"Collaboration" },
@@ -153,6 +155,21 @@ window.SITE = {
     { code:"FONDECYT Regular 1180670", yrs:"2018–2022", t:{es:"Optimization Tools for Districting Decisions Under Uncertainty",en:"Optimization Tools for Districting Decisions Under Uncertainty"} },
     { code:"FONDEF IDeA ID15I10082",   yrs:"2015–2016", t:{es:"Desarrollo de modelos para la optimización de las zonas de reparto de correspondencia y paquetería",en:"Desarrollo de modelos para la optimización de las zonas de reparto de correspondencia y paquetería"} },
     { code:"FONDECYT Iniciación 11140060",yrs:"2014–2018",t:{es:"Models and Algorithms for Robust and Stochastic Network Systems",en:"Models and Algorithms for Robust and Stochastic Network Systems"} }
+  ],
+
+  projectsCoI: [
+    { code:"FONDECYT Regular 1251454", yrs:"2025–2027", lead:"Andrés Weintraub · U. de Chile",
+      t:{es:"Wildfire Analytics: Prevention, Detection and Post-Restoration",en:"Wildfire Analytics: Prevention, Detection and Post-Restoration"} },
+    { code:"FONDECYT Regular 1220893", yrs:"2022–2024", lead:"Andrés Weintraub · U. de Chile",
+      t:{es:"Artificial intelligence approaches to solve difficult forest planning problems",en:"Artificial intelligence approaches to solve difficult forest planning problems"} },
+    { code:"FONDECYT Regular 1191624", yrs:"2019–2021", lead:"Jordi Pereira · U. Adolfo Ibáñez",
+      t:{es:"Assembly line balancing for industry 4.0",en:"Assembly line balancing for industry 4.0"} },
+    { code:"FONDEF Minería IT16IM10019", yrs:"2016–2017", lead:"Rafael Epstein · U. de Chile",
+      t:{es:"Desarrollo de modelos de optimización para la planificación minera de mediano y corto plazo",en:"Optimization models for medium- and short-term mine planning"} },
+    { code:"FONDECYT Regular 1150306", yrs:"2015–2018", lead:"Jordi Pereira · U. Adolfo Ibáñez",
+      t:{es:"Heterogeneous process selection assembly line balancing problems",en:"Heterogeneous process selection assembly line balancing problems"} },
+    { code:"FONDEF IDeA ID14I10026", yrs:"2014–2015", lead:"Ma. Luisa del Campo · U. de Talca",
+      t:{es:"Sistema automatizado de monitoreo y gestión de edificaciones que evalúa económicamente medidas y tecnologías para la eficiencia energética",en:"Automated building monitoring and management system for the economic assessment of energy-efficiency measures and technologies"} }
   ],
 
   intlProjects: [

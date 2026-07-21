@@ -105,7 +105,7 @@
         coi.appendChild(el('div','proj-item',
           '<div class="tagrow"><span class="code">'+p.code+'</span><span class="yrs">'+p.yrs+'</span></div>'+
           '<h3>'+L(p.t)+'</h3>'+
-          (p.lead?'<p class="lead-by">'+(S.ui.research_leadby?L(S.ui.research_leadby):'IR')+': '+p.lead+'</p>':'')));
+          (p.lead?'<p class="lead-by">'+L(p.role||S.ui.research_leadby)+': '+p.lead+'</p>':'')));
       });
     }
     var intl=document.getElementById('proj-intl'); if(intl){ intl.innerHTML='';

@@ -165,10 +165,12 @@ window.SITE = {
     { code:"FONDECYT Regular 1191624", yrs:"2019–2021", lead:"Jordi Pereira · U. Adolfo Ibáñez",
       t:{es:"Assembly line balancing for industry 4.0",en:"Assembly line balancing for industry 4.0"} },
     { code:"FONDEF Minería IT16IM10019", yrs:"2016–2017", lead:"Rafael Epstein · U. de Chile",
+      role:{es:"Director",en:"Director"},
       t:{es:"Desarrollo de modelos de optimización para la planificación minera de mediano y corto plazo",en:"Optimization models for medium- and short-term mine planning"} },
     { code:"FONDECYT Regular 1150306", yrs:"2015–2018", lead:"Jordi Pereira · U. Adolfo Ibáñez",
       t:{es:"Heterogeneous process selection assembly line balancing problems",en:"Heterogeneous process selection assembly line balancing problems"} },
     { code:"FONDEF IDeA ID14I10026", yrs:"2014–2015", lead:"Ma. Luisa del Campo · U. de Talca",
+      role:{es:"Directora",en:"Director"},
       t:{es:"Sistema automatizado de monitoreo y gestión de edificaciones que evalúa económicamente medidas y tecnologías para la eficiencia energética",en:"Automated building monitoring and management system for the economic assessment of energy-efficiency measures and technologies"} }
   ],
 

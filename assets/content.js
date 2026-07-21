@@ -25,7 +25,10 @@ window.SITE = {
                  en:"Systematic spatial prioritization: data layers and the priority-area solution layer." },
 
     stat_pubs:  { es:"publicaciones científicas", en:"scientific publications" },
-    stat_ir:    { es:"proyectos como investigador responsable", en:"projects as principal investigator" },
+    stat_ir:    { es:"proyectos FONDECYT y FONDEF como Director / Investigador Responsable",
+                  en:"FONDECYT and FONDEF projects as Director / Principal Investigator" },
+    stat_coi:   { es:"proyectos FONDECYT y FONDEF como Director Alterno / Co-Investigador",
+                  en:"FONDECYT and FONDEF projects as Alternate Director / Co-Investigator" },
     stat_hc:    { es:"tesistas y memoristas guiados", en:"graduate & undergraduate advisees" },
     stat_acc:   { es:"años de experiencia en gestión institucional", en:"years of institutional management experience" },
 

@@ -182,7 +182,8 @@ window.SITE = {
   ],
 
   teaching: [
-    { n:"4",   t:{es:"tesistas de doctorado",en:"doctoral students"} },
+    { n:"4",   t:{es:"estudiantes de doctorado graduados",en:"graduated doctoral students"} },
+    { n:"4",   t:{es:"estudiantes de doctorado en curso",en:"doctoral students in progress"} },
     { n:"10+", t:{es:"tesistas de magíster",en:"master's students"} },
     { n:"25+", t:{es:"memoristas de pregrado",en:"undergraduate theses"} },
     { n:"40+", t:{es:"cursos de pre y postgrado",en:"under- and postgraduate courses"} }

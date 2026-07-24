@@ -346,5 +346,20 @@
 <script src="assets/auth.js?v=20260729"></script>
 <script src="assets/app.js?v=20260731"></script>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+
+<!-- ===== Analítica de visitas (GoatCounter) — privada, sin cookies ===== -->
+<script>
+  (function(){
+    try{
+      var u=location.href;
+      if(/[?#]noconteo/i.test(u)) localStorage.setItem('skipgc','t');   /* desactivar conteo en este navegador */
+      if(/[?#]siconteo/i.test(u)) localStorage.removeItem('skipgc');    /* reactivarlo (para pruebas) */
+      var g=JSON.parse(localStorage.getItem('eam-gauth')||'null');       /* excluir al propietario con sesión iniciada */
+      if(g && String(g.email||'').toLowerCase()==='eduardo.alvmir@gmail.com') localStorage.setItem('skipgc','t');
+    }catch(e){}
+  })();
+</script>
+<script data-goatcounter="https://ealvarez.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

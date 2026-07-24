@@ -133,5 +133,20 @@
   });
 })();
 </script>
+
+<!-- ===== Analítica de visitas (GoatCounter) — privada, sin cookies ===== -->
+<script>
+  (function(){
+    try{
+      var u=location.href;
+      if(/[?#]noconteo/i.test(u)) localStorage.setItem('skipgc','t');
+      if(/[?#]siconteo/i.test(u)) localStorage.removeItem('skipgc');
+      var g=JSON.parse(localStorage.getItem('eam-gauth')||'null');
+      if(g && String(g.email||'').toLowerCase()==='eduardo.alvmir@gmail.com') localStorage.setItem('skipgc','t');
+    }catch(e){}
+  })();
+</script>
+<script data-goatcounter="https://ealvarez.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

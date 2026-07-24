@@ -115,6 +115,38 @@ h2.section-title{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
 #teach-stats{border-top:0}
 #teach-stats .lbl{color:var(--tinta);font-weight:700}
 
+/* ---- Desplegable de doctores graduados ---- */
+.stat.has-pop{position:relative}
+.grad-trigger{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;
+  margin-left:5px;padding:0;border:0;border-radius:50%;background:var(--cobalto);color:#fff;
+  cursor:pointer;vertical-align:middle;transition:background .15s,transform .15s;
+  animation:gradpulse 2.6s ease-out infinite}
+.grad-trigger i{font-size:12px;line-height:1}
+.grad-trigger:hover{background:var(--cobalto-oscuro);transform:scale(1.12);animation:none}
+@keyframes gradpulse{0%{box-shadow:0 0 0 0 rgba(48,71,199,.45)}70%{box-shadow:0 0 0 7px rgba(48,71,199,0)}100%{box-shadow:0 0 0 0 rgba(48,71,199,0)}}
+.grad-pop{position:absolute;left:0;top:calc(100% + 12px);width:310px;max-width:90vw;text-align:left;
+  background:var(--blanco);border:1px solid var(--linea-2);border-radius:var(--radio-lg);box-shadow:var(--sombra);
+  padding:14px 16px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .16s,transform .16s}
+.stat.has-pop:hover .grad-pop,.stat.has-pop.open .grad-pop{opacity:1;visibility:visible;transform:translateY(0)}
+.grad-pop::before{content:"";position:absolute;top:-7px;left:26px;width:12px;height:12px;background:var(--blanco);
+  border-left:1px solid var(--linea-2);border-top:1px solid var(--linea-2);transform:rotate(45deg)}
+.grad-h{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--cobalto);font-weight:700;margin-bottom:10px}
+.grad-item{padding:9px 0;border-top:1px solid var(--linea)}
+.grad-item:first-of-type{border-top:0;padding-top:0}
+.grad-n{font-size:13.5px;font-weight:700;color:var(--tinta);line-height:1.25}
+.grad-p{font-size:11.5px;font-weight:400;color:var(--gris);margin-top:2px;line-height:1.35}
+.grad-a{font-size:11.5px;font-weight:400;color:var(--tinta-70);margin-top:2px;display:flex;align-items:flex-start;gap:5px;line-height:1.35}
+.grad-a i{font-size:12px;color:var(--gris-claro);margin-top:1px;flex:0 0 auto}
+.grad-s{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--cobalto)}
+.grad-s:hover{text-decoration:none;color:var(--cobalto-oscuro)}
+.grad-s svg{flex:0 0 auto}
+@media(max-width:620px){
+  .grad-pop{position:fixed;left:50%;right:auto;top:auto;bottom:14px;width:92vw;transform:translateX(-50%) translateY(8px)}
+  .stat.has-pop:hover .grad-pop{opacity:0;visibility:hidden}
+  .stat.has-pop.open .grad-pop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .grad-pop::before{display:none}
+}
+
 /* ---------- Sections ---------- */
 section.block{padding:66px 0;border-bottom:1px solid var(--linea)}
 section.block.alt{background:var(--papel-2)}

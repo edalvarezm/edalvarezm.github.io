@@ -116,8 +116,38 @@
     }
     var stats=document.getElementById('teach-stats'); if(stats){ stats.innerHTML='';
       S.teaching.forEach(function(s){
-        stats.appendChild(el('div','stat','<div class="num">'+s.n+'</div><div class="lbl">'+L(s.t)+'</div>'));
+        if(s.pop==='graduates' && S.doctorGraduates){
+          var scap='<svg viewBox="0 0 24 24" width="13" height="13" fill="#4285F4" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.91V17h2V9L12 3z"/><path d="M5 13.18v3.2C5 17.93 8.13 19 12 19s7-1.07 7-2.62v-3.2l-7 3.82-7-3.82z"/></svg>';
+          var items=S.doctorGraduates.map(function(g){
+            return '<div class="grad-item">'+
+              '<div class="grad-n">'+esc(g.name)+'</div>'+
+              '<div class="grad-p">'+esc(L(g.program))+'</div>'+
+              '<div class="grad-a"><i class="ti ti-building-bank" aria-hidden="true"></i> '+esc(L(g.affil))+'</div>'+
+              '<a class="grad-s" href="'+g.scholar+'" target="_blank" rel="noopener">'+scap+'Google Scholar</a>'+
+            '</div>';
+          }).join('');
+          var d=el('div','stat has-pop',
+            '<div class="num">'+s.n+'</div>'+
+            '<div class="lbl">'+L(s.t)+
+              ' <button type="button" class="grad-trigger" aria-label="'+esc(L(S.ui.grad_hint))+'"><i class="ti ti-users" aria-hidden="true"></i></button>'+
+            '</div>'+
+            '<div class="grad-pop" role="dialog" aria-label="'+esc(L(S.ui.grad_title))+'">'+
+              '<div class="grad-h">'+esc(L(S.ui.grad_title))+'</div>'+items+
+            '</div>');
+          var trg=d.querySelector('.grad-trigger');
+          trg.addEventListener('click',function(e){ e.stopPropagation(); d.classList.toggle('open'); });
+          d.querySelector('.grad-pop').addEventListener('click',function(e){ e.stopPropagation(); });
+          stats.appendChild(d);
+        } else {
+          stats.appendChild(el('div','stat','<div class="num">'+s.n+'</div><div class="lbl">'+L(s.t)+'</div>'));
+        }
       });
+      if(!window.__gradDocClose){
+        window.__gradDocClose=true;
+        document.addEventListener('click',function(){
+          var o=document.querySelector('.stat.has-pop.open'); if(o) o.classList.remove('open');
+        });
+      }
     }
   }
 

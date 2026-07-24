@@ -51,6 +51,8 @@ window.SITE = {
     research_ir:    { es:"Proyectos como Director / Investigador Responsable", en:"Projects as Director / Principal Investigator" },
     research_coi:   { es:"Proyectos como Director Alterno / Co-Investigador", en:"Projects as Alternate Director / Co-Investigator" },
     research_leadby:{ es:"Investigador Responsable", en:"Principal Investigator" },
+    grad_title:     { es:"Doctores graduados", en:"Doctoral graduates" },
+    grad_hint:      { es:"Ver graduados", en:"View graduates" },
     research_intl:  { es:"Redes internacionales", en:"International networks" },
     teach_title:    { es:"Formación de capital humano avanzado", en:"Advanced human capital training" },
 
@@ -182,11 +184,30 @@ window.SITE = {
   ],
 
   teaching: [
-    { n:"4",   t:{es:"estudiantes de doctorado graduados",en:"graduated doctoral students"} },
+    { n:"4",   pop:"graduates", t:{es:"estudiantes de doctorado graduados",en:"graduated doctoral students"} },
     { n:"4",   t:{es:"estudiantes de doctorado en curso",en:"doctoral students in progress"} },
     { n:"10+", t:{es:"estudiantes de magíster graduados",en:"graduated master's students"} },
     { n:"25+", t:{es:"memoristas de pregrado",en:"undergraduate theses"} },
     { n:"40+", t:{es:"cursos de pre y postgrado",en:"under- and postgraduate courses"} }
+  ],
+
+  doctorGraduates: [
+    { name:"David Olave-Rojas",
+      program:{es:"DCs. en Sistemas de Ingeniería, Universidad de Talca, 2019", en:"DSc in Engineering Systems, University of Talca, 2019"},
+      affil:{es:"Universidad de La Frontera", en:"University of La Frontera"},
+      scholar:"https://scholar.google.com/citations?user=8Qv1oGAAAAAJ&hl=es" },
+    { name:"Fabián Silva-Aravena",
+      program:{es:"DCs. en Sistemas de Ingeniería, Universidad de Talca, 2020", en:"DSc in Engineering Systems, University of Talca, 2020"},
+      affil:{es:"Universidad Católica del Maule", en:"Catholic University of Maule"},
+      scholar:"https://scholar.google.com/citations?user=zPTah8IAAAAJ&hl=es" },
+    { name:"Pedro Vargas-Ferrer",
+      program:{es:"DCs. en Sistemas de Ingeniería, Universidad de Talca, 2022", en:"DSc in Engineering Systems, University of Talca, 2022"},
+      affil:{es:"Pontificia Universidad Católica de Chile", en:"Pontifical Catholic University of Chile"},
+      scholar:"https://scholar.google.com/citations?user=6dCc_lwAAAAJ&hl=es" },
+    { name:"José Salgado-Rojas",
+      program:{es:"PhD. en Investigación de Operaciones, Universidad Politécnica de Catalunya, 2023", en:"PhD in Operations Research, Polytechnic University of Catalonia, 2023"},
+      affil:{es:"Centro Tecnológico Forestal de Catalunya, España", en:"Forest Science and Technology Centre of Catalonia, Spain"},
+      scholar:"https://scholar.google.com/citations?user=Z3F-9DgAAAAJ&hl=en" }
   ],
 
   contact: {

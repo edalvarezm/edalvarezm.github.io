@@ -188,7 +188,7 @@ section.block.alt{background:var(--papel-2)}
 .contact-list li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--linea);font-size:14.5px}
 .contact-list .ic{color:var(--cobalto);font-size:19px;width:22px;text-align:center}
 .contact-list .k{color:var(--gris);min-width:150px;font-size:13px}
-.links-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.links-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
 .link-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--linea-2);border-radius:var(--radio);padding:9px 15px;font-size:13.5px;color:var(--tinta-70);font-weight:500}
 .link-btn:hover{border-color:var(--cobalto);color:var(--cobalto);text-decoration:none}
 .link-btn svg{flex:0 0 auto;display:block}

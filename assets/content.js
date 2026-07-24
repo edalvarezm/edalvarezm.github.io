@@ -52,6 +52,7 @@ window.SITE = {
     research_coi:   { es:"Proyectos como Director Alterno / Co-Investigador", en:"Projects as Alternate Director / Co-Investigator" },
     research_leadby:{ es:"Investigador Responsable", en:"Principal Investigator" },
     research_intl:  { es:"Redes internacionales", en:"International networks" },
+    teach_title:    { es:"Formación de capital humano avanzado", en:"Advanced human capital training" },
 
     collab_title: { es:"Colaboración", en:"Collaboration" },
     collab_lead:  { es:"Mapa de publicaciones y coautorías: cada nodo es un artículo, agrupado por línea de investigación; en el anillo exterior están las coautorías recurrentes y su país.",

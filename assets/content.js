@@ -17,8 +17,8 @@ window.SITE = {
 
     hero_role: { es:"Académico · Facultad de Ingeniería · Universidad de Talca",
                  en:"Academic · Faculty of Engineering · University of Talca" },
-    hero_tagline: { es:"Modelos de analítica avanzada aplicados a la conservación de la biodiversidad, la gestión sanitaria, la energía y las políticas públicas.",
-                    en:"Advanced analytics models applied to biodiversity conservation, healthcare management, energy, and public policy." },
+    hero_tagline: { es:"Modelos de analítica avanzada aplicados a problemas complejos de ingeniería.",
+                    en:"Advanced analytics models applied to complex engineering problems." },
     hero_cta1: { es:"Ver investigación", en:"View research" },
     hero_cta2: { es:"Descargar CV", en:"Download CV" },
     hero_cap:  { es:"Priorización espacial sistemática: capas de datos y capa-solución de áreas prioritarias.",

@@ -13,7 +13,7 @@
   --cobalto-claro:#6F80D9;
   --gris:#6E7076;
   --gris-claro:#8A8C92;
-  --salvia:#7C8B6F;      /* solo decoración */
+  --salvia:#1EA463;      /* verde vivo (conservación) */
   --linea:#ECEAE3;
   --linea-2:#D9D7CF;
   --blanco:#FFFFFF;
@@ -123,7 +123,7 @@ h2.section-title{font-size:30px;margin:0 0 8px;letter-spacing:-.01em}
   cursor:pointer;vertical-align:middle;transition:background .15s,transform .15s;
   animation:gradpulse 2.6s ease-out infinite}
 .grad-trigger i{font-size:12px;line-height:1}
-.grad-trigger:hover{background:#66735A;transform:scale(1.12);animation:none}
+.grad-trigger:hover{background:#17864F;transform:scale(1.12);animation:none}
 @keyframes gradpulse{0%{box-shadow:0 0 0 0 rgba(202,58,58,.5)}70%{box-shadow:0 0 0 7px rgba(202,58,58,0)}100%{box-shadow:0 0 0 0 rgba(202,58,58,0)}}
 .grad-pop{position:absolute;left:0;top:calc(100% + 12px);width:310px;max-width:90vw;text-align:left;
   background:var(--blanco);border:1px solid var(--linea-2);border-radius:var(--radio-lg);box-shadow:var(--sombra);

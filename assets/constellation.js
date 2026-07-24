@@ -42,7 +42,7 @@
   };
   function LG(){return (window.LANG==='en')?'en':'es';}
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-  var ALIAS={"X.-D. Hu":"X. Hu","X.-J. Chen":"X. Chen"};
+  var ALIAS={"X.-D. Hu":"X. Hu","X.-J. Chen":"X. Chen","M. Martínez-Harms":"M.J. Martínez-Harms","B. Larraín":"B. Larraín-Barrios"};
   function na(t){return t.replace(/\s*et al\.?\s*$/i,'').trim();}
   function sur(t){var s=t.replace(/^([A-Za-zÀ-ÿ]{1,2}\.[-\s]?)+\s*/,'').trim();return s||t;}
 

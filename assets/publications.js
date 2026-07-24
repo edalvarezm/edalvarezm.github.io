@@ -6,8 +6,8 @@
 window.PUBLICATIONS = [
   [2026,"Hydrogen production supported on nuclear cogeneration: An energy planning view","P. Vargas-Ferrer, C. Tenreiro, D. Olave-Rojas","International Journal of Hydrogen Energy, 235, 155074",["energia"]],
   [2026,"Competing for the most profitable tour: The orienteering interdiction game","M. Sinnl, K. Tanınmış","Computers & Industrial Engineering, 214, 111900",["redes"]],
-  [2026,"Rethinking governance for the Global Biodiversity Framework: Legal gaps and lessons from Chile","M. Martínez-Harms et al.","Environmental Science & Policy, 177, 104313",["conservacion"]],
-  [2026,"Ecosystem risk management: A MIP approach to spatial prioritization of multiple management actions","M. Moreno-Faguett, J. Salgado-Rojas, V. Hermoso, M. Martínez-Harms, B. Larraín","Omega, 103507",["conservacion"]],
+  [2026,"Rethinking governance for the Global Biodiversity Framework: Legal gaps and lessons from Chile","M.J. Martínez-Harms, J. Castillo-Mandujano, B. Saavedra, C. Smith-Ramírez, B. Larraín-Barrios, P. Pliscoff, A.G. Gutiérrez, M. Poutay-Broussaingaray, A. Pauchard, O. Barbosa, E. Fuentes-Lillo, A. Salazar, M. Moreno-Faguett, J. Salgado-Rojas","Environmental Science & Policy, 177, 104313",["conservacion"]],
+  [2026,"Ecosystem risk management: A MIP approach to spatial prioritization of multiple management actions","M. Moreno-Faguett, J. Salgado-Rojas, V. Hermoso, M.J. Martínez-Harms, B. Larraín-Barrios","Omega, 103507",["conservacion"]],
   [2025,"Optimising management against dynamic threats: A spatially explicit approach based on integer programming","J. Salgado-Rojas, V. Hermoso","Methods in Ecology and Evolution, 16(8), 1868-1885",["conservacion"]],
   [2025,"prioriactions: Multi-action management planning in R","J. Salgado-Rojas, V. Hermoso","Methods in Ecology and Evolution, 16(6), 1028-1039",["conservacion"]],
   [2025,"A mixed integer programming approach to address cumulative threats in multi action management plans for biodiversity recovery","J. Salgado-Rojas, V. Hermoso","Omega, 133, 103282",["conservacion"]],

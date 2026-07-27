@@ -3,7 +3,7 @@
 Sitio estático (HTML/CSS/JS puro, sin servidor ni base de datos) con:
 
 - Portada con gráfico 3D de priorización espacial de conservación.
-- Secciones: Trayectoria, Investigación, Publicaciones (72), Proyectos, Contacto.
+- Secciones: Trayectoria, Investigación, Publicaciones (73), Proyectos, Contacto.
 - Bilingüe español / inglés (selector ES · EN, recuerda tu elección).
 - **Proyectos con acceso restringido por usuario y contraseña**, cifrados en el navegador.
 

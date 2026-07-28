@@ -95,3 +95,53 @@ window.PUB_TOPICS = {
 window.pubLink = function(title){
   return 'https://scholar.google.com/scholar?q=' + encodeURIComponent('"' + title + '"');
 };
+
+/* ==========================================================================
+   Métricas de revista (Web of Science Impact Factor · cuartil Scopus).
+   Clave = nombre de la revista tal como aparece al inicio del campo "revista"
+   de cada publicación (antes de la primera coma).
+   Fuente: JCR 2025 (Clarivate, publicado jun-2026) y CiteScore/SJR de Scopus
+   (Scimago y agregadores), revisado jul-2026. Cuando no se pudo confirmar el
+   cuartil CiteScore exacto de Scopus (requiere acceso institucional), se usó
+   el mejor cuartil SJR/agregador disponible como aproximación. Cuando hubo
+   cifras de IF en disputa entre fuentes, se usó la más alta reportada.
+   Revistas sin entrada aquí (actas de congreso, capítulos de libro) no
+   muestran badge. Revisar y actualizar periódicamente.
+   ========================================================================== */
+window.JOURNAL_METRICS = {
+  "Computers and Operations Research":{wif:4.6,sq:"Q1"},
+  "Mathematics":{wif:2.3,sq:"Q1"},
+  "European Journal of Operational Research":{wif:7.0,sq:"Q1"},
+  "Omega":{wif:6.9,sq:"Q1"},
+  "International Journal of Production Research":{wif:8.7,sq:"Q1"},
+  "Annals of Operations Research":{wif:4.1,sq:"Q1"},
+  "Methods in Ecology and Evolution":{wif:6.2,sq:"Q1"},
+  "Optimization Letters":{wif:1.3,sq:"Q2"},
+  "Energies":{wif:3.9,sq:"Q1"},
+  "Environmental Modeling & Assessment":{wif:2.5,sq:"Q2"},
+  "International Journal of Hydrogen Energy":{wif:10.2,sq:"Q1"},
+  "Computers & Industrial Engineering":{wif:8.1,sq:"Q1"},
+  "Environmental Science & Policy":{wif:5.2,sq:"Q1"},
+  "Journal of Applied Ecology":{wif:5.3,sq:"Q1"},
+  "Applied Soft Computing":{wif:8.2,sq:"Q1"},
+  "Expert Systems with Applications":{wif:10.5,sq:"Q1"},
+  "Journal of Cleaner Production":{wif:10.7,sq:"Q1"},
+  "Energy for Sustainable Development":{wif:5.2,sq:"Q1"},
+  "Biological Conservation":{wif:4.4,sq:"Q1"},
+  "Energy":{wif:9.4,sq:"Q1"},
+  "Data in Brief":{wif:1.4,sq:"Q1"},
+  "Ecological Modelling":{wif:3.5,sq:"Q1"},
+  "Applied Energy":{wif:12.8,sq:"Q1"},
+  "International Transactions in Operational Research":{wif:3.5,sq:"Q1"},
+  "Forest Policy and Economics":{wif:4.6,sq:"Q1"},
+  "Scientific Data":{wif:7.2,sq:"Q1"},
+  "Computers and Electronics in Agriculture":{wif:8.9,sq:"Q1"},
+  "INFORMS Journal on Computing":{wif:2.5,sq:"Q2"},
+  "Transportation Research Part B: Methodological":{wif:6.6,sq:"Q1"},
+  "Energy Conversion and Management":{wif:12.4,sq:"Q1"},
+  "Frontiers in Neuroscience":{wif:4.0,sq:"Q2"},
+  "Acta Mathematicae Applicatae Sinica":{wif:0.9,sq:"Q3"},
+  "4OR":{wif:2.0,sq:"Q1"},
+  "Theoretical Computer Science":{wif:1.3,sq:"Q2"},
+  "RAIRO - Operations Research":{wif:1.5,sq:"Q2"}
+};

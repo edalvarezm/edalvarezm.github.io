@@ -216,6 +216,15 @@ section.block.alt{background:var(--papel-2)}
 .pub .body .t a.pub-t-link:hover{color:var(--cobalto);text-decoration:underline}
 .pub .body .m{font-size:13px;color:var(--gris);margin-top:2px}
 .pub .body .venue{font-style:italic;color:var(--tinta-70)}
+.idx-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.idx-badge{
+  display:inline-flex;align-items:center;gap:4px;font-family:var(--font);
+  font-size:10.5px;font-weight:700;letter-spacing:.01em;line-height:1;
+  padding:4px 9px 4px 7px;border-radius:20px;border:1px solid currentColor;white-space:nowrap;
+}
+.idx-badge i{font-size:12px;line-height:1}
+.idx-badge.wos{color:#03bf6a;background:rgba(3,191,106,.08)}
+.idx-badge.scopus{color:#ff6647;background:rgba(255,102,71,.08)}
 
 /* contact (single column, prominent at top) */
 .contact-block{max-width:720px}

@@ -10,6 +10,17 @@
   function L(obj){ return obj ? (obj[window.LANG]||obj.es||'') : ''; }
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+  /* ---------- índices (WoS / Scopus) ---------- */
+  function pubBadges(venue){
+    var key=(venue||'').split(',')[0].trim();
+    var m=(window.JOURNAL_METRICS||{})[key];
+    if(!m) return '';
+    var html='';
+    if(m.wif) html+='<span class="idx-badge wos"><i class="ti ti-circle-check" aria-hidden="true"></i>WoS IF '+m.wif+'</span>';
+    if(m.sq) html+='<span class="idx-badge scopus"><i class="ti ti-circle-check" aria-hidden="true"></i>Scopus '+m.sq+'</span>';
+    return html;
+  }
+
   /* ---------- i18n for static [data-i18n] nodes ---------- */
   function applyStatic(){
     document.querySelectorAll('[data-i18n]').forEach(function(el){
@@ -58,10 +69,13 @@
                                       .sort(function(a,b){return b[0]-a[0];});
     cCount.textContent=pubs.length+' '+T('cluster_count');
     cBody.innerHTML=pubs.map(function(p){
+      var badges=pubBadges(p[3]);
       return '<div class="cpub">'+
              '<span class="cpub-y">'+p[0]+'</span>'+
              '<div class="cpub-b"><a class="cpub-t" href="'+window.pubLink(p[1])+'" target="_blank" rel="noopener">'+esc(p[1])+' <i class="ti ti-external-link" aria-hidden="true"></i></a>'+
-             '<div class="cpub-m">'+(p[2]?esc(p[2])+' · ':'')+'<span class="venue">'+esc(p[3])+'</span></div></div>'+
+             '<div class="cpub-m">'+(p[2]?esc(p[2])+' · ':'')+'<span class="venue">'+esc(p[3])+'</span></div>'+
+             (badges?'<div class="idx-badges">'+badges+'</div>':'')+
+             '</div>'+
              '</div>';
     }).join('');
     cBody.scrollTop=0;
@@ -161,10 +175,13 @@
     shown.forEach(function(p){
       if(p[0]!==lastYear){ lastYear=p[0]; host.appendChild(el('div','pub-year','<span class="y">'+p[0]+'</span><span class="bar"></span>')); }
       idx++;
+      var badges=pubBadges(p[3]);
       host.appendChild(el('div','pub',
         '<div class="idx">'+idx+'</div>'+
         '<div class="body"><div class="t"><a class="pub-t-link" href="'+window.pubLink(p[1])+'" target="_blank" rel="noopener">'+esc(p[1])+'</a></div>'+
-        '<div class="m">'+(p[2]?esc(p[2])+' · ':'')+'<span class="venue">'+esc(p[3])+'</span></div></div>'));
+        '<div class="m">'+(p[2]?esc(p[2])+' · ':'')+'<span class="venue">'+esc(p[3])+'</span></div>'+
+        (badges?'<div class="idx-badges">'+badges+'</div>':'')+
+        '</div>'));
     });
     var c=document.getElementById('pub-count');
     if(c) c.textContent=shown.length+' '+T('pubs_count');

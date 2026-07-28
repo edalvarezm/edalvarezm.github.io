@@ -17,7 +17,7 @@
     if(!m) return '';
     var html='';
     if(m.wif) html+='<span class="idx-badge wos"><i class="ti ti-circle-check" aria-hidden="true"></i>WoS IF '+m.wif+'</span>';
-    if(m.sq) html+='<span class="idx-badge scopus"><i class="ti ti-circle-check" aria-hidden="true"></i>Scopus '+m.sq+'</span>';
+    if(m.sq) html+='<span class="idx-badge scopus"><i class="ti ti-circle-check" aria-hidden="true"></i>Scopus '+m.sq+(m.sjr?' (SJR)':'')+'</span>';
     return html;
   }
 

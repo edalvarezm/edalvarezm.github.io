@@ -251,11 +251,12 @@
 
   function visitCounter(){
     var wrap=document.getElementById('visitas-wrap'), el=document.getElementById('visitas'); if(!el)return;
+    var BASE=10000; /* offset fijo sumado al conteo real de la API */
     var cached=null; try{cached=sessionStorage.getItem('eam-visitas');}catch(e){}
     if(cached){ el.textContent=Number(cached).toLocaleString('es-CL'); wrap.style.display=''; return; }
     fetch('https://api.counterapi.dev/v1/ealvarezcl-site/visitas/up',{cache:'no-store'})
       .then(function(r){return r.json();})
-      .then(function(j){ if(j&&typeof j.count==='number'){ try{sessionStorage.setItem('eam-visitas',String(j.count));}catch(e){} el.textContent=j.count.toLocaleString('es-CL'); wrap.style.display=''; } })
+      .then(function(j){ if(j&&typeof j.count==='number'){ var total=j.count+BASE; try{sessionStorage.setItem('eam-visitas',String(total));}catch(e){} el.textContent=total.toLocaleString('es-CL'); wrap.style.display=''; } })
       .catch(function(){});
   }
 

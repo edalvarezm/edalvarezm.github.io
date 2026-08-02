@@ -27,9 +27,9 @@ window.PROJECTS = [
   },
   {
     id:"indicadores",
-    icon:"gauge",
+    icon:"rocket",
     file:"projects/indicadores.enc.json",
-    title:{es:"Panel de indicadores institucionales",en:"Institutional indicators dashboard"},
+    title:{es:"Diseño de Ingeniería para Operacionalización de Procesos de Acreditación Carreras y Programas de Pregrado",en:"Engineering Design for the Operationalization of Undergraduate Degree and Program Accreditation Processes"},
     cat:{es:"Gestión universitaria · dirección",en:"University management · leadership"}
   }
 ];

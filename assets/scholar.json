@@ -1,1 +1,13 @@
-{"updated":"2026-07-26","profile":"https://scholar.google.cl/citations?user=9XlvJEIAAAAJ&hl=es","since_year":2021,"citations":{"all":1716,"since":1253},"h_index":{"all":24,"since":21},"i10_index":{"all":50,"since":41},"per_year":{"2013":10,"2014":20,"2015":43,"2016":40,"2017":51,"2018":58,"2019":100,"2020":130,"2021":126,"2022":175,"2023":205,"2024":252,"2025":319,"2026":171}}
+{
+  "updated": "2026-08-03",
+  "profile": "https://scholar.google.cl/citations?user=9XlvJEIAAAAJ&hl=es",
+  "since_year": 2021,
+  "citations": { "all": 1686, "since": 1222 },
+  "h_index":   { "all": 25,   "since": 22 },
+  "i10_index": { "all": 50,   "since": 41 },
+  "per_year": {
+    "2013": 11, "2014": 20, "2015": 42, "2016": 40, "2017": 51,
+    "2018": 58, "2019": 98, "2020": 127, "2021": 123, "2022": 174,
+    "2023": 195, "2024": 240, "2025": 308, "2026": 178
+  }
+}

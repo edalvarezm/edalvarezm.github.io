@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-07-27",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "MMA / SBAP",
+          "date": "jun 2026",
+          "lang": "ES",
+          "url": "https://mma.gob.cl/proyectan-conservacion-del-acmu-pitipalena-anihue-con-propuesta-de-actualizacion-de-su-plan-de-manejo/",
+          "title": "Proyectan conservación del ACMU Pitipalena-Añihué con propuesta de actualización de su Plan de Manejo",
+          "summary": "Ocho estrategias a cinco años: primer plan de manejo actualizado de un área protegida bajo el SBAP."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://theconversation.com/gerrymandering-is-unpopular-with-florida-voters-my-recent-survey-shows-why-desantis-pushed-it-through-anyway-281792",
+          "title": "Gerrymandering is unpopular with Florida voters – my recent survey shows why DeSantis pushed it through anyway",
+          "summary": "Survey of 2,300 Florida voters: two-thirds oppose partisan map-drawing, yet tolerate it when their side gains."
+        },
+        {
+          "topic": "redes",
+          "source": "Quanta Magazine",
+          "date": "jul 2026",
+          "lang": "EN",
+          "url": "https://www.quantamagazine.org/shayan-oveis-gharan-wins-2026-imu-abacus-medal-20260723/",
+          "title": "Shayan Oveis Gharan Wins 2026 IMU Abacus Medal",
+          "summary": "Abacus Medal honors work on the traveling salesperson problem and randomized tools that sharpen combinatorial algorithms."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/servicio-de-salud-ohiggins-y-clinica-meds-establecen-alianza-para-la-resolucion-de-listas-de-espera-en-la-region/",
+          "title": "Servicio de Salud O'Higgins y Clínica MEDS establecen alianza para la resolución de listas de espera en la región",
+          "summary": "Operativo público-privado con 130 especialistas para 3.200 pacientes en espera en cinco hospitales de O'Higgins."
+        },
+        {
+          "topic": "energia",
+          "source": "Ministerio de Energía",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://energia.gob.cl/noticias/nacional/ministerio-de-energia-publica-el-informe-preliminar-de-la-planificacion-energetica-de-largo-plazo-2028-2032",
+          "title": "Ministerio de Energía publica el Informe Preliminar de la Planificación Energética de Largo Plazo 2028-2032",
+          "summary": "Cinco escenarios a 30 años: solar, eólica y almacenamiento de larga duración; los data centers entran al modelo."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "jul 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/walmart-bets-on-ai-and-digital-twins-to-shape-its-supply-chain-strategy/825163/",
+          "title": "Walmart bets on AI and digital twins to shape its supply chain strategy",
+          "summary": "Digital twins simulate closures, delays and demand shocks so planners can rebalance the network before disruptions hit."
+        },
+        {
+          "topic": "educacion",
+          "source": "UNESCO GEM Report",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://www.unesco.org/gem-report/en/2026-gem-report-country-case-studies/chile?hub=1074",
+          "title": "Chile — 2026 GEM Report country case study",
+          "summary": "Only 13% of Chilean undergraduates finish on time; CAE debt recovery replaces the shelved FES reform."
+        }
+      ]
+    },
+    {
       "date": "2026-07-20",
       "items": [
         {

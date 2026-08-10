@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-08-03",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "SBAP",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/03/06/%C3%A1reas-protegidas-y-guardaparques-de-conaf-se-integrar%C3%A1n-al-sbap-desde-el-1-de-agosto",
+          "title": "Áreas protegidas y guardaparques de CONAF se integrarán al SBAP desde el 1 de agosto",
+          "summary": "Se concreta el traspaso de parques, reservas, monumentos naturales y guardaparques desde CONAF al nuevo servicio."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://theconversation.com/voters-lose-when-maps-get-redrawn-before-every-election-instead-of-once-a-decade-a-trend-started-in-texas-moving-to-california-and-likely-spreading-across-the-country-268181",
+          "title": "Voters lose when maps get redrawn before every election instead of once a decade",
+          "summary": "Nearly 20 million Texans and Californians land in redrawn districts as mid-decade redistricting spreads."
+        },
+        {
+          "topic": "redes",
+          "source": "ISCI",
+          "date": "may 2026",
+          "lang": "ES",
+          "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
+          "title": "Planificación de la expansión de la transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
+          "summary": "La planificación estocástica entrega planes de red más robustos y adaptativos que el enfoque determinista clásico."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "jun 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/ministra-chomali-destaca-transformacion-digital-y-uso-de-nuevas-tecnologias-para-mejorar-la-gestion-en-salud-en-seminario-de-clapes-uc/",
+          "title": "Ministra Chomali destaca transformación digital y uso de nuevas tecnologías para mejorar la gestión en salud en seminario de CLAPES UC",
+          "summary": "Agenda digital 2026-2030: interoperabilidad, modelos predictivos de demanda y algoritmos de priorización de listas de espera."
+        },
+        {
+          "topic": "energia",
+          "source": "CNE",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/desafios-de-la-planificacion-de-la-transmision-en-la-transicion-energetica-de-chile/",
+          "title": "Desafíos de la planificación de la transmisión en la transición energética de Chile",
+          "summary": "Cada obra de transmisión tarda entre siete y diez años; hay licitaciones desiertas y retrasos."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "jul 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/how-supply-chain-leaders-can-avoid-common-ai-pitfalls/825423/",
+          "title": "How supply chain leaders can avoid common AI pitfalls",
+          "summary": "Target frequent, data-rich decisions; 56% of supply chain chiefs cite legacy integration as the hurdle."
+        },
+        {
+          "topic": "educacion",
+          "source": "OCDE",
+          "date": "may 2026",
+          "lang": "EN",
+          "url": "https://www.oecd.org/en/publications/2026/05/restoring-public-finances_0c1f7ce5/full-report/education_bebe2f3e.html",
+          "title": "Education: Restoring Public Finances",
+          "summary": "OECD examines how to protect learning outcomes while improving education spending efficiency under fiscal consolidation."
+        }
+      ]
+    },
+    {
       "date": "2026-07-27",
       "items": [
         {

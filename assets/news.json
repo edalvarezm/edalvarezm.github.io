@@ -1,14 +1,14 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-10",
   "items": [
     {
       "topic": "conservacion",
-      "source": "SBAP",
+      "source": "Ladera Sur",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/03/06/%C3%A1reas-protegidas-y-guardaparques-de-conaf-se-integrar%C3%A1n-al-sbap-desde-el-1-de-agosto",
-      "title": "Áreas protegidas y guardaparques de CONAF se integrarán al SBAP desde el 1 de agosto",
-      "summary": "Se concreta el traspaso de parques, reservas, monumentos naturales y guardaparques desde CONAF al nuevo servicio."
+      "url": "https://laderasur.com/articulo/la-recuperacion-del-guanaco-toma-fuerza-en-la-region-metropolitana-expertos-articulan-plan-para-proteger-a-la-especie/",
+      "title": "La recuperación del guanaco toma fuerza en la Región Metropolitana: expertos articulan plan para proteger a la especie",
+      "summary": "Más de 20 instituciones firman una Declaración de Acción para repoblar el guanaco y restaurar ecosistemas andinos."
     },
     {
       "topic": "distritos",
@@ -21,48 +21,48 @@
     },
     {
       "topic": "redes",
-      "source": "ISCI",
-      "date": "may 2026",
-      "lang": "ES",
-      "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
-      "title": "Planificación de la expansión de la transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
-      "summary": "La planificación estocástica entrega planes de red más robustos y adaptativos que el enfoque determinista clásico."
+      "source": "INFORMS",
+      "date": "abr 2026",
+      "lang": "EN",
+      "url": "https://www.informs.org/News-Room/INFORMS-Releases/Awards-Releases/Microsoft-Wins-2026-INFORMS-Prize-for-Excellence-in-Operations-Research-and-Analytics",
+      "title": "Microsoft Wins 2026 INFORMS Prize for Excellence in Operations Research and Analytics",
+      "summary": "Large-scale optimization and digital twins allocate cloud capacity, cutting fulfillment cycle times by more than 50%."
     },
     {
       "topic": "salud",
       "source": "Minsal",
-      "date": "jun 2026",
+      "date": "ago 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/ministra-chomali-destaca-transformacion-digital-y-uso-de-nuevas-tecnologias-para-mejorar-la-gestion-en-salud-en-seminario-de-clapes-uc/",
-      "title": "Ministra Chomali destaca transformación digital y uso de nuevas tecnologías para mejorar la gestión en salud en seminario de CLAPES UC",
-      "summary": "Agenda digital 2026-2030: interoperabilidad, modelos predictivos de demanda y algoritmos de priorización de listas de espera."
+      "url": "https://www.minsal.cl/hospital-de-urgencia-asistencia-publica-lidera-ranking-de-gestion-entre-los-62-hospitales-de-mayor-complejidad/",
+      "title": "Hospital de Urgencia Asistencia Pública lidera ranking de gestión entre los 62 hospitales de mayor complejidad",
+      "summary": "La Posta Central alcanza 91,1% de desempeño; los recintos bajo estándar deben presentar planes de ajuste."
     },
     {
       "topic": "energia",
-      "source": "CNE",
+      "source": "Ministerio de Energía",
       "date": "jul 2026",
       "lang": "ES",
-      "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/desafios-de-la-planificacion-de-la-transmision-en-la-transicion-energetica-de-chile/",
-      "title": "Desafíos de la planificación de la transmisión en la transición energética de Chile",
-      "summary": "Cada obra de transmisión tarda entre siete y diez años; hay licitaciones desiertas y retrasos."
+      "url": "https://energia.gob.cl/noticias/nacional/ministras-rincon-y-lincolao-realizan-primer-encuentro-publico-privado-para-impulsar-el-desarrollo-de-data-centers",
+      "title": "Ministras Rincón y Lincolao realizan primer encuentro público-privado para impulsar el desarrollo de Data Centers",
+      "summary": "\"Chile Energy Data Hub\" reúne a generadoras y tecnológicas para planificar la demanda eléctrica de los data centers."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
-      "date": "jul 2026",
+      "date": "ago 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/how-supply-chain-leaders-can-avoid-common-ai-pitfalls/825423/",
-      "title": "How supply chain leaders can avoid common AI pitfalls",
-      "summary": "Target frequent, data-rich decisions; 56% of supply chain chiefs cite legacy integration as the hurdle."
+      "url": "https://www.supplychaindive.com/news/starbucks-targets-24-hour-inventory-replenishment/827030/",
+      "title": "Starbucks targets 24-hour inventory replenishment",
+      "summary": "Around-the-clock replenishment aims to end stockouts and shrink back-of-house inventory after an AI counting tool failed."
     },
     {
       "topic": "educacion",
-      "source": "OCDE",
-      "date": "may 2026",
-      "lang": "EN",
-      "url": "https://www.oecd.org/en/publications/2026/05/restoring-public-finances_0c1f7ce5/full-report/education_bebe2f3e.html",
-      "title": "Education: Restoring Public Finances",
-      "summary": "OECD examines how to protect learning outcomes while improving education spending efficiency under fiscal consolidation."
+      "source": "Subsecretaría de Educación Superior",
+      "date": "jul 2026",
+      "lang": "ES",
+      "url": "https://educacionsuperior.mineduc.cl/2026/07/30/matricula-en-educacion-superior-crece-por-quinto-ano-consecutivo/",
+      "title": "Matrícula en educación superior crece por quinto año consecutivo",
+      "summary": "1.497.548 matriculados en 2026, un 3% más que en 2025; los institutos profesionales ganan participación."
     }
   ]
 }

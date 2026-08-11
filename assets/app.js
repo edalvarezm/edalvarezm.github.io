@@ -251,12 +251,22 @@
 
   function visitCounter(){
     var wrap=document.getElementById('visitas-wrap'), el=document.getElementById('visitas'); if(!el)return;
-    var BASE=10000; /* offset fijo sumado al conteo real de la API */
+    /* Fuente: GoatCounter (la analitica que ya corre en el sitio). Reemplaza a
+       counterapi.dev v1, descontinuada el 2026-08-07 (HTTP 410).
+       BASE da continuidad con el ultimo valor mostrado por el contador anterior. */
+    var BASE=10159;
+    function pinta(total){ el.textContent=Number(total).toLocaleString('es-CL'); wrap.style.display=''; }
     var cached=null; try{cached=sessionStorage.getItem('eam-visitas');}catch(e){}
-    if(cached){ el.textContent=Number(cached).toLocaleString('es-CL'); wrap.style.display=''; return; }
-    fetch('https://api.counterapi.dev/v1/ealvarezcl-site/visitas/up',{cache:'no-store'})
-      .then(function(r){return r.json();})
-      .then(function(j){ if(j&&typeof j.count==='number'){ var total=j.count+BASE; try{sessionStorage.setItem('eam-visitas',String(total));}catch(e){} el.textContent=total.toLocaleString('es-CL'); wrap.style.display=''; } })
+    if(cached){ pinta(cached); return; }
+    fetch('https://ealvarez.goatcounter.com/counter/TOTAL.json?nc='+Date.now(),{cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(j){
+        var n=Number(j&&j.count);
+        if(!isFinite(n)) return;
+        var total=n+BASE;
+        try{sessionStorage.setItem('eam-visitas',String(total));}catch(e){}
+        pinta(total);
+      })
       .catch(function(){});
   }
 

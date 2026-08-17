@@ -1,68 +1,68 @@
 {
-  "updated": "2026-08-10",
+  "updated": "2026-08-17",
   "items": [
     {
       "topic": "conservacion",
       "source": "Ladera Sur",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://laderasur.com/articulo/la-recuperacion-del-guanaco-toma-fuerza-en-la-region-metropolitana-expertos-articulan-plan-para-proteger-a-la-especie/",
-      "title": "La recuperación del guanaco toma fuerza en la Región Metropolitana: expertos articulan plan para proteger a la especie",
-      "summary": "Más de 20 instituciones firman una Declaración de Acción para repoblar el guanaco y restaurar ecosistemas andinos."
+      "url": "https://laderasur.com/articulo/con-mas-de-40-km-de-senderos-abre-a-publico-el-parque-cuenca-andina-el-area-protegida-mas-grande-de-la-region-del-maule/",
+      "title": "Con más de 40 km de senderos, abre a público el Parque Cuenca Andina, el área protegida más grande de la Región del Maule",
+      "summary": "12.400 hectáreas bajo derecho real de conservación perpetua abren al público en la cuenca del río Teno."
     },
     {
       "topic": "distritos",
       "source": "The Conversation",
       "date": "2026",
       "lang": "EN",
-      "url": "https://theconversation.com/voters-lose-when-maps-get-redrawn-before-every-election-instead-of-once-a-decade-a-trend-started-in-texas-moving-to-california-and-likely-spreading-across-the-country-268181",
-      "title": "Voters lose when maps get redrawn before every election instead of once a decade",
-      "summary": "Nearly 20 million Texans and Californians land in redrawn districts as mid-decade redistricting spreads."
+      "url": "https://theconversation.com/why-political-gerrymandering-in-the-south-will-likely-continue-to-consider-voters-race-despite-supreme-court-ruling-282349",
+      "title": "Racial gerrymandering may be here to stay",
+      "summary": "In the South, race and party overlap, so partisan map-drawing keeps using racial data despite the ruling."
     },
     {
       "topic": "redes",
-      "source": "INFORMS",
-      "date": "abr 2026",
+      "source": "Quanta Magazine",
+      "date": "jul 2026",
       "lang": "EN",
-      "url": "https://www.informs.org/News-Room/INFORMS-Releases/Awards-Releases/Microsoft-Wins-2026-INFORMS-Prize-for-Excellence-in-Operations-Research-and-Analytics",
-      "title": "Microsoft Wins 2026 INFORMS Prize for Excellence in Operations Research and Analytics",
-      "summary": "Large-scale optimization and digital twins allocate cloud capacity, cutting fulfillment cycle times by more than 50%."
+      "url": "https://www.quantamagazine.org/shayan-oveis-gharan-wins-2026-imu-abacus-medal-20260723/",
+      "title": "A Master of the Traveling Salesperson Problem Finds His Own Path",
+      "summary": "Abacus Medal for polynomial and randomness tools that broke Christofides' 44-year-old traveling salesperson record."
     },
     {
       "topic": "salud",
       "source": "Minsal",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/hospital-de-urgencia-asistencia-publica-lidera-ranking-de-gestion-entre-los-62-hospitales-de-mayor-complejidad/",
-      "title": "Hospital de Urgencia Asistencia Pública lidera ranking de gestión entre los 62 hospitales de mayor complejidad",
-      "summary": "La Posta Central alcanza 91,1% de desempeño; los recintos bajo estándar deben presentar planes de ajuste."
+      "url": "https://www.minsal.cl/presidente-kast-encabeza-firma-de-acuerdo-de-colaboracion-entre-el-minsal-y-caja-los-andes-para-atender-a-50-mil-casos-en-lista-de-espera-no-ges/",
+      "title": "Presidente Kast encabeza firma de acuerdo de colaboración entre el Minsal y Caja Los Andes para atender a 50 mil casos en lista de espera No GES",
+      "summary": "Desde septiembre, 50 mil personas con más de seis meses de espera No GES accederán a atención."
     },
     {
       "topic": "energia",
-      "source": "Ministerio de Energía",
+      "source": "CNE",
       "date": "jul 2026",
       "lang": "ES",
-      "url": "https://energia.gob.cl/noticias/nacional/ministras-rincon-y-lincolao-realizan-primer-encuentro-publico-privado-para-impulsar-el-desarrollo-de-data-centers",
-      "title": "Ministras Rincón y Lincolao realizan primer encuentro público-privado para impulsar el desarrollo de Data Centers",
-      "summary": "\"Chile Energy Data Hub\" reúne a generadoras y tecnológicas para planificar la demanda eléctrica de los data centers."
+      "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/desafios-de-la-planificacion-de-la-transmision-en-la-transicion-energetica-de-chile/",
+      "title": "Desafíos de la planificación de la transmisión en la transición energética de Chile",
+      "summary": "Expandir la transmisión toma entre siete y diez años; la CNE pide mejores proyecciones de demanda."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
       "date": "ago 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/starbucks-targets-24-hour-inventory-replenishment/827030/",
-      "title": "Starbucks targets 24-hour inventory replenishment",
-      "summary": "Around-the-clock replenishment aims to end stockouts and shrink back-of-house inventory after an AI counting tool failed."
+      "url": "https://www.supplychaindive.com/news/target-strengthens-inventory-management-with-digital-twins/827910/",
+      "title": "Target strengthens inventory management with digital twins",
+      "summary": "Proxima simulates middle-mile inventory decisions before execution, lifting fresh-food on-shelf availability by 2.5% in a pilot."
     },
     {
       "topic": "educacion",
       "source": "Subsecretaría de Educación Superior",
       "date": "jul 2026",
       "lang": "ES",
-      "url": "https://educacionsuperior.mineduc.cl/2026/07/30/matricula-en-educacion-superior-crece-por-quinto-ano-consecutivo/",
-      "title": "Matrícula en educación superior crece por quinto año consecutivo",
-      "summary": "1.497.548 matriculados en 2026, un 3% más que en 2025; los institutos profesionales ganan participación."
+      "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
+      "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
+      "summary": "El comité fija su hoja de ruta en aseguramiento de la calidad y acreditación de programas."
     }
   ]
 }

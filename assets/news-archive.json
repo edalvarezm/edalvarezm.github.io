@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-08-10",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "Ladera Sur",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://laderasur.com/articulo/la-recuperacion-del-guanaco-toma-fuerza-en-la-region-metropolitana-expertos-articulan-plan-para-proteger-a-la-especie/",
+          "title": "La recuperación del guanaco toma fuerza en la Región Metropolitana: expertos articulan plan para proteger a la especie",
+          "summary": "Más de 20 instituciones firman una Declaración de Acción para repoblar el guanaco y restaurar ecosistemas andinos."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://theconversation.com/voters-lose-when-maps-get-redrawn-before-every-election-instead-of-once-a-decade-a-trend-started-in-texas-moving-to-california-and-likely-spreading-across-the-country-268181",
+          "title": "Voters lose when maps get redrawn before every election instead of once a decade",
+          "summary": "Nearly 20 million Texans and Californians land in redrawn districts as mid-decade redistricting spreads."
+        },
+        {
+          "topic": "redes",
+          "source": "INFORMS",
+          "date": "abr 2026",
+          "lang": "EN",
+          "url": "https://www.informs.org/News-Room/INFORMS-Releases/Awards-Releases/Microsoft-Wins-2026-INFORMS-Prize-for-Excellence-in-Operations-Research-and-Analytics",
+          "title": "Microsoft Wins 2026 INFORMS Prize for Excellence in Operations Research and Analytics",
+          "summary": "Large-scale optimization and digital twins allocate cloud capacity, cutting fulfillment cycle times by more than 50%."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/hospital-de-urgencia-asistencia-publica-lidera-ranking-de-gestion-entre-los-62-hospitales-de-mayor-complejidad/",
+          "title": "Hospital de Urgencia Asistencia Pública lidera ranking de gestión entre los 62 hospitales de mayor complejidad",
+          "summary": "La Posta Central alcanza 91,1% de desempeño; los recintos bajo estándar deben presentar planes de ajuste."
+        },
+        {
+          "topic": "energia",
+          "source": "Ministerio de Energía",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://energia.gob.cl/noticias/nacional/ministras-rincon-y-lincolao-realizan-primer-encuentro-publico-privado-para-impulsar-el-desarrollo-de-data-centers",
+          "title": "Ministras Rincón y Lincolao realizan primer encuentro público-privado para impulsar el desarrollo de Data Centers",
+          "summary": "\"Chile Energy Data Hub\" reúne a generadoras y tecnológicas para planificar la demanda eléctrica de los data centers."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "ago 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/starbucks-targets-24-hour-inventory-replenishment/827030/",
+          "title": "Starbucks targets 24-hour inventory replenishment",
+          "summary": "Around-the-clock replenishment aims to end stockouts and shrink back-of-house inventory after an AI counting tool failed."
+        },
+        {
+          "topic": "educacion",
+          "source": "Subsecretaría de Educación Superior",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://educacionsuperior.mineduc.cl/2026/07/30/matricula-en-educacion-superior-crece-por-quinto-ano-consecutivo/",
+          "title": "Matrícula en educación superior crece por quinto año consecutivo",
+          "summary": "1.497.548 matriculados en 2026, un 3% más que en 2025; los institutos profesionales ganan participación."
+        }
+      ]
+    },
+    {
       "date": "2026-08-03",
       "items": [
         {

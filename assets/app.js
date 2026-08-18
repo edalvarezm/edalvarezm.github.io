@@ -270,10 +270,41 @@
       .catch(function(){});
   }
 
+  /* Aviso por correo de cada visita. El envio lo hace un Web App de Google
+     Apps Script (ver notificador-visitas/Codigo.gs); aqui solo se le pasan
+     datos no identificatorios. Si AVISO_URL esta vacio, no hace nada.
+     Para excluir un equipo propio: abrir el sitio con ?sinaviso=1
+     Para volver a incluirlo:       abrir el sitio con ?sinaviso=0 */
+  var AVISO_URL='https://script.google.com/macros/s/AKfycbzwYmgN5qj5qNDejY38aqwMOxs2HbSqZ7Re6oyy2qGHVBajT6RgyEgr70Ox9FnKtzwm/exec';
+  function avisoVisita(){
+    if(!AVISO_URL) return;
+    try{
+      if(/[?&]sinaviso=1/.test(location.search)){ localStorage.setItem('eam-sin-aviso','1'); }
+      if(/[?&]sinaviso=0/.test(location.search)){ localStorage.removeItem('eam-sin-aviso'); }
+      if(localStorage.getItem('eam-sin-aviso')) return;      /* equipo propio */
+      if(sessionStorage.getItem('eam-avisado')) return;      /* un aviso por sesion */
+      if(navigator.webdriver) return;                        /* navegador automatizado */
+      var ua=navigator.userAgent||'';
+      if(!ua||/bot|crawl|spider|slurp|headless|phantom|puppeteer|playwright|lighthouse|preview|monitor|scrape/i.test(ua)) return;
+      sessionStorage.setItem('eam-avisado','1');
+      var d={
+        pagina:location.pathname+location.search,
+        origen:document.referrer||'directo',
+        idioma:navigator.language||'',
+        pantalla:(screen.width||0)+'x'+(screen.height||0),
+        agente:ua
+      };
+      var qs=Object.keys(d).map(function(k){return k+'='+encodeURIComponent(d[k]);}).join('&');
+      fetch(AVISO_URL+'?'+qs,{method:'GET',mode:'no-cors',cache:'no-store',keepalive:true})
+        .catch(function(){});
+    }catch(e){}
+  }
+
   document.addEventListener('DOMContentLoaded',function(){
     initNav();
     renderAll();
     visitCounter();
+    avisoVisita();
     if(window.buildHero) window.buildHero(document.getElementById('hero-cake'));
   });
 })();

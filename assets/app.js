@@ -271,11 +271,14 @@
   }
 
   /* Aviso por correo de cada visita. El envio lo hace un Web App de Google
-     Apps Script (ver notificador-visitas/Codigo.gs); aqui solo se le pasan
-     datos no identificatorios. Si AVISO_URL esta vacio, no hace nada.
+     Apps Script (ver notificador-visitas/Codigo.gs).
+     El correo sale al TERMINAR la visita, para poder informar cuanto duro.
+     Se mide tiempo activo (con la pestana visible), no tiempo de reloj.
+     La recoleccion esta declarada en el aviso de privacidad del pie.
      Para excluir un equipo propio: abrir el sitio con ?sinaviso=1
      Para volver a incluirlo:       abrir el sitio con ?sinaviso=0 */
   var AVISO_URL='https://script.google.com/macros/s/AKfycbzwYmgN5qj5qNDejY38aqwMOxs2HbSqZ7Re6oyy2qGHVBajT6RgyEgr70Ox9FnKtzwm/exec';
+  var AVISO_GEO='https://ipwho.is/';
   function avisoVisita(){
     if(!AVISO_URL) return;
     try{
@@ -286,17 +289,84 @@
       if(navigator.webdriver) return;                        /* navegador automatizado */
       var ua=navigator.userAgent||'';
       if(!ua||/bot|crawl|spider|slurp|headless|phantom|puppeteer|playwright|lighthouse|preview|monitor|scrape/i.test(ua)) return;
-      sessionStorage.setItem('eam-avisado','1');
-      var d={
-        pagina:location.pathname+location.search,
-        origen:document.referrer||'directo',
-        idioma:navigator.language||'',
-        pantalla:(screen.width||0)+'x'+(screen.height||0),
-        agente:ua
-      };
-      var qs=Object.keys(d).map(function(k){return k+'='+encodeURIComponent(d[k]);}).join('&');
-      fetch(AVISO_URL+'?'+qs,{method:'GET',mode:'no-cors',cache:'no-store',keepalive:true})
+
+      var geo=null, enviado=false, salida=null;
+      var activo=0, desde=Date.now();
+
+      /* contador de visitas de este navegador */
+      var n=1;
+      try{
+        n=(parseInt(localStorage.getItem('eam-visita-n'),10)||0)+1;
+        localStorage.setItem('eam-visita-n',String(n));
+      }catch(e){}
+
+      /* secciones efectivamente vistas */
+      var vistas=[];
+      try{
+        if(window.IntersectionObserver){
+          var io=new IntersectionObserver(function(es){
+            for(var i=0;i<es.length;i++){
+              var id=es[i].target.id;
+              if(es[i].isIntersecting && id && vistas.indexOf(id)<0) vistas.push(id);
+            }
+          },{threshold:0.4});
+          Array.prototype.forEach.call(document.querySelectorAll('section[id]'),function(s){ io.observe(s); });
+        }
+      }catch(e){}
+
+      /* ubicacion aproximada; queda lista para cuando termine la visita */
+      fetch(AVISO_GEO,{cache:'no-store'})
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if(j && j.success!==false) geo=j; })
         .catch(function(){});
+
+      function acumular(){
+        if(document.visibilityState==='visible') activo+=Date.now()-desde;
+        desde=Date.now();
+      }
+
+      function enviar(motivo){
+        if(enviado) return; enviado=true;
+        acumular();
+        try{ sessionStorage.setItem('eam-avisado','1'); }catch(e){}
+        var d={
+          pagina:location.pathname+location.search,
+          origen:document.referrer||'directo',
+          idioma:navigator.language||'',
+          pantalla:(screen.width||0)+'x'+(screen.height||0),
+          agente:ua,
+          duracion:Math.round(activo/1000),
+          secciones:vistas.join(','),
+          visita:n,
+          motivo:motivo
+        };
+        if(geo){
+          d.ip=geo.ip||'';
+          d.ciudad=geo.city||'';
+          d.region=geo.region||'';
+          d.pais=geo.country||'';
+          d.org=(geo.connection&&(geo.connection.org||geo.connection.isp))||'';
+        }
+        var qs=Object.keys(d).map(function(k){return k+'='+encodeURIComponent(d[k]);}).join('&');
+        var url=AVISO_URL+'?'+qs;
+        try{ if(navigator.sendBeacon && navigator.sendBeacon(url)) return; }catch(e){}
+        try{ fetch(url,{method:'GET',mode:'no-cors',cache:'no-store',keepalive:true}).catch(function(){}); }catch(e){}
+      }
+
+      /* Cambiar de pestana no es irse: se espera 15 s por si vuelve.
+         Cerrar o navegar fuera (pagehide) si es salida definitiva. */
+      document.addEventListener('visibilitychange',function(){
+        acumular();
+        if(document.visibilityState==='hidden'){
+          salida=setTimeout(function(){ enviar('salida'); },15000);
+        } else if(salida){
+          clearTimeout(salida); salida=null;
+        }
+      });
+      window.addEventListener('pagehide',function(){ enviar('salida'); });
+
+      /* red de seguridad: si sigue leyendo a los 2 min, avisar igual */
+      setTimeout(function(){ enviar('2min'); },120000);
     }catch(e){}
   }
 

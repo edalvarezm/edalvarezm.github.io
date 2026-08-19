@@ -93,7 +93,10 @@ window.SITE = {
     contact_inst:   { es:"Institución", en:"Institution" },
     contact_loc:    { es:"Ubicación", en:"Location" },
     footer:         { es:"Modelos de analítica avanzada para decisiones públicas y ambientales.",
-                      en:"Advanced analytics models for public and environmental decisions." }
+                      en:"Advanced analytics models for public and environmental decisions." },
+    privacidad:     { es:"Este sitio registra cada visita con fines estadísticos: página consultada, procedencia, duración, tipo de dispositivo, ubicación aproximada y dirección IP. La ubicación se obtiene mediante un servicio externo de geolocalización. No se usan cookies publicitarias ni se ceden datos a terceros con fines comerciales. Consultas y solicitudes de supresión: eduardo.alvmir@gmail.com",
+                      en:"This site records each visit for statistical purposes: page viewed, referrer, duration, device type, approximate location and IP address. Location is resolved through an external geolocation service. No advertising cookies are used and no data is transferred to third parties for commercial purposes. Enquiries and erasure requests: eduardo.alvmir@gmail.com" },
+    privacidad_tit: { es:"Aviso de privacidad", en:"Privacy notice" }
   },
 
   researchLines: [

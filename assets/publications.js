@@ -76,7 +76,8 @@ window.PUBLICATIONS = [
   [2011,"Deterministic risk control for cost-effective network connections","X. Chen, J. Hu, X. Hu, A. Candia-Véjar","Theoretical Computer Science, 412(3), 257-264",["redes"]],
   [2011,"Minmax regret combinatorial optimization problems: An Algorithmic Perspective","A. Candia-Véjar, N. Maculan","RAIRO - Operations Research, 45(2), 101-129",["redes"]],
   [2011,"Exact solutions for the robust prize-collecting Steiner tree problem","I. Ljubić, P. Toth","Int. Congress on Ultra Modern Telecommunications and Control Systems",["redes"]],
-  [2010,"Efficient algorithms for the prize collecting Steiner Tree problems with interval data","A. Candia, X. Chen, X. Hu, B. Li","Lecture Notes in Computer Science, 6124, 13-24",["redes"]]
+  [2010,"Efficient algorithms for the prize collecting Steiner Tree problems with interval data","A. Candia, X. Chen, X. Hu, B. Li","Lecture Notes in Computer Science, 6124, 13-24",["redes"]],
+  [2008,"On a Class of Interval Data Minmax Regret CO Problems","A. Candia-Véjar","Operations Research Proceedings 2007, 123-128",["redes"]]
 ];
 
 window.PUB_TOPICS = {

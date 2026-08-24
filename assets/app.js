@@ -171,13 +171,13 @@
     var host=document.getElementById('pub-list'); if(!host)return;
     var shown=(window.PUBLICATIONS||[]).filter(function(p){return pubFilter==='all'||(p[4]||[]).indexOf(pubFilter)>=0;});
     host.innerHTML='';
-    var lastYear=null, idx=0;
-    shown.forEach(function(p){
+    /* numeracion descendente: el primero (mas reciente) lleva el total */
+    var lastYear=null, tot=shown.length;
+    shown.forEach(function(p,i){
       if(p[0]!==lastYear){ lastYear=p[0]; host.appendChild(el('div','pub-year','<span class="y">'+p[0]+'</span><span class="bar"></span>')); }
-      idx++;
       var badges=pubBadges(p[3]);
       host.appendChild(el('div','pub',
-        '<div class="idx">'+idx+'</div>'+
+        '<div class="idx">'+(tot-i)+'</div>'+
         '<div class="body"><div class="t"><a class="pub-t-link" href="'+window.pubLink(p[1])+'" target="_blank" rel="noopener">'+esc(p[1])+'</a></div>'+
         '<div class="m">'+(p[2]?esc(p[2])+' · ':'')+'<span class="venue">'+esc(p[3])+'</span></div>'+
         (badges?'<div class="idx-badges">'+badges+'</div>':'')+

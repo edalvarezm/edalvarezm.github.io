@@ -10,7 +10,7 @@
   var AUTORES=['A5000845814','A5120984223'];          /* perfiles OpenAlex propios */
   var MAILTO='mailto=eduardo.alvmir@gmail.com';
   var API='https://api.openalex.org';
-  var CACHE_KEY='eam-citmap-v2', CACHE_H=24;
+  var CACHE_KEY='eam-citmap-v3', CACHE_H=24;
   var CDN_TOPO='https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
   var CDN_CODES='https://cdn.jsdelivr.net/npm/i18n-iso-countries@7.14.0/codes.json';
 
@@ -27,13 +27,15 @@
            en:["citing works","countries","institutions","self-citations excluded"]},
     topP:{es:"Principales países",en:"Top countries"},
     topI:{es:"Principales instituciones",en:"Top institutions"},
+    topA:{es:"Investigadores que más citan",en:"Top citing researchers"},
+    noteA:{es:"(excluye coautores)",en:"(co-authors excluded)"},
     works:{es:"trabajos",en:"works"},
     tipWorks:{es:"trabajos citantes",en:"citing works"},
     err:{es:"No fue posible cargar el mapa de citas.",en:"The citation map could not be loaded."}
   };
   function L(o){var l=window.LANG||'es';return o[l]||o.es;}
   function css(v,fb){var s=getComputedStyle(document.documentElement).getPropertyValue(v).trim();return s||fb;}
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function flagImg(cc){
     if(!cc) return '';
     var c=String(cc).toLowerCase();
@@ -57,10 +59,18 @@
 
   function cargarDatos(){
     var c=cacheGet(); if(c) return Promise.resolve(c);
-    /* 1) obras propias con citas (ambos perfiles en una consulta) */
-    return fj(API+'/works?filter=author.id:'+AUTORES.join('|')+'&per-page=200&select=id,cited_by_count&'+MAILTO)
+    /* 1) obras propias con citas y coautorías (ambos perfiles en una consulta) */
+    return fj(API+'/works?filter=author.id:'+AUTORES.join('|')+'&per-page=200&select=id,cited_by_count,authorships&'+MAILTO)
     .then(function(j){
-      var ids={}; (j.results||[]).forEach(function(w){ if(w.cited_by_count>0) ids[w.id.split('/').pop()]=w.cited_by_count; });
+      var ids={}, coauth={};
+      (j.results||[]).forEach(function(w){
+        if(w.cited_by_count>0) ids[w.id.split('/').pop()]=w.cited_by_count;
+        /* conjunto de coautores propios, a excluir del ranking de investigadores */
+        (w.authorships||[]).forEach(function(a){
+          var aid=a.author&&a.author.id&&a.author.id.split('/').pop();
+          if(aid && AUTORES.indexOf(aid)<0) coauth[aid]=1;
+        });
+      });
       var lista=Object.keys(ids).sort(function(a,b){return ids[b]-ids[a];}).slice(0,90);
       var cites='cites:'+lista.join('|');
       var noSelf=AUTORES.map(function(a){return 'author.id:!'+a;}).join(',');
@@ -69,27 +79,46 @@
         fj(base+'&per-page=1&select=id&'+MAILTO),                                  /* externos */
         fj(API+'/works?filter='+cites+'&per-page=1&select=id&'+MAILTO),            /* total    */
         fj(base+'&group_by=authorships.countries&'+MAILTO),                        /* paises   */
-        fj(base+'&group_by=authorships.institutions.id&'+MAILTO)                   /* instituc.*/
-      ]);
+        fj(base+'&group_by=authorships.institutions.id&'+MAILTO),                  /* instituc.*/
+        fj(base+'&group_by=authorships.author.id&'+MAILTO)                         /* autores  */
+      ]).then(function(rs){ return {rs:rs, coauth:coauth}; });
     })
-    .then(function(rs){
+    .then(function(o){
+      var rs=o.rs, coauth=o.coauth;
       var ext=rs[0].meta.count, tot=rs[1].meta.count;
       var paises=(rs[2].group_by||[]).map(function(g){return [g.key.split('/').pop(),g.count];});
       var gInst=rs[3].group_by||[];
+      /* se descartan coautores propios del ranking de investigadores */
+      var gAut=(rs[4].group_by||[]).filter(function(g){return !coauth.hasOwnProperty(g.key.split('/').pop());}).slice(0,10);
       /* la API trunca los grupos en 200; si llegamos al tope, declarar "200+" */
       var nInstTot=gInst.length>=200?'200+':String(gInst.length);
       var idsInst=gInst.map(function(g){return g.key.split('/').pop();});
+      var idsAut=gAut.map(function(g){return g.key.split('/').pop();});
       var lotes=[];
       for(var i=0;i<idsInst.length;i+=100) lotes.push(idsInst.slice(i,i+100));
-      return Promise.all(lotes.map(function(lote){
-        return fj(API+'/institutions?filter=ids.openalex:'+lote.join('|')+'&per-page=100&select=id,display_name,country_code&'+MAILTO);
-      })).then(function(dets){
+      return Promise.all([
+        Promise.all(lotes.map(function(lote){
+          return fj(API+'/institutions?filter=ids.openalex:'+lote.join('|')+'&per-page=100&select=id,display_name,country_code&'+MAILTO);
+        })),
+        idsAut.length ? fj(API+'/authors?filter=ids.openalex:'+idsAut.join('|')+'&per-page=25&select=id,display_name,last_known_institutions&'+MAILTO) : Promise.resolve({results:[]})
+      ]).then(function(res){
+        var dets=res[0], rAut=res[1];
         var pais={}; dets.forEach(function(d){(d.results||[]).forEach(function(x){pais[x.id.split('/').pop()]=[x.display_name,(x.country_code||'').toUpperCase()];});});
         var inst=gInst.map(function(g){
           var p=pais[g.key.split('/').pop()]||[g.key_display_name,''];
           return [p[0],p[1],g.count];
         });
-        return {ext:ext, auto:tot-ext, paises:paises, inst:inst, nPaises:paises.length, nInst:nInstTot, f:new Date().toISOString().slice(0,10)};
+        var infoAut={};
+        (rAut.results||[]).forEach(function(a){
+          var lki=(a.last_known_institutions||[])[0];
+          infoAut[a.id.split('/').pop()]=[a.display_name, lki?(lki.country_code||'').toUpperCase():'', lki?lki.display_name:''];
+        });
+        var autores=gAut.map(function(g){
+          var aid=g.key.split('/').pop();
+          var info=infoAut[aid]||[g.key_display_name,'',''];
+          return [info[0], info[1], info[2], g.count];
+        });
+        return {ext:ext, auto:tot-ext, paises:paises, inst:inst, autores:autores, nPaises:paises.length, nInst:nInstTot, f:new Date().toISOString().slice(0,10)};
       });
     })
     .then(function(d){ cacheSet(d); return d; });
@@ -105,6 +134,7 @@
         '<div class="citmap-panel">'+
           '<div><h4 id="citmap-tp"></h4><ol id="citmap-lp" class="citmap-list"></ol></div>'+
           '<div><h4 id="citmap-ti"></h4><ol id="citmap-li" class="citmap-list citmap-list-i"></ol></div>'+
+          '<div><h4 id="citmap-ta"></h4><ol id="citmap-la" class="citmap-list citmap-list-i"></ol></div>'+
         '</div>'+
       '</div>';
   }
@@ -187,6 +217,11 @@
     var OMITIR=/University of Talca|Catholic University of the Maule/i;
     document.getElementById('citmap-li').innerHTML=data.inst.filter(function(x){return !OMITIR.test(x[0]);}).slice(0,10).map(function(x){
       return '<li><span class="n">'+flagImg(x[1])+'<span>'+esc(x[0])+'</span></span><span class="v">'+x[2]+'</span></li>';
+    }).join('');
+    document.getElementById('citmap-ta').innerHTML=L(TXT.topA)+' <span class="citmap-note">'+L(TXT.noteA)+'</span>';
+    document.getElementById('citmap-la').innerHTML=(data.autores||[]).map(function(x){
+      var tip=x[2]?' title="'+esc(x[2])+'"':'';
+      return '<li><span class="n">'+flagImg(x[1])+'<span'+tip+'>'+esc(x[0])+'</span></span><span class="v">'+x[3]+'</span></li>';
     }).join('');
   }
 

@@ -10,7 +10,7 @@
   var AUTORES=['A5000845814','A5120984223'];          /* perfiles OpenAlex propios */
   var MAILTO='mailto=eduardo.alvmir@gmail.com';
   var API='https://api.openalex.org';
-  var CACHE_KEY='eam-citmap-v4', CACHE_H=24;
+  var CACHE_KEY='eam-citmap-v5', CACHE_H=24;
   var CDN_TOPO='https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
   var CDN_CODES='https://cdn.jsdelivr.net/npm/i18n-iso-countries@7.14.0/codes.json';
 
@@ -40,6 +40,18 @@
     if(!cc) return '';
     var c=String(cc).toLowerCase();
     return '<img class="citmap-flag" src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/'+c+'.svg" width="18" height="12" alt="" loading="lazy" onerror="this.hidden=1">';
+  }
+  var AI_CDN='https://cdn.jsdelivr.net/npm/academicons@1.9.5/svg/';
+  function iconLinks(name, orcid){
+    var q=encodeURIComponent(name);
+    var links=[
+      ['google-scholar','https://scholar.google.com/citations?view_op=search_authors&mauthors='+q,'Google Scholar'],
+      orcid?['orcid',orcid,'ORCID']:null,
+      ['researchgate','https://www.researchgate.net/search/researcher?q='+q,'ResearchGate']
+    ].filter(function(l){return l;});
+    return '<span class="citmap-ic-group">'+links.map(function(l){
+      return '<a class="citmap-ic" href="'+esc(l[1])+'" target="_blank" rel="noopener" title="'+esc(l[2])+'"><img src="'+AI_CDN+l[0]+'.svg" alt="'+esc(l[2])+'" width="12" height="12" loading="lazy" onerror="this.parentNode.hidden=1"></a>';
+    }).join('')+'</span>';
   }
 
   var built=false, data=null, topo=null, codes=null, failed=false;
@@ -101,7 +113,7 @@
         Promise.all(lotes.map(function(lote){
           return fj(API+'/institutions?filter=ids.openalex:'+lote.join('|')+'&per-page=100&select=id,display_name,country_code&'+MAILTO);
         })),
-        idsAut.length ? fj(API+'/authors?filter=ids.openalex:'+idsAut.join('|')+'&per-page=25&select=id,display_name,last_known_institutions&'+MAILTO) : Promise.resolve({results:[]})
+        idsAut.length ? fj(API+'/authors?filter=ids.openalex:'+idsAut.join('|')+'&per-page=25&select=id,display_name,last_known_institutions,ids&'+MAILTO) : Promise.resolve({results:[]})
       ]).then(function(res){
         var dets=res[0], rAut=res[1];
         var pais={}; dets.forEach(function(d){(d.results||[]).forEach(function(x){pais[x.id.split('/').pop()]=[x.display_name,(x.country_code||'').toUpperCase()];});});
@@ -112,12 +124,12 @@
         var infoAut={};
         (rAut.results||[]).forEach(function(a){
           var lki=(a.last_known_institutions||[])[0];
-          infoAut[a.id.split('/').pop()]=[a.display_name, lki?(lki.country_code||'').toUpperCase():'', lki?lki.display_name:''];
+          infoAut[a.id.split('/').pop()]=[a.display_name, lki?(lki.country_code||'').toUpperCase():'', lki?lki.display_name:'', (a.ids&&a.ids.orcid)||''];
         });
         var autores=gAut.map(function(g){
           var aid=g.key.split('/').pop();
-          var info=infoAut[aid]||[g.key_display_name,'',''];
-          return [info[0], info[1], info[2], g.count];
+          var info=infoAut[aid]||[g.key_display_name,'','',''];
+          return [info[0], info[1], info[2], g.count, info[3]];
         });
         return {ext:ext, auto:tot-ext, paises:paises, inst:inst, autores:autores, nPaises:paises.length, nInst:nInstTot, f:new Date().toISOString().slice(0,10)};
       });
@@ -222,7 +234,7 @@
     document.getElementById('citmap-ta').innerHTML=L(TXT.topA)+' <span class="citmap-note">'+L(TXT.noteA)+'</span>';
     document.getElementById('citmap-la').innerHTML=(data.autores||[]).map(function(x){
       var tip=x[2]?' title="'+esc(x[2])+'"':'';
-      return '<li><span class="n">'+flagImg(x[1])+'<span'+tip+'>'+esc(x[0])+'</span></span><span class="v">'+x[3]+'</span></li>';
+      return '<li><span class="n">'+flagImg(x[1])+'<span'+tip+'>'+esc(x[0])+'</span></span>'+iconLinks(x[0],x[4])+'<span class="v">'+x[3]+'</span></li>';
     }).join('');
   }
 

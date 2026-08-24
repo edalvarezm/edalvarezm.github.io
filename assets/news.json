@@ -1,68 +1,68 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-24",
   "items": [
     {
       "topic": "conservacion",
-      "source": "Ladera Sur",
+      "source": "CONAF",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://laderasur.com/articulo/con-mas-de-40-km-de-senderos-abre-a-publico-el-parque-cuenca-andina-el-area-protegida-mas-grande-de-la-region-del-maule/",
-      "title": "Con más de 40 km de senderos, abre a público el Parque Cuenca Andina, el área protegida más grande de la Región del Maule",
-      "summary": "12.400 hectáreas bajo derecho real de conservación perpetua abren al público en la cuenca del río Teno."
+      "url": "https://www.conaf.cl/chile-comparte-en-bolivia-su-experiencia-de-conservacion-efectiva-y-avances-en-la-lista-verde-de-la-uicn/",
+      "title": "Chile comparte en Bolivia su experiencia de conservación efectiva y avances en la Lista Verde de la UICN",
+      "summary": "CONAF expone su hoja de ruta de efectividad de manejo y certificación Lista Verde de la UICN."
     },
     {
       "topic": "distritos",
       "source": "The Conversation",
       "date": "2026",
       "lang": "EN",
-      "url": "https://theconversation.com/why-political-gerrymandering-in-the-south-will-likely-continue-to-consider-voters-race-despite-supreme-court-ruling-282349",
-      "title": "Racial gerrymandering may be here to stay",
-      "summary": "In the South, race and party overlap, so partisan map-drawing keeps using racial data despite the ruling."
+      "url": "https://theconversation.com/independent-commissions-can-ditch-partisanship-and-make-redistricting-fairer-to-voters-169234",
+      "title": "Independent commissions can ditch partisanship and make redistricting fairer to voters",
+      "summary": "Commission design matters: Michigan's 13 citizen members show how structure shapes fairer district maps."
     },
     {
       "topic": "redes",
       "source": "Quanta Magazine",
-      "date": "jul 2026",
+      "date": "ago 2026",
       "lang": "EN",
-      "url": "https://www.quantamagazine.org/shayan-oveis-gharan-wins-2026-imu-abacus-medal-20260723/",
-      "title": "A Master of the Traveling Salesperson Problem Finds His Own Path",
-      "summary": "Abacus Medal for polynomial and randomness tools that broke Christofides' 44-year-old traveling salesperson record."
+      "url": "https://www.quantamagazine.org/huge-breakthrough-in-the-math-of-imbalance-20260821/",
+      "title": "‘Huge Breakthrough’ in the Math of Imbalance",
+      "summary": "First progress in 30 years on the Komlós conjecture, the core problem of discrepancy theory."
     },
     {
       "topic": "salud",
       "source": "Minsal",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/presidente-kast-encabeza-firma-de-acuerdo-de-colaboracion-entre-el-minsal-y-caja-los-andes-para-atender-a-50-mil-casos-en-lista-de-espera-no-ges/",
-      "title": "Presidente Kast encabeza firma de acuerdo de colaboración entre el Minsal y Caja Los Andes para atender a 50 mil casos en lista de espera No GES",
-      "summary": "Desde septiembre, 50 mil personas con más de seis meses de espera No GES accederán a atención."
+      "url": "https://www.minsal.cl/minsal-anuncia-que-el-nuevo-hospital-para-la-zona-norte-de-la-rm-se-hara-en-lampa/",
+      "title": "Minsal anuncia que el nuevo hospital para la zona norte de la RM se hará en Lampa",
+      "summary": "368 camas en Valle Grande, Lampa, para más de un millón de habitantes."
     },
     {
       "topic": "energia",
-      "source": "CNE",
-      "date": "jul 2026",
-      "lang": "ES",
-      "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/desafios-de-la-planificacion-de-la-transmision-en-la-transicion-energetica-de-chile/",
-      "title": "Desafíos de la planificación de la transmisión en la transición energética de Chile",
-      "summary": "Expandir la transmisión toma entre siete y diez años; la CNE pide mejores proyecciones de demanda."
+      "source": "IEA",
+      "date": "2026",
+      "lang": "EN",
+      "url": "https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary",
+      "title": "Electricity Mid-Year Update 2026 — Executive summary",
+      "summary": "Global electricity demand set to grow 3.6% in 2026 and 3.8% in 2027."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
       "date": "ago 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/target-strengthens-inventory-management-with-digital-twins/827910/",
-      "title": "Target strengthens inventory management with digital twins",
-      "summary": "Proxima simulates middle-mile inventory decisions before execution, lifting fresh-food on-shelf availability by 2.5% in a pilot."
+      "url": "https://www.supplychaindive.com/news/culvers-taps-armada-to-revamp-supply-chain-targets-expansion/828146/",
+      "title": "Culver’s taps Armada to revamp supply chain, targets expansion",
+      "summary": "Pooling slow-moving inventory into redistribution nodes cuts freight and moves stock closer to demand."
     },
     {
       "topic": "educacion",
       "source": "Subsecretaría de Educación Superior",
-      "date": "jul 2026",
+      "date": "ago 2026",
       "lang": "ES",
-      "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
-      "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
-      "summary": "El comité fija su hoja de ruta en aseguramiento de la calidad y acreditación de programas."
+      "url": "https://educacionsuperior.mineduc.cl/2026/08/12/subsecretaria-de-educacion-superior-lanza-el-consejo-ejecutivo-y-los-dialogos-tematicos-de-chile-crece-tp/",
+      "title": "Subsecretaría de Educación Superior lanza el Consejo Ejecutivo y los Diálogos Temáticos de Chile Crece TP",
+      "summary": "Hoja de ruta para articular Estado, instituciones y sector productivo en formación técnico-profesional."
     }
   ]
 }

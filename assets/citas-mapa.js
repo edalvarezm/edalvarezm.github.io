@@ -178,7 +178,9 @@
       return '<li><span class="n">'+esc(nombre(p[0]))+'</span><span class="bar"><i style="width:'+Math.round(p[1]/max*100)+'%"></i></span><span class="v">'+p[1]+'</span></li>';
     }).join('');
     document.getElementById('citmap-ti').textContent=L(TXT.topI);
-    document.getElementById('citmap-li').innerHTML=data.inst.slice(0,10).map(function(x){
+    /* se omiten del ranking las universidades del entorno cercano */
+    var OMITIR=/University of Talca|Catholic University of the Maule/i;
+    document.getElementById('citmap-li').innerHTML=data.inst.filter(function(x){return !OMITIR.test(x[0]);}).slice(0,10).map(function(x){
       return '<li><span class="n">'+esc(x[0])+(x[1]?' <em>('+x[1]+')</em>':'')+'</span><span class="v">'+x[2]+'</span></li>';
     }).join('');
   }

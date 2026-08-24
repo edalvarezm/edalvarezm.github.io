@@ -64,6 +64,7 @@ window.PUBLICATIONS = [
   [2015,"The recoverable robust facility location problem","E. Fernández, I. Ljubić","Transportation Research Part B: Methodological, 79, 93-120",["redes"]],
   [2015,"Two-stage robust UC including a novel scenario-based uncertainty model for wind power applications","C. Campos-Valdés, C. Rahmann","Energy Conversion and Management, 101, 94-105",["energia"]],
   [2015,"Alteration of Golgi structure by stress: A link to neurodegeneration?","M. Sinnl, H. Farhan","Frontiers in Neuroscience, 9",["salud"]],
+  [2015,"Networks, uncertainty, applications and a crusade for optimality","","4OR, 13, 225-226",["redes"]],
   [2014,"Single-commodity robust network design problem: Complexity, instances and heuristic solutions","V. Cacchiani, A. Lodi, T. Parriani, D.R. Schmidt","European Journal of Operational Research, 238(3), 711-723",["redes"]],
   [2014,"On exact solutions for the Minmax Regret Spanning Tree problem","F. Pérez-Galarce, A. Candia-Véjar, P. Toth","Computers and Operations Research, 47, 114-122",["redes"]],
   [2014,"Risk models for the Prize Collecting Steiner Tree problems with interval data","A. Candia-Véjar, X.-J. Chen, X.-D. Hu, B. Li","Acta Mathematicae Applicatae Sinica, 30(1), 1-26",["redes"]],

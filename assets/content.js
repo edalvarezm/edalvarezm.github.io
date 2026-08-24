@@ -120,7 +120,10 @@ window.SITE = {
          en:"Assembly-line balancing, storage, last-mile, and operations logistics."} },
     { icon:"school", topic:"educacion", t:{es:"Educación superior y calidad",en:"Higher education & quality"},
       d:{es:"Financiamiento, aseguramiento de la calidad, gobernanza y analítica de datos universitarios.",
-         en:"Funding, quality assurance, governance, and university data analytics."} }
+         en:"Funding, quality assurance, governance, and university data analytics."} },
+    { icon:"scale", topic:"decision", t:{es:"Decisión multicriterio",en:"Multicriteria decision"},
+      d:{es:"Operadores de agregación y métodos de decisión en grupo bajo información lingüística difusa.",
+         en:"Aggregation operators and group decision-making methods under fuzzy linguistic information."} }
   ],
 
   education: [

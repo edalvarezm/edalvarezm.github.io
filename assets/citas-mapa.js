@@ -34,6 +34,11 @@
   function L(o){var l=window.LANG||'es';return o[l]||o.es;}
   function css(v,fb){var s=getComputedStyle(document.documentElement).getPropertyValue(v).trim();return s||fb;}
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function flagImg(cc){
+    if(!cc) return '';
+    var c=String(cc).toLowerCase();
+    return '<img class="citmap-flag" src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/'+c+'.svg" width="18" height="12" alt="" loading="lazy" onerror="this.hidden=1">';
+  }
 
   var built=false, data=null, topo=null, codes=null, failed=false;
 
@@ -181,7 +186,7 @@
     /* se omiten del ranking las universidades del entorno cercano */
     var OMITIR=/University of Talca|Catholic University of the Maule/i;
     document.getElementById('citmap-li').innerHTML=data.inst.filter(function(x){return !OMITIR.test(x[0]);}).slice(0,10).map(function(x){
-      return '<li><span class="n">'+esc(x[0])+(x[1]?' <em>('+x[1]+')</em>':'')+'</span><span class="v">'+x[2]+'</span></li>';
+      return '<li><span class="n">'+flagImg(x[1])+'<span>'+esc(x[0])+'</span></span><span class="v">'+x[2]+'</span></li>';
     }).join('');
   }
 

@@ -320,8 +320,8 @@ section.block.alt{background:var(--papel-2)}
 .citmap-chip{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:10px 16px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 2px rgba(22,24,29,.04)}
 .citmap-chip b{font-size:20px;color:var(--cobalto);font-weight:800}
 .citmap-chip span{font-size:11.5px;color:var(--gris)}
-.citmap-flex{display:flex;gap:22px;align-items:flex-start}
-.citmap-map{flex:1 1 62%;position:relative;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:10px;box-shadow:0 1px 2px rgba(22,24,29,.04)}
+.citmap-flex{display:flex;flex-direction:column;gap:22px}
+.citmap-map{width:100%;position:relative;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:10px;box-shadow:0 1px 2px rgba(22,24,29,.04)}
 .citmap-map svg{display:block;width:100%;height:auto}
 .citmap-map svg .citmap-on{cursor:pointer}
 .citmap-map svg .citmap-on:hover{stroke:var(--cobalto-oscuro);stroke-width:1.1}
@@ -330,7 +330,8 @@ section.block.alt{background:var(--papel-2)}
 .citmap-tip span{opacity:.85}
 .citmap-tip ul{margin:7px 0 0;padding:7px 0 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.2)}
 .citmap-tip li{margin:2px 0;opacity:.92}
-.citmap-panel{flex:1 1 34%;display:flex;flex-direction:column;gap:18px;min-width:270px}
+.citmap-panel{display:flex;flex-direction:row;gap:28px}
+.citmap-panel>div{flex:1 1 50%;min-width:0}
 .citmap-panel h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
 .citmap-list{list-style:none;margin:0;padding:0;counter-reset:cm}
 .citmap-list li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dashed var(--linea);font-size:13px}
@@ -341,7 +342,7 @@ section.block.alt{background:var(--papel-2)}
 .citmap-list .bar i{display:block;height:100%;background:var(--cobalto);border-radius:4px}
 .citmap-list .v{flex:none;font-weight:700;color:var(--cobalto);font-size:12.5px;min-width:26px;text-align:right}
 .citmap-list-i .n{white-space:normal;line-height:1.3}
-@media(max-width:900px){.citmap-flex{flex-direction:column}.citmap-panel{min-width:0;width:100%}}
+@media(max-width:760px){.citmap-panel{flex-direction:column;gap:18px}}
 
 /* footer */
 .site-footer{padding:30px 0;text-align:center;color:var(--gris);font-size:13px}

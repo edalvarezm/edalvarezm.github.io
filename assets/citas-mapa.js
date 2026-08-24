@@ -21,8 +21,8 @@
 
   var TXT={
     title:{es:"Alcance internacional de las citas",en:"International reach of citations"},
-    lead:{es:"Países e instituciones de los trabajos de otros autores que citan esta investigación. Se excluyen las autocitas. Datos: OpenAlex, actualizados automáticamente.",
-          en:"Countries and institutions of works by other authors citing this research. Self-citations are excluded. Data: OpenAlex, updated automatically."},
+    lead:{es:"Países e instituciones de los trabajos de otros autores que citan esta investigación. Se excluyen las autocitas. Datos: OpenAlex, actualizados automáticamente — no coinciden con los totales de Google Scholar, pues son bases y conteos distintos (aquí se cuentan trabajos citantes únicos, no citas).",
+          en:"Countries and institutions of works by other authors citing this research. Self-citations are excluded. Data: OpenAlex, updated automatically — figures won't match Google Scholar totals, since they're different databases and counts (this counts unique citing works, not citations)."},
     chips:{es:["trabajos citantes","países","instituciones","autocitas excluidas"],
            en:["citing works","countries","institutions","self-citations excluded"]},
     topP:{es:"Principales países",en:"Top countries"},

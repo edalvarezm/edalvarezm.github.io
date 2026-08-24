@@ -231,6 +231,7 @@
     if(window.ProjectsModule) window.ProjectsModule.render();
     if(window.ScholarModule) window.ScholarModule.render();
     if(window.ConstellationModule) window.ConstellationModule.render();
+    if(window.CitasMapaModule) window.CitasMapaModule.render();
     if(window.NewsModule) window.NewsModule.render();
     if(window.AuthModule) window.AuthModule.render();
   }

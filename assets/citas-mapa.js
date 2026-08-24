@@ -10,7 +10,7 @@
   var AUTORES=['A5000845814','A5120984223'];          /* perfiles OpenAlex propios */
   var MAILTO='mailto=eduardo.alvmir@gmail.com';
   var API='https://api.openalex.org';
-  var CACHE_KEY='eam-citmap-v3', CACHE_H=24;
+  var CACHE_KEY='eam-citmap-v4', CACHE_H=24;
   var CDN_TOPO='https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
   var CDN_CODES='https://cdn.jsdelivr.net/npm/i18n-iso-countries@7.14.0/codes.json';
 
@@ -23,14 +23,14 @@
     title:{es:"Alcance internacional de las citas",en:"International reach of citations"},
     lead:{es:"Países e instituciones de los trabajos de otros autores que citan esta investigación. Se excluyen las autocitas. Datos: OpenAlex, actualizados automáticamente — no coinciden con los totales de Google Scholar, pues son bases y conteos distintos (aquí se cuentan trabajos citantes únicos, no citas).",
           en:"Countries and institutions of works by other authors citing this research. Self-citations are excluded. Data: OpenAlex, updated automatically — figures won't match Google Scholar totals, since they're different databases and counts (this counts unique citing works, not citations)."},
-    chips:{es:["trabajos citantes","países","instituciones","autocitas excluidas"],
-           en:["citing works","countries","institutions","self-citations excluded"]},
+    chips:{es:["trabajos que citan mis artículos","países","instituciones"],
+           en:["works that cite my papers","countries","institutions"]},
     topP:{es:"Principales países",en:"Top countries"},
     topI:{es:"Principales instituciones",en:"Top institutions"},
     topA:{es:"Investigadores que más citan",en:"Top citing researchers"},
     noteA:{es:"(excluye coautores)",en:"(co-authors excluded)"},
     works:{es:"trabajos",en:"works"},
-    tipWorks:{es:"trabajos citantes",en:"citing works"},
+    tipWorks:{es:"trabajos que citan mis artículos",en:"works that cite my papers"},
     err:{es:"No fue posible cargar el mapa de citas.",en:"The citation map could not be loaded."}
   };
   function L(o){var l=window.LANG||'es';return o[l]||o.es;}
@@ -88,8 +88,9 @@
       var ext=rs[0].meta.count, tot=rs[1].meta.count;
       var paises=(rs[2].group_by||[]).map(function(g){return [g.key.split('/').pop(),g.count];});
       var gInst=rs[3].group_by||[];
-      /* se descartan coautores propios del ranking de investigadores */
-      var gAut=(rs[4].group_by||[]).filter(function(g){return !coauth.hasOwnProperty(g.key.split('/').pop());}).slice(0,10);
+      /* se descartan coautores propios y casos puntuales del ranking de investigadores */
+      var EXCLUIR_AUT=/^Jenny Morales$/i;
+      var gAut=(rs[4].group_by||[]).filter(function(g){return !coauth.hasOwnProperty(g.key.split('/').pop()) && !EXCLUIR_AUT.test(g.key_display_name||'');}).slice(0,10);
       /* la API trunca los grupos en 200; si llegamos al tope, declarar "200+" */
       var nInstTot=gInst.length>=200?'200+':String(gInst.length);
       var idsInst=gInst.map(function(g){return g.key.split('/').pop();});
@@ -201,7 +202,7 @@
     if(!data)return;
     document.getElementById('citmap-title').textContent=L(TXT.title);
     document.getElementById('citmap-lead').textContent=L(TXT.lead);
-    var chips=[[data.ext,0],[data.nPaises,1],[data.nInst,2],[data.auto,3]];
+    var chips=[[data.ext,0],[data.nPaises,1],[data.nInst,2]];
     document.getElementById('citmap-chips').innerHTML=chips.map(function(c){
       var v=(typeof c[0]==='number')?c[0].toLocaleString('es-CL'):String(c[0]);
       return '<div class="citmap-chip"><b>'+v+'</b><span>'+L(TXT.chips)[c[1]]+'</span></div>';

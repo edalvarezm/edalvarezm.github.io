@@ -31,5 +31,12 @@ window.PROJECTS = [
     file:"projects/indicadores.enc.json",
     title:{es:"Diseño de Ingeniería para Operacionalización de Procesos de Acreditación Carreras y Programas de Pregrado",en:"Engineering Design for the Operationalization of Undergraduate Degree and Program Accreditation Processes"},
     cat:{es:"Gestión universitaria · dirección",en:"University management · leadership"}
+  },
+  {
+    id:"votos-perdidos",
+    icon:"chart-bar",
+    file:"projects/votos-perdidos.enc.json",
+    title:{es:"Caracterización de votos perdidos",en:"Characterization of lost votes"},
+    cat:{es:"Análisis electoral",en:"Electoral analysis"}
   }
 ];

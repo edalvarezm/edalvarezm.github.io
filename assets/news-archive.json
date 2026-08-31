@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-08-24",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "CONAF",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://www.conaf.cl/chile-comparte-en-bolivia-su-experiencia-de-conservacion-efectiva-y-avances-en-la-lista-verde-de-la-uicn/",
+          "title": "Chile comparte en Bolivia su experiencia de conservación efectiva y avances en la Lista Verde de la UICN",
+          "summary": "CONAF expone su hoja de ruta de efectividad de manejo y certificación Lista Verde de la UICN."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://theconversation.com/independent-commissions-can-ditch-partisanship-and-make-redistricting-fairer-to-voters-169234",
+          "title": "Independent commissions can ditch partisanship and make redistricting fairer to voters",
+          "summary": "Commission design matters: Michigan's 13 citizen members show how structure shapes fairer district maps."
+        },
+        {
+          "topic": "redes",
+          "source": "Quanta Magazine",
+          "date": "ago 2026",
+          "lang": "EN",
+          "url": "https://www.quantamagazine.org/huge-breakthrough-in-the-math-of-imbalance-20260821/",
+          "title": "‘Huge Breakthrough’ in the Math of Imbalance",
+          "summary": "First progress in 30 years on the Komlós conjecture, the core problem of discrepancy theory."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/minsal-anuncia-que-el-nuevo-hospital-para-la-zona-norte-de-la-rm-se-hara-en-lampa/",
+          "title": "Minsal anuncia que el nuevo hospital para la zona norte de la RM se hará en Lampa",
+          "summary": "368 camas en Valle Grande, Lampa, para más de un millón de habitantes."
+        },
+        {
+          "topic": "energia",
+          "source": "IEA",
+          "date": "2026",
+          "lang": "EN",
+          "url": "https://www.iea.org/reports/electricity-mid-year-update-2026/executive-summary",
+          "title": "Electricity Mid-Year Update 2026 — Executive summary",
+          "summary": "Global electricity demand set to grow 3.6% in 2026 and 3.8% in 2027."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "ago 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/culvers-taps-armada-to-revamp-supply-chain-targets-expansion/828146/",
+          "title": "Culver’s taps Armada to revamp supply chain, targets expansion",
+          "summary": "Pooling slow-moving inventory into redistribution nodes cuts freight and moves stock closer to demand."
+        },
+        {
+          "topic": "educacion",
+          "source": "Subsecretaría de Educación Superior",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://educacionsuperior.mineduc.cl/2026/08/12/subsecretaria-de-educacion-superior-lanza-el-consejo-ejecutivo-y-los-dialogos-tematicos-de-chile-crece-tp/",
+          "title": "Subsecretaría de Educación Superior lanza el Consejo Ejecutivo y los Diálogos Temáticos de Chile Crece TP",
+          "summary": "Hoja de ruta para articular Estado, instituciones y sector productivo en formación técnico-profesional."
+        }
+      ]
+    },
+    {
       "date": "2026-08-17",
       "items": [
         {
@@ -409,4 +477,4 @@
       ]
     }
   ]
-}
+        }

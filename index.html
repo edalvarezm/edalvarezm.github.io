@@ -320,8 +320,12 @@
       <button id="m-close" aria-label="Cerrar"><i class="ti ti-x"></i></button>
     </div>
     <h3 id="m-title">Proyecto</h3>
+    <div class="err" id="m-err"></div>
+    <div id="m-google-only" style="display:none">
+      <div id="m-google-btn" style="display:flex;justify-content:center;min-height:44px"></div>
+      <p class="hint" data-i18n="login_hint_google">Acceso restringido al propietario del sitio.</p>
+    </div>
     <form id="login-form">
-      <div class="err" id="m-err"></div>
       <label for="m-user" data-i18n="login_user">Usuario</label>
       <input type="text" id="m-user" autocomplete="username" spellcheck="false">
       <label for="m-pass" data-i18n="login_pass">Contraseña</label>
@@ -348,9 +352,10 @@
 <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <script src="assets/citas-mapa.js?v=20260824g"></script>
 <script src="assets/news.js?v=20260727"></script>
-<script src="assets/projects-index.js?v=20260824a"></script>
+<script src="assets/projects-index.js?v=20260831"></script>
 <script src="assets/hero.js?v=20260810"></script>
-<script src="assets/projects.js?v=20260726"></script>
+<script src="https://accounts.google.com/gsi/client" async></script>
+<script src="assets/projects.js?v=20260831"></script>
 <script src="assets/scholar.js?v=20260726"></script>
 <script src="assets/auth.js?v=20260729"></script>
 <script src="assets/app.js?v=20260824"></script>

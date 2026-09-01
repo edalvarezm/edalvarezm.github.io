@@ -83,6 +83,7 @@ window.SITE = {
     login_btn:      { es:"Ingresar", en:"Sign in" },
     login_err:      { es:"Usuario o contraseña incorrectos.", en:"Incorrect username or password." },
     login_hint:     { es:"Cada proyecto tiene sus propios usuarios autorizados.", en:"Each project has its own authorized users." },
+    login_hint_google: { es:"Acceso restringido al propietario del sitio.", en:"Access restricted to the site owner." },
     viewer_close:   { es:"Cerrar", en:"Close" },
 
     cluster_count:  { es:"publicaciones en esta área", en:"publications in this area" },

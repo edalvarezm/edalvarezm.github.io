@@ -38,5 +38,13 @@ window.PROJECTS = [
     file:"projects/votos-perdidos.enc.json",
     title:{es:"Caracterización de votos perdidos",en:"Characterization of lost votes"},
     cat:{es:"Análisis electoral",en:"Electoral analysis"}
+  },
+  {
+    id:"evaluaciones",
+    icon:"clipboard-check",
+    file:"projects/evaluaciones.enc.json",
+    googleOnly:true,
+    title:{es:"Herramienta de Evaluación",en:"Evaluation Tool"},
+    cat:{es:"Docencia · gestión de evaluaciones",en:"Teaching · assessment management"}
   }
 ];

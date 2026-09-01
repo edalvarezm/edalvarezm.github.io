@@ -38,6 +38,53 @@
     return dec.decode(htmlBuf);
   }
 
+  // ---- Acceso con Google (solo para proyectos marcados googleOnly) ----
+  // Mismo mecanismo que ya usa tools/mantenedor.html: un ítem del catálogo
+  // público (projects-index.js) puede llevar googleOnly:true para que, en
+  // vez de usuario/contraseña, el modal muestre "Acceder con Google" y solo
+  // deje pasar al correo de la lista GOOGLE_ALLOWED. Sigue siendo un portón,
+  // no cifrado real: el contenido del proyecto viaja igual de protegido (o
+  // desprotegido) que en el formato v2 de contraseña visible.
+  var GOOGLE_CLIENT_ID='145201385255-plu0mijfa3mjc6qs9o2il3adi00bv4lk.apps.googleusercontent.com';
+  var GOOGLE_ALLOWED=['eduardo.alvmir@gmail.com'];
+  var googleInited=false, googleBtnRendered=false;
+  function jwtPayload(t){ try{ var p=(t||'').split('.')[1].replace(/-/g,'+').replace(/_/g,'/'); return JSON.parse(decodeURIComponent(escape(atob(p)))); }catch(e){ return null; } }
+  async function handleGoogleCred(resp){
+    if(!state.current) return;
+    var p=jwtPayload(resp&&resp.credential);
+    var email=p?String(p.email||'').toLowerCase():'';
+    if(!(p && p.email_verified && GOOGLE_ALLOWED.indexOf(email)>=0)){
+      mErr.textContent=t('login_err'); mErr.classList.add('show');
+      return;
+    }
+    try{
+      var res=await fetch(state.current.file,{cache:'no-store'});
+      if(!res.ok) throw new Error('fetch');
+      var data=await res.json();
+      var html=dec.decode(b64ToBuf(data.content));
+      notifyLogin(state.current,email);
+      openViewer(state.current,html);
+      closeModal();
+    }catch(err){
+      mErr.textContent=t('login_err'); mErr.classList.add('show');
+    }
+  }
+  function ensureGoogle(){
+    if(googleInited) return;
+    if(!(window.google && google.accounts && google.accounts.id)) return setTimeout(ensureGoogle,300);
+    googleInited=true;
+    google.accounts.id.initialize({ client_id:GOOGLE_CLIENT_ID, callback:handleGoogleCred, cancel_on_tap_outside:true, context:'signin' });
+  }
+  function renderGoogleButtonOnce(){
+    ensureGoogle();
+    if(googleBtnRendered || !(window.google && google.accounts && google.accounts.id)) return;
+    var box=document.getElementById('m-google-btn'); if(!box) return;
+    try{
+      google.accounts.id.renderButton(box, { type:'standard', theme:'outline', size:'large', text:'signin_with', shape:'pill', logo_alignment:'center', width:280 });
+      googleBtnRendered=true;
+    }catch(e){}
+  }
+
   // ---- Notificación de acceso por correo (Web3Forms) ----
   // Clave de acceso de Web3Forms, ligada a eduardo.alvmir@gmail.com.
   // El aviso incluye proyecto + usuario + fecha/hora; NUNCA la contraseña.
@@ -86,7 +133,7 @@
     });
   }
 
-  var modal, mUser, mPass, mErr, mTitle, mBtn;
+  var modal, mUser, mPass, mErr, mTitle, mBtn, mForm, mGoogleOnly;
   function ensureModal(){
     if(modal) return;
     modal=document.getElementById('login-modal');
@@ -95,9 +142,11 @@
     mErr=document.getElementById('m-err');
     mTitle=document.getElementById('m-title');
     mBtn=document.getElementById('m-btn');
+    mForm=document.getElementById('login-form');
+    mGoogleOnly=document.getElementById('m-google-only');
     document.getElementById('m-close').addEventListener('click',closeModal);
     modal.addEventListener('click',function(e){ if(e.target===modal) closeModal(); });
-    document.getElementById('login-form').addEventListener('submit',onSubmit);
+    mForm.addEventListener('submit',onSubmit);
   }
   function openModal(p){
     ensureModal();
@@ -106,8 +155,16 @@
     mTitle.textContent=(p.title[L]||p.title.es);
     mErr.classList.remove('show');
     mUser.value=''; mPass.value='';
+    if(p.googleOnly){
+      mForm.style.display='none';
+      mGoogleOnly.style.display='';
+      renderGoogleButtonOnce();
+    } else {
+      mForm.style.display='';
+      mGoogleOnly.style.display='none';
+    }
     modal.classList.add('open');
-    setTimeout(function(){ mUser.focus(); },50);
+    setTimeout(function(){ if(!p.googleOnly) mUser.focus(); },50);
   }
   function closeModal(){ if(modal) modal.classList.remove('open'); }
 

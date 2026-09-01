@@ -131,6 +131,22 @@
       card.querySelector('.open-proj').addEventListener('click',function(){ openModal(p); });
       grid.appendChild(card);
     });
+    autoOpenFromHash();
+  }
+
+  // ---- Deep link directo a un proyecto: #proyecto=<id> (p.ej. para
+  // compartir en Moodle/correo un link que abre el gate de ese proyecto,
+  // sin exponer nada del contenido — igual hay que pasar el login). Solo
+  // se dispara una vez, aunque renderCards() se repita al cambiar de idioma.
+  var autoOpened=false;
+  function autoOpenFromHash(){
+    if(autoOpened) return;
+    var m=/[#&]proyecto=([a-z0-9_-]+)/i.exec(location.hash);
+    if(!m) return;
+    var p=(window.PROJECTS||[]).find(function(x){return x.id===m[1];});
+    if(!p) return;
+    autoOpened=true;
+    openModal(p);
   }
 
   var modal, mUser, mPass, mErr, mTitle, mBtn, mForm, mGoogleOnly;

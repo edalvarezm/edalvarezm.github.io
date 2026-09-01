@@ -77,12 +77,18 @@
   }
   function renderGoogleButtonOnce(){
     ensureGoogle();
-    if(googleBtnRendered || !(window.google && google.accounts && google.accounts.id)) return;
+    if(googleBtnRendered) return;
+    // El script de Google (async) puede no estar listo aún cuando el modal se
+    // abre de inmediato (p.ej. vía el deep link #proyecto=..., que dispara el
+    // modal apenas carga la página, antes de que accounts.google.com termine
+    // de cargar) — reintenta hasta que esté disponible, en vez de rendirse
+    // en el primer intento.
+    if(!(window.google && google.accounts && google.accounts.id)){ setTimeout(renderGoogleButtonOnce,300); return; }
     var box=document.getElementById('m-google-btn'); if(!box) return;
     try{
       google.accounts.id.renderButton(box, { type:'standard', theme:'outline', size:'large', text:'signin_with', shape:'pill', logo_alignment:'center', width:280 });
       googleBtnRendered=true;
-    }catch(e){}
+    }catch(e){ setTimeout(renderGoogleButtonOnce,300); }
   }
 
   // ---- Notificación de acceso por correo (Web3Forms) ----

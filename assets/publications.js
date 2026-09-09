@@ -4,6 +4,7 @@
    Temas: conservacion | distritos | redes | salud | energia | lineas | educacion | decision
    ========================================================================== */
 window.PUBLICATIONS = [
+  [2026,"Sixty years of research on districting problems: Models, algorithms, and applications","C. Campos-Valdés, J. Pereira, R.Z. Ríos-Mercado, D.L. Huerta-Muñoz","Omega, 103654",["distritos"]],
   [2026,"A MAUT-MIP Framework for Spatial Multi-Criteria Management Planning: A Forestry Fuel Management Case Study","F. Ulloa-Fierro, J. Carrasco-Barra, G. Krsnik, J. Garcia-Gonzalo, J.R. González-Olabarria","Environmental Modeling & Assessment, 1-13",["conservacion"]],
   [2026,"Hydrogen production supported on nuclear cogeneration: An energy planning view","P. Vargas-Ferrer, C. Tenreiro, D. Olave-Rojas","International Journal of Hydrogen Energy, 235, 155074",["energia"]],
   [2026,"Competing for the most profitable tour: The orienteering interdiction game","M. Sinnl, K. Tanınmış","Computers & Industrial Engineering, 214, 111900",["redes"]],

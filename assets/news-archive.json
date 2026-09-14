@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-08-31",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "CONAF",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://www.conaf.cl/parque-nacional-vicente-perez-rosales-conmemora-100-anos-como-simbolo-de-la-conservacion-en-chile/",
+          "title": "Parque Nacional Vicente Pérez Rosales conmemora 100 años como símbolo de la conservación en Chile",
+          "summary": "El primer parque nacional chileno cumple un siglo, en pleno traspaso de las áreas protegidas desde CONAF al SBAP."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "2025",
+          "lang": "EN",
+          "url": "https://theconversation.com/tit-for-tat-gerrymandering-wars-wont-end-soon-what-happens-in-texas-and-california-doesnt-stay-there-262835",
+          "title": "Tit-for-tat gerrymandering wars won't end soon – what happens in Texas and California doesn't stay there",
+          "summary": "Retaliatory mid-decade map-drawing escalates across states ahead of the midterms, reshaping how district boundaries get designed."
+        },
+        {
+          "topic": "redes",
+          "source": "Quanta Magazine",
+          "date": "ago 2026",
+          "lang": "EN",
+          "url": "https://www.quantamagazine.org/does-computer-science-need-computers-20260828/",
+          "title": "Does Computer Science Need Computers?",
+          "summary": "Theoretical computer science advances with pen-and-paper reasoning about computation — no hardware required."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/ministra-de-salud-inaugura-el-primer-sar-para-la-comuna-de-vina-del-mar-con-capacidad-para-realizar-65-mil-atenciones-anuales/",
+          "title": "Ministra de Salud inaugura el primer SAR para la comuna de Viña del Mar con capacidad para realizar 65 mil atenciones anuales",
+          "summary": "El nuevo servicio de alta resolutividad beneficiará a más de 100 mil personas y descongestionará las urgencias hospitalarias."
+        },
+        {
+          "topic": "energia",
+          "source": "CNE",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/nueva-licitacion-publica-de-la-comision-nacional-de-energia/",
+          "title": "Nueva licitación pública de la Comisión Nacional de Energía",
+          "summary": "La CNE lanza la Licitación de Suministro 2026/01 para clientes regulados; ofertas hasta octubre de 2026."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "ago 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/port-of-los-angeles-preps-for-cargo-bump-as-shippers-navigate-global-risks/828376/",
+          "title": "Port of Los Angeles preps for cargo bump as shippers navigate global risks",
+          "summary": "L.A. port expects about 5% more cargo as shippers reroute around Red Sea and Panama Canal risks."
+        },
+        {
+          "topic": "educacion",
+          "source": "ANID",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://anid.cl/concursos/concurso-de-fomento-a-la-vinculacion-internacional-para-instituciones-de-investigacion-2026/",
+          "title": "Concurso de Fomento a la Vinculación Internacional para Instituciones de Investigación 2026",
+          "summary": "ANID financia estrategias de vinculación internacional para fortalecer la investigación de universidades e instituciones chilenas."
+        }
+      ]
+    },
+    {
       "date": "2026-08-24",
       "items": [
         {
@@ -477,4 +545,4 @@
       ]
     }
   ]
-        }
+}

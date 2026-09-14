@@ -1,68 +1,68 @@
 {
-  "updated": "2026-08-31",
+  "updated": "2026-09-14",
   "items": [
     {
       "topic": "conservacion",
-      "source": "CONAF",
-      "date": "ago 2026",
+      "source": "SBAP",
+      "date": "sep 2026",
       "lang": "ES",
-      "url": "https://www.conaf.cl/parque-nacional-vicente-perez-rosales-conmemora-100-anos-como-simbolo-de-la-conservacion-en-chile/",
-      "title": "Parque Nacional Vicente Pérez Rosales conmemora 100 años como símbolo de la conservación en Chile",
-      "summary": "El primer parque nacional chileno cumple un siglo, en pleno traspaso de las áreas protegidas desde CONAF al SBAP."
+      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/09/09/servicio-y-conaf-firman-comodato-de-230-nuevas-c%C3%A1maras-trampa-para-ampliar-el-monitoreo-de-fauna-en-%C3%A1reas-protegidas",
+      "title": "Servicio y CONAF firman comodato de 230 nuevas cámaras trampa para ampliar el monitoreo de fauna en áreas protegidas",
+      "summary": "Las cámaras se suman a las 1.000 del Programa Nacional de Fotomonitoreo, que cubre 35 áreas protegidas en 16 regiones."
     },
     {
       "topic": "distritos",
-      "source": "The Conversation",
-      "date": "2025",
-      "lang": "EN",
-      "url": "https://theconversation.com/tit-for-tat-gerrymandering-wars-wont-end-soon-what-happens-in-texas-and-california-doesnt-stay-there-262835",
-      "title": "Tit-for-tat gerrymandering wars won't end soon – what happens in Texas and California doesn't stay there",
-      "summary": "Retaliatory mid-decade map-drawing escalates across states ahead of the midterms, reshaping how district boundaries get designed."
+      "source": "SUBDERE",
+      "date": "ago 2026",
+      "lang": "ES",
+      "url": "https://ide.subdere.gov.cl/consejo-de-ministros-ratifica-liderazgo-tecnico-de-subdere-en-la-cartografia-oficial-de-la-division-politico-administrativa-del-pais/",
+      "title": "Consejo de Ministros ratifica liderazgo técnico de Subdere en la cartografía oficial de la división político-administrativa del país",
+      "summary": "Los organismos públicos deberán usar obligatoriamente la cartografía oficial de límites comunales, provinciales y regionales que mantiene Subdere."
     },
     {
       "topic": "redes",
       "source": "Quanta Magazine",
-      "date": "ago 2026",
+      "date": "sep 2026",
       "lang": "EN",
-      "url": "https://www.quantamagazine.org/does-computer-science-need-computers-20260828/",
-      "title": "Does Computer Science Need Computers?",
-      "summary": "Theoretical computer science advances with pen-and-paper reasoning about computation — no hardware required."
+      "url": "https://www.quantamagazine.org/the-four-color-theorem-gets-a-rare-new-proof-20260910/",
+      "title": "The Four-Color Theorem Gets a Rare New Proof",
+      "summary": "New computer proof yields an n log n graph-coloring algorithm, down from n², and fresh structure in planar graphs."
     },
     {
       "topic": "salud",
       "source": "Minsal",
-      "date": "ago 2026",
+      "date": "sep 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/ministra-de-salud-inaugura-el-primer-sar-para-la-comuna-de-vina-del-mar-con-capacidad-para-realizar-65-mil-atenciones-anuales/",
-      "title": "Ministra de Salud inaugura el primer SAR para la comuna de Viña del Mar con capacidad para realizar 65 mil atenciones anuales",
-      "summary": "El nuevo servicio de alta resolutividad beneficiará a más de 100 mil personas y descongestionará las urgencias hospitalarias."
+      "url": "https://www.minsal.cl/minsal-presenta-avances-de-gestion-y-ejecucion-presupuestaria-mayor-productividad-reduccion-de-espera-oncologica-y-foco-en-eficiencia/",
+      "title": "Minsal presenta avances de gestión y ejecución presupuestaria: mayor productividad, reducción de espera oncológica y foco en eficiencia",
+      "summary": "Las garantías GES oncológicas retrasadas bajaron 26% entre febrero y julio; 72 de 80 hospitales cumplen los indicadores GRD."
     },
     {
       "topic": "energia",
-      "source": "CNE",
-      "date": "jul 2026",
+      "source": "Coordinador Eléctrico Nacional",
+      "date": "sep 2026",
       "lang": "ES",
-      "url": "https://www.cne.cl/prensa/prensa-2026/07-julio-2026/nueva-licitacion-publica-de-la-comision-nacional-de-energia/",
-      "title": "Nueva licitación pública de la Comisión Nacional de Energía",
-      "summary": "La CNE lanza la Licitación de Suministro 2026/01 para clientes regulados; ofertas hasta octubre de 2026."
+      "url": "https://www.coordinador.cl/novedades/licitacion-de-obras-para-fortalecer-red-de-transmision-por-mas-de-500-millones-de-dolares-recibe-48-ofertas-tecnicas/",
+      "title": "Licitación de obras para fortalecer red de transmisión por más de 500 millones de dólares recibe 48 ofertas técnicas",
+      "summary": "Nueve oferentes compiten por 19 obras nuevas, incluida la línea 2x500 kV Tiquel–Tiuquilemu entre Maule y Ñuble."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
-      "date": "ago 2026",
+      "date": "sep 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/port-of-los-angeles-preps-for-cargo-bump-as-shippers-navigate-global-risks/828376/",
-      "title": "Port of Los Angeles preps for cargo bump as shippers navigate global risks",
-      "summary": "L.A. port expects about 5% more cargo as shippers reroute around Red Sea and Panama Canal risks."
+      "url": "https://www.supplychaindive.com/news/amazon-projects-reduced-reliance-on-usps-ups-for-delivery-report/829820/",
+      "title": "Amazon projects reduced reliance on USPS, UPS for delivery: report",
+      "summary": "Amazon expects to deliver over 86% of its own U.S. packages next year, rising to nearly 89% by 2029."
     },
     {
       "topic": "educacion",
-      "source": "ANID",
+      "source": "Subsecretaría de Educación Superior",
       "date": "ago 2026",
       "lang": "ES",
-      "url": "https://anid.cl/concursos/concurso-de-fomento-a-la-vinculacion-internacional-para-instituciones-de-investigacion-2026/",
-      "title": "Concurso de Fomento a la Vinculación Internacional para Instituciones de Investigación 2026",
-      "summary": "ANID financia estrategias de vinculación internacional para fortalecer la investigación de universidades e instituciones chilenas."
+      "url": "https://educacionsuperior.mineduc.cl/2026/08/31/centros-de-formacion-tecnica-estatales-poseen-la-tasa-de-retencion-de-1er-ano-mas-baja-del-sistema/",
+      "title": "Centros de Formación Técnica Estatales poseen la tasa de retención de 1er año más baja del sistema",
+      "summary": "La retención de primer año llega a 77,9%, la más alta desde 2007; universidades 84,7%, IP 72,5%, CFT 69,9%."
     }
   ]
 }

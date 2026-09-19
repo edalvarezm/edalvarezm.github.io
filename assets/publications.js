@@ -4,6 +4,7 @@
    Temas: conservacion | distritos | redes | salud | energia | lineas | educacion | decision
    ========================================================================== */
 window.PUBLICATIONS = [
+  [2026,"Treemün: A Python framework for spatial growth-and-yield simulation and harvest scheduling optimization in plantation forests","F. Ulloa-Fierro, J. Garcia-Gonzalo, J.R. González-Olabarria, B. Mola-Yudego, A. Miranda, J. Carrasco-Barra, A. Weintraub","Ecological Informatics, 104044",["conservacion"]],
   [2026,"Sixty years of research on districting problems: Models, algorithms, and applications","C. Campos-Valdés, J. Pereira, R.Z. Ríos-Mercado, D.L. Huerta-Muñoz","Omega, 103654",["distritos"]],
   [2026,"A MAUT-MIP Framework for Spatial Multi-Criteria Management Planning: A Forestry Fuel Management Case Study","F. Ulloa-Fierro, J. Carrasco-Barra, G. Krsnik, J. Garcia-Gonzalo, J.R. González-Olabarria","Environmental Modeling & Assessment, 1-13",["conservacion"]],
   [2026,"Hydrogen production supported on nuclear cogeneration: An energy planning view","P. Vargas-Ferrer, C. Tenreiro, D. Olave-Rojas","International Journal of Hydrogen Energy, 235, 155074",["energia"]],
@@ -149,5 +150,6 @@ window.JOURNAL_METRICS = {
   "4OR":{wif:2.0,sq:"Q1"},
   "Theoretical Computer Science":{wif:1.3,sq:"Q2"},
   "RAIRO - Operations Research":{wif:1.5,sq:"Q2"},
-  "Lecture Notes in Computer Science":{sq:"Q2",sjr:true}
+  "Lecture Notes in Computer Science":{sq:"Q2",sjr:true},
+  "Ecological Informatics":{wif:8.5,sq:"Q1"}
 };

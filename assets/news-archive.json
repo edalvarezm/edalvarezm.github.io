@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-09-14",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "SBAP",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/09/09/servicio-y-conaf-firman-comodato-de-230-nuevas-c%C3%A1maras-trampa-para-ampliar-el-monitoreo-de-fauna-en-%C3%A1reas-protegidas",
+          "title": "Servicio y CONAF firman comodato de 230 nuevas cámaras trampa para ampliar el monitoreo de fauna en áreas protegidas",
+          "summary": "Las cámaras se suman a las 1.000 del Programa Nacional de Fotomonitoreo, que cubre 35 áreas protegidas en 16 regiones."
+        },
+        {
+          "topic": "distritos",
+          "source": "SUBDERE",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://ide.subdere.gov.cl/consejo-de-ministros-ratifica-liderazgo-tecnico-de-subdere-en-la-cartografia-oficial-de-la-division-politico-administrativa-del-pais/",
+          "title": "Consejo de Ministros ratifica liderazgo técnico de Subdere en la cartografía oficial de la división político-administrativa del país",
+          "summary": "Los organismos públicos deberán usar obligatoriamente la cartografía oficial de límites comunales, provinciales y regionales que mantiene Subdere."
+        },
+        {
+          "topic": "redes",
+          "source": "Quanta Magazine",
+          "date": "sep 2026",
+          "lang": "EN",
+          "url": "https://www.quantamagazine.org/the-four-color-theorem-gets-a-rare-new-proof-20260910/",
+          "title": "The Four-Color Theorem Gets a Rare New Proof",
+          "summary": "New computer proof yields an n log n graph-coloring algorithm, down from n², and fresh structure in planar graphs."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/minsal-presenta-avances-de-gestion-y-ejecucion-presupuestaria-mayor-productividad-reduccion-de-espera-oncologica-y-foco-en-eficiencia/",
+          "title": "Minsal presenta avances de gestión y ejecución presupuestaria: mayor productividad, reducción de espera oncológica y foco en eficiencia",
+          "summary": "Las garantías GES oncológicas retrasadas bajaron 26% entre febrero y julio; 72 de 80 hospitales cumplen los indicadores GRD."
+        },
+        {
+          "topic": "energia",
+          "source": "Coordinador Eléctrico Nacional",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.coordinador.cl/novedades/licitacion-de-obras-para-fortalecer-red-de-transmision-por-mas-de-500-millones-de-dolares-recibe-48-ofertas-tecnicas/",
+          "title": "Licitación de obras para fortalecer red de transmisión por más de 500 millones de dólares recibe 48 ofertas técnicas",
+          "summary": "Nueve oferentes compiten por 19 obras nuevas, incluida la línea 2x500 kV Tiquel–Tiuquilemu entre Maule y Ñuble."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "sep 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/amazon-projects-reduced-reliance-on-usps-ups-for-delivery-report/829820/",
+          "title": "Amazon projects reduced reliance on USPS, UPS for delivery: report",
+          "summary": "Amazon expects to deliver over 86% of its own U.S. packages next year, rising to nearly 89% by 2029."
+        },
+        {
+          "topic": "educacion",
+          "source": "Subsecretaría de Educación Superior",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://educacionsuperior.mineduc.cl/2026/08/31/centros-de-formacion-tecnica-estatales-poseen-la-tasa-de-retencion-de-1er-ano-mas-baja-del-sistema/",
+          "title": "Centros de Formación Técnica Estatales poseen la tasa de retención de 1er año más baja del sistema",
+          "summary": "La retención de primer año llega a 77,9%, la más alta desde 2007; universidades 84,7%, IP 72,5%, CFT 69,9%."
+        }
+      ]
+    },
+    {
       "date": "2026-08-31",
       "items": [
         {

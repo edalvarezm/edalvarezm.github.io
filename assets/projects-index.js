@@ -46,5 +46,12 @@ window.PROJECTS = [
     googleOnly:true,
     title:{es:"Herramienta de Evaluación",en:"Evaluation Tool"},
     cat:{es:"Docencia · gestión de evaluaciones",en:"Teaching · assessment management"}
+  },
+  {
+    id:"acreditacion-voluntaria",
+    icon:"rocket",
+    file:"projects/acreditacion-voluntaria.enc.json",
+    title:{es:"Propuesta de Operacionalización de Procesos de Acreditación Voluntaria de Carreras y Programas de Pregrado",en:"Operationalization of Voluntary Accreditation Processes for Undergraduate Degrees and Programs"},
+    cat:{es:"Aseguramiento de la calidad · artículo 30 de la ley N° 20.129",en:"Quality assurance · Article 30 of Law 20,129"}
   }
 ];

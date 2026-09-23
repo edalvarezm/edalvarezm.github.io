@@ -26,13 +26,6 @@ window.PROJECTS = [
     cat:{es:"Gestión sanitaria · equipo hospital",en:"Healthcare · hospital team"}
   },
   {
-    id:"indicadores",
-    icon:"rocket",
-    file:"projects/indicadores.enc.json",
-    title:{es:"Diseño de Ingeniería para Operacionalización de Procesos de Acreditación Carreras y Programas de Pregrado",en:"Engineering Design for the Operationalization of Undergraduate Degree and Program Accreditation Processes"},
-    cat:{es:"Gestión universitaria · dirección",en:"University management · leadership"}
-  },
-  {
     id:"votos-perdidos",
     icon:"chart-bar",
     file:"projects/votos-perdidos.enc.json",

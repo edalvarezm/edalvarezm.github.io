@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-09-21",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "MMA",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://mma.gob.cl/municipios-de-la-rm-y-valparaiso-buscan-incorporar-la-conservacion-de-la-biodiversidad-en-la-gestion-municipal/",
+          "title": "Municipios de la RM y Valparaíso buscan incorporar la conservación de la biodiversidad en la gestión municipal",
+          "summary": "Primer Paisaje de Conservación Birregional: 11 comunas de la RM y Valparaíso articulan conectividad ecológica con apoyo del GEF-SBAP."
+        },
+        {
+          "topic": "distritos",
+          "source": "SUBDERE",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.subdere.gov.cl/sala-de-prensa/con-hist%C3%B3rica-participaci%C3%B3n-el-100-de-las-comunas-respondi%C3%B3-el-diagn%C3%B3stico-nacional",
+          "title": "Con histórica participación: el 100% de las comunas respondió el Diagnóstico Nacional de la Calidad de la Gestión Municipal 2026",
+          "summary": "Los 345 municipios respondieron el instrumento que compara series de datos comuna por comuna para focalizar brechas de gestión."
+        },
+        {
+          "topic": "redes",
+          "source": "Quanta Magazine",
+          "date": "sep 2026",
+          "lang": "EN",
+          "url": "https://www.quantamagazine.org/mathematicians-build-long-awaited-graph-sandwich-20260918/",
+          "title": "Mathematicians Build Long-Awaited Graph Sandwich",
+          "summary": "Proof of the Kim–Vu sandwich conjecture lets results on random binomial graphs transfer to random regular graphs."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/subsecretaria-de-redes-asistenciales-informa-medidas-ante-informe-de-contraloria-sobre-tiempos-de-espera-en-servicios-de-urgencia/",
+          "title": "Subsecretaría de Redes Asistenciales informa medidas ante informe de Contraloría sobre tiempos de espera en servicios de urgencia",
+          "summary": "Contraloría reportó 634.587 atenciones de urgencia en la RM sobre el estándar; los Servicios deberán fijar metas en 30 días."
+        },
+        {
+          "topic": "energia",
+          "source": "Coordinador Eléctrico Nacional",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.coordinador.cl/novedades/coordinador-define-plan-de-trabajo-para-implementar-despacho-de-centrales-de-generacion-de-manera-automatica/",
+          "title": "Coordinador define plan de trabajo para implementar despacho de centrales de generación de manera automática",
+          "summary": "El despacho económico automático con restricciones de seguridad (SCED) se implementará por etapas entre 2026 y 2029."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "sep 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/usps-network-revamp-challenges-on-time-delivery-from-rural-areas/830507/",
+          "title": "USPS network revamp challenges on-time delivery from rural areas",
+          "summary": "Consolidating trips from post offices over 50 miles from hubs cut costs but slowed service most for rural ZIP codes."
+        },
+        {
+          "topic": "educacion",
+          "source": "Mineduc",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.mineduc.cl/caida-en-los-resultados-pisa-2025-ratifica-necesidad-de-poner-el-foco-en-el-logro-de-los-aprendizajes/",
+          "title": "Caída en los resultados PISA 2025 ratifica necesidad de poner el foco en el logro de los aprendizajes",
+          "summary": "Chile cae 9 puntos en Matemática y 12 en Lectura; el 59% no alcanza el Nivel 2 en Matemática."
+        }
+      ]
+    },
+    {
       "date": "2026-09-14",
       "items": [
         {

@@ -1,68 +1,68 @@
 {
-  "updated": "2026-09-21",
+  "updated": "2026-09-28",
   "items": [
     {
       "topic": "conservacion",
-      "source": "MMA",
-      "date": "sep 2026",
+      "source": "SBAP / CONAF",
+      "date": "ago 2026",
       "lang": "ES",
-      "url": "https://mma.gob.cl/municipios-de-la-rm-y-valparaiso-buscan-incorporar-la-conservacion-de-la-biodiversidad-en-la-gestion-municipal/",
-      "title": "Municipios de la RM y Valparaíso buscan incorporar la conservación de la biodiversidad en la gestión municipal",
-      "summary": "Primer Paisaje de Conservación Birregional: 11 comunas de la RM y Valparaíso articulan conectividad ecológica con apoyo del GEF-SBAP."
+      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/08/03/sbap-y-conaf-presentan-ruta-para-la-integraci%C3%B3n-de-programa-de-%C3%A1reas-silvestres-protegidas-a-la-nueva-instituci%C3%B3n",
+      "title": "SBAP y CONAF presentan ruta para la integración de Programa de Áreas Silvestres Protegidas a la nueva institución",
+      "summary": "Plan para integrar 110 áreas silvestres protegidas al SBAP antes de marzo de 2027."
     },
     {
       "topic": "distritos",
       "source": "SUBDERE",
-      "date": "sep 2026",
+      "date": "jul 2026",
       "lang": "ES",
-      "url": "https://www.subdere.gov.cl/sala-de-prensa/con-hist%C3%B3rica-participaci%C3%B3n-el-100-de-las-comunas-respondi%C3%B3-el-diagn%C3%B3stico-nacional",
-      "title": "Con histórica participación: el 100% de las comunas respondió el Diagnóstico Nacional de la Calidad de la Gestión Municipal 2026",
-      "summary": "Los 345 municipios respondieron el instrumento que compara series de datos comuna por comuna para focalizar brechas de gestión."
+      "url": "https://www.subdere.gov.cl/sala-de-prensa/subdere-fortalece-la-gesti%C3%B3n-territorial-con-nuevas-funcionalidades-en-la-plataforma",
+      "title": "Subdere fortalece la gestión territorial con nuevas funcionalidades en la plataforma Geonodo",
+      "summary": "Nuevos tableros, visores cartográficos y app móvil para apoyar el diseño y análisis territorial."
     },
     {
       "topic": "redes",
-      "source": "Quanta Magazine",
-      "date": "sep 2026",
-      "lang": "EN",
-      "url": "https://www.quantamagazine.org/mathematicians-build-long-awaited-graph-sandwich-20260918/",
-      "title": "Mathematicians Build Long-Awaited Graph Sandwich",
-      "summary": "Proof of the Kim–Vu sandwich conjecture lets results on random binomial graphs transfer to random regular graphs."
+      "source": "ISCI",
+      "date": "may 2026",
+      "lang": "ES",
+      "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
+      "title": "Planificación de la Expansión de la Transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
+      "summary": "Estudio compara optimización estocástica y determinística para diseñar planes de transmisión más robustos."
     },
     {
       "topic": "salud",
       "source": "Minsal",
       "date": "sep 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/subsecretaria-de-redes-asistenciales-informa-medidas-ante-informe-de-contraloria-sobre-tiempos-de-espera-en-servicios-de-urgencia/",
-      "title": "Subsecretaría de Redes Asistenciales informa medidas ante informe de Contraloría sobre tiempos de espera en servicios de urgencia",
-      "summary": "Contraloría reportó 634.587 atenciones de urgencia en la RM sobre el estándar; los Servicios deberán fijar metas en 30 días."
+      "url": "https://www.minsal.cl/minsal-presenta-avances-de-gestion-y-ejecucion-presupuestaria-mayor-productividad-reduccion-de-espera-oncologica-y-foco-en-eficiencia/",
+      "title": "Minsal presenta avances de gestión y ejecución presupuestaria: mayor productividad, reducción de espera oncológica y foco en eficiencia",
+      "summary": "Balance del primer semestre 2026 ante el Congreso: más productividad hospitalaria y menor espera oncológica."
     },
     {
       "topic": "energia",
-      "source": "Coordinador Eléctrico Nacional",
+      "source": "CNE",
       "date": "sep 2026",
       "lang": "ES",
-      "url": "https://www.coordinador.cl/novedades/coordinador-define-plan-de-trabajo-para-implementar-despacho-de-centrales-de-generacion-de-manera-automatica/",
-      "title": "Coordinador define plan de trabajo para implementar despacho de centrales de generación de manera automática",
-      "summary": "El despacho económico automático con restricciones de seguridad (SCED) se implementará por etapas entre 2026 y 2029."
+      "url": "https://www.cne.cl/prensa/prensa-2026/09-septiembre-2026/cne-designa-a-integrantes-del-comite-consultivo-especial-para-la-modificacion-de-la-norma-tecnica-de-coordinacion-y-operacion-del-sistema-electrico-nacional/",
+      "title": "CNE designa a integrantes del Comité Consultivo Especial para la modificación de la Norma Técnica de Coordinación y Operación del Sistema Eléctrico Nacional",
+      "summary": "Comité revisará la norma técnica que rige la coordinación y operación del sistema eléctrico nacional."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
       "date": "sep 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/usps-network-revamp-challenges-on-time-delivery-from-rural-areas/830507/",
-      "title": "USPS network revamp challenges on-time delivery from rural areas",
-      "summary": "Consolidating trips from post offices over 50 miles from hubs cut costs but slowed service most for rural ZIP codes."
+      "url": "https://www.supplychaindive.com/news/6-food-manufacturers-talk-supply-chain-tactics/831214/",
+      "title": "6 food manufacturers talk supply chain tactics",
+      "summary": "Manufacturers detail procurement optimization, freight cost management and AI-driven demand forecasting tactics."
     },
     {
       "topic": "educacion",
-      "source": "Mineduc",
-      "date": "sep 2026",
+      "source": "Subsecretaría de Educación Superior",
+      "date": "jul 2026",
       "lang": "ES",
-      "url": "https://www.mineduc.cl/caida-en-los-resultados-pisa-2025-ratifica-necesidad-de-poner-el-foco-en-el-logro-de-los-aprendizajes/",
-      "title": "Caída en los resultados PISA 2025 ratifica necesidad de poner el foco en el logro de los aprendizajes",
-      "summary": "Chile cae 9 puntos en Matemática y 12 en Lectura; el 59% no alcanza el Nivel 2 en Matemática."
+      "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
+      "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
+      "summary": "El comité del nuevo sistema de aseguramiento de calidad fija su hoja de ruta para la educación superior."
     }
   ]
 }

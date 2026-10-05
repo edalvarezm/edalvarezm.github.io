@@ -12,6 +12,13 @@ window.PROJECTS = [
     cat:{es:"Sistema electoral, Comisión de Constitución",en:"Electoral system, Constitution Committee"}
   },
   {
+    id:"teseo",
+    icon:"map",
+    file:"projects/teseo.enc.json",
+    title:{es:"TESEO: herramienta de rediseño de distritos electorales",en:"TESEO: a tool for redrawing electoral districts"},
+    cat:{es:"Sistema electoral · Cámara de Diputadas y Diputados",en:"Electoral system · Chamber of Deputies"}
+  },
+  {
     id:"plataforma-arancelaria",
     icon:"calculator",
     file:"projects/plataforma-arancelaria.enc.json",
@@ -43,7 +50,6 @@ window.PROJECTS = [
     id:"evaluaciones",
     icon:"clipboard-check",
     file:"projects/evaluaciones.enc.json",
-    googleOnly:true,
     title:{es:"Herramienta de Evaluación",en:"Evaluation Tool"},
     cat:{es:"Docencia · gestión de evaluaciones",en:"Teaching · assessment management"}
   },

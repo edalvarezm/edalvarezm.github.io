@@ -5,6 +5,13 @@
    ========================================================================== */
 window.PROJECTS = [
   {
+    id:"eleccion-diputados",
+    icon:"presentation",
+    file:"projects/eleccion-diputados.enc.json",
+    title:{es:"Elección de diputados 2025 y 2029: reglas, efectos y escenarios",en:"Election of deputies 2025 and 2029: rules, effects and scenarios"},
+    cat:{es:"Sistema electoral, Comisión de Constitución",en:"Electoral system, Constitution Committee"}
+  },
+  {
     id:"plataforma-arancelaria",
     icon:"calculator",
     file:"projects/plataforma-arancelaria.enc.json",

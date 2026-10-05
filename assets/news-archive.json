@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-09-28",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "SBAP / CONAF",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/08/03/sbap-y-conaf-presentan-ruta-para-la-integraci%C3%B3n-de-programa-de-%C3%A1reas-silvestres-protegidas-a-la-nueva-instituci%C3%B3n",
+          "title": "SBAP y CONAF presentan ruta para la integración de Programa de Áreas Silvestres Protegidas a la nueva institución",
+          "summary": "Plan para integrar 110 áreas silvestres protegidas al SBAP antes de marzo de 2027."
+        },
+        {
+          "topic": "distritos",
+          "source": "SUBDERE",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://www.subdere.gov.cl/sala-de-prensa/subdere-fortalece-la-gesti%C3%B3n-territorial-con-nuevas-funcionalidades-en-la-plataforma",
+          "title": "Subdere fortalece la gestión territorial con nuevas funcionalidades en la plataforma Geonodo",
+          "summary": "Nuevos tableros, visores cartográficos y app móvil para apoyar el diseño y análisis territorial."
+        },
+        {
+          "topic": "redes",
+          "source": "ISCI",
+          "date": "may 2026",
+          "lang": "ES",
+          "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
+          "title": "Planificación de la Expansión de la Transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
+          "summary": "Estudio compara optimización estocástica y determinística para diseñar planes de transmisión más robustos."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/minsal-presenta-avances-de-gestion-y-ejecucion-presupuestaria-mayor-productividad-reduccion-de-espera-oncologica-y-foco-en-eficiencia/",
+          "title": "Minsal presenta avances de gestión y ejecución presupuestaria: mayor productividad, reducción de espera oncológica y foco en eficiencia",
+          "summary": "Balance del primer semestre 2026 ante el Congreso: más productividad hospitalaria y menor espera oncológica."
+        },
+        {
+          "topic": "energia",
+          "source": "CNE",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.cne.cl/prensa/prensa-2026/09-septiembre-2026/cne-designa-a-integrantes-del-comite-consultivo-especial-para-la-modificacion-de-la-norma-tecnica-de-coordinacion-y-operacion-del-sistema-electrico-nacional/",
+          "title": "CNE designa a integrantes del Comité Consultivo Especial para la modificación de la Norma Técnica de Coordinación y Operación del Sistema Eléctrico Nacional",
+          "summary": "Comité revisará la norma técnica que rige la coordinación y operación del sistema eléctrico nacional."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "sep 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/6-food-manufacturers-talk-supply-chain-tactics/831214/",
+          "title": "6 food manufacturers talk supply chain tactics",
+          "summary": "Manufacturers detail procurement optimization, freight cost management and AI-driven demand forecasting tactics."
+        },
+        {
+          "topic": "educacion",
+          "source": "Subsecretaría de Educación Superior",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
+          "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
+          "summary": "El comité del nuevo sistema de aseguramiento de calidad fija su hoja de ruta para la educación superior."
+        }
+      ]
+    },
+    {
       "date": "2026-09-21",
       "items": [
         {

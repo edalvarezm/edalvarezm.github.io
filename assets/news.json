@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-13",
   "items": [
     {
       "topic": "conservacion",
@@ -49,11 +49,11 @@
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
-      "date": "sep 2026",
+      "date": "oct 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/6-food-manufacturers-talk-supply-chain-tactics/831214/",
-      "title": "6 food manufacturers talk supply chain tactics",
-      "summary": "Manufacturers detail procurement optimization, freight cost management and AI-driven demand forecasting tactics."
+      "url": "https://www.supplychaindive.com/news/usps-lengthens-some-delivery-expectations-outside-contiguous-us/831958/",
+      "title": "USPS lengthens some delivery expectations outside contiguous US",
+      "summary": "USPS extends Ground Advantage and Priority Mail delivery windows to and from Alaska, Hawaii and territories."
     },
     {
       "topic": "educacion",

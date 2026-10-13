@@ -161,6 +161,12 @@ th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-
 .cells{display:flex;gap:3px;flex-wrap:wrap}
 .cell{width:14px;height:14px;border-radius:3px;background:var(--line);border:0;padding:0}
 .cell.s1{background:var(--warn)} .cell.s2{background:var(--accent)} .cell.s3{background:var(--ok)} .cell.s4{background:#FF9BA2}
+.estsub{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:3px 0 8px;font-size:13px;color:var(--ink-2)}
+.estsub b{color:var(--ink);font-weight:600}
+.estsub .cell{flex:none;display:inline-block}
+.estalert{margin:0 0 8px;padding:8px 12px;border-radius:var(--radius);background:rgba(255,102,71,.10);border:1px solid rgba(255,102,71,.45);font-size:13px;color:var(--ink);max-width:760px}
+.estalert ul{margin:4px 0 0 18px;padding:0}
+.estalert li{margin:2px 0}
 .rolock{margin:0 0 12px;padding:9px 12px;border-radius:var(--radius);background:rgba(255,183,1,.14);border:1px solid rgba(255,183,1,.45);font-size:13.5px}
 tr.evon td{background:rgba(48,71,199,.06)}
 .evhead{display:flex;align-items:center;gap:10px}
@@ -615,6 +621,21 @@ function alerts(e, work=false){
   return a;
 }
 
+/* ---------------- subtítulo de estado ---------------- */
+// fecha y autor del último cambio de estado. En el prototipo solo hay fecha (este navegador);
+// la versión con servidor redefine META_EST con los datos de la base.
+function META_EST(e,j){ return { at: j.ts&&j.ts.estado, by: '' }; }
+function fechaHora(t){ const d=new Date(t); return d.toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'})+' a las '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+function estSubHTML(e,j){
+  const bad=j.estado>0 ? alerts(e).filter(a=>a.c==='bad') : [];
+  const m=META_EST(e,j)||{};
+  const cuando=m.pend ? 'guardando el cambio de estado…' : m.at ? `actualizado el ${fechaHora(m.at)}${m.by?' por '+esc(m.by):''}` : 'sin cambios de estado registrados';
+  let h=`<div class="estsub"><i class="cell s${j.estado} ${bad.length?'alert':''}" aria-hidden="true"></i><b>${ESTADOS[j.estado]}</b><span>| ${cuando}</span></div>`;
+  if(bad.length) h+=`<div class="estalert" role="note"><b>Con alerta bloqueante.</b> ${bad.length>1?'Razones':'Razón'}:<ul>${bad.map(a=>`<li>${esc(a.t)}</li>`).join('')}</ul></div>`;
+  return h;
+}
+function refreshEstSub(e){ const w=$('#estsubw'); if(w&&e) w.innerHTML=estSubHTML(e,J(e.id)); }
+
 /* ---------------- árbol ---------------- */
 let CUR = ENUN.find(e=>e.id==='C2-N2-1').id; let VIEW='editor'; let TAB='juicio'; let DOCCRIT=2;
 function tree(){
@@ -650,7 +671,7 @@ function editor(){
   if(EVEDIT&&!S.evidencias.some(x=>x.ev===EVEDIT&&x.code===e.id)) EVEDIT=null; if(EVPRE&&EVPRE.code!==e.id) EVPRE=null;
   v.innerHTML=`${crumbs(e)}
   <div class="head">
-    <div><div class="code">${e.id}</div><div class="meta"><span class="chip tipo">Tipo ${e.tipo}${marc} | ${esc(TIPO_NOM[e.tipo].nombre)}</span><span class="chip">Criterio ${e.crit} | Nivel ${e.nivel}</span><span class="chip">Obligatorios: ${e.obl.join(' ')}</span>${e.rec.length?`<span class="chip">Recomendados: ${e.rec.join(' ')}</span>`:''}</div></div>
+    <div><div class="code">${e.id}</div><div id="estsubw">${estSubHTML(e,j)}</div><div class="meta"><span class="chip tipo">Tipo ${e.tipo}${marc} | ${esc(TIPO_NOM[e.tipo].nombre)}</span><span class="chip">Criterio ${e.crit} | Nivel ${e.nivel}</span><span class="chip">Obligatorios: ${e.obl.join(' ')}</span>${e.rec.length?`<span class="chip">Recomendados: ${e.rec.join(' ')}</span>`:''}</div></div>
     <div class="ctrl">
       <label class="note" for="resp">Responsable</label><input type="text" id="resp" value="${esc(j.resp)}" placeholder="Unidad o comisión" style="width:220px" ${ro?'disabled':''}>
       <label class="note" for="estado">Estado</label><select id="estado" ${ro?'disabled':''}>${EST_ORDEN.map(i=>`<option value="${i}" ${i===j.estado?'selected':''} ${i!==j.estado&&!PERM.estados().includes(i)?'disabled':''}>${ESTADOS[i]}</option>`).join('')}</select>
@@ -712,7 +733,7 @@ function bindEditor(e,j){
   ['J2v','J8sel','J11sel'].forEach(id=>{ const s=$('#'+id,v); if(s) s.addEventListener('change',()=>{ setDraft(j,id,s.value); refreshPreview(e); upd(fieldOf(id)); save(); }); });
   const sa=$('#btnSaveAll',v); if(sa) sa.addEventListener('click',()=>{ const d=dirtyFields(e,j); d.forEach(k=>commitField(j,k)); if(j.d) delete j.d; save(); editor(); tree(); toast(d.length?`Guardados: ${d.join(', ')}`:'Sin cambios pendientes'); });
   const da=$('#btnDiscardAll',v); if(da) da.addEventListener('click',()=>{ delete j.d; save(); editor(); tree(); toast('Cambios descartados'); });
-  $('#estado',v).addEventListener('change',ev=>{ const x=+ev.target.value; if(!PERM.estados().includes(x)){ ev.target.value=j.estado; toast('Su perfil no permite asignar ese estado'); return; } j.estado=x; save(); tree(); toast('Estado actualizado'); });
+  $('#estado',v).addEventListener('change',ev=>{ const x=+ev.target.value; if(!PERM.estados().includes(x)){ ev.target.value=j.estado; toast('Su perfil no permite asignar ese estado'); return; } j.estado=x; j.ts=j.ts||{}; j.ts.estado=Date.now(); save(); tree(); refreshEstSub(e); toast('Estado actualizado'); });
   $('#resp',v).addEventListener('change',ev=>{ j.resp=ev.target.value; save(); toast('Responsable guardado'); });
   $$('[data-step]',v).forEach(b=>b.addEventListener('click',()=>{ const i=ENUN.findIndex(x=>x.id===e.id)+(+b.dataset.step); if(ENUN[i]){ CUR=ENUN[i].id; tree.open.add(String(ENUN[i].crit)); editor(); tree(); revealCur(); navSave(); const mn=$('.main'); if(mn) mn.scrollTop=0; } }));
   const oc=$('[data-opencrit]',v); if(oc) oc.addEventListener('click',()=>{ tree.open.add(oc.dataset.opencrit); setCat(true); tree(); revealCur(); });
@@ -803,7 +824,7 @@ function bindIA(e,j){
   use.addEventListener('click',()=>{ if(!j.iaDraft) return; j.ia=j.iaDraft; save(); editor(); toast('Versión mejorada aceptada'); });
   drop.addEventListener('click',()=>{ j.ia=''; j.iaDraft=''; save(); editor(); });
 }
-function refreshPreview(e){ const p=$('#prose'); if(p) p.innerHTML=render(e,true,false,true); const al=$('#view-editor .alerts:not(#iaChecks)'); if(al) al.innerHTML=alerts(e,true).map(a=>`<li class="${a.c}">${esc(a.t)}</li>`).join(''); const c=compl(e,true); const m=$('#view-editor .meter i'); if(m) m.style.width=(c.tot?Math.round(100*c.ok/c.tot):0)+'%'; const r=$('#view-editor .card h3 .right'); if(r) r.textContent=`${c.ok}/${c.tot} obligatorios`; }
+function refreshPreview(e){ refreshEstSub(e); const p=$('#prose'); if(p) p.innerHTML=render(e,true,false,true); const al=$('#view-editor .alerts:not(#iaChecks)'); if(al) al.innerHTML=alerts(e,true).map(a=>`<li class="${a.c}">${esc(a.t)}</li>`).join(''); const c=compl(e,true); const m=$('#view-editor .meter i'); if(m) m.style.width=(c.tot?Math.round(100*c.ok/c.tot):0)+'%'; const r=$('#view-editor .card h3 .right'); if(r) r.textContent=`${c.ok}/${c.tot} obligatorios`; }
 function copy(t){ navigator.clipboard.writeText(t).then(()=>toast('Copiado')).catch(()=>{ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); toast('Seleccione y copie el texto'); setTimeout(()=>ta.remove(),4000); }); }
 
 /* ---------------- evidencias ---------------- */
@@ -1280,6 +1301,12 @@ function errTxt(e){ const t=(e&&(e.message||e.error||e.msg))||String(e||''); if(
 function AUTOR(j,k){ if(!window.SYNC) return ''; let best=null; dkeys(k).forEach(x=>{ const at=SYNC.fecha(j._c,x); if(at&&(!best||at>best.at)) best={at,by:SYNC.autor(j._c,x)}; }); return best&&best.by?(best.by===UID?' por usted':' por '+esc(NOMBRE(best.by))):''; }
 function REMOTO(j,k){ if(!window.SYNC||!j.db) return ''; const x=dkeys(k).find(x=>x in (j.db||{}) && SYNC.ver(j._c,x)>j.db[x]); if(!x) return ''; return `<span class="fst bad">${esc(NOMBRE(SYNC.autor(j._c,x)))} guardó otra versión (${hhmm(Date.parse(SYNC.fecha(j._c,x)))}). Revise el historial antes de guardar.</span>`; }
 
+/* subtítulo de estado: último cambio de estado según la base (fecha, hora y persona) */
+function META_EST(e,j){ const s=window.SYNC&&(SYNC.sh[e.id]||{}).estado; const v=+(j.estado||0);
+  if(s && +(s.v||0)===v) return { at: Date.parse(s.at), by: s.by===UID ? NOMBRE(s.by)+' (usted)' : NOMBRE(s.by) };
+  if(!s && !v) return {};
+  return { pend: true }; }
+
 /* ---------- ventana modal ---------- */
 function modal(titulo, html, ancho){
   let m=$('#mdl'); if(!m){ m=document.createElement('div'); m.id='mdl'; m.className='mdl'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); document.body.appendChild(m);
@@ -1340,7 +1367,7 @@ function refrescarEditor(){
   refreshPreview(e);
 }
 function refrescarEstadosCampos(){ if(VIEW!=='editor') return; const v=$('#view-editor'), e=BY[CUR], j=J(CUR); [...e.obl,...e.rec].forEach(k=>{ const fs=$('#fs-'+k,v); if(fs) fs.innerHTML=fsaveHTML(j,k); }); }
-SYNC.oyentes.push((tipo,info)=>{ if(tipo==='estado'){ pintarEstado(); if(SYNC.estado==='ok') refrescarEstadosCampos(); } else if(tipo==='conflictos') mostrarConflictos(info); else if(tipo==='remoto') refrescarRemoto(info);
+SYNC.oyentes.push((tipo,info)=>{ if(tipo==='estado'){ pintarEstado(); if(SYNC.estado==='ok'){ refrescarEstadosCampos(); if(VIEW==='editor'&&BY[CUR]) refreshEstSub(BY[CUR]); } } else if(tipo==='conflictos') mostrarConflictos(info); else if(tipo==='remoto') refrescarRemoto(info);
   else if(tipo==='denegado'){ toast('Su perfil no permite guardar ese cambio ('+[...new Set(info.map(x=>x.code))].join(', ')+'). Se restauró lo guardado.'); if(VIEW==='editor') editor(); tree(); }
   else if(tipo==='perfil'){ const np=BT.permisos? (BT.rol=info.rol||'responsable', BT.criterios=(info.criterios||[]).map(Number).sort((a,b)=>a-b), BT.permisos()) : null; const m=modal('Su perfil cambió',`<p>El administrador actualizó su perfil${np?': <b>'+esc(rolTexto(np))+'</b>':''}. Recargue la página para aplicarlo.</p><div class="tools"><button class="btn primary" id="pfRec">Recargar ahora</button></div>`,440); $('#pfRec',m).addEventListener('click',async()=>{ if(SYNC.pendiente()) await SYNC.empujar(); location.reload(); }); } });
 

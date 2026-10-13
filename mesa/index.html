@@ -63,7 +63,7 @@ button{cursor:pointer}
 .enun code{font-family:var(--font-mono);font-size:11px;color:var(--ink)}
 .enun .t{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 .dot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--line)}
-.dot.s1{background:var(--warn)} .dot.s2{background:var(--accent)} .dot.s3{background:var(--ok)}
+.dot.s1{background:var(--warn)} .dot.s2{background:var(--accent)} .dot.s3{background:var(--ok)} .dot.s4{background:#FF9BA2}
 .main{overflow:auto;padding:18px 22px 40px;min-width:0}
 .view{display:none} .view.on{display:block}
 /* editor header */
@@ -119,6 +119,8 @@ textarea{width:100%;min-height:58px;resize:vertical;line-height:1.4}
 .prose .miss{background:var(--warn-soft);border-radius:3px;padding:0 3px;font-family:var(--font-ui);font-size:12px;color:var(--ink-2)}
 .prose .ev{font-family:var(--font-mono);font-size:11px;color:var(--accent)}
 .prose .opt{color:var(--ink-3)}
+.prose .miss.opt{background:var(--surface-2);color:var(--ink-3)}
+.prleg{display:flex;flex-wrap:wrap;gap:4px 14px;padding:0 14px 10px;font-size:12px;color:var(--ink-3)} .prleg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
 .alerts{list-style:none;margin:0;padding:8px 12px;display:flex;flex-direction:column;gap:5px}
 .alerts li{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:6px 8px;border-radius:var(--radius);background:var(--surface-2)}
 .alerts li.bad{background:var(--bad-soft)} .alerts li.warn{background:var(--warn-soft)} .alerts li.ok{background:var(--ok-soft)}
@@ -158,7 +160,10 @@ th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-
 .grid .c{font-size:13px;padding:4px 0}
 .cells{display:flex;gap:3px;flex-wrap:wrap}
 .cell{width:14px;height:14px;border-radius:3px;background:var(--line);border:0;padding:0}
-.cell.s1{background:var(--warn)} .cell.s2{background:var(--accent)} .cell.s3{background:var(--ok)}
+.cell.s1{background:var(--warn)} .cell.s2{background:var(--accent)} .cell.s3{background:var(--ok)} .cell.s4{background:#FF9BA2}
+.rolock{margin:0 0 12px;padding:9px 12px;border-radius:var(--radius);background:rgba(255,183,1,.14);border:1px solid rgba(255,183,1,.45);font-size:13.5px}
+tr.evon td{background:rgba(48,71,199,.06)}
+.evhead{display:flex;align-items:center;gap:10px}
 .cell.alert{box-shadow:inset 0 0 0 2px var(--bad)}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);padding:0 14px 12px}
 .legend span{display:inline-flex;gap:5px;align-items:center}
@@ -351,8 +356,17 @@ tr[data-gocr]{cursor:pointer} tr[data-gocr]:hover td{background:var(--surface-2)
 .lkb{background:none;border:0;padding:0;color:var(--accent);font:inherit;font-size:13px;text-align:left;cursor:pointer;text-decoration:underline}
 .sync{font-size:11.5px;padding:2px 8px;border-radius:999px;white-space:nowrap;order:3;border:1px solid transparent}
 .sync.ok{color:var(--ink-2);background:var(--surface-2)} .sync.warn{background:var(--warn-soft);color:var(--ink)} .sync.bad{background:var(--bad-soft);color:var(--ink)}
-.userbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--ink);white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis}
-.userbtn:hover{border-color:var(--accent);color:var(--accent)}
+.userbtn{display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.2;padding:4px 12px 5px;border-radius:12px;border:1px solid rgba(48,71,199,.35);background:rgba(48,71,199,.10);color:var(--ink);max-width:270px;text-align:left;cursor:pointer;transition:border-color .15s,background .15s}
+.userbtn .un{font-size:13px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.userbtn .ur{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-2);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.userbtn .ur i{flex:none;width:7px;height:7px;border-radius:50%;background:#3047C7}
+.userbtn.r-coordinador{background:rgba(3,191,106,.12);border-color:rgba(3,191,106,.45)} .userbtn.r-coordinador .ur i{background:#03BF6A}
+.userbtn.r-responsable{background:rgba(255,183,1,.15);border-color:rgba(255,183,1,.55)} .userbtn.r-responsable .ur i{background:#FFB701}
+.userbtn:hover{background:rgba(48,71,199,.16);border-color:#3047C7} .userbtn.r-coordinador:hover{background:rgba(3,191,106,.2);border-color:#03BF6A} .userbtn.r-responsable:hover{background:rgba(255,183,1,.24);border-color:#FFB701}
+.pill.rol-admin{background:rgba(48,71,199,.12);color:var(--ink)} .pill.rol-coordinador{background:rgba(3,191,106,.14);color:var(--ink)} .pill.rol-responsable{background:rgba(255,183,1,.18);color:var(--ink)}
+.pcrit{display:flex;flex-wrap:wrap;gap:4px 8px;max-width:330px} .pcrit label{display:inline-flex;align-items:center;gap:3px;font-size:12.5px} .pcrit.off{opacity:.35;pointer-events:none}
+.ptab select{font-size:12.5px;padding:3px 4px}
+.evsin{margin:10px 14px 0;padding:9px 12px;border:1px dashed var(--line);border-radius:var(--radius);font-size:13.5px} .evsin ul{margin:6px 0 0;padding-left:18px} .evsin li{margin:4px 0}
 .btn.hb{margin-left:auto}
 .fst.bad{color:#FF6647}
 .chip.pres{background:#FFB701;color:#1d2333;border-color:transparent;font-weight:600}
@@ -389,7 +403,7 @@ tr[data-gocr]{cursor:pointer} tr[data-gocr]:hover td{background:var(--surface-2)
 .ren{display:flex;gap:6px;flex-wrap:wrap} .ren input{flex:1 1 200px}
 button.lk{border:0;background:none;padding:0;color:var(--ink);font:inherit;cursor:pointer;text-align:left}
 button.lk:hover{color:var(--accent);text-decoration:underline}
-@media (max-width:820px){.userbtn{order:2;max-width:150px}.ftab .facc{white-space:normal}}
+@media (max-width:820px){.userbtn{order:2;max-width:170px}.ftab .facc{white-space:normal}}
 /* nombre largo de la herramienta: en dos líneas, sin tapar el menú */
 .brand{flex:0 1 250px;min-width:150px;flex-direction:column;align-items:flex-start;gap:1px}
 .brand h1{white-space:normal;line-height:1.2;font-size:14.5px}
@@ -437,20 +451,31 @@ button.lk:hover{color:var(--accent);text-decoration:underline}
 const D = window.__BOOT.D;
 const ENUN = D.enunciados; const BY = Object.fromEntries(ENUN.map(e=>[e.id,e]));
 const RAN = Object.fromEntries(D.campos.map(r=>[r.id,r]));
-const ESTADOS = ['Sin iniciar','En redacción','En revisión','Validado'];
+/* plantilla por enunciado (v14): nombre y pregunta de cada campo, escala de J8 y conectores */
+const DEFCON = {J4:'Este mecanismo se aplica en [J4].',J5:'Sobre esa base, [J5].',J6:'La coordinación recae en [J6].',J7:'Los resultados disponibles indican que [J7].',J9:'A partir de estos resultados, [J9].',J10:'La continuidad del mecanismo está resguardada por [J10].'};
+function CAMPO(e,k){ const b=RAN[k]; const o=(e&&e.p&&e.p[k])||null; if(!o||!(o.nombre||o.pregunta)) return b; return {...b, nombre:o.nombre||b.nombre, pregunta:o.pregunta||b.pregunta}; }
+function J8OP(e){ return (e&&e.p&&e.p.J8&&e.p.J8.op)||[]; }
+function CON(e,k){ const p=(e&&e.p)||{}; if(k==='J4') return (p.J4&&p.J4.con)||DEFCON.J4; return (p.con&&p.con[k])||DEFCON[k]; }
+const PREP8 = /^(en|para|desde|con|salvo|excepto|pero|aunque|sin|de|del|hasta|entre|solo|por|a|al)\b/i;
+function frase8(con,op,txt,txtRaw){ const c=con.replace('{op}',()=>op); return txt? c.replace(/;?\s*\{txt\}/,()=>(PREP8.test(txtRaw)?' ':'; ')+txt) : c.replace(/;?\s*\{txt\}/,''); }
+const ESTADOS = ['Sin iniciar','En redacción','En revisión','Validado','Enviado a revisión'];   // índice = código guardado
+const EST_ORDEN = [0,1,4,2,3];                                                                    // orden de presentación
+const EST_COLOR = ['var(--line)','var(--warn)','var(--accent)','var(--ok)','#FF9BA2'];
+/* permisos: en el prototipo, todo; la versión con servidor los define según el perfil */
+const PERM = Object.assign({rol:'admin', verRef:true, editar:()=>true, estados:()=>EST_ORDEN.slice(), motivo:()=>''}, window.MESA_PERM||{});
 const TIPO_NOM = D.tipos;
 const FIELD_HINT = {
   J1:'Unidad con nombre propio y su dependencia. Ej.: "la Dirección de Docencia, dependiente de la Vicerrectoría Académica".',
   J2:'Nombre del instrumento y su acto formal con año. Ej.: "el Reglamento de Carrera Académica (Res. N° 45/2018, actualizado 2021)".',
-  J3:'Qué hace el mecanismo con el atributo, usando el verbo rector del enunciado.',
-  J4:'Cobertura efectiva (sedes, niveles, modalidades, programas o estamentos), periodicidad y año de inicio.',
+  J3:'Qué hace el instrumento respecto de lo que exige el enunciado, con un verbo de función (define, regula, orienta, mide, registra) concordado con J2. No anticipe el resultado: eso va en J7 y J8.',
+  J4:'A quiénes o a qué alcanza y su temporalidad: periodicidad solo si es un mecanismo que se repite; si no, año de instalación, vigencia o período.',
   J5:'Unidades ejecutoras + acción concreta + finalidad. Ej.: "las escuelas ejecutan tutorías…, con el fin de…".',
   J6:'Instancia que coordina o decide, su composición y atribuciones.',
   J7:'Indicador, valor, año, serie de al menos tres años, comparador y desagregación. Incluya los años (2021–2025) para que la revisión los detecte.',
-  J8:'Veredicto controlado sobre el nivel exhibido y una justificación breve.',
+  J8:'Elija el grado que la evidencia permite sostener y fundaméntelo en una frase con el dato o la constatación y, si la hay, la brecha. Interpreta J7; no lo repite.',
   J9:'Quién decidió qué, en qué año, dónde consta y qué efecto se verificó.',
   J10:'Qué garantiza la continuidad: reglamento vigente, presupuesto recurrente, sistema, plan estratégico.',
-  J11:'Veredicto del enunciado y la brecha respecto del nivel.'
+  J11:'Veredicto del enunciado, coherente con el grado elegido en J8, y lo que queda pendiente para el nivel.'
 };
 const VERBOS_J2 = ['cuenta con','aplica','ha establecido','dispone de','implementa'];
 const PROS = D.proscritos.filter(t=>t.length>3);
@@ -464,20 +489,21 @@ function load(){ try{ const s=localStorage.getItem('mesa-juicios-v1'); const o=s
   if(o&&o.juicios) Object.values(o.juicios).forEach(j=>{ const t=(j.f&&j.f.J11)||''; if(j.J11sel==='se verifica' && /^parcialmente\b/.test(t)){ j.J11sel='se verifica parcialmente'; j.f.J11=t.replace(/^parcialmente[;,\s]*/,'').replace(/^queda pendiente\s*/,''); } });
   return o; }catch(e){ return null; } }
 function strip(t){ return (t||'').replace(/\[|\]/g,''); }
-function vocMatch(key,v){ return D.vocab[key].filter(x=>v.startsWith(x)).sort((a,b)=>b.length-a.length)[0]||''; }
-function setEj(j,k,v){
-  if(k==='J8'){ const m=vocMatch('J8',v); j.J8sel=m; j.f.J8=strip(v.slice(m.length).replace(/^[;,\s]+/,'')); }
-  else if(k==='J11'){ const m=vocMatch('J11',v); j.J11sel=m; j.f.J11=strip(v.slice(m.length).replace(/^[;,\s]*queda pendiente\s*/,'').replace(/^[;,\s]+/,'')); }
+function vocMatch(list,v){ return list.filter(x=>v.startsWith(x)).sort((a,b)=>b.length-a.length)[0]||''; }
+function setEj(j,k,v,e){
+  if(k==='J8'){ const m=vocMatch(J8OP(e),v); j.J8sel=m; j.f.J8=strip(v.slice(m.length).replace(/^[;,\s]+/,'')); }
+  else if(k==='J2v'){ j.J2v=v; }
+  else if(k==='J11'){ const m=vocMatch(D.vocab.J11,v); j.J11sel=m; j.f.J11=strip(v.slice(m.length).replace(/^[;,\s]*queda pendiente\s*/,'').replace(/^[;,\s]+/,'')); }
   else j.f[k]=strip(v);
 }
 function demo(){
   S = blank(); const s = S;
   // Tres casos precargados desde los ejemplos ilustrativos del informe, con distintos estados.
   const pre = [['C2-N2-1',2],['C8-N2-5',3],['C1-N2-2',1],['C11-N2-1',1],['C9-N1-1',3],['C5-N1-3',3],['C3-N1-2',2]];
-  pre.forEach(([code,est])=>{ const e=BY[code]; const j=J(code); Object.entries(e.ej).forEach(([k,v])=>{ setEj(j,k,v); }); j.estado=est; j.resp = est>=2?'Dirección de Aseguramiento de la Calidad':'Comisión de dimensión'; });
+  pre.forEach(([code,est])=>{ const e=BY[code]; const j=J(code); Object.entries(e.ej).forEach(([k,v])=>{ setEj(j,k,v,e); }); j.estado=est; j.resp = est>=2?'Dirección de Aseguramiento de la Calidad':'Comisión de dimensión'; });
   // el caso SAT del asesor, tal como lo redactó, para mostrar las alertas
   const sat = J('C2-N2-1'); sat.f.J1='la Dirección de Ciclo de Vida del Estudiante, dependiente de la Vicerrectoría de Formación'; sat.f.J2='un Sistema de Alerta Temprana (SAT)'; sat.f.J3='monitorea los indicadores de progresión de las y los estudiantes'; sat.f.J4=''; sat.f.J5='la Dirección de Ciclo de Vida del Estudiante y las Escuelas de pregrado despliegan estrategias de apoyo académico, con el fin de promover el éxito de sus procesos formativos'; sat.f.J6='un Comité en el que participan distintas unidades, que revisa anualmente los resultados de las estrategias y propone mejoras al sistema'; sat.f.J7=''; sat.J8sel=''; sat.f.J8=''; sat.f.J9=''; sat.J11sel=''; sat.f.J11=''; sat.estado=1; sat.resp='Comisión Docencia y Resultados';
-  const ev = (code,t,tipo,anio,unidad,plano,sol,campos,estado)=>{ s.seq++; s.evidencias.push({ev:'EV-2026-'+String(s.seq).padStart(3,'0'),code,titulo:t,tipo,anio,unidad,plano,solidez:sol,campos,archivo:'',estado}); };
+  const ev = (code,t,tipo,anio,unidad,plano,sol,campos,estado)=>{ s.seq++; s.evseq=s.evseq||{}; const n=s.evseq[code]=(s.evseq[code]||0)+1; s.evidencias.push({ev:'EV-'+code+'-'+String(n).padStart(3,'0'),code,titulo:t,tipo,anio,unidad,plano,solidez:sol,campos,archivo:'',estado:estado==='recibida'?'pendiente':estado}); };
   ev('C8-N2-5','Estados financieros auditados 2021–2025','Dato / serie',2025,'Dirección de Finanzas','verificable','S3',['J7'],'validada');
   ev('C8-N2-5','Política Financiera (Res. N° 90/2019, v3 2023)','Política / reglamento',2023,'Vicerrectoría de Gestión','declarado','S3',['J2'],'validada');
   ev('C8-N2-5','Actas del Comité de Presupuesto 2024 (reprogramación)','Acta',2024,'Comité de Presupuesto','implementado','S2',['J9','J6'],'recibida');
@@ -535,50 +561,40 @@ function render(e, html=true, final=false, work=false){
   // final=true: texto para el documento. Omite toda referencia a campos vacíos (sin marcas [Jn: ...]).
   const j=work?WV(J(e.id)):J(e.id); const raw=k=>(j.f[k]||'').trim(); const f=k=>html?esc(raw(k)):raw(k);
   const wrap=(txt,cls)=>html?`<span class="${cls}">${esc(txt)}</span>`:txt;
-  const has=k=>e.obl.includes(k)||e.rec.includes(k); const optc=k=>e.rec.includes(k)?'opt':'';
-  const miss=k=>wrap('['+k+': '+RAN[k].nombre.toLowerCase()+']','miss');
+  const T=t=>html?esc(t):t;
+  const has=k=>e.obl.includes(k)||e.rec.includes(k);
+  // gris solo para un campo recomendado que sigue vacío (en el borrador); el texto escrito y el documento van en negro
+  const vacio=k=>k==='J8'?!(J8OP(e).includes(j.J8sel)||raw('J8')):k==='J11'?!(j.J11sel||raw('J11')):!raw(k);
+  const optc=k=>(!final&&e.rec.includes(k)&&vacio(k))?'opt':'';
+  const miss=k=>wrap('['+k+': '+CAMPO(e,k).nombre.toLowerCase()+']','miss'+(e.rec.includes(k)?' opt':''));
   const val=k=>f(k)||(final?'':miss(k));
-  // nombre corto del mecanismo para no repetir el nombre completo
-  const j2r=raw('J2'); const plural=/ y /.test(j2r.split(',')[0]);
-  let short=j2r? j2r.split(/,| \(/)[0].trim() : '';
-  if(!short || short.length>45 || plural) short = plural? 'Estos instrumentos' : 'Este mecanismo'; else short=cap(short);
-  if(html) short=esc(short);
-  const vb=(sing,plur)=>plural?plur:sing;
-  const nexo = /a través de|por medio de|mediante/.test(raw('J1')) ? 'desde' : 'a través de';
+  const p=e.p||{}; const o1=p.o1||'cuenta';
   const out=[];
   if(has('J1')||has('J2')||has('J3')){
-    const p1=val('J1'), p2=val('J2'), p3=val('J3');
+    const p1=has('J1')?val('J1'):'', p2=has('J2')?val('J2'):'', p3=has('J3')?val('J3'):'';
+    const nexo=/a través de|por medio de|mediante/.test(raw('J1'))?'desde':'a través de';
+    const via=p1?`, ${nexo} ${p1},`:'';
     let s='';
-    if(!final) s=`La Universidad, ${nexo} ${p1}, ${j.J2v||'cuenta con'} ${p2}, que ${p3}.`;
-    else if(p1||p2||p3){
-      s='La Universidad'+(p1?`, ${nexo} ${p1},`:'');
-      if(p2) s+=` ${j.J2v||'cuenta con'} ${p2}`+(p3?`, que ${p3}`:'');
-      else if(p3) s+=` ${p3}`;
-      s+='.';
-    }
-    if(s) out.push({k:'J1',s,cls:optc('J3')});
+    if(o1==='mediante'&&p3) s = p1&&p2?`La Universidad, ${nexo} ${p1} y mediante ${p2}, ${p3}.`:p2?`La Universidad, mediante ${p2}, ${p3}.`:p1?`La Universidad, ${nexo} ${p1}, ${p3}.`:`La Universidad ${p3}.`;
+    else if(o1==='consta'&&p3){ const base=`la Universidad${via} ${p3}.`; s = p2?`Según consta en ${p2}, ${base}`:cap(base); }
+    else if(p1||p2||p3){ const rel=o1==='proposito'?'con el propósito de':'que'; s='La Universidad'+via; if(p2) s+=` ${T(j.J2v||'cuenta con')} ${p2}`+(p3?`, ${rel} ${p3}`:''); else if(p3) s+=` ${p3}`; s+='.'; }
+    if(s) out.push({k:'J1',s,cls:''});
   }
-  const add=(k,pre,post='.')=>{ if(!has(k)) return; const v=val(k); if(final&&!v) return; out.push({k,s:`${pre}${v}${post}`,cls:optc(k)}); };
-  add('J4',`${short} ${vb('se aplica','se aplican')} en `);
-  add('J5','Sobre esa base, ');
-  add('J6','La coordinación recae en ');
-  add('J7','Los resultados disponibles indican que ');
+  const add=k=>{ if(!has(k)) return; const v=val(k); if(final&&!v) return; out.push({k,s:T(CON(e,k)).replace('['+k+']',()=>v),cls:optc(k)}); };
+  add('J4'); add('J5'); add('J6'); add('J7');
   if(has('J8')){
-    const t=j.J8sel||''; const verbo = /^(no )?formalizado/.test(t)?'como':/^aplicación/.test(t)?'con':/^resultado/.test(t)?'con':/^ciclo/.test(t)?'con':'como';
-    const atr=(e.atributo||'').charAt(0).toLowerCase()+(e.atributo||'').slice(1); const A=html?esc(atr):atr;
-    const j8=f('J8'); const sep=/^(en|para|desde|con|salvo|excepto|pero|aunque|sin|de|del|hasta|entre|solo)\b/i.test(j8)?' ':'; ';
-    if(!final) out.push({k:'J8',s:`Ello permite calificar el atributo "${A}" ${verbo} ${t||miss('J8')}${j8?sep+j8:''}.`,cls:optc('J8')});
-    else if(t) out.push({k:'J8',s:`Ello permite calificar el atributo "${A}" ${verbo} ${t}${j8?sep+j8:''}.`,cls:optc('J8')});
-    else if(f('J8')) out.push({k:'J8',s:`Respecto del atributo "${A}", ${f('J8')}.`,cls:optc('J8')});
+    const t=J8OP(e).includes(j.J8sel)?j.J8sel:''; const j8=f('J8'); const con=T((p.J8&&p.J8.con)||'Ello permite sostener que {op}; {txt}.');
+    if(t) out.push({k:'J8',s:frase8(con,T(t),j8,raw('J8')),cls:optc('J8')});
+    else if(!final) out.push({k:'J8',s:frase8(con,miss('J8'),j8,raw('J8')),cls:optc('J8')});
+    else if(j8) out.push({k:'J8',s:`Respecto de ${T(p.obj||'lo que exige el enunciado')}, ${j8}.`,cls:optc('J8')});
   }
-  add('J9','A partir de estos resultados, ');
-  add('J10','La continuidad del mecanismo está resguardada por ');
+  add('J9'); add('J10');
   if(has('J11')){
     if(!final) out.push({k:'J11',s:`En consecuencia, el enunciado ${e.id} ${j.J11sel||miss('J11')}${f('J11')?'; queda pendiente '+f('J11'):''}.`,cls:''});
     else if(j.J11sel) out.push({k:'J11',s:`En consecuencia, el enunciado ${e.id} ${j.J11sel}${f('J11')?'; queda pendiente '+f('J11'):''}.`,cls:''});
     else if(f('J11')) out.push({k:'J11',s:`Queda pendiente ${f('J11')}.`,cls:''});
   }
-  return out.map(o=>{ let s=contr(o.s.replace(/\s+\./g,'.').replace(/\s{2,}/g,' ')); if(html){ const c=cite(e.id,o.k==='J1'?'J2':o.k); return `<span class="${o.cls}">${s}</span>${c}`; } return s; }).join(' ');
+  return out.map(o=>{ let s=contr(o.s.replace(/\s+\./g,'.').replace(/\.{2,}/g,'.').replace(/\s{2,}/g,' ')); if(html){ const c=cite(e.id,o.k==='J1'?'J2':o.k); return `<span class="${o.cls}">${s}</span>${c}`; } return s; }).join(' ');
 }
 function alerts(e, work=false){
   const j=work?WV(J(e.id)):J(e.id); const a=[];
@@ -587,6 +603,7 @@ function alerts(e, work=false){
   const txt=Object.values(j.f).join(' ').toLowerCase();
   const found=PROS.filter(p=>new RegExp('\\b'+p.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b').test(txt));
   if(found.length) a.push({c:'warn',t:`Términos proscritos: ${found.join(', ')}. Reemplace por un dato o por el vocabulario controlado.`});
+  if(j.J8sel && !J8OP(e).includes(j.J8sel)) a.push({c:'bad',t:`La valoración guardada ("${j.J8sel}") pertenece a la escala anterior. Elija en J8 una opción de la escala de este enunciado.`});
   if(e.obl.includes('J7') && filled(j,'J7') && years(j.f.J7)<3) a.push({c:'warn',t:`J7 menciona ${years(j.f.J7)} año(s): el enunciado exige una serie de al menos tres años y un comparador.`});
   const req=(txt.match(/evidencia requerida/g)||[]).length; if(req) a.push({c:'warn',t:`${req} campo(s) marcados [EVIDENCIA REQUERIDA]. El veredicto no puede ser "se verifica".`});
   if(j.J11sel==='se verifica' && (vac.length||req)) a.push({c:'bad',t:'Veredicto "se verifica" con campos vacíos o evidencia requerida: incoherente.'});
@@ -606,7 +623,7 @@ function tree(){
     h+=`<div class="dim">Dimensión ${dk} | ${esc(dn)}</div>`;
     Object.entries(D.criterios).filter(([,c])=>c.dim===dk).forEach(([cn,c])=>{
       const es=ENUN.filter(e=>e.crit==+cn);
-      const bar=es.map(e=>`<i class="${['','s1','s2','s3'][J(e.id).estado]||''}" style="background:${['var(--line)','var(--warn)','var(--accent)','var(--ok)'][J(e.id).estado]}"></i>`).join('');
+      const bar=es.map(e=>`<i class="${J(e.id).estado?'s'+J(e.id).estado:''}" style="background:${EST_COLOR[J(e.id).estado]||EST_COLOR[0]}"></i>`).join('');
       const openC = tree.open.has(cn) || (q && es.some(m=>match(m,q)));
       h+=`<div class="crit"><button data-crit="${cn}" aria-expanded="${openC}"><span>${openC?'▾':'▸'}</span><span>Criterio ${cn}. ${esc(c.nombre)}</span><span class="bar">${bar}</span></button>`;
       if(openC){ [1,2,3].forEach(n=>{ const L=es.filter(e=>e.nivel===n && (!q||match(e,q))); if(!L.length) return; h+=`<div class="lvl"><h4>Nivel ${n}</h4>`; L.forEach(e=>{ const j=J(e.id); h+=`<button class="enun" data-id="${e.id}" aria-current="${e.id===CUR}" ${hasDrafts(j)?'title="Cambios sin guardar"':''}><span class="dot s${j.estado} ${hasDrafts(j)?'draft':''}"></span><code>${e.id}</code><span class="t">${esc(e.texto)}</span></button>`; }); h+='</div>'; }); }
@@ -628,31 +645,34 @@ function crumbs(e){
 function saveBarHTML(e,j){ const d=dirtyFields(e,j); return `<div class="savebar" id="saveBar" ${d.length?'':'hidden'}><span><b>Cambios sin guardar</b> en ${d.join(', ')}. Se conservan como borrador en su cuenta (solo usted los ve) hasta que los guarde o descarte; el documento por criterio y la IA usan solo lo guardado.</span><button class="btn small primary" id="btnSaveAll">Guardar todos los campos</button><button class="btn small" id="btnDiscardAll">Descartar todos</button></div>`; }
 function editor(){
   const e=BY[CUR]; const j=J(e.id); const c=compl(e,true); const v=$('#view-editor'); const W=WV(j);
-  const marc=e.marc.length?' + '+e.marc.join(' + '):'';
+  const marc=e.marc.length?' + '+e.marc.join(' + '):''; const ro=!PERM.editar(e.id);
+  if(TAB==='ref'&&!PERM.verRef) TAB='juicio';
+  if(EVEDIT&&!S.evidencias.some(x=>x.ev===EVEDIT&&x.code===e.id)) EVEDIT=null; if(EVPRE&&EVPRE.code!==e.id) EVPRE=null;
   v.innerHTML=`${crumbs(e)}
   <div class="head">
     <div><div class="code">${e.id}</div><div class="meta"><span class="chip tipo">Tipo ${e.tipo}${marc} | ${esc(TIPO_NOM[e.tipo].nombre)}</span><span class="chip">Criterio ${e.crit} | Nivel ${e.nivel}</span><span class="chip">Obligatorios: ${e.obl.join(' ')}</span>${e.rec.length?`<span class="chip">Recomendados: ${e.rec.join(' ')}</span>`:''}</div></div>
     <div class="ctrl">
-      <label class="note" for="resp">Responsable</label><input type="text" id="resp" value="${esc(j.resp)}" placeholder="Unidad o comisión" style="width:220px">
-      <label class="note" for="estado">Estado</label><select id="estado">${ESTADOS.map((s,i)=>`<option value="${i}" ${i===j.estado?'selected':''}>${s}</option>`).join('')}</select>
+      <label class="note" for="resp">Responsable</label><input type="text" id="resp" value="${esc(j.resp)}" placeholder="Unidad o comisión" style="width:220px" ${ro?'disabled':''}>
+      <label class="note" for="estado">Estado</label><select id="estado" ${ro?'disabled':''}>${EST_ORDEN.map(i=>`<option value="${i}" ${i===j.estado?'selected':''} ${i!==j.estado&&!PERM.estados().includes(i)?'disabled':''}>${ESTADOS[i]}</option>`).join('')}</select>
     </div>
   </div>
+  ${ro?`<div class="rolock" role="note"><b>Solo lectura.</b> ${esc(PERM.motivo(e))}</div>`:''}
   <div class="quote">"${esc(e.texto)}"<small>Texto literal CNA | verbo rector: <b>${esc(e.verbo)}</b> | atributo: ${esc(e.atributo)}${e.alcance&&e.alcance!=='—'?' | alcance exigido: '+esc(e.alcance):''}${e.modo&&e.modo!=='—'?' | modo: '+esc(e.modo):''}</small></div>
   <div class="tabs" role="tablist">
     <button role="tab" data-tab="juicio" aria-selected="${TAB==='juicio'}">Juicio asistido</button>
     <button role="tab" data-tab="evid" aria-selected="${TAB==='evid'}">Evidencias <span class="chip">${evFor(e.id).length}</span></button>
     <button role="tab" data-tab="rec" aria-selected="${TAB==='rec'}">Recursos cuantitativos</button>
     <button role="tab" data-tab="guia" aria-selected="${TAB==='guia'}">Guía del enunciado</button>
-    <button role="tab" data-tab="ref" aria-selected="${TAB==='ref'}">Referentes de otras IES ${refChip(e)}</button>
+    ${PERM.verRef?`<button role="tab" data-tab="ref" aria-selected="${TAB==='ref'}">Referentes de otras IES ${refChip(e)}</button>`:''}
   </div>
   <div class="tab ${TAB==='juicio'?'on':''}" id="tab-juicio">
     <div class="edit">
       <div>${saveBarHTML(e,j)}${fields(e,j)}
-        <div class="tools"><button class="btn" id="btnEj">Cargar ejemplo ilustrativo</button><button class="btn" id="btnReq">Marcar vacías como [EVIDENCIA REQUERIDA]</button><button class="btn" id="btnLimpiar">Limpiar campos</button></div>
+        ${ro?'':`<div class="tools"><button class="btn" id="btnEj">Cargar ejemplo ilustrativo</button><button class="btn" id="btnReq">Marcar vacías como [EVIDENCIA REQUERIDA]</button><button class="btn" id="btnLimpiar">Limpiar campos</button></div>`}
       </div>
       <div class="sticky">
-        <div class="card"><h3>Juicio renderizado <span class="right">${c.ok}/${c.tot} obligatorios</span></h3><div class="meter"><i style="width:${c.tot?Math.round(100*c.ok/c.tot):0}%"></i></div><div class="prose" id="prose">${render(e,true,false,true)}</div>
-        <div class="tools" style="padding:0 14px 12px"><button class="btn small" id="btnCopy">Copiar texto</button><button class="btn small primary" id="btnIA" ${SAMPLE?'':'disabled title="Disponible solo dentro del visor de Claude"'}>Mejorar juicio con IA generativa</button><button class="btn small" id="btnIAStop" hidden>Detener</button></div>
+        <div class="card"><h3>Juicio renderizado <span class="right">${c.ok}/${c.tot} obligatorios</span></h3><div class="meter"><i style="width:${c.tot?Math.round(100*c.ok/c.tot):0}%"></i></div><div class="prose" id="prose">${render(e,true,false,true)}</div><div class="prleg"><span><i style="background:var(--warn-soft)"></i>obligatorio sin completar</span><span><i style="background:var(--surface-2);border:1px solid var(--line)"></i>recomendado sin completar (en gris)</span></div>
+        <div class="tools" style="padding:0 14px 12px"><button class="btn small" id="btnCopy">Copiar texto</button><button class="btn small primary" id="btnIA" ${ro?'disabled title="Solo lectura"':SAMPLE?'':'disabled title="Disponible solo dentro del visor de Claude"'}>Mejorar juicio con IA generativa</button><button class="btn small" id="btnIAStop" hidden>Detener</button></div>
         <div id="iaBox" ${j.ia?'':'hidden'}><h3>Versión mejorada con IA <span class="right" id="iaState">${j.ia?'aceptada por el redactor':''}</span></h3><div class="prose" id="iaProse">${j.ia?esc(j.ia):''}</div><ul class="alerts" id="iaChecks"></ul>
           <div class="tools" style="padding:0 14px 12px"><button class="btn small primary" id="btnIAUse" ${j.ia?'hidden':''}>Usar esta versión en el documento</button><button class="btn small" id="btnIARedo" hidden>Regenerar</button><button class="btn small danger" id="btnIADrop">${j.ia?'Volver a la versión automática':'Descartar'}</button></div>
           <p class="note" style="padding:0 14px 12px;margin:0">La IA solo reordena y condensa lo que ya está en los campos. No puede agregar cifras, nombres ni evidencias; la verificación de fidelidad marca cualquier dato nuevo. La versión aceptada queda registrada como redacción del responsable.</p></div></div>
@@ -663,21 +683,21 @@ function editor(){
   <div class="tab ${TAB==='evid'?'on':''}" id="tab-evid">${evidTab(e)}</div>
   <div class="tab ${TAB==='rec'?'on':''}" id="tab-rec">${recTab(e)}</div>
   <div class="tab ${TAB==='guia'?'on':''}" id="tab-guia">${guiaTab(e)}</div>
-  <div class="tab ${TAB==='ref'?'on':''}" id="tab-ref">${TAB==='ref'?refTab(e):''}</div>`;
+  <div class="tab ${TAB==='ref'?'on':''}" id="tab-ref">${TAB==='ref'&&PERM.verRef?refTab(e):''}</div>`;
   bindEditor(e,j);
 }
 function fields(e,j){
-  const W=WV(j);
+  const W=WV(j); const ro=!PERM.editar(e.id);
   const blo=[['Dispositivo',['J1','J2','J3','J4']],['Despliegue',['J5','J6']],['Resultados',['J7','J8']],['Ciclo de mejora',['J9','J10']],['Síntesis',['J11']]];
   let h='';
   blo.forEach(([b,ks])=>{ const use=ks.filter(k=>e.obl.includes(k)||e.rec.includes(k)); if(!use.length) return; h+=`<div class="bloque"><h3>${b}</h3>`;
-    use.forEach(k=>{ const r=RAN[k]; const opt=e.rec.includes(k); let extra='';
-      if(k==='J2') extra=`<div class="row" style="margin-bottom:6px"><select id="J2v" aria-label="Verbo de existencia">${VERBOS_J2.map(x=>`<option ${x===W.J2v?'selected':''}>${x}</option>`).join('')}</select></div>`;
-      let hint=FIELD_HINT[k]; if(k==='J3') hint+=` <em>Este enunciado: "${esc(e.verbo)}" → ${esc(e.atributo)}.</em>`; if(k==='J4'&&e.alcance&&e.alcance!=='—') hint+=` <em>Alcance exigido: ${esc(e.alcance)}${e.modo&&e.modo!=='—'?'; modo: '+esc(e.modo):''}.</em>`; if(k==='J5'&&e.finalidad&&e.finalidad!=='—') hint+=` <em>Finalidad del enunciado: ${esc(e.finalidad)}.</em>`; if(k==='J7') hint+=` <em>Indicador de: ${esc(e.atributo)}.</em>`;
-      let sel=''; if(k==='J8') sel=`<div class="row" style="margin-bottom:6px"><select id="J8sel"><option value="">— veredicto controlado —</option>${D.vocab.J8.map(x=>`<option ${x===W.J8sel?'selected':''}>${x}</option>`).join('')}</select></div>`;
-      if(k==='J11') sel=`<div class="row" style="margin-bottom:6px"><select id="J11sel"><option value="">— veredicto —</option>${D.vocab.J11.map(x=>`<option ${x===W.J11sel?'selected':''}>${x}</option>`).join('')}</select></div>`;
+    use.forEach(k=>{ const r=CAMPO(e,k); const opt=e.rec.includes(k); let extra='';
+      if(k==='J2' && !['mediante','consta'].includes((e.p||{}).o1)) extra=`<div class="row" style="margin-bottom:6px"><select id="J2v" aria-label="Verbo de existencia" ${ro?'disabled':''}>${VERBOS_J2.map(x=>`<option ${x===W.J2v?'selected':''}>${x}</option>`).join('')}</select></div>`;
+      const pq=(e.p&&e.p[k]&&e.p[k].pregunta)?`<b>${esc(e.p[k].pregunta)}</b> `:''; let hint=pq+(k==='J3'&&pq?'':FIELD_HINT[k]); if(k==='J3'&&e.p) hint+=` <em>Objeto del enunciado: ${esc(e.p.obj)} (${esc(e.p.clase_nom.toLowerCase())}).</em>`; if(k==='J4'&&e.alcance&&e.alcance!=='—') hint+=` <em>Alcance exigido: ${esc(e.alcance)}${e.modo&&e.modo!=='—'?'; modo: '+esc(e.modo):''}.</em>`; if(k==='J5'&&e.finalidad&&e.finalidad!=='—') hint+=` <em>Finalidad del enunciado: ${esc(e.finalidad)}.</em>`; if(k==='J7') hint+=` <em>Indicador de: ${esc(e.atributo)}.</em>`;
+      let sel=''; if(k==='J8'){ const ops=J8OP(e); const vieja=W.J8sel&&!ops.includes(W.J8sel); sel=`<div class="row" style="margin-bottom:6px"><select id="J8sel" aria-label="Grado que sostiene la evidencia" ${ro?'disabled':''}><option value="">— grado que sostiene la evidencia —</option>${vieja?`<option value="${esc(W.J8sel)}" selected disabled>${esc(W.J8sel)} (escala anterior)</option>`:''}${ops.map(x=>`<option ${x===W.J8sel?'selected':''}>${esc(x)}</option>`).join('')}</select></div>`; }
+      if(k==='J11') sel=`<div class="row" style="margin-bottom:6px"><select id="J11sel" ${ro?'disabled':''}><option value="">— veredicto —</option>${D.vocab.J11.map(x=>`<option ${x===W.J11sel?'selected':''}>${x}</option>`).join('')}</select></div>`;
       const evs=evFor(e.id,k); const evtxt=evs.length?`<div class="note" style="margin-top:4px">Evidencia vinculada: ${evs.map(v=>`<span class="ev" style="font-family:var(--font-mono);color:var(--accent)">${v.ev}</span> ${esc(v.titulo)}`).join(' | ')}</div>`:'';
-      h+=`<div class="field ${opt?'opt':''} ${dirty(j,k)?'dirty':''}" data-field="${k}"><div class="k">${k}${opt?'':'<b>oblig.</b>'}</div><div><label for="f-${k}">${esc(r.nombre)}</label><div class="hint">${hint}</div>${extra}${sel}<textarea id="f-${k}" data-k="${k}" placeholder="${k==='J8'?'Justificación breve':k==='J11'?'Brecha respecto del nivel':esc(r.contenido)}">${esc(W.f[k]||'')}</textarea><div class="fsave" id="fs-${k}">${fsaveHTML(j,k)}</div>${evtxt}</div></div>`;
+      h+=`<div class="field ${opt?'opt':''} ${dirty(j,k)?'dirty':''}" data-field="${k}"><div class="k">${k}${opt?'':'<b>oblig.</b>'}</div><div><label for="f-${k}">${esc(r.nombre)}</label><div class="hint">${hint}</div>${extra}${sel}<textarea id="f-${k}" data-k="${k}" ${ro?'readonly':''} placeholder="${k==='J8'?'Fundamento: dato o constatación que respalda el grado elegido':k==='J11'?'Lo que queda pendiente respecto del nivel':esc(r.contenido)}">${esc(W.f[k]||'')}</textarea><div class="fsave" id="fs-${k}">${ro?'':fsaveHTML(j,k)}</div>${evtxt}</div></div>`;
     }); h+='</div>'; });
   return h;
 }
@@ -692,14 +712,14 @@ function bindEditor(e,j){
   ['J2v','J8sel','J11sel'].forEach(id=>{ const s=$('#'+id,v); if(s) s.addEventListener('change',()=>{ setDraft(j,id,s.value); refreshPreview(e); upd(fieldOf(id)); save(); }); });
   const sa=$('#btnSaveAll',v); if(sa) sa.addEventListener('click',()=>{ const d=dirtyFields(e,j); d.forEach(k=>commitField(j,k)); if(j.d) delete j.d; save(); editor(); tree(); toast(d.length?`Guardados: ${d.join(', ')}`:'Sin cambios pendientes'); });
   const da=$('#btnDiscardAll',v); if(da) da.addEventListener('click',()=>{ delete j.d; save(); editor(); tree(); toast('Cambios descartados'); });
-  $('#estado',v).addEventListener('change',ev=>{ j.estado=+ev.target.value; save(); tree(); toast('Estado actualizado'); });
+  $('#estado',v).addEventListener('change',ev=>{ const x=+ev.target.value; if(!PERM.estados().includes(x)){ ev.target.value=j.estado; toast('Su perfil no permite asignar ese estado'); return; } j.estado=x; save(); tree(); toast('Estado actualizado'); });
   $('#resp',v).addEventListener('change',ev=>{ j.resp=ev.target.value; save(); toast('Responsable guardado'); });
   $$('[data-step]',v).forEach(b=>b.addEventListener('click',()=>{ const i=ENUN.findIndex(x=>x.id===e.id)+(+b.dataset.step); if(ENUN[i]){ CUR=ENUN[i].id; tree.open.add(String(ENUN[i].crit)); editor(); tree(); revealCur(); navSave(); const mn=$('.main'); if(mn) mn.scrollTop=0; } }));
   const oc=$('[data-opencrit]',v); if(oc) oc.addEventListener('click',()=>{ tree.open.add(oc.dataset.opencrit); setCat(true); tree(); revealCur(); });
   $$('.tabs [role=tab]',v).forEach(b=>b.addEventListener('click',()=>{ TAB=b.dataset.tab; editor(); navSave(); }));
-  $('#btnEj',v).addEventListener('click',()=>{ const t={f:{},J8sel:'',J11sel:''}; Object.entries(e.ej).forEach(([k,val])=>setEj(t,k,val)); Object.entries(t.f).forEach(([k,val])=>setDraft(j,k,val)); if('J8' in e.ej) setDraft(j,'J8sel',t.J8sel); if('J11' in e.ej) setDraft(j,'J11sel',t.J11sel); save(); editor(); tree(); toast('Ejemplo cargado como borrador: revíselo y guárdelo'); });
-  $('#btnReq',v).addEventListener('click',()=>{ const W=WV(j); e.obl.forEach(k=>{ if(k!=='J8'&&k!=='J11'&&!filled(W,k)) setDraft(j,k,'[EVIDENCIA REQUERIDA: '+RAN[k].nombre.toLowerCase()+']'); }); save(); editor(); tree(); });
-  $('#btnLimpiar',v).addEventListener('click',()=>{ [...e.obl,...e.rec].forEach(k=>{ setDraft(j,k,''); if(k==='J8') setDraft(j,'J8sel',''); if(k==='J11') setDraft(j,'J11sel',''); }); save(); editor(); tree(); toast('Campos vaciados como borrador: guarde para confirmar'); });
+  ($('#btnEj',v)||{addEventListener(){}}).addEventListener('click',()=>{ const t={f:{},J2v:'cuenta con',J8sel:'',J11sel:''}; Object.entries(e.ej).forEach(([k,val])=>setEj(t,k,val,e)); if('J2v' in e.ej) setDraft(j,'J2v',t.J2v); Object.entries(t.f).forEach(([k,val])=>setDraft(j,k,val)); if('J8' in e.ej) setDraft(j,'J8sel',t.J8sel); if('J11' in e.ej) setDraft(j,'J11sel',t.J11sel); save(); editor(); tree(); toast('Ejemplo cargado como borrador: revíselo y guárdelo'); });
+  ($('#btnReq',v)||{addEventListener(){}}).addEventListener('click',()=>{ const W=WV(j); e.obl.forEach(k=>{ if(k!=='J8'&&k!=='J11'&&!filled(W,k)) setDraft(j,k,'[EVIDENCIA REQUERIDA: '+CAMPO(e,k).nombre.toLowerCase()+']'); }); save(); editor(); tree(); });
+  ($('#btnLimpiar',v)||{addEventListener(){}}).addEventListener('click',()=>{ [...e.obl,...e.rec].forEach(k=>{ setDraft(j,k,''); if(k==='J8') setDraft(j,'J8sel',''); if(k==='J11') setDraft(j,'J11sel',''); }); save(); editor(); tree(); toast('Campos vaciados como borrador: guarde para confirmar'); });
   $('#btnCopy',v).addEventListener('click',()=>copy(render(e,false,true,true)));
   bindIA(e,j);
   bindEvid(e); bindRec(e); bindRef(e);
@@ -713,9 +733,9 @@ if(window.claude && typeof window.claude.use==='function'){
 const PROSCRITOS_TXT = D.proscritos.join(', ');
 function iaPrompt(e,j){
   const valOf=k=>k==='J8'?[j.J8sel,j.f.J8].filter(Boolean).join('; '):k==='J11'?[j.J11sel,j.f.J11].filter(Boolean).join('; queda pendiente '):((j.f[k]||'').trim());
-  const campos=[...e.obl,...e.rec].map(k=>[k,valOf(k)]).filter(([,v])=>v).map(([k,v])=>`${k} (${RAN[k].nombre}): ${v}`).join('\n');
+  const campos=[...e.obl,...e.rec].map(k=>[k,valOf(k)]).filter(([,v])=>v).map(([k,v])=>`${k} (${CAMPO(e,k).nombre}): ${v}`).join('\n');
   const evs=evFor(e.id).map(v=>`${v.ev} | ${v.titulo} | plano ${v.plano} | solidez ${v.solidez} | respalda ${v.campos.join(' ')}`).join('\n')||'ninguna';
-  const keep=[j.J8sel?`el término de valoración ("${j.J8sel}")`:'', j.J11sel?`el veredicto final ("${j.J11sel}")`:''].filter(Boolean).join(' y ');
+  const keep=[j.J8sel?`el grado de la valoración ("${j.J8sel}")`:'', j.J11sel?`el veredicto final ("${j.J11sel}")`:''].filter(Boolean).join(' y ');
   return `Eres redactor técnico de un informe de autoevaluación institucional para la acreditación de universidades en Chile (CNA-Chile). Debes reescribir un juicio evaluativo generado automáticamente por plantilla para que quede fluido y sin redundancias, conservando toda su información.
 
 ENUNCIADO CNA que se evalúa (${e.id}, tipo ${e.tipo}): "${e.texto}"
@@ -788,41 +808,59 @@ function copy(t){ navigator.clipboard.writeText(t).then(()=>toast('Copiado')).ca
 
 /* ---------------- evidencias ---------------- */
 const TIPOS_EV=['Política / reglamento','Acta','Dato / serie','Informe / presentación','Encuesta','Plan','Presupuesto','Otro'];
+let EVEDIT=null, EVPRE=null;
+const EV_ESTADOS=['pendiente','desestimada','validada'];
+function evNuevoCodigo(code){ S.evseq=S.evseq||{}; let n=S.evseq[code]||0; S.evidencias.forEach(x=>{ const m=x.code===code&&/-(\d+)$/.exec(x.ev); if(m&&+m[1]>n) n=+m[1]; }); n++; S.evseq[code]=n; return 'EV-'+code+'-'+String(n).padStart(3,'0'); }
+function evPre(e){ const ed=EVEDIT?S.evidencias.find(x=>x.ev===EVEDIT&&x.code===e.id):null; return {ed, pre: ed||(EVPRE&&EVPRE.code===e.id?EVPRE:{})}; }
 function evidTab(e){
-  const evs=evFor(e.id); const ran=[...e.obl,...e.rec];
-  const rows=evs.map(v=>`<tr><td><span style="font-family:var(--font-mono);font-size:12px">${v.ev}</span></td><td>${esc(v.titulo)}${v.archivo?`<div class="note">📎 ${v.archivo_id?`<button class="lk" data-evdl="${v.archivo_id}">${esc(v.archivo)}</button>`:esc(v.archivo)}</div>`:''}</td><td>${esc(v.tipo)}<div class="note">${v.anio||''} | ${esc(v.unidad)}</div></td><td><span class="pill ${v.plano}">${v.plano}</span></td><td><span class="pill ${v.solidez}">${v.solidez}</span></td><td>${v.campos.join(' ')}</td><td><select data-ev="${v.ev}" class="evestado"><option ${v.estado==='pendiente'?'selected':''}>pendiente</option><option ${v.estado==='recibida'?'selected':''}>recibida</option><option ${v.estado==='validada'?'selected':''}>validada</option></select></td><td><button class="btn small danger" data-del="${v.ev}">Quitar</button></td></tr>`).join('');
-  return `<div class="card"><h3>Evidencias del enunciado <span class="right">${evs.length} registro(s)</span></h3>
-  <div class="tablewrap"><table><thead><tr><th>Código</th><th>Evidencia</th><th>Tipo | año | unidad</th><th>Plano</th><th>Solidez</th><th>Campos</th><th>Estado</th><th></th></tr></thead><tbody>${rows||'<tr><td colspan="8" class="note">Sin evidencias. Agregue la primera con el formulario.</td></tr>'}</tbody></table></div>
-  <form class="form" id="evForm">
-    <div class="full"><label for="ev-t">Título de la evidencia</label><input id="ev-t" type="text" required placeholder="Ej.: Resolución N° 210/2019 que aprueba el Modelo Educativo"></div>
-    <div><label for="ev-tipo">Tipo</label><select id="ev-tipo">${TIPOS_EV.map(t=>`<option>${t}</option>`).join('')}</select></div>
-    <div><label for="ev-anio">Año</label><input id="ev-anio" type="number" min="2000" max="2030" value="2025"></div>
-    <div><label for="ev-u">Unidad que la aporta</label><input id="ev-u" type="text" placeholder="Unidad"></div>
-    <div><label for="ev-plano">Plano de evidencia</label><select id="ev-plano"><option value="declarado">Declarado (política, reglamento, discurso)</option><option value="implementado">Implementado (práctica, cobertura, actas)</option><option value="verificable">Verificable (datos, series, registros)</option></select></div>
-    <div><label for="ev-sol">Solidez</label><select id="ev-sol"><option value="S3">S3 | documental, vigente, con dato</option><option value="S2">S2 | parcial o sin serie</option><option value="S1">S1 | anecdótica o sin respaldo</option></select></div>
+  const evs=evFor(e.id); const ran=[...e.obl,...e.rec].sort((a,b)=>a.slice(1)-b.slice(1)); const ro=!PERM.editar(e.id); const {ed,pre}=evPre(e);
+  const sel=(a,b)=>a===b?'selected':'';
+  const rows=evs.map(v=>`<tr ${ed&&ed.ev===v.ev?'class="evon"':''}><td><span style="font-family:var(--font-mono);font-size:12px">${v.ev}</span></td><td>${esc(v.titulo)}${v.archivo?`<div class="note">📎 ${v.archivo_id?`<button class="lk" data-evdl="${v.archivo_id}">${esc(v.archivo)}</button>`:esc(v.archivo)}</div>`:''}</td><td>${esc(v.tipo)}<div class="note">${v.anio||''} | ${esc(v.unidad)}</div></td><td><span class="pill ${v.plano}">${v.plano}</span></td><td><span class="pill ${v.solidez}">${v.solidez}</span></td><td>${v.campos.join(' ')}</td><td><select data-ev="${v.ev}" class="evestado" aria-label="Estado de ${v.ev}" ${ro?'disabled':''}>${EV_ESTADOS.map(x=>`<option ${v.estado===x?'selected':''}>${x}</option>`).join('')}</select></td><td class="facc">${ro?'':`<button class="btn small" data-evedit="${v.ev}">Editar</button><button class="btn small danger" data-del="${v.ev}">Quitar</button>`}</td></tr>`).join('');
+  const form = ro ? `<p class="note" style="padding:0 14px 12px">Solo lectura. ${esc(PERM.motivo(e))}</p>` : `<form class="form" id="evForm">
+    ${ed?`<div class="full evhead"><b>Editando ${ed.ev}</b><button type="button" class="btn small" id="evCancel">Cancelar edición</button></div>`:''}
+    <div class="full"><label for="ev-t">Título de la evidencia</label><input id="ev-t" type="text" required value="${esc(pre.titulo||'')}" placeholder="Ej.: Resolución N° 210/2019 que aprueba el Modelo Educativo"></div>
+    <div><label for="ev-tipo">Tipo</label><select id="ev-tipo">${TIPOS_EV.map(t=>`<option ${sel(t,pre.tipo)}>${t}</option>`).join('')}</select></div>
+    <div><label for="ev-anio">Año</label><input id="ev-anio" type="number" min="2000" max="2030" value="${pre.anio||2025}"></div>
+    <div><label for="ev-u">Unidad que la aporta</label><input id="ev-u" type="text" placeholder="Unidad" value="${esc(pre.unidad||'')}"></div>
+    <div><label for="ev-plano">Plano de evidencia</label><select id="ev-plano"><option value="declarado" ${sel('declarado',pre.plano)}>Declarado (política, reglamento, discurso)</option><option value="implementado" ${sel('implementado',pre.plano)}>Implementado (práctica, cobertura, actas)</option><option value="verificable" ${sel('verificable',pre.plano)}>Verificable (datos, series, registros)</option></select></div>
+    <div><label for="ev-sol">Solidez</label><select id="ev-sol"><option value="S3" ${sel('S3',pre.solidez)}>S3 | documental, vigente, con dato</option><option value="S2" ${sel('S2',pre.solidez)}>S2 | parcial o sin serie</option><option value="S1" ${sel('S1',pre.solidez)}>S1 | anecdótica o sin respaldo</option></select></div>
+    <div><label for="ev-est">Estado</label><select id="ev-est">${EV_ESTADOS.map(x=>`<option ${sel(x,pre.estado||'pendiente')}>${x}</option>`).join('')}</select></div>
     <div><label for="ev-file">Archivo (solo se registra el nombre en este prototipo)</label><input id="ev-file" type="file"></div>
-    <div class="full"><label>Campos que respalda</label><div class="checks">${ran.map(k=>`<label><input type="checkbox" value="${k}"> ${k} ${esc(RAN[k].nombre)}</label>`).join('')}</div></div>
-    <div class="full tools"><button class="btn primary" type="submit">Agregar evidencia</button><span class="note">El código EV se asigna automáticamente y queda disponible para citarlo en el juicio y en la matriz maestra.</span></div>
-  </form></div>`;
+    <div class="full"><label>Campos que respalda</label><div class="checks">${ran.map(k=>`<label><input type="checkbox" value="${k}" ${(pre.campos||[]).includes(k)?'checked':''}> ${k} ${esc(CAMPO(e,k).nombre)}</label>`).join('')}</div></div>
+    <div class="full tools"><button class="btn primary" type="submit">${ed?'Guardar cambios':'Agregar evidencia'}</button><span class="note">${ed?'El código no cambia.':`El código se asigna automáticamente (EV-${e.id}-001, -002...) y queda disponible para citarlo en el juicio y en la matriz maestra.`}</span></div>
+  </form>`;
+  return `<div class="card"><h3>Evidencias del enunciado <span class="right">${evs.length} registro(s)</span></h3>
+  <div class="tablewrap"><table><thead><tr><th>Código</th><th>Evidencia</th><th>Tipo | año | unidad</th><th>Plano</th><th>Solidez</th><th>Campos</th><th>Estado</th><th></th></tr></thead><tbody>${rows||`<tr><td colspan="8" class="note">Sin evidencias.${ro?'':' Agregue la primera con el formulario.'}</td></tr>`}</tbody></table></div>
+  ${form}</div>`;
+}
+function evDatosForm(f){ return {titulo:$('#ev-t',f).value.trim(),tipo:$('#ev-tipo',f).value,anio:+$('#ev-anio',f).value||null,unidad:$('#ev-u',f).value.trim(),plano:$('#ev-plano',f).value,solidez:$('#ev-sol',f).value,estado:$('#ev-est',f).value,campos:$$('.checks input:checked',f).map(i=>i.value)}; }
+function bindEvidComun(e){
+  const v=$('#view-editor');
+  $$('[data-evedit]',v).forEach(b=>b.addEventListener('click',()=>{ EVEDIT=b.dataset.evedit; EVPRE=null; editor(); const f=$('#evForm'); if(f) f.scrollIntoView({block:'center'}); }));
+  const c=$('#evCancel',v); if(c) c.addEventListener('click',()=>{ EVEDIT=null; EVPRE=null; editor(); });
+  $$('[data-del]',v).forEach(b=>b.addEventListener('click',()=>{ if(!PERM.editar(e.id)) return; S.evidencias=S.evidencias.filter(x=>x.ev!==b.dataset.del); if(EVEDIT===b.dataset.del) EVEDIT=null; save(); editor(); }));
+  $$('.evestado',v).forEach(s=>s.addEventListener('change',()=>{ const x=S.evidencias.find(o=>o.ev===s.dataset.ev); if(x&&PERM.editar(e.id)){ x.estado=s.value; save(); toast(`${x.ev}: ${s.value}`); } }));
 }
 function bindEvid(e){
+  bindEvidComun(e);
   const f=$('#evForm'); if(!f) return;
-  f.addEventListener('submit',ev=>{ ev.preventDefault(); S.seq=(S.seq||0)+1; const file=$('#ev-file').files[0]; S.evidencias.push({ev:'EV-2026-'+String(S.seq).padStart(3,'0'),code:e.id,titulo:$('#ev-t').value.trim(),tipo:$('#ev-tipo').value,anio:+$('#ev-anio').value,unidad:$('#ev-u').value.trim(),plano:$('#ev-plano').value,solidez:$('#ev-sol').value,campos:$$('.checks input:checked',f).map(i=>i.value),archivo:file?file.name:'',estado:'pendiente'}); save(); editor(); toast('Evidencia registrada'); });
-  $$('[data-del]').forEach(b=>b.addEventListener('click',()=>{ S.evidencias=S.evidencias.filter(v=>v.ev!==b.dataset.del); save(); editor(); }));
-  $$('.evestado').forEach(s=>s.addEventListener('change',()=>{ const v=S.evidencias.find(x=>x.ev===s.dataset.ev); if(v){ v.estado=s.value; save(); } }));
+  f.addEventListener('submit',ev=>{ ev.preventDefault(); const d=evDatosForm(f); const file=$('#ev-file',f).files[0];
+    if(EVEDIT){ const o=S.evidencias.find(x=>x.ev===EVEDIT); if(o){ Object.assign(o,d); if(file) o.archivo=file.name; } EVEDIT=null; save(); editor(); toast('Evidencia actualizada'); return; }
+    S.evidencias.push({ev:evNuevoCodigo(e.id),code:e.id,...d,archivo:file?file.name:''}); EVPRE=null; save(); editor(); toast('Evidencia registrada'); });
 }
 
 /* ---------------- recursos ---------------- */
 function recTab(e){
   const r=e.recursos; const st=S.recursos[e.id]||{};
-  const li=(list,pfx,title)=>`<div class="card" style="margin-bottom:12px"><h3>${title}</h3><ul class="reclist">${list.length?list.map((t,i)=>`<li><select data-rk="${pfx+i}"><option ${!st[pfx+i]||st[pfx+i]==='pendiente'?'selected':''}>pendiente</option><option ${st[pfx+i]==='en preparación'?'selected':''}>en preparación</option><option ${st[pfx+i]==='listo'?'selected':''}>listo</option></select><span>${esc(t)}</span></li>`).join(''):'<li class="note">No corresponde: el enunciado exige existencia formal; el sustento es documental.</li>'}</ul></div>`;
+  const li=(list,pfx,title)=>`<div class="card" style="margin-bottom:12px"><h3>${title}</h3><ul class="reclist">${list.length?list.map((t,i)=>`<li><select data-rk="${pfx+i}" ${PERM.editar(e.id)?'':'disabled'}><option ${!st[pfx+i]||st[pfx+i]==='pendiente'?'selected':''}>pendiente</option><option ${st[pfx+i]==='en preparación'?'selected':''}>en preparación</option><option ${st[pfx+i]==='listo'?'selected':''}>listo</option></select><span>${esc(t)}</span></li>`).join(''):'<li class="note">No corresponde: el enunciado exige existencia formal; el sustento es documental.</li>'}</ul></div>`;
   return `<p class="note" style="margin-top:0">${esc(r.nota)}</p>${li(r.soporte,'s','A. Soporte institucional del resultado')}${li(r.resultados,'r','B. Resultado cuantitativo')}<div class="card"><h3>Lectura esperada</h3><div class="prose" style="min-height:0;font-size:14.5px">${esc(r.lectura)}</div></div>`;
 }
 function bindRec(e){ $$('[data-rk]').forEach(s=>s.addEventListener('change',()=>{ S.recursos[e.id]=S.recursos[e.id]||{}; S.recursos[e.id][s.dataset.rk]=s.value; save(); })); }
 function guiaTab(e){
   return `<div class="two"><div class="card"><h3>Por qué estos campos</h3><div class="prose" style="font-size:14.5px;min-height:0">El verbo rector "${esc(e.verbo)}" hace de este un enunciado de tipo ${e.tipo} (${esc(TIPO_NOM[e.tipo].nombre.toLowerCase())}): ${esc(TIPO_NOM[e.tipo].descr)} Campos obligatorios: ${e.obl.join(', ')}${e.rec.length?'; recomendados: '+e.rec.join(', '):''}.${e.marc.length?' Marcadores secundarios: '+e.marc.join(', ')+'.':''}</div></div>
   <div class="card"><h3>Recomendación específica</h3><div class="prose" style="font-size:14.5px;min-height:0">${esc(e.rec_txt)}</div></div></div>
-  <div class="card" style="margin-top:12px"><h3>Preguntas guía por campo</h3><div class="tablewrap"><table><thead><tr><th>Campo</th><th>Pregunta</th><th>Medios de verificación típicos</th></tr></thead><tbody>${[...e.obl,...e.rec].map(k=>`<tr><td><b>${k}</b> ${esc(RAN[k].nombre)}</td><td>${esc(RAN[k].pregunta)}</td><td class="note">${esc(RAN[k].medios)}</td></tr>`).join('')}</tbody></table></div></div>`;
+  <div class="card" style="margin-top:12px"><h3>Preguntas guía por campo</h3><div class="tablewrap"><table><thead><tr><th>Campo</th><th>Pregunta</th><th>Medios de verificación típicos</th></tr></thead><tbody>${[...e.obl,...e.rec].sort((a,b)=>a.slice(1)-b.slice(1)).map(k=>{ const c=CAMPO(e,k); return `<tr><td><b>${k}</b> ${esc(c.nombre)}</td><td>${esc(c.pregunta)}</td><td class="note">${esc(c.medios)}</td></tr>`; }).join('')}</tbody></table></div></div>
+  ${e.p?`<div class="card" style="margin-top:12px"><h3>Cómo se valora este enunciado (J8)</h3><div class="prose" style="font-size:14.5px;min-height:0"><p style="margin-top:0">Objeto: ${esc(e.p.obj)} (${esc(e.p.clase_nom.toLowerCase())}). Pregunta evaluativa: ${esc(e.p.J8.pregunta)}</p><p>Escala, de mayor a menor:</p><ol>${e.p.J8.op.map(o=>`<li>${esc(frase8(e.p.J8.con,o,'',''))}</li>`).join('')}</ol><p class="note" style="margin-bottom:0">El grado de J8 dice qué permite sostener la evidencia; el veredicto de J11 dice si eso basta para el enunciado. Ambos deben ser coherentes.</p></div></div>`:''}`;
 }
 
 /* ---------------- referentes de otras IES ---------------- */
@@ -1176,19 +1214,19 @@ function refAspectos(v){
 
 /* ---------------- panel ---------------- */
 function panel(){
-  const v=$('#view-panel'); const est=[0,0,0,0]; let conAl=0; ENUN.forEach(e=>{ const j=J(e.id); est[j.estado]++; if(j.estado>0 && alerts(e).some(a=>a.c==='bad')) conAl++; });
+  const v=$('#view-panel'); const est=[0,0,0,0,0]; let conAl=0; ENUN.forEach(e=>{ const j=J(e.id); est[j.estado]++; if(j.estado>0 && alerts(e).some(a=>a.c==='bad')) conAl++; });
   const evs=S.evidencias; const sol={S3:0,S2:0,S1:0}; evs.forEach(x=>sol[x.solidez]++);
   const plano={declarado:0,implementado:0,verificable:0}; evs.forEach(x=>plano[x.plano]++);
   const kpi=(n,l)=>`<div class="card kpi"><div class="n">${n}</div><div class="l">${l}</div></div>`;
   let grid=`<div class="card"><h3>Avance por criterio y nivel <span class="right">un cuadro por enunciado; clic para abrirlo</span></h3><div class="gridwrap"><div class="grid"><div class="h">Criterio</div><div class="h">Nivel 1</div><div class="h">Nivel 2</div><div class="h">Nivel 3</div>`;
   Object.entries(D.criterios).forEach(([cn,c])=>{ grid+=`<div class="c">${cn}. ${esc(c.nombre)}</div>`; [1,2,3].forEach(n=>{ grid+='<div class="cells">'+ENUN.filter(e=>e.crit==+cn&&e.nivel===n).map(e=>{ const j=J(e.id); const bad=alerts(e).some(a=>a.c==='bad')&&j.estado>0; return `<button class="cell s${j.estado} ${bad?'alert':''}" data-go="${e.id}" title="${e.id} | ${ESTADOS[j.estado]}" aria-label="${e.id} ${ESTADOS[j.estado]}"></button>`; }).join('')+'</div>'; }); });
-  grid+=`</div></div><div class="legend"><span><i class="cell"></i> Sin iniciar</span><span><i class="cell s1"></i> En redacción</span><span><i class="cell s2"></i> En revisión</span><span><i class="cell s3"></i> Validado</span><span><i class="cell alert"></i> Con alerta bloqueante</span></div></div>`;
+  grid+=`</div></div><div class="legend"><span><i class="cell"></i> Sin iniciar</span><span><i class="cell s1"></i> En redacción</span><span><i class="cell s4"></i> Enviado a revisión</span><span><i class="cell s2"></i> En revisión</span><span><i class="cell s3"></i> Validado</span><span><i class="cell alert"></i> Con alerta bloqueante</span></div></div>`;
   const resp={}; ENUN.forEach(e=>{ const r=J(e.id).resp||'Sin asignar'; resp[r]=resp[r]||[0,0]; resp[r][0]++; if(J(e.id).estado===3) resp[r][1]++; });
   v.innerHTML=`<h2 style="margin:0 0 12px;font-size:18px">Panel de avance</h2>
-  <div class="kpis">${kpi(ENUN.length,'enunciados en el catálogo')}${kpi(est[3],'validados')}${kpi(est[2],'en revisión')}${kpi(est[1],'en redacción')}${kpi(conAl,'iniciados con alerta bloqueante')}${kpi(evs.length,'evidencias registradas')}${kpi(ENUN.filter(e=>hasDrafts(J(e.id))).length,'enunciados con cambios sin guardar')}</div>
+  <div class="kpis">${kpi(ENUN.length,'enunciados en el catálogo')}${kpi(est[3],'validados')}${kpi(est[2],'en revisión')}${kpi(est[4],'enviados a revisión')}${kpi(est[1],'en redacción')}${kpi(conAl,'iniciados con alerta bloqueante')}${kpi(evs.length,'evidencias registradas')}${kpi(ENUN.filter(e=>hasDrafts(J(e.id))).length,'enunciados con cambios sin guardar')}</div>
   ${grid}
   <div class="two" style="margin-top:14px">
-    <div class="card"><h3>Calidad de la evidencia</h3><div class="kv"><dt>Solidez S3</dt><dd>${sol.S3} | documental, vigente, con dato</dd><dt>Solidez S2</dt><dd>${sol.S2} | parcial o sin serie</dd><dt>Solidez S1</dt><dd>${sol.S1} | anecdótica; no sostiene veredicto pleno</dd><dt>Plano declarado</dt><dd>${plano.declarado}</dd><dt>Plano implementado</dt><dd>${plano.implementado}</dd><dt>Plano verificable</dt><dd>${plano.verificable}</dd><dt>Pendientes de recibir</dt><dd>${evs.filter(x=>x.estado==='pendiente').length}</dd></div></div>
+    <div class="card"><h3>Calidad de la evidencia</h3><div class="kv"><dt>Solidez S3</dt><dd>${sol.S3} | documental, vigente, con dato</dd><dt>Solidez S2</dt><dd>${sol.S2} | parcial o sin serie</dd><dt>Solidez S1</dt><dd>${sol.S1} | anecdótica; no sostiene veredicto pleno</dd><dt>Plano declarado</dt><dd>${plano.declarado}</dd><dt>Plano implementado</dt><dd>${plano.implementado}</dd><dt>Plano verificable</dt><dd>${plano.verificable}</dd><dt>Evidencias pendientes</dt><dd>${evs.filter(x=>x.estado==='pendiente').length}</dd><dt>Evidencias validadas</dt><dd>${evs.filter(x=>x.estado==='validada').length}</dd><dt>Evidencias desestimadas</dt><dd>${evs.filter(x=>x.estado==='desestimada').length}</dd></div></div>
     <div class="card"><h3>Responsables</h3><div class="tablewrap"><table><thead><tr><th>Responsable</th><th>Enunciados</th><th>Validados</th></tr></thead><tbody>${Object.entries(resp).sort((a,b)=>b[1][0]-a[1][0]).map(([r,[n,ok]])=>`<tr><td>${esc(r)}</td><td>${n}</td><td>${ok}</td></tr>`).join('')}</tbody></table></div></div>
   </div>`;
   $$('[data-go]',v).forEach(b=>b.addEventListener('click',()=>{ CUR=b.dataset.go; tree.open.add(String(BY[CUR].crit)); setView('editor'); }));
@@ -1221,12 +1259,13 @@ const NAVK='mesa-juicios-nav';
 function navSave(){ try{ localStorage.setItem(NAVK, JSON.stringify({view:VIEW, cur:CUR, tab:TAB, doc:DOCCRIT, refv:REFV, cat:!$('.app').classList.contains('nocat')})); }catch(e){} }
 function navLoad(){ try{ return JSON.parse(localStorage.getItem(NAVK)||'null'); }catch(e){ return null; } }
 function setCat(on){ $('.app').classList.toggle('nocat',!on); $('#menuBtn').setAttribute('aria-pressed',String(on)); navSave(); }
-function setView(name){ VIEW=name; $('.app').dataset.view=name; $$('.nav button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===name)); $$('.view').forEach(s=>s.classList.toggle('on',s.id==='view-'+name)); if(name==='editor') editor(); if(name==='panel') panel(); if(name==='doc') docView(); if(name==='ref') refView(); if(name==='files') archView(); if(name==='io') ioView(); const mn=$('.main'); if(mn) mn.scrollTop=0; if(name==='editor') tree.open.add(String(BY[CUR].crit)); tree(); $('#tree').classList.remove('open'); if(name==='editor') revealCur(); navSave(); }
+function setView(name){ if(name==='ref'&&!PERM.verRef) name='editor'; VIEW=name; $('.app').dataset.view=name; $$('.nav button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===name)); $$('.view').forEach(s=>s.classList.toggle('on',s.id==='view-'+name)); if(name==='editor') editor(); if(name==='panel') panel(); if(name==='doc') docView(); if(name==='ref') refView(); if(name==='files') archView(); if(name==='io') ioView(); const mn=$('.main'); if(mn) mn.scrollTop=0; if(name==='editor') tree.open.add(String(BY[CUR].crit)); tree(); $('#tree').classList.remove('open'); if(name==='editor') revealCur(); navSave(); }
+if(!PERM.verRef){ const rb=$('.nav button[data-view="ref"]'); if(rb) rb.remove(); }
 $$('.nav button').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
 $('#treeBody').addEventListener('click',ev=>{ const c=ev.target.closest('[data-crit]'); if(c){ const k=c.dataset.crit; tree.open.has(k)?tree.open.delete(k):tree.open.add(k); tree(); return; } const b=ev.target.closest('[data-id]'); if(b){ CUR=b.dataset.id; setView('editor'); } });
 $('#menuBtn').addEventListener('click',()=>{ if(window.matchMedia('(max-width:820px)').matches){ $('#tree').classList.toggle('open'); } else setCat($('.app').classList.contains('nocat')); });
 $('#view-editor').addEventListener('click',ev=>{ const e=BY[CUR], j=J(CUR);
-  const sb=ev.target.closest('[data-save]'); if(sb){ const k=sb.dataset.save; if(commitField(j,k)){ save(); updField(e,j,k); refreshPreview(e); tree(); toast(`${k} guardado`); } return; }
+  const sb=ev.target.closest('[data-save]'); if(sb&&PERM.editar(e.id)){ const k=sb.dataset.save; if(commitField(j,k)){ save(); updField(e,j,k); refreshPreview(e); tree(); toast(`${k} guardado`); } return; }
   const db=ev.target.closest('[data-discard]'); if(db){ const k=db.dataset.discard; discardField(j,k); save(); editor(); tree(); toast(`Cambios de ${k} descartados`); return; } });
 $('#search').addEventListener('input',tree);
 /* ===================== versión con servidor (Supabase) ===================== */
@@ -1256,9 +1295,11 @@ function pintarEstado(){ const el=$('#syncSt'); if(!el) return; const e=SYNC.est
   el.className='sync '+(e==='error'?'bad':e==='guardando'?'warn':'ok');
   el.textContent=e==='error'?'Sin conexión: se reintenta':e==='guardando'?'Guardando…':'Guardado';
   el.title=e==='error'?'Los cambios quedan en este navegador y se envían al recuperar la conexión.':(SYNC.rt?'Conectado: los cambios de otras personas aparecen al instante.':'Conectado: los cambios de otras personas se revisan cada 20 segundos.'); }
-function pintarUsuario(){ const b=$('#userBtn'); if(b) b.textContent=(BT.perfil.nombre||BT.perfil.email)+(BT.esAdmin?' | admin':''); }
+function rolTexto(p){ const P=p||PERM; return (P.nombreRol||'')+(P.rol==='responsable'?(P.criterios&&P.criterios.length?` | ${P.criterios.length>1?'criterios':'criterio'} ${P.criterios.join(', ')}`:' | sin criterios asignados'):''); }
+function pintarUsuario(){ const b=$('#userBtn'); if(!b) return; b.className='userbtn r-'+PERM.rol; b.title='Mi cuenta'; b.setAttribute('aria-label','Mi cuenta: '+(BT.perfil.nombre||BT.perfil.email)+', '+rolTexto());
+  b.innerHTML=`<span class="un">${esc(BT.perfil.nombre||BT.perfil.email)}</span><span class="ur"><i aria-hidden="true"></i>${esc(rolTexto())}</span>`; }
 $('#userBtn').addEventListener('click',()=>{
-  const m=modal('Mi cuenta',`<p class="note">${BT.user.email.includes('@')&&window.MESA_USUARIO(BT.user.email)!==BT.user.email?'Usuario':'Correo'}: <b>${esc(window.MESA_USUARIO(BT.user.email))}</b>${BT.esAdmin?' | administrador':''}</p>
+  const m=modal('Mi cuenta',`<p class="note">${BT.user.email.includes('@')&&window.MESA_USUARIO(BT.user.email)!==BT.user.email?'Usuario':'Correo'}: <b>${esc(window.MESA_USUARIO(BT.user.email))}</b> | perfil: ${esc(rolTexto())}</p>
     <form id="mcNom" class="mform"><label>Nombre que verán los demás<input type="text" id="mcN" value="${esc(BT.perfil.nombre||'')}" maxlength="80" required></label><button class="btn primary">Guardar nombre</button></form>
     <form id="mcPw" class="mform"><label>Contraseña nueva<input type="password" id="mcP1" autocomplete="new-password" minlength="8" required></label><label>Repítala<input type="password" id="mcP2" autocomplete="new-password" minlength="8" required></label><button class="btn primary">Cambiar contraseña</button></form>
     <p class="note" id="mcMsg" role="status"></p><div class="tools"><button class="btn danger" id="mcSalir">Cerrar sesión</button></div>`,460);
@@ -1299,7 +1340,9 @@ function refrescarEditor(){
   refreshPreview(e);
 }
 function refrescarEstadosCampos(){ if(VIEW!=='editor') return; const v=$('#view-editor'), e=BY[CUR], j=J(CUR); [...e.obl,...e.rec].forEach(k=>{ const fs=$('#fs-'+k,v); if(fs) fs.innerHTML=fsaveHTML(j,k); }); }
-SYNC.oyentes.push((tipo,info)=>{ if(tipo==='estado'){ pintarEstado(); if(SYNC.estado==='ok') refrescarEstadosCampos(); } else if(tipo==='conflictos') mostrarConflictos(info); else if(tipo==='remoto') refrescarRemoto(info); });
+SYNC.oyentes.push((tipo,info)=>{ if(tipo==='estado'){ pintarEstado(); if(SYNC.estado==='ok') refrescarEstadosCampos(); } else if(tipo==='conflictos') mostrarConflictos(info); else if(tipo==='remoto') refrescarRemoto(info);
+  else if(tipo==='denegado'){ toast('Su perfil no permite guardar ese cambio ('+[...new Set(info.map(x=>x.code))].join(', ')+'). Se restauró lo guardado.'); if(VIEW==='editor') editor(); tree(); }
+  else if(tipo==='perfil'){ const np=BT.permisos? (BT.rol=info.rol||'responsable', BT.criterios=(info.criterios||[]).map(Number).sort((a,b)=>a-b), BT.permisos()) : null; const m=modal('Su perfil cambió',`<p>El administrador actualizó su perfil${np?': <b>'+esc(rolTexto(np))+'</b>':''}. Recargue la página para aplicarlo.</p><div class="tools"><button class="btn primary" id="pfRec">Recargar ahora</button></div>`,440); $('#pfRec',m).addEventListener('click',async()=>{ if(SYNC.pendiente()) await SYNC.empujar(); location.reload(); }); } });
 
 /* ---------- historial de versiones de un campo ---------- */
 $('#view-editor').addEventListener('click',async ev=>{
@@ -1367,7 +1410,19 @@ async function archDescargar(a, ver){
   const x=document.createElement('a'); x.href=r.data.signedUrl+'&download='+encodeURIComponent(a.nombre); x.rel='noopener'; document.body.appendChild(x); x.click(); x.remove();
 }
 const VISIBLE=/^(application\/pdf|image\/|text\/plain)/;
-function optEnunciados(sel, vacio){ let h=`<option value="">${vacio||'— sin asociar —'}</option>`; Object.keys(D.criterios).forEach(c=>{ h+=`<optgroup label="Criterio ${c}. ${esc(D.criterios[c].nombre)}">`+ENUN.filter(e=>String(e.crit)===c).map(e=>`<option value="${e.id}" ${e.id===sel?'selected':''}>${e.id}</option>`).join('')+'</optgroup>'; }); return h; }
+function optEnunciados(sel, vacio){ let h=`<option value="">${vacio||'— sin asociar —'}</option>`; Object.keys(D.criterios).forEach(c=>{ h+=`<optgroup label="Criterio ${c}. ${esc(D.criterios[c].nombre)}">`+ENUN.filter(e=>String(e.crit)===c).map(e=>`<option value="${e.id}" ${e.id===sel?'selected':''} ${e.id!==sel&&!PERM.editar(e.id)?'disabled':''}>${e.id}</option>`).join('')+'</optgroup>'; }); return h; }
+const puedeModArch=a=>PERM.rol!=='responsable'||a.subido_por===UID||(!!a.code&&PERM.editar(a.code));
+const puedeBorrarArch=a=>PERM.rol!=='responsable'||a.subido_por===UID;
+// un archivo asociado a un enunciado queda registrado como evidencia (pendiente) de ese enunciado
+async function evidenciaDeArchivo(a){
+  if(!a||!a.code||!PERM.editar(a.code)) return null;
+  const ex=S.evidencias.find(x=>x.archivo_id===a.id&&x.code===a.code); if(ex) return ex;
+  return await SYNC.registrarEvidencia({code:a.code,titulo:a.nombre.replace(/\.[A-Za-z0-9]{1,6}$/,''),tipo:'Otro',anio:new Date().getFullYear(),unidad:'',plano:'declarado',solidez:'S2',campos:[],estado:'pendiente',archivo_id:a.id,archivo:a.nombre});
+}
+function irEvidencia(a){ const ev=S.evidencias.find(x=>x.archivo_id===a.id&&x.code===a.code)||S.evidencias.find(x=>x.archivo_id===a.id);
+  const code=ev?ev.code:a.code; if(!code) return;
+  if(ev){ EVEDIT=PERM.editar(code)?ev.ev:null; EVPRE=null; } else { EVEDIT=null; EVPRE={code,titulo:a.nombre.replace(/\.[A-Za-z0-9]{1,6}$/,''),archivo_id:a.id,estado:'pendiente'}; }
+  CUR=code; TAB='evid'; tree.open.add(String(BY[code].crit)); setView('editor'); setTimeout(()=>{ const f=$('#evForm')||$('#tab-evid'); if(f) f.scrollIntoView({block:'center'}); },60); }
 function icono(t,n){ if(/pdf/.test(t)||/\.pdf$/i.test(n)) return 'PDF'; if(/sheet|excel|csv/.test(t)||/\.(xlsx?|csv)$/i.test(n)) return 'XLS'; if(/word|document/.test(t)||/\.docx?$/i.test(n)) return 'DOC'; if(/presentation|powerpoint/.test(t)||/\.pptx?$/i.test(n)) return 'PPT'; if(/^image\//.test(t)) return 'IMG'; if(/zip|compressed/.test(t)||/\.(zip|rar|7z)$/i.test(n)) return 'ZIP'; return 'ARC'; }
 
 function archView(soloTabla){
@@ -1378,17 +1433,19 @@ function archView(soloTabla){
   const lst=base.filter(a=>(!qq||a.nombre.toLowerCase().includes(qq)||(a.code||'').toLowerCase().includes(qq)||NOMBRE(a.subido_por).toLowerCase().includes(qq))&&(!ARCH.code||a.code===ARCH.code)&&(!ARCH.crit||(a.code||'').startsWith('C'+ARCH.crit+'-')));
   const tot=ARCH.lista.reduce((s,a)=>s+(+a.tamano||0),0);
   const evDe=id=>S.evidencias.filter(x=>x.archivo_id===id).map(x=>x.ev);
+  const btnEv=a=>{ if(!a.code&&!evDe(a.id).length) return ''; const tiene=evDe(a.id).length; const ed=PERM.editar(a.code||((S.evidencias.find(x=>x.archivo_id===a.id)||{}).code)||'');
+    return tiene?`<button class="btn small" data-evir="${a.id}">${ed?'Editar evidencia':'Ver evidencia'}</button>`:(ed?`<button class="btn small" data-evir="${a.id}">Registrar evidencia</button>`:''); };
   const filas=lst.map(a=>{ const ren=ARCH.renom===a.id, bor=ARCH.borrar===a.id, evs=evDe(a.id);
     const nom=ren?`<form class="ren" data-ren="${a.id}"><input type="text" value="${esc(a.nombre)}" aria-label="Nombre nuevo" maxlength="200" required><button class="btn small primary">Guardar</button><button class="btn small" type="button" data-cancel>Cancelar</button></form>`
       :`<button class="lk fn" data-dl="${a.id}" title="Descargar">${esc(a.nombre)}</button>${a.notas?`<div class="note">${esc(a.notas)}</div>`:''}${evs.length?`<div class="note">Evidencia: ${evs.join(', ')}</div>`:''}`;
     const acc=ARCH.papelera
-      ? `<button class="btn small" data-rest="${a.id}">Restaurar</button>${bor?`<button class="btn small danger" data-defin="${a.id}">Confirmar: eliminar para siempre</button><button class="btn small" data-cancel>Cancelar</button>`:`<button class="btn small danger" data-borrar="${a.id}">Eliminar definitivamente</button>`}`
-      : `${VISIBLE.test(a.tipo)?`<button class="btn small" data-ver="${a.id}">Ver</button>`:''}<button class="btn small" data-dl="${a.id}">Descargar</button><button class="btn small" data-renom="${a.id}">Renombrar</button>${bor?`<button class="btn small danger" data-pap="${a.id}">Confirmar</button><button class="btn small" data-cancel>Cancelar</button>`:`<button class="btn small danger" data-borrar="${a.id}">Eliminar</button>`}`;
-    return `<tr><td><span class="ftype">${icono(a.tipo,a.nombre)}</span></td><td class="fname">${nom}</td><td>${ARCH.papelera?esc(a.code||'—'):`<select data-code="${a.id}" aria-label="Enunciado asociado">${optEnunciados(a.code)}</select>`}</td><td class="num">${tamano(a.tamano)}</td><td>${esc(NOMBRE(a.subido_por))}<div class="note">${fecha(a.subido_en)}</div>${ARCH.papelera?`<div class="note">Eliminado por ${esc(NOMBRE(a.eliminado_por))}, ${fecha(a.eliminado_en)}</div>`:a.modificado_en?`<div class="note">Modificado por ${esc(NOMBRE(a.modificado_por))}, ${fecha(a.modificado_en)}</div>`:''}</td><td class="facc">${acc}</td></tr>`; }).join('');
+      ? `${puedeModArch(a)?`<button class="btn small" data-rest="${a.id}">Restaurar</button>`:''}${puedeBorrarArch(a)?(bor?`<button class="btn small danger" data-defin="${a.id}">Confirmar: eliminar para siempre</button><button class="btn small" data-cancel>Cancelar</button>`:`<button class="btn small danger" data-borrar="${a.id}">Eliminar definitivamente</button>`):''}`
+      : `${btnEv(a)}${VISIBLE.test(a.tipo)?`<button class="btn small" data-ver="${a.id}">Ver</button>`:''}<button class="btn small" data-dl="${a.id}">Descargar</button>${puedeModArch(a)?`<button class="btn small" data-renom="${a.id}">Renombrar</button>${bor?`<button class="btn small danger" data-pap="${a.id}">Confirmar</button><button class="btn small" data-cancel>Cancelar</button>`:`<button class="btn small danger" data-borrar="${a.id}">Eliminar</button>`}`:''}`;
+    return `<tr><td><span class="ftype">${icono(a.tipo,a.nombre)}</span></td><td class="fname">${nom}</td><td>${ARCH.papelera?esc(a.code||'—'):`<select data-code="${a.id}" aria-label="Enunciado asociado" ${puedeModArch(a)?'':'disabled'}>${optEnunciados(a.code)}</select>`}</td><td class="num">${tamano(a.tamano)}</td><td>${esc(NOMBRE(a.subido_por))}<div class="note">${fecha(a.subido_en)}</div>${ARCH.papelera?`<div class="note">Eliminado por ${esc(NOMBRE(a.eliminado_por))}, ${fecha(a.eliminado_en)}</div>`:a.modificado_en?`<div class="note">Modificado por ${esc(NOMBRE(a.modificado_por))}, ${fecha(a.modificado_en)}</div>`:''}</td><td class="facc">${acc}</td></tr>`; }).join('');
   const tabla=`<div class="tablewrap"><table class="ftab"><thead><tr><th></th><th>Nombre</th><th>Enunciado</th><th class="num">Tamaño</th><th>Subido por</th><th></th></tr></thead><tbody>${filas||`<tr><td colspan="6" class="note">${ARCH.papelera?'La papelera está vacía.':base.length?'Ningún archivo cumple el filtro.':'Aún no hay archivos. Suba el primero.'}</td></tr>`}</tbody></table></div>`;
   if(soloTabla && $('#fTabla',v)){ $('#fTabla',v).innerHTML=tabla; $('#fCnt',v).textContent=`${vivos.length} ${vivos.length===1?'archivo':'archivos'} | ${tamano(tot)} en total`; $('#fPapBtn',v).textContent=`Papelera (${pap.length})`; bindArchTabla(v); return; }
   v.innerHTML=`<h2 style="margin:0 0 6px;font-size:18px">Archivos de antecedentes</h2>
-  <p class="rintro">Archivos compartidos por todo el equipo. Cualquier persona con cuenta puede subirlos, verlos, renombrarlos, asociarlos a un enunciado, descargarlos y eliminarlos. Lo eliminado pasa a la papelera y se puede restaurar. Máximo por archivo: ${MAXMB.toLocaleString('es-CL')} MB.</p>
+  <p class="rintro">Archivos compartidos por todo el equipo: todos pueden verlos, descargarlos y subir archivos nuevos. Al asociar un archivo a un enunciado queda registrado como evidencia pendiente de ese enunciado; use "Editar evidencia" para completar su ficha. ${PERM.rol==='responsable'?'Su perfil asocia archivos solo a enunciados de sus criterios, y renombra o elimina los archivos que subió o los de sus criterios.':'Lo eliminado pasa a la papelera y se puede restaurar.'} Máximo por archivo: ${MAXMB.toLocaleString('es-CL')} MB.</p>
   <div class="fz" id="fz"><div><b>Arrastre archivos aquí</b> o <label class="btn primary small" style="cursor:pointer">Elegir archivos<input type="file" id="fIn" multiple hidden></label></div><label class="fzc">Asociarlos al enunciado <select id="fUpCode">${optEnunciados(ARCH.upCode||'','— sin asociar —')}</select></label></div>
   <div id="fUps"></div>
   <div class="rfbar"><input type="search" id="fQ" placeholder="Buscar por nombre, enunciado o persona" value="${esc(ARCH.q)}" aria-label="Buscar archivos" style="flex:1 1 240px">
@@ -1412,7 +1469,7 @@ async function subirVarios(files){
   for(const f of files){
     const row=document.createElement('div'); row.className='fup'; row.innerHTML=`<span class="n">${esc(f.name)}</span><span class="bars"><i style="width:0%;background:var(--accent)"></i></span><span class="p">0%</span>`; if(box) box.appendChild(row);
     const bar=row.querySelector('i'), p=row.querySelector('.p');
-    try{ await archSubir(f, code, x=>{ bar.style.width=Math.round(x*100)+'%'; p.textContent=Math.round(x*100)+'%'; }); p.textContent='Listo'; bar.style.background='var(--ok)'; setTimeout(()=>row.remove(),2500); }
+    try{ const a=await archSubir(f, code, x=>{ bar.style.width=Math.round(x*100)+'%'; p.textContent=Math.round(x*100)+'%'; }); const ev=await evidenciaDeArchivo(a); p.textContent=ev?'Listo | '+ev.ev:'Listo'; bar.style.background='var(--ok)'; setTimeout(()=>row.remove(),4000); }
     catch(e){ p.textContent='Error: '+errTxt(e); bar.style.background='var(--bad)'; row.classList.add('err'); }
     archView(true);
   }
@@ -1427,7 +1484,8 @@ function bindArchTabla(v){
   $$('form[data-ren]',v).forEach(f=>f.addEventListener('submit',async ev=>{ ev.preventDefault(); const a=A(f.dataset.ren); let n=f.querySelector('input').value.trim(); if(!n) return;
     const ext=(a.nombre.match(/\.[A-Za-z0-9]{1,6}$/)||[''])[0]; if(ext&&!n.toLowerCase().endsWith(ext.toLowerCase())) n+=ext;
     if(await upd(a.id,{nombre:n},'Archivo renombrado')){ ARCH.renom=null; S.evidencias.filter(x=>x.archivo_id===a.id).forEach(x=>x.archivo=n); save(); archView(true); } }));
-  $$('[data-code]',v).forEach(s=>s.addEventListener('change',async()=>{ await upd(s.dataset.code,{code:s.value||null},'Asociación guardada'); }));
+  $$('[data-code]',v).forEach(s=>s.addEventListener('change',async()=>{ if(await upd(s.dataset.code,{code:s.value||null})){ const a=A(s.dataset.code); try{ const ev=await evidenciaDeArchivo(a); toast(ev?`Asociación guardada | evidencia ${ev.ev}`:'Asociación guardada'); }catch(e){ toast('Asociación guardada; no se pudo registrar la evidencia: '+errTxt(e)); } archView(true); } }));
+  $$('[data-evir]',v).forEach(b=>b.addEventListener('click',()=>irEvidencia(A(b.dataset.evir))));
   $$('[data-borrar]',v).forEach(b=>b.addEventListener('click',()=>{ ARCH.borrar=b.dataset.borrar; ARCH.renom=null; archView(true); }));
   $$('[data-pap]',v).forEach(b=>b.addEventListener('click',async()=>{ if(await upd(b.dataset.pap,{eliminado_en:new Date().toISOString()},'Enviado a la papelera')){ ARCH.borrar=null; archView(true); } }));
   $$('[data-rest]',v).forEach(b=>b.addEventListener('click',async()=>{ if(await upd(b.dataset.rest,{eliminado_en:null,eliminado_por:null},'Archivo restaurado')) archView(true); }));
@@ -1440,40 +1498,53 @@ function bindArchTabla(v){
 /* ---------- evidencias con archivo real ---------- */
 const _evidTab=evidTab;
 evidTab=function(e){
-  let h=_evidTab(e);
+  let h=_evidTab(e); const ro=!PERM.editar(e.id); const {pre}=evPre(e); const selId=pre.archivo_id||'';
   const arts=ARCH.lista.filter(a=>!a.eliminado_en), propios=arts.filter(a=>a.code===e.id), otros=arts.filter(a=>a.code!==e.id);
-  const sel=`<label for="ev-arch">Archivo</label><select id="ev-arch"><option value="">— sin archivo —</option><option value="__nuevo">Subir un archivo nuevo…</option>${propios.length?`<optgroup label="Asociados a ${e.id}">${propios.map(a=>`<option value="${a.id}">${esc(a.nombre)}</option>`).join('')}</optgroup>`:''}${otros.length?`<optgroup label="Otros archivos">${otros.map(a=>`<option value="${a.id}">${esc(a.nombre)}</option>`).join('')}</optgroup>`:''}</select><input id="ev-file" type="file" hidden style="margin-top:6px"><div class="note" id="ev-prog"></div>`;
+  const op=a=>`<option value="${a.id}" ${a.id===selId?'selected':''}>${esc(a.nombre)}</option>`;
+  const sel=`<label for="ev-arch">Archivo</label><select id="ev-arch"><option value="">— sin archivo —</option><option value="__nuevo">Subir un archivo nuevo…</option>${propios.length?`<optgroup label="Asociados a ${e.id}">${propios.map(op).join('')}</optgroup>`:''}${otros.length?`<optgroup label="Otros archivos">${otros.map(op).join('')}</optgroup>`:''}</select><input id="ev-file" type="file" hidden style="margin-top:6px"><div class="note" id="ev-prog"></div>`;
   h=h.replace(/<label for="ev-file">[\s\S]*?<input id="ev-file" type="file">/, sel);
-  h=h.replace(/<div class="note">📎 ([^<]*)<\/div>/g,(m,n)=>m);
+  const sinFicha=propios.filter(a=>!S.evidencias.some(x=>x.archivo_id===a.id));
+  if(sinFicha.length) h=h.replace(/(<\/tbody><\/table><\/div>)/, `$1<div class="evsin"><b>Archivos asociados a ${e.id} sin ficha de evidencia</b><ul>${sinFicha.map(a=>`<li>${esc(a.nombre)} ${ro?'':`<button class="btn small" data-evreg="${a.id}">Registrar como evidencia</button>`}</li>`).join('')}</ul></div>`);
   return h;
 };
 bindEvid=function(e){
+  bindEvidComun(e);
+  const v=$('#view-editor');
+  $$('[data-evreg]',v).forEach(b=>b.addEventListener('click',()=>{ const a=ARCH.lista.find(x=>x.id===b.dataset.evreg); if(!a) return; EVEDIT=null; EVPRE={code:e.id,titulo:a.nombre.replace(/\.[A-Za-z0-9]{1,6}$/,''),archivo_id:a.id,estado:'pendiente'}; editor(); const f=$('#evForm'); if(f) f.scrollIntoView({block:'center'}); }));
+  $$('[data-evdl]',v).forEach(b=>b.addEventListener('click',()=>{ const a=ARCH.lista.find(x=>x.id===b.dataset.evdl); if(a) archDescargar(a); else toast('El archivo ya no está disponible'); }));
   const f=$('#evForm'); if(!f) return;
   const sa=$('#ev-arch',f), fi=$('#ev-file',f);
   sa.addEventListener('change',()=>{ fi.hidden=sa.value!=='__nuevo'; if(!fi.hidden) fi.click(); });
   f.addEventListener('submit',async ev=>{ ev.preventDefault(); const btn=f.querySelector('button[type=submit]'); btn.disabled=true;
     try{
-      let archivo_id=null, archivo='';
+      const d=evDatosForm(f); let archivo_id=null, archivo='';
       if(sa.value==='__nuevo'){ const file=fi.files[0]; if(file){ const pr=$('#ev-prog',f); const a=await archSubir(file,e.id,x=>{ pr.textContent='Subiendo archivo: '+Math.round(x*100)+'%'; }); archivo_id=a.id; archivo=a.nombre; } }
       else if(sa.value){ const a=ARCH.lista.find(x=>x.id===sa.value); archivo_id=sa.value; archivo=a?a.nombre:''; }
-      await SYNC.registrarEvidencia({code:e.id,titulo:$('#ev-t').value.trim(),tipo:$('#ev-tipo').value,anio:+$('#ev-anio').value||null,unidad:$('#ev-u').value.trim(),plano:$('#ev-plano').value,solidez:$('#ev-sol').value,campos:$$('.checks input:checked',f).map(i=>i.value),estado:'pendiente',archivo_id,archivo});
-      editor(); tree(); toast('Evidencia registrada');
-    }catch(err){ toast('No se pudo registrar la evidencia: '+errTxt(err)); btn.disabled=false; }
+      if(EVEDIT){ const o=S.evidencias.find(x=>x.ev===EVEDIT); if(o) Object.assign(o,d,{archivo_id,archivo}); EVEDIT=null; save(); editor(); tree(); toast('Evidencia actualizada'); return; }
+      const o=await SYNC.registrarEvidencia({code:e.id,...d,archivo_id,archivo}); EVPRE=null;
+      editor(); tree(); toast('Evidencia registrada: '+o.ev);
+    }catch(err){ toast('No se pudo guardar la evidencia: '+errTxt(err)); btn.disabled=false; }
   });
-  $$('#view-editor [data-del]').forEach(b=>b.addEventListener('click',()=>{ S.evidencias=S.evidencias.filter(v=>v.ev!==b.dataset.del); save(); editor(); }));
-  $$('.evestado').forEach(s=>s.addEventListener('change',()=>{ const v=S.evidencias.find(x=>x.ev===s.dataset.ev); if(v){ v.estado=s.value; save(); } }));
-  $$('#view-editor [data-evdl]').forEach(b=>b.addEventListener('click',()=>{ const a=ARCH.lista.find(x=>x.id===b.dataset.evdl); if(a) archDescargar(a); else toast('El archivo ya no está disponible'); }));
 };
 
 /* ---------- respaldo y administración ---------- */
+const ROLNOM={admin:'Administrador',coordinador:'Coordinación institucional',responsable:'Responsable de criterio'};
+function filaPersona(p){ const rol=p.rol||(p.es_admin?'admin':'responsable'), cr=(p.criterios||[]).map(Number);
+  const yo=p.id===UID?' <span class="note">(usted)</span>':'';
+  if(!BT.esAdmin) return `<tr><td>${esc(p.nombre||'—')}${yo}</td><td>${esc(window.MESA_USUARIO(p.email))}</td><td><span class="pill rol-${rol}">${ROLNOM[rol]}</span></td><td>${rol==='responsable'?(cr.length?cr.join(', '):'<span class="note">sin asignar</span>'):'todos'}</td></tr>`;
+  return `<tr><td>${esc(p.nombre||'—')}${yo}</td><td>${esc(window.MESA_USUARIO(p.email))}</td><td><select data-prol="${p.id}" aria-label="Perfil de ${esc(p.nombre||p.email)}">${Object.entries(ROLNOM).map(([k,n])=>`<option value="${k}" ${k===rol?'selected':''}>${n}</option>`).join('')}</select></td><td><div class="pcrit ${rol==='responsable'?'':'off'}" data-pcrit="${p.id}">${Object.keys(D.criterios).map(c=>`<label title="Criterio ${c}. ${esc(D.criterios[c].nombre)}"><input type="checkbox" value="${c}" ${cr.includes(+c)?'checked':''}>${c}</label>`).join('')}</div></td><td><button class="btn small primary" data-pguardar="${p.id}">Guardar</button></td></tr>`; }
 function ioView(){
   const v=$('#view-io'); const P=Object.values(BT.perfiles).sort((a,b)=>(a.nombre||a.email).localeCompare(b.nombre||b.email,'es'));
   v.innerHTML=`<h2 style="margin:0 0 6px;font-size:18px">Respaldo y administración</h2>
   <div class="card"><h3>Respaldo</h3><div style="padding:12px 14px"><p class="note" style="margin-top:0">Todo lo que se guarda queda en la base de datos del proyecto (Supabase), con un historial de versiones por campo. En el plan Pro, Supabase además hace un respaldo diario. Puede descargar una copia completa del trabajo para guardarla en Dropbox.</p><button class="btn primary" id="btnExport">Descargar respaldo (JSON)</button></div></div>
-  <div class="card" style="margin-top:14px"><h3>Personas con acceso <span class="right">${P.length}</span></h3><div class="tablewrap"><table><thead><tr><th>Nombre</th><th>Usuario o correo</th><th>Rol</th></tr></thead><tbody>${P.map(p=>`<tr><td>${esc(p.nombre||'—')}${p.id===UID?' <span class="note">(usted)</span>':''}</td><td>${esc(window.MESA_USUARIO(p.email))}</td><td>${p.es_admin?'<span class="pill ok">administrador</span>':'editor'}</td></tr>`).join('')}</tbody></table></div>
-  <p class="note" style="padding:0 14px 12px">Las cuentas nuevas se crean en el panel de Supabase (Authentication | Users | Add user). Para un nombre de usuario genérico, use como correo usuario@${esc((BT.cfg.dominioUsuarios||'ealvarez.cl'))}. Todas las personas pueden editar todo; los administradores además cargan los datos de la plataforma.</p></div>
+  <div class="card" style="margin-top:14px"><h3>Personas con acceso <span class="right">${P.length}</span></h3><div class="tablewrap"><table class="ptab"><thead><tr><th>Nombre</th><th>Usuario o correo</th><th>Perfil</th><th>Criterios que edita</th>${BT.esAdmin?'<th></th>':''}</tr></thead><tbody>${P.map(p=>filaPersona(p)).join('')}</tbody></table></div>
+  <div class="note" style="padding:0 14px 12px"><p style="margin:6px 0"><b>Administrador:</b> ve y edita todo, asigna perfiles y carga los datos. <b>Coordinación institucional:</b> ve y edita todo, salvo los referentes de otras IES; asigna los estados "En revisión" y "Validado". <b>Responsable de criterio:</b> ve todo salvo los referentes y edita solo los juicios de sus criterios; asigna "Sin iniciar", "En redacción" y "Enviado a revisión".</p><p style="margin:6px 0">Las cuentas nuevas se crean en el panel de Supabase (Authentication | Users | Add user) y parten como responsables sin criterios. Para un nombre de usuario genérico, use como correo usuario@${esc((BT.cfg.dominioUsuarios||'ealvarez.cl'))}.</p></div></div>
   ${BT.esAdmin?`<div class="card" style="margin-top:14px"><h3>Datos de la plataforma <span class="right">solo administradores</span></h3><div style="padding:12px 14px"><p class="note" style="margin-top:0">Para actualizar el catálogo, los referentes o los recortes, seleccione de nuevo la carpeta "datos" que entrega la asesoría. Reemplaza los archivos existentes y no toca el trabajo de los usuarios.</p><label class="btn" style="cursor:pointer">Seleccionar la carpeta "datos"<input type="file" id="admDir" webkitdirectory multiple hidden></label><p class="note" id="admProg"></p></div></div>`:''}`;
   $('#btnExport',v).addEventListener('click',()=>{ const blob=new Blob([JSON.stringify({exportado:new Date().toISOString(), por:BT.user.email, estado:S},null,1)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='respaldo-juicios-evaluativos-'+new Date().toISOString().slice(0,10)+'.json'; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); });
+  $$('[data-prol]',v).forEach(s=>s.addEventListener('change',()=>{ const ck=$(`[data-pcrit="${s.dataset.prol}"]`,v); if(ck) ck.classList.toggle('off',s.value!=='responsable'); }));
+  $$('[data-pguardar]',v).forEach(b=>b.addEventListener('click',async()=>{ const id=b.dataset.pguardar; const rol=$(`[data-prol="${id}"]`,v).value; const crit=$$(`[data-pcrit="${id}"] input:checked`,v).map(i=>+i.value);
+    b.disabled=true; const r=await SBX.rpc('asignar_perfil',{p_id:id,p_rol:rol,p_criterios:crit}); b.disabled=false;
+    if(r.error) return toast('No se pudo guardar el perfil: '+errTxt(r.error)); BT.perfiles[id]=r.data; toast('Perfil guardado: '+(r.data.nombre||r.data.email)); ioView(); }));
   const ad=$('#admDir',v); if(ad) ad.addEventListener('change',async()=>{ const ok=await BT.subirDatos([...ad.files],$('#admProg',v)); if(ok) toast('Datos actualizados: recargue la página para verlos'); });
 }
 
@@ -1594,13 +1665,20 @@ async function entrar(session) {
     if (per.error) throw per.error;
     per.data.forEach(p => { BOOT.perfiles[p.id] = p; });
     BOOT.perfil = BOOT.perfiles[session.user.id] || { id: session.user.id, email: session.user.email, nombre: session.user.email, es_admin: false };
-    BOOT.esAdmin = !!BOOT.perfil.es_admin;
+    BOOT.rol = BOOT.perfil.rol || (BOOT.perfil.es_admin ? 'admin' : 'responsable');
+    BOOT.criterios = (BOOT.perfil.criterios || []).map(Number).sort((a, b) => a - b);
+    BOOT.esAdmin = BOOT.rol === 'admin';
+    window.MESA_PERM = permisos();
     const dj = await sb.storage.from('datos').download('plataforma_data.json');
     if (dj.error || !dj.data) {
       if (BOOT.esAdmin) return cargaInicial();
       return pantalla('<p>La plataforma aún no tiene sus datos cargados. Avise al administrador.</p><button class="btn" id="aSalir">Cerrar sesión</button>'), q('#aSalir').addEventListener('click', () => sb.auth.signOut());
     }
     BOOT.D = JSON.parse(await dj.data.text());
+    // referentes de otras IES: solo administradores (archivo aparte, protegido en el servidor)
+    if (BOOT.esAdmin) {
+      if (!BOOT.D.ref) { const rr = await sb.storage.from('datos').download('referentes.json'); if (!rr.error && rr.data) BOOT.D.ref = JSON.parse(await rr.data.text()); }
+    } else delete BOOT.D.ref;
     cargarFuentes();
     await firmarRecortes();
     BOOT.S = await SYNC.cargar();
@@ -1618,6 +1696,21 @@ async function entrar(session) {
     q('#aSalir').addEventListener('click', () => sb.auth.signOut());
   }
 }
+
+/* ---------- permisos según el perfil ---------- */
+// admin: todo | coordinador: edita todo, sin referentes | responsable: edita solo sus criterios, sin referentes
+function permisos() {
+  const rol = BOOT.rol, cr = BOOT.criterios;
+  const critDe = code => +((/^C(\d+)-/.exec(code) || [])[1] || 0);
+  const NOM = { admin: 'Administrador', coordinador: 'Coordinación institucional', responsable: 'Responsable de criterio' };
+  return {
+    rol, nombreRol: NOM[rol] || rol, criterios: cr, verRef: rol === 'admin',
+    editar: code => rol !== 'responsable' || cr.includes(critDe(code)),
+    estados: () => rol === 'responsable' ? [0, 1, 4] : [0, 1, 4, 2, 3],
+    motivo: e => rol !== 'responsable' ? '' : `Este enunciado pertenece al criterio ${e.crit}. ` + (cr.length ? `Su perfil edita ${cr.length === 1 ? 'el criterio' : 'los criterios'} ${cr.join(', ')}.` : 'Su perfil aún no tiene criterios asignados; pídale al administrador que los asigne.')
+  };
+}
+BOOT.permisos = permisos;
 
 /* ---------- fuentes y recortes (privados, en el bucket "datos") ---------- */
 const FUENTES = [['duplet-300.otf', '300', 'normal'], ['duplet-400.otf', '400', 'normal'], ['duplet-400i.otf', '400', 'italic'], ['duplet-600.otf', '600', 'normal'], ['duplet-700.otf', '700', 'normal']];
@@ -1708,6 +1801,7 @@ function norm(c, v) {
   return v;
 }
 const igual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const esPermiso = e => !!e && (e.code === '42501' || /permiso|row-level security|permission denied/i.test(e.message || ''));
 function nuevoJ(S, code) {
   if (!S.juicios[code]) S.juicios[code] = { f: {}, J2v: 'cuenta con', estado: 0, resp: '', J8sel: '', J11sel: '' };
   const j = S.juicios[code];
@@ -1783,7 +1877,7 @@ const SYNC = window.SYNC = {
   async empujar() {
     if (this.enCurso) { this.cola = true; return; }
     this.enCurso = true; clearTimeout(this.reint);
-    const S = this.S, conflictos = [];
+    const S = this.S, conflictos = [], denegados = [];
     try {
       // 1. campos de los juicios
       for (const [code, j] of Object.entries(S.juicios)) {
@@ -1792,6 +1886,7 @@ const SYNC = window.SYNC = {
           if (igual(v, sv)) { if (j.cb) delete j.cb[c]; continue; }
           const base = (j.cb && c in j.cb) ? j.cb[c] : (s ? s.ver : 0);
           const r = await sb.rpc('guardar_campo', { p_code: code, p_campo: c, p_valor: v, p_base: base, p_forzar: false });
+          if (r.error && esPermiso(r.error)) { setC(j, c, sv); if (j.cb) delete j.cb[c]; denegados.push({ code, c, msg: r.error.message }); continue; }
           if (r.error) throw r.error;
           if (r.data.ok) {
             (this.sh[code] = this.sh[code] || {})[c] = { v, ver: r.data.version, by: r.data.updated_by, at: r.data.updated_at };
@@ -1826,13 +1921,20 @@ const SYNC = window.SYNC = {
         vivos.add(o.ev); const js = JSON.stringify(evObj(o));
         if (this.shEv[o.ev] === undefined || js === this.shEv[o.ev]) continue;
         const r = await sb.from('evidencias').update({ titulo: o.titulo, tipo: o.tipo, anio: o.anio, unidad: o.unidad, plano: o.plano, solidez: o.solidez, campos: o.campos, estado: o.estado, archivo_id: o.archivo_id || null, archivo: o.archivo || '' }).eq('ev', o.ev);
+        if (r.error && esPermiso(r.error)) { Object.assign(o, JSON.parse(this.shEv[o.ev])); denegados.push({ code: o.code, c: o.ev }); continue; }
         if (r.error) throw r.error; this.shEv[o.ev] = js;
       }
-      for (const ev of Object.keys(this.shEv)) if (!vivos.has(ev)) { const r = await sb.from('evidencias').delete().eq('ev', ev); if (r.error) throw r.error; delete this.shEv[ev]; }
+      for (const ev of Object.keys(this.shEv)) if (!vivos.has(ev)) {
+        const r = await sb.from('evidencias').delete().eq('ev', ev);
+        if (r.error && esPermiso(r.error)) { const o = JSON.parse(this.shEv[ev]); S.evidencias.push(o); denegados.push({ code: o.code, c: ev }); continue; }
+        if (r.error) throw r.error; delete this.shEv[ev];
+      }
       // 5. recursos
       for (const [code, m] of Object.entries(S.recursos || {})) for (const [item, est] of Object.entries(m || {})) {
         if (this.shRec[code + '|' + item] === est) continue;
-        const r = await sb.from('recursos').upsert({ code, item, estado: est }); if (r.error) throw r.error; this.shRec[code + '|' + item] = est;
+        const r = await sb.from('recursos').upsert({ code, item, estado: est });
+        if (r.error && esPermiso(r.error)) { const prev = this.shRec[code + '|' + item]; if (prev === undefined) delete m[item]; else m[item] = prev; denegados.push({ code, c: item }); continue; }
+        if (r.error) throw r.error; this.shRec[code + '|' + item] = est;
       }
       // 6. procesos manuales de alineación
       const ids = new Set();
@@ -1844,6 +1946,7 @@ const SYNC = window.SYNC = {
       for (const id of Object.keys(this.shAlin)) if (!ids.has(id)) { const r = await sb.from('alin_procesos').delete().eq('id', id); if (r.error) throw r.error; delete this.shAlin[id]; }
       this.ponerEstado(this.t ? 'guardando' : 'ok');
       if (conflictos.length) { this.respaldoLocal(); this.avisar('conflictos', conflictos); }
+      if (denegados.length) this.avisar('denegado', denegados);
     } catch (e) {
       console.error('sincronización', e);
       this.ponerEstado('error', e);
@@ -1884,7 +1987,14 @@ const SYNC = window.SYNC = {
       const lst = S.alin.procesos;
       if (tipo === 'DELETE') { const id = (viejo || {}).id; if (id && this.shAlin[id] !== undefined) { S.alin.procesos = lst.filter(p => p.id !== id); delete this.shAlin[id]; cambio = true; } }
       else { const js = JSON.stringify(r.data); if (this.shAlin[r.id] !== js) { const i = lst.findIndex(p => p.id === r.id); if (i >= 0) lst[i] = r.data; else lst.push(r.data); this.shAlin[r.id] = js; cambio = true; } this.marcarUltimo(r.updated_at); }
-    } else if (tabla === 'perfiles' && r) { BOOT.perfiles[r.id] = r; if (r.id === BOOT.user.id) BOOT.perfil = r; cambio = true; }
+    } else if (tabla === 'perfiles' && r) {
+      BOOT.perfiles[r.id] = r;
+      if (r.id === BOOT.user.id) {
+        const antes = BOOT.rol + '|' + BOOT.criterios.join(','), ahora = (r.rol || 'responsable') + '|' + (r.criterios || []).map(Number).sort((a, b) => a - b).join(',');
+        BOOT.perfil = r; if (antes !== ahora) this.avisar('perfil', r);
+      }
+      cambio = true;
+    }
     else if (tabla === 'archivos') cambio = true;
     if (cambio) this.avisar('remoto', { tabla, tipo, r: r || viejo });
   },

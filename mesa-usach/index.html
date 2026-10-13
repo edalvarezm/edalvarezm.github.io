@@ -418,6 +418,9 @@ button.lk:hover{color:var(--accent);text-decoration:underline}
 
 /* nombre de la institución en la pantalla de ingreso (sistemas separados por universidad) */
 .acc-inst{display:block;margin-top:6px;font-size:13px;font-weight:600;color:var(--accent)}
+/* sigla de la institución junto al título (color definido en config.js) */
+.inst-tag{display:inline-block;margin-left:8px;padding:1px 9px 2px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1.5;vertical-align:2px;white-space:nowrap;box-shadow:0 1px 2px rgba(29,35,51,.12)}
+.acc-brand .inst-tag{font-size:13px;vertical-align:3px}
 </style>
 </head>
 <body>
@@ -1584,7 +1587,7 @@ pintarUsuario(); pintarEstado(); archCargar();
   setView(n&&['editor','panel','doc','ref','io','files'].includes(n.view)?n.view:'editor'); })();
 })();
 </script>
-<script src="config.js?v=202610131110"></script>
+<script src="config.js?v=202610131124"></script>
 <script src="vendor/supabase.js"></script>
 <script src="vendor/tus.min.js"></script>
 <script>
@@ -1605,14 +1608,18 @@ window.MESA_USUARIO = e => { e = String(e || ''); return e.toLowerCase().endsWit
 // institución: el mismo código sirve a sistemas separados (un proyecto de Supabase y una carpeta del sitio por universidad)
 const INST = String(CFG.institucion || '').trim();
 const INSTN = String(CFG.institucionNombre || INST).trim();
-const SUB = (INST ? escH(INST) + ' | autoevaluación' : 'Autoevaluación') + ' institucional | criterios y estándares CNA';
+const SUB = 'Autoevaluación institucional | criterios y estándares CNA';
+// sigla junto al título, con el color de la institución (config.js: color; por omisión, el azul de la paleta)
+const ICOL = /^#[0-9a-f]{6}$/i.test(String(CFG.color || '')) ? CFG.color : '#3047C7';
+const ITXT = (h => { const c = [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2] > 0.3 ? '#1d2333' : '#ffffff'; })(ICOL);
+const TAG = INST ? `<span class="inst-tag" style="background:${ICOL};color:${ITXT}" title="${escH(INSTN)}">${escH(INST)}</span>` : '';
 window.MESA_INST = INST;
 if (INST) document.title = 'Juicios Evaluativos | ' + INST;
 const BOOT = window.__BOOT = { D: null, S: null, user: null, perfil: null, perfiles: {}, urls: {}, esAdmin: false, cfg: CFG };
 let sb = null;
 
 /* ---------- pantallas de acceso ---------- */
-function pantalla(html) { const el = q('#acceso'); el.innerHTML = `<div class="acc-card"><div class="acc-brand">Herramienta para Redacción de Juicios Evaluativos<small>${SUB}</small>${INSTN && INSTN !== INST ? `<span class="acc-inst">${escH(INSTN)}</span>` : ''}</div>${html}</div>`; el.hidden = false; }
+function pantalla(html) { const el = q('#acceso'); el.innerHTML = `<div class="acc-card"${INST ? ` style="border-top-color:${ICOL}"` : ''}><div class="acc-brand">Herramienta para Redacción de Juicios Evaluativos${TAG}<small>${SUB}</small>${INSTN && INSTN !== INST ? `<span class="acc-inst">${escH(INSTN)}</span>` : ''}</div>${html}</div>`; el.hidden = false; }
 function msg(t, tipo) { const m = q('#aMsg'); if (m) { m.textContent = t || ''; m.className = 'acc-msg ' + (tipo || ''); } }
 const traducir = e => {
   const t = (e && (e.message || e.error_description || e.msg)) || String(e || '');
@@ -1721,7 +1728,7 @@ async function entrar(session) {
     BOOT.S = await SYNC.cargar();
     q('#acceso').hidden = true;
     q('.app').hidden = false;
-    { const bs = q('.brand small'); if (bs) { bs.innerHTML = SUB; if (INSTN) bs.title = INSTN; } }
+    { const h1 = q('.brand h1'); if (h1 && TAG && !h1.querySelector('.inst-tag')) h1.insertAdjacentHTML('beforeend', TAG); }
     const s = document.createElement('script');
     s.textContent = q('#app-src').textContent;
     document.body.appendChild(s);

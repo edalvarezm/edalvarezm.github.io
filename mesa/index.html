@@ -1669,7 +1669,8 @@ async function entrar(session) {
     BOOT.criterios = (BOOT.perfil.criterios || []).map(Number).sort((a, b) => a - b);
     BOOT.esAdmin = BOOT.rol === 'admin';
     window.MESA_PERM = permisos();
-    const dj = await sb.storage.from('datos').download('plataforma_data.json');
+    // ?t= evita que el navegador use una copia anterior guardada en caché (los datos se pueden actualizar)
+    const dj = await sb.storage.from('datos').download('plataforma_data.json?t=' + Date.now());
     if (dj.error || !dj.data) {
       if (BOOT.esAdmin) return cargaInicial();
       return pantalla('<p>La plataforma aún no tiene sus datos cargados. Avise al administrador.</p><button class="btn" id="aSalir">Cerrar sesión</button>'), q('#aSalir').addEventListener('click', () => sb.auth.signOut());
@@ -1677,7 +1678,7 @@ async function entrar(session) {
     BOOT.D = JSON.parse(await dj.data.text());
     // referentes de otras IES: solo administradores (archivo aparte, protegido en el servidor)
     if (BOOT.esAdmin) {
-      if (!BOOT.D.ref) { const rr = await sb.storage.from('datos').download('referentes.json'); if (!rr.error && rr.data) BOOT.D.ref = JSON.parse(await rr.data.text()); }
+      if (!BOOT.D.ref) { const rr = await sb.storage.from('datos').download('referentes.json?t=' + Date.now()); if (!rr.error && rr.data) BOOT.D.ref = JSON.parse(await rr.data.text()); }
     } else delete BOOT.D.ref;
     cargarFuentes();
     await firmarRecortes();

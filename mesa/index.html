@@ -1655,14 +1655,28 @@ function cargaInicial() {
     if (ok) location.reload();
   });
 }
+// Carpeta que contiene plataforma_data.json. Así funciona aunque se elija la carpeta de arriba
+// (por ejemplo "3_datos"): solo se sube lo que está dentro de "datos" y sin ese prefijo.
+function baseDatos(files) {
+  const pj = files.find(f => /(^|\/)plataforma_data\.json$/.test(f.webkitRelativePath));
+  return pj ? pj.webkitRelativePath.slice(0, -'plataforma_data.json'.length) : null;
+}
 async function subirDatos(files, prog) {
+  const base = baseDatos(files);
+  if (base === null) {
+    const t = 'La carpeta elegida no contiene plataforma_data.json.';
+    if (prog) prog.textContent = t;
+    msg(t, 'bad');
+    return false;
+  }
+  const sel = files.filter(f => f.webkitRelativePath.startsWith(base));
   let n = 0, fallos = [];
-  for (const f of files) {
-    const rel = f.webkitRelativePath.split('/').slice(1).join('/');
+  for (const f of sel) {
+    const rel = f.webkitRelativePath.slice(base.length);
     if (!rel || /(^|\/)\./.test(rel)) continue;
     const r = await sb.storage.from('datos').upload(rel, f, { upsert: true, contentType: f.type || (rel.endsWith('.json') ? 'application/json' : rel.endsWith('.webp') ? 'image/webp' : 'application/octet-stream') });
     if (r.error) fallos.push(rel + ': ' + traducir(r.error));
-    n++; if (prog) prog.textContent = `Cargando ${n} de ${files.length} archivos…`;
+    n++; if (prog) prog.textContent = `Cargando ${n} de ${sel.length} archivos…`;
   }
   if (fallos.length) { msg('No se cargaron ' + fallos.length + ' archivos: ' + fallos.slice(0, 3).join('; '), 'bad'); return false; }
   if (prog) prog.textContent = `Listo: ${n} archivos cargados.`;

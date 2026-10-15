@@ -115,6 +115,43 @@
     }catch(e){}
   }
 
+  // ---- Actividad dentro del proyecto ----
+  // Alimenta el aviso de visita (app.js -> window.eamVista): proyecto abierto,
+  // usuario, tiempo (abierto/activo), secciones más leídas e intentos fallidos.
+  // Nunca se registra ni se envía la contraseña.
+  var sess=null, sessTimer=null, fails=0;
+  function track(label,key){ try{ if(window.eamVista) window.eamVista(label,key); }catch(e){} }
+  function fmt(sec){ sec=Math.round(sec); return sec<60 ? sec+' s' : Math.floor(sec/60)+' min'+(sec%60?' '+(sec%60)+' s':''); }
+  var TRACKER='<script>(function(){function cur(){var hs=document.querySelectorAll("h1,h2,h3,h4,[data-section]"),y=window.innerHeight*0.4,best="";for(var i=0;i<hs.length;i++){var r=hs[i].getBoundingClientRect();if(!r.width&&!r.height)continue;if(r.top<=y){var t=(hs[i].getAttribute("data-section")||hs[i].textContent||"").replace(/\\s+/g," ").trim().slice(0,70);if(t)best=t;}}return best||(document.title||"(inicio)");}setInterval(function(){if(document.hidden)return;try{parent.postMessage({eamTrack:1,s:cur()},"*");}catch(e){}},2000);})();<\/script>';
+  function instrument(html){
+    var i=html.toLowerCase().lastIndexOf('</body>');
+    return i<0 ? html+TRACKER : html.slice(0,i)+TRACKER+html.slice(i);
+  }
+  function flush(){
+    if(!sess) return;
+    track('Proyecto «'+sess.t+'» (usuario '+sess.u+'): abierto '+fmt((Date.now()-sess.t0)/1000)+', activo '+fmt(sess.act),'proj-time');
+    var top=Object.keys(sess.secs).map(function(k){return [k,sess.secs[k]];})
+      .filter(function(x){return x[1]>=6;}).sort(function(a,b){return b[1]-a[1];}).slice(0,5);
+    if(top.length) track('Lo más leído en «'+sess.t+'»: '+top.map(function(x){return x[0]+' ('+fmt(x[1])+')';}).join(' / '),'proj-secs');
+  }
+  function startSession(p,user){
+    var L=window.LANG||'es';
+    sess={t:((p&&p.title&&(p.title[L]||p.title.es))||(p&&p.id)||'proyecto'),u:user||'',t0:Date.now(),act:0,secs:{}};
+    flush();
+    clearInterval(sessTimer); sessTimer=setInterval(flush,5000);
+  }
+  function endSession(){
+    if(!sess) return;
+    flush(); clearInterval(sessTimer); sessTimer=null; sess=null;
+  }
+  window.addEventListener('message',function(e){
+    var d=e.data;
+    if(!sess||!d||d.eamTrack!==1||!vFrame||e.source!==vFrame.contentWindow) return;
+    var s=String(d.s||'').slice(0,70);
+    sess.act+=2; sess.secs[s]=(sess.secs[s]||0)+2;
+  });
+  window.addEventListener('pagehide',endSession);
+
   // ---- UI wiring ----
   var state={ current:null };
 
@@ -203,9 +240,15 @@
       var data=await res.json();
       var html=await unlock(data,mUser.value,mPass.value);
       notifyLogin(state.current,(mUser.value||'').trim());
-      openViewer(state.current,html);
+      startSession(state.current,(mUser.value||'').trim());
+      openViewer(state.current,instrument(html));
       closeModal();
     }catch(err){
+      if(err && err.message==='auth'){
+        fails++;
+        var tt=(state.current&&state.current.title&&(state.current.title[window.LANG||'es']||state.current.title.es))||'proyecto';
+        track('Intentos fallidos de acceso a proyectos: '+fails+' (último: «'+tt+'», usuario «'+String(mUser.value||'').trim().slice(0,40)+'»)','proj-fail');
+      }
       mErr.textContent=t('login_err');
       mErr.classList.add('show');
       mPass.value=''; mPass.focus();
@@ -235,6 +278,7 @@
   }
   function closeViewer(){
     if(!viewer) return;
+    endSession();
     viewer.classList.remove('open');
     vFrame.src='about:blank';
     if(vURL){ URL.revokeObjectURL(vURL); vURL=null; }

@@ -315,6 +315,33 @@
         }
       }catch(e){}
 
+      /* Acciones del visitante (clics en enlaces, descargas, actividad en proyectos).
+         Se agregan a 'secciones' y salen en el mismo correo. Con 'clave', la
+         etiqueta se reemplaza en vez de repetirse (p. ej. tiempo en un proyecto). */
+      var claves={};
+      window.eamVista=function(label,clave){
+        try{
+          label=String(label||'').replace(/[,\r\n]+/g,' ').trim().slice(0,110);
+          if(!label) return;
+          if(clave && claves[clave]!=null){ vistas[claves[clave]]=label; return; }
+          if(vistas.length>=24 || vistas.indexOf(label)>=0) return;
+          vistas.push(label);
+          if(clave) claves[clave]=vistas.length-1;
+        }catch(e){}
+      };
+      document.addEventListener('click',function(ev){
+        try{
+          var a=ev.target&&ev.target.closest?ev.target.closest('a[href]'):null;
+          if(!a) return;
+          var h=a.getAttribute('href')||'';
+          var t=(a.getAttribute('aria-label')||a.title||a.textContent||'').replace(/\s+/g,' ').trim().slice(0,40);
+          if(/^mailto:/i.test(h)) window.eamVista('Clic: correo');
+          else if(/^tel:/i.test(h)) window.eamVista('Clic: teléfono');
+          else if(/\.(pdf|docx?|pptx?|xlsx?|zip)([?#]|$)/i.test(h)) window.eamVista('Descarga: '+h.split('/').pop().split(/[?#]/)[0]);
+          else if(/^https?:/i.test(h) && a.hostname!==location.hostname) window.eamVista('Clic: '+a.hostname.replace(/^www\./,'')+(t?' ('+t+')':''));
+        }catch(e){}
+      },true);
+
       /* ubicacion aproximada; queda lista para cuando termine la visita */
       fetch(AVISO_GEO,{cache:'no-store'})
         .then(function(r){ return r.json(); })

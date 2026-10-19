@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-10-13",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "SBAP / CONAF",
+          "date": "ago 2026",
+          "lang": "ES",
+          "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/08/03/sbap-y-conaf-presentan-ruta-para-la-integraci%C3%B3n-de-programa-de-%C3%A1reas-silvestres-protegidas-a-la-nueva-instituci%C3%B3n",
+          "title": "SBAP y CONAF presentan ruta para la integración de Programa de Áreas Silvestres Protegidas a la nueva institución",
+          "summary": "Plan para integrar 110 áreas silvestres protegidas al SBAP antes de marzo de 2027."
+        },
+        {
+          "topic": "distritos",
+          "source": "SUBDERE",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://www.subdere.gov.cl/sala-de-prensa/subdere-fortalece-la-gesti%C3%B3n-territorial-con-nuevas-funcionalidades-en-la-plataforma",
+          "title": "Subdere fortalece la gestión territorial con nuevas funcionalidades en la plataforma Geonodo",
+          "summary": "Nuevos tableros, visores cartográficos y app móvil para apoyar el diseño y análisis territorial."
+        },
+        {
+          "topic": "redes",
+          "source": "ISCI",
+          "date": "may 2026",
+          "lang": "ES",
+          "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
+          "title": "Planificación de la Expansión de la Transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
+          "summary": "Estudio compara optimización estocástica y determinística para diseñar planes de transmisión más robustos."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "oct 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/salud-aumentara-su-presupuesto-en-47-para-2027-ministra-chomali-destaca-foco-en-gestion-eficiencia-y-reduccion-de-listas-de-espera/",
+          "title": "Salud aumentará su presupuesto en 4,7% para 2027: Ministra Chomali destaca foco en gestión, eficiencia y reducción de listas de espera",
+          "summary": "Presupuesto 2027 prioriza gestión, eficiencia y reducción de listas de espera."
+        },
+        {
+          "topic": "energia",
+          "source": "CNE",
+          "date": "sep 2026",
+          "lang": "ES",
+          "url": "https://www.cne.cl/prensa/prensa-2026/09-septiembre-2026/cne-designa-a-integrantes-del-comite-consultivo-especial-para-la-modificacion-de-la-norma-tecnica-de-coordinacion-y-operacion-del-sistema-electrico-nacional/",
+          "title": "CNE designa a integrantes del Comité Consultivo Especial para la modificación de la Norma Técnica de Coordinación y Operación del Sistema Eléctrico Nacional",
+          "summary": "Comité revisará la norma técnica que rige la coordinación y operación del sistema eléctrico nacional."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "oct 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/golden-week-slowdown-may-not-be-enough-to-ease-transpacific-ocean-rates/832512/",
+          "title": "Golden Week slowdown may not be enough to ease Transpacific ocean rates",
+          "summary": "Weather-related port disruptions keep Transpacific freight rates elevated despite China's Golden Week, says Freightos."
+        },
+        {
+          "topic": "educacion",
+          "source": "Subsecretaría de Educación Superior",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
+          "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
+          "summary": "El comité del nuevo sistema de aseguramiento de calidad fija su hoja de ruta para la educación superior."
+        }
+      ]
+    },
+    {
       "date": "2026-10-05",
       "items": [
         {

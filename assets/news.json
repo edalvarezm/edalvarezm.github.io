@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-19",
   "items": [
     {
       "topic": "conservacion",
@@ -31,11 +31,11 @@
     {
       "topic": "salud",
       "source": "Minsal",
-      "date": "sep 2026",
+      "date": "oct 2026",
       "lang": "ES",
-      "url": "https://www.minsal.cl/minsal-presenta-avances-de-gestion-y-ejecucion-presupuestaria-mayor-productividad-reduccion-de-espera-oncologica-y-foco-en-eficiencia/",
-      "title": "Minsal presenta avances de gestión y ejecución presupuestaria: mayor productividad, reducción de espera oncológica y foco en eficiencia",
-      "summary": "Balance del primer semestre 2026 ante el Congreso: más productividad hospitalaria y menor espera oncológica."
+      "url": "https://www.minsal.cl/salud-aumentara-su-presupuesto-en-47-para-2027-ministra-chomali-destaca-foco-en-gestion-eficiencia-y-reduccion-de-listas-de-espera/",
+      "title": "Salud aumentará su presupuesto en 4,7% para 2027: Ministra Chomali destaca foco en gestión, eficiencia y reducción de listas de espera",
+      "summary": "Presupuesto 2027 prioriza gestión, eficiencia y reducción de listas de espera."
     },
     {
       "topic": "energia",
@@ -51,9 +51,9 @@
       "source": "Supply Chain Dive",
       "date": "oct 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/usps-lengthens-some-delivery-expectations-outside-contiguous-us/831958/",
-      "title": "USPS lengthens some delivery expectations outside contiguous US",
-      "summary": "USPS extends Ground Advantage and Priority Mail delivery windows to and from Alaska, Hawaii and territories."
+      "url": "https://www.supplychaindive.com/news/golden-week-slowdown-may-not-be-enough-to-ease-transpacific-ocean-rates/832512/",
+      "title": "Golden Week slowdown may not be enough to ease Transpacific ocean rates",
+      "summary": "Weather-related port disruptions keep Transpacific freight rates elevated despite China's Golden Week, says Freightos."
     },
     {
       "topic": "educacion",

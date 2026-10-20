@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Herramienta para Redacción de Juicios Evaluativos</title>
+<title>REDACTOR</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: workbench — a fixed left tree (dimensión › criterio › nivel › enunciado), a working panel with tabs, and two full-width views (panel de avance, documento). */
@@ -410,11 +410,25 @@ tr[data-gocr]{cursor:pointer} tr[data-gocr]:hover td{background:var(--surface-2)
 button.lk{border:0;background:none;padding:0;color:var(--ink);font:inherit;cursor:pointer;text-align:left}
 button.lk:hover{color:var(--accent);text-decoration:underline}
 @media (max-width:820px){.userbtn{order:2;max-width:170px}.ftab .facc{white-space:normal}}
-/* nombre largo de la herramienta: en dos líneas, sin tapar el menú */
-.brand{flex:0 1 250px;min-width:150px;flex-direction:column;align-items:flex-start;gap:1px}
-.brand h1{white-space:normal;line-height:1.2;font-size:14.5px}
-.brand small{display:none}
-@media (max-width:820px){.brand{flex:1 1 140px}}
+/* marca REDACTOR: franja superior con el nombre y la sigla, la frase del acrónimo y, debajo, el aviso de registro;
+   la barra de navegación queda en la fila siguiente */
+.brand{order:-1;flex:1 1 100%;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.rd-linea{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;min-width:0}
+.brand h1.rd-nombre{font-size:19px;font-weight:700;letter-spacing:.09em;line-height:1.2;margin:0;white-space:nowrap}
+.rd-frase{font-size:13px;color:var(--ink-2);line-height:1.35}
+.rd-frase b{color:var(--accent);font-weight:700}
+.brand small.rd-aviso,.acc-brand small.rd-aviso{display:block;font-size:11px;font-weight:400;line-height:1.4;color:var(--ink-3);white-space:normal;overflow:visible;text-overflow:clip}
+@media (max-width:820px){
+  .brand h1.rd-nombre{font-size:16px}
+  .rd-frase{font-size:12px}
+  .brand small.rd-aviso{font-size:10.5px}
+  .tree.open{padding-top:calc(var(--top-h,60px) + env(safe-area-inset-top,0px))}
+  .brand{gap:2px;padding-bottom:6px}
+  .top .menu{order:2}  /* el botón del catálogo va en la fila de la cuenta, para no sumar una fila más */
+}
+.acc-brand .rd-nombre{font-size:22px;font-weight:700;letter-spacing:.09em;line-height:1.2}
+.acc-brand .rd-frase{font-size:13px;font-weight:400;margin-top:4px}
+.acc-brand small.rd-aviso{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}
 
 /* nombre de la institución en la pantalla de ingreso (sistemas separados por universidad) */
 .acc-inst{display:block;margin-top:6px;font-size:13px;font-weight:600;color:var(--accent)}
@@ -428,7 +442,7 @@ button.lk:hover{color:var(--accent);text-decoration:underline}
 <div class="app" data-view="editor" hidden>
   <header class="top">
     <button class="menu" id="menuBtn" aria-label="Mostrar u ocultar el catálogo de enunciados" aria-pressed="true">☰ Catálogo</button>
-    <div class="brand"><h1>Herramienta para Redacción de Juicios Evaluativos</h1><small>Autoevaluación institucional | criterios y estándares CNA</small></div>
+    <div class="brand"></div>
     <span class="sync ok" id="syncSt" role="status" aria-live="polite">Guardado</span>
     <nav class="nav" aria-label="Vistas">
       <button data-view="editor" aria-pressed="true">Herramienta de redacción</button>
@@ -1417,7 +1431,7 @@ async function actividadCard(){
 /* =========================== ARCHIVOS =========================== */
 const ARCH={lista:[], papelera:false, q:'', code:'', crit:'', renom:null, borrar:null, cargado:false};
 const MAXMB=+(BT.cfg.maxArchivoMB||50);
-async function archCargar(){ const out=[]; for(let i=0;;i+=1000){ const r=await SBX.from('archivos').select('*').order('subido_en',{ascending:false}).range(i,i+999); if(r.error){ toast('No se pudo cargar la lista de archivos'); return; } out.push(...r.data); if(r.data.length<1000) break; } ARCH.lista=out; ARCH.cargado=true; }
+async function archCargar(){ const out=[]; for(let i=0;;i+=1000){ const r=await SBX.from('archivos').select('*').order('subido_en',{ascending:false}).order('id').range(i,i+999); if(r.error){ toast('No se pudo cargar la lista de archivos'); return; } out.push(...r.data); if(r.data.length<1000) break; } ARCH.lista=out; ARCH.cargado=true; }
 function limpiarNombre(n){ const p=n.lastIndexOf('.'); const base=(p>0?n.slice(0,p):n), ext=(p>0?n.slice(p):''); const s=x=>x.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9._-]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,''); return (s(base).slice(0,100)||'archivo')+s(ext).slice(0,12); }
 function tusEndpoint(){ if(BT.cfg.tusEndpoint) return BT.cfg.tusEndpoint; const u=new URL(BT.cfg.url); return u.protocol+'//'+u.host.replace(/\.supabase\.co$/,'.storage.supabase.co')+'/storage/v1/upload/resumable'; }
 async function archSubir(file, code, onProg){
@@ -1587,12 +1601,13 @@ pintarUsuario(); pintarEstado(); archCargar();
   setView(n&&['editor','panel','doc','ref','io','files'].includes(n.view)?n.view:'editor'); })();
 })();
 </script>
-<script src="config.js?v=202610131124"></script>
+<script src="config.js?v=202610200037"></script>
 <script src="vendor/supabase.js"></script>
 <script src="vendor/tus.min.js"></script>
 <script>
 /* =====================================================================
-   Herramienta para Redacción de Juicios Evaluativos | arranque, sesión y sincronización
+   REDACTOR (heRramienta para la rEDAcción de juiCios evaluaTivOs para acReditación)
+   arranque, sesión y sincronización
    Se ejecuta antes que la aplicación. Inicia sesión con Supabase, carga
    los datos privados y el estado compartido, y luego arranca la app.
    ===================================================================== */
@@ -1608,18 +1623,24 @@ window.MESA_USUARIO = e => { e = String(e || ''); return e.toLowerCase().endsWit
 // institución: el mismo código sirve a sistemas separados (un proyecto de Supabase y una carpeta del sitio por universidad)
 const INST = String(CFG.institucion || '').trim();
 const INSTN = String(CFG.institucionNombre || INST).trim();
-const SUB = 'Autoevaluación institucional | criterios y estándares CNA';
 // sigla junto al título, con el color de la institución (config.js: color; por omisión, el azul de la paleta)
 const ICOL = /^#[0-9a-f]{6}$/i.test(String(CFG.color || '')) ? CFG.color : '#3047C7';
 const ITXT = (h => { const c = [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2] > 0.3 ? '#1d2333' : '#ffffff'; })(ICOL);
 const TAG = INST ? `<span class="inst-tag" style="background:${ICOL};color:${ITXT}" title="${escH(INSTN)}">${escH(INST)}</span>` : '';
 window.MESA_INST = INST;
-if (INST) document.title = 'Juicios Evaluativos | ' + INST;
+// nombre de la herramienta: REDACTOR, acrónimo de la frase (se respetan sus mayúsculas; solo se destacan)
+const NOMBRE = 'REDACTOR';
+const FRASE = 'heRramienta para la rEDAcción de juiCios evaluaTivOs para acReditación';
+const AVISO = 'REDACTOR es una marca en proceso de registro en INAPI, el código (back y frontend) de la herramienta está en proceso de protección de propiedad intelectual';
+const FRASE_H = escH(FRASE).replace(/[A-ZÁÉÍÓÚÑ]+/g, m => `<b>${m}</b>`);
+document.title = NOMBRE + (INST ? ' | ' + INST : '');
 const BOOT = window.__BOOT = { D: null, S: null, user: null, perfil: null, perfiles: {}, urls: {}, esAdmin: false, cfg: CFG };
 let sb = null;
 
 /* ---------- pantallas de acceso ---------- */
-function pantalla(html) { const el = q('#acceso'); el.innerHTML = `<div class="acc-card"${INST ? ` style="border-top-color:${ICOL}"` : ''}><div class="acc-brand">Herramienta para Redacción de Juicios Evaluativos${TAG}<small>${SUB}</small>${INSTN && INSTN !== INST ? `<span class="acc-inst">${escH(INSTN)}</span>` : ''}</div>${html}</div>`; el.hidden = false; }
+function pantalla(html) { const el = q('#acceso'); el.innerHTML = `<div class="acc-card"${INST ? ` style="border-top-color:${ICOL}"` : ''}><div class="acc-brand"><div class="rd-nombre">${NOMBRE}${TAG}</div><div class="rd-frase">${FRASE_H}</div>${INSTN && INSTN !== INST ? `<span class="acc-inst">${escH(INSTN)}</span>` : ''}<small class="rd-aviso">${escH(AVISO)}</small></div>${html}</div>`; el.hidden = false; }
+// franja superior de la herramienta: nombre y sigla, frase del acrónimo y, debajo, el aviso de registro
+function marca() { const b = q('.brand'); if (b) b.innerHTML = `<div class="rd-linea"><h1 class="rd-nombre">${NOMBRE}${TAG}</h1><span class="rd-frase">${FRASE_H}</span></div><small class="rd-aviso">${escH(AVISO)}</small>`; }
 function msg(t, tipo) { const m = q('#aMsg'); if (m) { m.textContent = t || ''; m.className = 'acc-msg ' + (tipo || ''); } }
 const traducir = e => {
   const t = (e && (e.message || e.error_description || e.msg)) || String(e || '');
@@ -1726,9 +1747,12 @@ async function entrar(session) {
     cargarFuentes();
     await firmarRecortes();
     BOOT.S = await SYNC.cargar();
+    marca();
     q('#acceso').hidden = true;
     q('.app').hidden = false;
-    { const h1 = q('.brand h1'); if (h1 && TAG && !h1.querySelector('.inst-tag')) h1.insertAdjacentHTML('beforeend', TAG); }
+    // alto de la barra superior (cambia con el ancho de la pantalla): el catálogo en el teléfono se abre debajo de ella
+    { const top = q('.top'); const fijar = () => document.documentElement.style.setProperty('--top-h', top.offsetHeight + 'px');
+      if (top) { fijar(); if (window.ResizeObserver) new ResizeObserver(fijar).observe(top); else addEventListener('resize', fijar); } }
     const s = document.createElement('script');
     s.textContent = q('#app-src').textContent;
     document.body.appendChild(s);
@@ -1854,12 +1878,18 @@ function nuevoJ(S, code) {
   return j;
 }
 function evObj(r) { return { ev: r.ev, code: r.code, titulo: r.titulo, tipo: r.tipo, anio: r.anio, unidad: r.unidad, plano: r.plano, solidez: r.solidez, campos: r.campos || [], archivo: r.archivo || '', archivo_id: r.archivo_id || null, estado: r.estado }; }
-async function todos(tabla, orden) {
+// Lee todas las filas de una tabla en bloques de 1000 (el máximo que entrega el servidor por consulta).
+// El orden es siempre fijo y termina en la clave primaria: así ningún registro se salta ni se repite
+// entre un bloque y el siguiente, aunque otra persona guarde algo mientras se lee.
+const CLAVE = { campos: ['code', 'campo'], evidencias: ['ev'], recursos: ['code', 'item'], alin_procesos: ['id'], borradores: ['user_id', 'code'] };
+async function todos(tabla, { previo = [], cols = '*', filtro = null } = {}) {
+  const orden = [...previo, ...CLAVE[tabla]];
   const out = [];
   for (let i = 0; ; i += 1000) {
-    let qy = sb.from(tabla).select('*').range(i, i + 999);
-    if (orden) qy = qy.order(orden);
-    const r = await qy;
+    let qy = sb.from(tabla).select(cols);
+    if (filtro) qy = filtro(qy);
+    orden.forEach(c => { qy = qy.order(c); });
+    const r = await qy.range(i, i + 999);
     if (r.error) throw r.error;
     out.push(...r.data);
     if (r.data.length < 1000) break;
@@ -1881,7 +1911,7 @@ const SYNC = window.SYNC = {
 
   async cargar() {
     const uid = BOOT.user.id;
-    const [campos, evs, recs, alin, bors] = await Promise.all([todos('campos'), todos('evidencias', 'creado_en'), todos('recursos'), todos('alin_procesos'), todos('borradores')]);
+    const [campos, evs, recs, alin, bors] = await Promise.all([todos('campos'), todos('evidencias', { previo: ['creado_en'] }), todos('recursos'), todos('alin_procesos'), todos('borradores')]);
     const S = { juicios: {}, evidencias: [], recursos: {}, seq: 0, alin: { procesos: [] } };
     campos.forEach(r => {
       const j = nuevoJ(S, r.code); setC(j, r.campo, r.valor);
@@ -2057,19 +2087,18 @@ const SYNC = window.SYNC = {
   async sondear() {
     try {
       const desde = this.ultimo;
+      // todo se lee completo y paginado: la lista de códigos sirve para detectar lo eliminado,
+      // así que no puede quedar cortada en las primeras 1000 filas
+      const nuevos = { previo: ['updated_at'], filtro: qy => qy.gt('updated_at', desde) };
       const [c, e, r, a, ids, ida] = await Promise.all([
-        sb.from('campos').select('*').gt('updated_at', desde),
-        sb.from('evidencias').select('*').gt('updated_at', desde),
-        sb.from('recursos').select('*').gt('updated_at', desde),
-        sb.from('alin_procesos').select('*').gt('updated_at', desde),
-        sb.from('evidencias').select('ev'),
-        sb.from('alin_procesos').select('id')]);
-      (c.data || []).forEach(x => this.aplicar('campos', 'UPDATE', x));
-      (e.data || []).forEach(x => this.aplicar('evidencias', 'UPDATE', x));
-      (r.data || []).forEach(x => this.aplicar('recursos', 'UPDATE', x));
-      (a.data || []).forEach(x => this.aplicar('alin_procesos', 'UPDATE', x));
-      if (ids.data) { const set = new Set(ids.data.map(x => x.ev)); Object.keys(this.shEv).filter(ev => !set.has(ev)).forEach(ev => this.aplicar('evidencias', 'DELETE', null, { ev })); }
-      if (ida.data) { const set = new Set(ida.data.map(x => x.id)); Object.keys(this.shAlin).filter(id => !set.has(id)).forEach(id => this.aplicar('alin_procesos', 'DELETE', null, { id })); }
+        todos('campos', nuevos), todos('evidencias', nuevos), todos('recursos', nuevos), todos('alin_procesos', nuevos),
+        todos('evidencias', { cols: 'ev' }), todos('alin_procesos', { cols: 'id' })]);
+      c.forEach(x => this.aplicar('campos', 'UPDATE', x));
+      e.forEach(x => this.aplicar('evidencias', 'UPDATE', x));
+      r.forEach(x => this.aplicar('recursos', 'UPDATE', x));
+      a.forEach(x => this.aplicar('alin_procesos', 'UPDATE', x));
+      { const set = new Set(ids.map(x => x.ev)); Object.keys(this.shEv).filter(ev => !set.has(ev)).forEach(ev => this.aplicar('evidencias', 'DELETE', null, { ev })); }
+      { const set = new Set(ida.map(x => x.id)); Object.keys(this.shAlin).filter(id => !set.has(id)).forEach(id => this.aplicar('alin_procesos', 'DELETE', null, { id })); }
       this.avisar('sondeo', {});
     } catch (e) { /* se reintenta en el próximo ciclo */ }
   }

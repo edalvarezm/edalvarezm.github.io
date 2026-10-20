@@ -1,4 +1,4 @@
-// Conexión con Supabase (proyecto "mesa-juicios"). Estos dos datos son públicos por diseño:
+// REDACTOR | USACH. Conexión con Supabase (proyecto "redactor-usach", antes "mesa-juicios"). Estos dos datos son públicos por diseño:
 // la seguridad la dan las reglas de la base de datos. NUNCA ponga aquí la "secret key".
 window.MESA_CONFIG = {
   institucion: 'USACH',  // sigla que se muestra en el ingreso, la barra y el título; separa también los datos locales del navegador

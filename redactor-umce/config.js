@@ -1,4 +1,4 @@
-// Conexión con Supabase (proyecto "mesa-juicios-umce"). Estos dos datos son públicos por diseño:
+// REDACTOR | UMCE. Conexión con Supabase (proyecto "redactor-umce", antes "mesa-juicios-umce"). Estos dos datos son públicos por diseño:
 // la seguridad la dan las reglas de la base de datos. NUNCA ponga aquí la "secret key".
 window.MESA_CONFIG = {
   institucion: 'UMCE',  // sigla que se muestra en el ingreso, la barra y el título; separa también los datos locales del navegador

@@ -4,6 +4,7 @@
    Temas: conservacion | distritos | redes | salud | energia | lineas | educacion | decision
    ========================================================================== */
 window.PUBLICATIONS = [
+  [2026,"A Bayesian-optimised network interdiction heuristic for firebreak placement under stochastic wildfire spread","F. Ulloa-Fierro, J. Salgado-Rojas, J.R. González-Olabarria, J. Garcia-Gonzalo, C. Matus-Olivares, A. Weintraub, J. Carrasco-Barra","Ecological Informatics, 104104",["conservacion"]],
   [2026,"The latency location-or-routing problem","A. Osorio-Mora, F. Saldanha-da-Gama","Transportation Research Part E: Logistics and Transportation Review, 105280",["lineas"]],
   [2026,"Treemün: A Python framework for spatial growth-and-yield simulation and harvest scheduling optimization in plantation forests","F. Ulloa-Fierro, J. Garcia-Gonzalo, J.R. González-Olabarria, B. Mola-Yudego, A. Miranda, J. Carrasco-Barra, A. Weintraub","Ecological Informatics, 104044",["conservacion"]],
   [2026,"Sixty years of research on districting problems: Models, algorithms, and applications","C. Campos-Valdés, J. Pereira, R.Z. Ríos-Mercado, D.L. Huerta-Muñoz","Omega, 103654",["distritos"]],

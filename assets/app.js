@@ -183,8 +183,22 @@
         (badges?'<div class="idx-badges">'+badges+'</div>':'')+
         '</div>'));
     });
+    renderPubChart(shown);
     var c=document.getElementById('pub-count');
     if(c) c.textContent=shown.length+' '+T('pubs_count');
+  }
+  /* ---------- grafico: publicaciones por año ---------- */
+  function renderPubChart(shown){
+    var box=document.getElementById('pub-chart'); if(!box)return;
+    var all=window.PUBLICATIONS||[]; if(!all.length){box.innerHTML='';return;}
+    var ys=all.map(function(p){return p[0];}), min=Math.min.apply(null,ys), max=Math.max.apply(null,ys);
+    var cnt={}; shown.forEach(function(p){cnt[p[0]]=(cnt[p[0]]||0)+1;});
+    var peak=1, y; for(y=min;y<=max;y++){ if((cnt[y]||0)>peak) peak=cnt[y]; }
+    var cols=''; for(y=min;y<=max;y++){
+      var n=cnt[y]||0, h=n?Math.max(4,Math.round(n/peak*100)):0;
+      cols+='<div class="pc-col'+(n?'':' zero')+'" title="'+y+': '+n+'"><span class="pc-n">'+(n||'')+'</span><span class="pc-bar" style="height:'+h+'%"></span><span class="pc-y" data-y="'+y+'" data-s="'+String(y).slice(2)+'"></span></div>';
+    }
+    box.innerHTML='<div class="pc-head"><span class="pc-title">'+L({es:'Publicaciones por año',en:'Publications per year'})+'</span><span class="pc-total">'+shown.length+' '+L({es:'en total',en:'in total'})+'</span></div><div class="pc-plot" role="img" aria-label="'+L({es:'Gráfico de barras de publicaciones por año',en:'Bar chart of publications per year'})+'">'+cols+'</div>';
   }
   function renderPubChips(){
     var bar=document.getElementById('pub-chips'); if(!bar)return; bar.innerHTML='';

@@ -4,6 +4,7 @@
    Temas: conservacion | distritos | redes | salud | energia | lineas | educacion | decision
    ========================================================================== */
 window.PUBLICATIONS = [
+  [2026,"Balancing ecological benefits and feasibility in large-scale restoration planning: A multi-objective optimization decision-support framework","M. Moreno-Faguett, J. Castillo-Mandujano, J. Salgado-Rojas, M.J. Martínez-Harms, B. Larraín-Barrios, M. Poutay-Broussaingaray, E. Fuentes-Lillo, P. Pliscoff, P. Ramírez de Arellano, C. Smith-Ramírez, O. Barbosa, A. Pauchard, J. Garcia-Gonzalo, V. Hermoso","Journal of Environmental Management, 419, 131246",["conservacion"]],
   [2026,"A Bayesian-optimised network interdiction heuristic for firebreak placement under stochastic wildfire spread","F. Ulloa-Fierro, J. Salgado-Rojas, J.R. González-Olabarria, J. Garcia-Gonzalo, C. Matus-Olivares, A. Weintraub, J. Carrasco-Barra","Ecological Informatics, 104104",["conservacion"]],
   [2026,"The latency location-or-routing problem","A. Osorio-Mora, F. Saldanha-da-Gama","Transportation Research Part E: Logistics and Transportation Review, 105280",["lineas"]],
   [2026,"Treemün: A Python framework for spatial growth-and-yield simulation and harvest scheduling optimization in plantation forests","F. Ulloa-Fierro, J. Garcia-Gonzalo, J.R. González-Olabarria, B. Mola-Yudego, A. Miranda, J. Carrasco-Barra, A. Weintraub","Ecological Informatics, 104044",["conservacion"]],
@@ -154,5 +155,6 @@ window.JOURNAL_METRICS = {
   "RAIRO - Operations Research":{wif:1.5,sq:"Q2"},
   "Lecture Notes in Computer Science":{sq:"Q2",sjr:true},
   "Ecological Informatics":{wif:8.5,sq:"Q1"},
-  "Transportation Research Part E: Logistics and Transportation Review":{wif:10.1,sq:"Q1"}
+  "Transportation Research Part E: Logistics and Transportation Review":{wif:10.1,sq:"Q1"},
+  "Journal of Environmental Management":{wif:8.4,sq:"Q1"}
 };

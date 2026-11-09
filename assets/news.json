@@ -1,23 +1,23 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "items": [
     {
       "topic": "conservacion",
       "source": "SBAP",
       "date": "oct 2026",
       "lang": "ES",
-      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/10/19/plan-de-integraci%C3%B3n-de-%C3%A1reas-protegidas-en-valpara%C3%ADso-registra-un-55--de-avance",
-      "title": "Plan de integración de áreas protegidas en Valparaíso registra un 55% de avance",
-      "summary": "SBAP y CONAF avanzan en Valparaíso en el traspaso de áreas protegidas al nuevo servicio, previsto para 2027."
+      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/10/15/servicio-de-biodiversidad-y-%C3%A1reas-protegidas-present%C3%B3-importantes-iniciativas-en-encuentro-de-%C3%A1reas-protegidas",
+      "title": "Servicio de Biodiversidad y Áreas Protegidas presentó importantes iniciativas en Encuentro de Áreas Protegidas",
+      "summary": "El SBAP expuso sus principales iniciativas para el sistema nacional de áreas protegidas en un encuentro del sector."
     },
     {
       "topic": "distritos",
-      "source": "SUBDERE",
-      "date": "jul 2026",
-      "lang": "ES",
-      "url": "https://www.subdere.gov.cl/sala-de-prensa/subdere-fortalece-la-gesti%C3%B3n-territorial-con-nuevas-funcionalidades-en-la-plataforma",
-      "title": "Subdere fortalece la gestión territorial con nuevas funcionalidades en la plataforma Geonodo",
-      "summary": "Nuevos tableros, visores cartográficos y app móvil para apoyar el diseño y análisis territorial."
+      "source": "Nature Human Behaviour",
+      "date": "2026",
+      "lang": "EN",
+      "url": "https://www.nature.com/articles/s41562-026-02511-7",
+      "title": "Individual and differential harm in redistricting",
+      "summary": "Study examines how redistricting plans can harm individual voters and groups differently."
     },
     {
       "topic": "redes",

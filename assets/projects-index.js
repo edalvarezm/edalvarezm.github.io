@@ -5,6 +5,13 @@
    ========================================================================== */
 window.PROJECTS = [
   {
+    id:"revalidacion-titulos",
+    icon:"certificate",
+    file:"projects/revalidacion-titulos.enc.json",
+    title:{es:"Simulador de reconocimiento y revalidación de títulos obtenidos en el extranjero [prototipo]",en:"Simulator for the recognition and revalidation of foreign degrees [prototype]"},
+    cat:{es:"Educación superior · D.S. N° 174 de 2024 · CUECH",en:"Higher education · Supreme Decree 174 (2024) · CUECH"}
+  },
+  {
     id:"eleccion-diputados",
     icon:"presentation",
     file:"projects/eleccion-diputados.enc.json",

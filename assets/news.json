@@ -1,32 +1,32 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-16",
   "items": [
     {
       "topic": "conservacion",
-      "source": "SBAP",
-      "date": "oct 2026",
-      "lang": "ES",
-      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/10/15/servicio-de-biodiversidad-y-%C3%A1reas-protegidas-present%C3%B3-importantes-iniciativas-en-encuentro-de-%C3%A1reas-protegidas",
-      "title": "Servicio de Biodiversidad y Áreas Protegidas presentó importantes iniciativas en Encuentro de Áreas Protegidas",
-      "summary": "El SBAP expuso sus principales iniciativas para el sistema nacional de áreas protegidas en un encuentro del sector."
+      "source": "Mongabay",
+      "date": "nov 2026",
+      "lang": "EN",
+      "url": "https://news.mongabay.com/short-article/2026/11/global-biodiversity-summit-ends-with-shortfall-of-funding-for-africa-despite-30x30-push/",
+      "title": "Global biodiversity summit ends with shortfall of funding for Africa, despite 30×30 push",
+      "summary": "COP17 closed with unresolved funding gaps for African conservation despite the push to protect 30% by 2030."
     },
     {
       "topic": "distritos",
-      "source": "Nature Human Behaviour",
-      "date": "2026",
+      "source": "The Conversation",
+      "date": "nov 2026",
       "lang": "EN",
-      "url": "https://www.nature.com/articles/s41562-026-02511-7",
-      "title": "Individual and differential harm in redistricting",
-      "summary": "Study examines how redistricting plans can harm individual voters and groups differently."
+      "url": "https://theconversation.com/republican-gerrymandering-worked-pretty-well-in-texas-and-florida-even-if-it-backfired-in-north-carolina-and-ohio-295944",
+      "title": "Republican gerrymandering worked pretty well in Texas and Florida, even if it backfired in North Carolina and Ohio",
+      "summary": "Post-midterm analysis of how mid-decade redistricting paid off in some states and backfired in others."
     },
     {
       "topic": "redes",
       "source": "ISCI",
-      "date": "may 2026",
+      "date": "jul 2026",
       "lang": "ES",
-      "url": "https://energia.isci.cl/es/noticias/planificacion-de-la-expansion-de-la-transmision-en-chile-isci-presenta-estudio-con-recomendaciones-para-impulsar-la-descarbonizacion",
-      "title": "Planificación de la Expansión de la Transmisión en Chile: ISCI presenta estudio con recomendaciones para impulsar la descarbonización",
-      "summary": "Estudio compara optimización estocástica y determinística para diseñar planes de transmisión más robustos."
+      "url": "https://isci.cl/noticias/andres-weintraub-ingresa-al-ifors-hall-of-fame-por-su-trayectoria-e-impacto-en-la-investigacion-de-operaciones",
+      "title": "Andrés Weintraub ingresa al IFORS Hall of Fame por su trayectoria e impacto en la investigación de operaciones",
+      "summary": "Andrés Weintraub fue incorporado al IFORS Hall of Fame durante el congreso mundial realizado en Viena."
     },
     {
       "topic": "salud",
@@ -40,29 +40,29 @@
     {
       "topic": "energia",
       "source": "CNE",
-      "date": "sep 2026",
+      "date": "nov 2026",
       "lang": "ES",
-      "url": "https://www.cne.cl/prensa/prensa-2026/09-septiembre-2026/cne-designa-a-integrantes-del-comite-consultivo-especial-para-la-modificacion-de-la-norma-tecnica-de-coordinacion-y-operacion-del-sistema-electrico-nacional/",
-      "title": "CNE designa a integrantes del Comité Consultivo Especial para la modificación de la Norma Técnica de Coordinación y Operación del Sistema Eléctrico Nacional",
-      "summary": "Comité revisará la norma técnica que rige la coordinación y operación del sistema eléctrico nacional."
+      "url": "https://www.cne.cl/prensa/prensa-2026/11-noviembre-2026/carlos-barria-inaugura-encuentro-sobre-el-futuro-energetico-de-chile-marcado-por-la-electrificacion-y-la-inteligencia-artificial/",
+      "title": "Carlos Barría inaugura encuentro sobre el futuro energético de Chile marcado por la electrificación y la inteligencia artificial",
+      "summary": "La CNE inauguró «Chile Energía 2030», encuentro sobre electrificación, inteligencia artificial y centros de datos."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
-      "date": "oct 2026",
+      "date": "nov 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/panama-canal-challenges-drive-shippers-to-port-of-los-angeles/832748/",
-      "title": "Panama Canal challenges drive shippers to Port of Los Angeles",
-      "summary": "Panama Canal delays and fuel costs tied to the Iran war push more cargo toward Los Angeles."
+      "url": "https://www.supplychaindive.com/news/ups-teamsters-contract-expires-in-2028-shippers-should-prepare-now/874374/",
+      "title": "UPS’ Teamsters contract expires in 2028. Shippers should prepare now.",
+      "summary": "With UPS's Teamsters contract ending in 2028, shippers should diversify carriers and review contract terms now."
     },
     {
       "topic": "educacion",
-      "source": "Subsecretaría de Educación Superior",
-      "date": "jul 2026",
-      "lang": "ES",
-      "url": "https://educacionsuperior.mineduc.cl/2026/07/28/comite-sinaces-define-su-primera-version-del-plan-de-trabajo-2026-2030/",
-      "title": "Comité SINACES define su primera versión del Plan de Trabajo 2026-2030",
-      "summary": "El comité del nuevo sistema de aseguramiento de calidad fija su hoja de ruta para la educación superior."
+      "source": "Times Higher Education",
+      "date": "nov 2026",
+      "lang": "EN",
+      "url": "https://www.timeshighereducation.com/news/students-face-conflict-interest-tef-submissions",
+      "title": "Students face ‘conflict of interest’ in TEF submissions",
+      "summary": "Student input to the UK's Teaching Excellence Framework raises conflict-of-interest concerns in quality assessment."
     }
   ]
 }

@@ -22,8 +22,10 @@ window.PROJECTS = [
     id:"teseo",
     icon:"map",
     file:"projects/teseo.enc.json",
+    /* el portal descifrado descarga estas cinco piezas cifradas (TESEO/portal/build_portal.js) */
+    partes:["projects/teseo/plataforma.enc.json","projects/teseo/diapositivas-completas.enc.json","projects/teseo/diapositivas-resumidas.enc.json","projects/teseo/memoria-de-calculo.enc.json","projects/teseo/infografia.enc.json"],
     title:{es:"TESEO: herramienta de rediseño de distritos electorales",en:"TESEO: a tool for redrawing electoral districts"},
-    cat:{es:"Sistema electoral · Cámara de Diputadas y Diputados",en:"Electoral system · Chamber of Deputies"}
+    cat:{es:"Sistema electoral, Cámara de Diputadas y Diputados",en:"Electoral system, Chamber of Deputies"}
   },
   {
     id:"plataforma-arancelaria",

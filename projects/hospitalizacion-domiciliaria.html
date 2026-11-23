@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hospitalización Domiciliaria</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f2f5; --card:#fff; --ink:#1d1d1f; --muted:#6e6e73; --faint:#8e8e93;
+  --line:#e6e6eb; --soft:#f5f5f7; --soft2:#ececf0; --accent:#0a6edb; --accent-ink:#fff;
+  --danger:#c93412; --m1:#1a6fe0; --m2:#f26a10; --m3:#9a4fd6; --m4:#11978f;
+  --peak:#f6dcd8; --radius:20px;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 10px 34px rgba(20,20,40,.07);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1440px;margin:0 auto;padding:0 28px 48px}
+
+/* ---------- Header ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px;min-width:0}
+.brand h1{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.brand p{margin:3px 0 0;color:var(--muted);font-size:13.5px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.datebox{display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:6px 6px 6px 14px;box-shadow:var(--shadow);font-weight:600}
+.datebox input{border:0;background:var(--soft);border-radius:8px;padding:6px 8px;font-size:13px}
+.btn{border:0;border-radius:999px;padding:9px 16px;font-weight:600;cursor:pointer;background:var(--soft2);transition:transform .1s,background .15s}
+.btn:hover{background:#e2e2e7}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:#075fc0}
+.btn.ghost{background:#fff;box-shadow:var(--shadow)}
+.btn.sm{padding:7px 13px;font-size:13px}
+
+/* ---------- KPI strip ---------- */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:#fff;border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.kpi b{display:block;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--accent)}
+.kpi span{color:var(--muted);font-size:12.5px}
+
+/* ---------- Generic card ---------- */
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+.sec{margin-top:28px}
+.eyebrow{color:var(--accent);font-weight:600;font-size:13.5px;margin:0 0 2px}
+.sec-title{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 14px}
+.card-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.card-h h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em}
+.card-h small{color:var(--muted);font-size:13px}
+
+/* ---------- Workspace ---------- */
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:16px;align-items:stretch}
+.map-card{position:relative;height:680px;overflow:hidden;background:#efece4}
+#map{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:none}
+#map.dragging{cursor:grabbing}
+.map-note{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);border-radius:10px;padding:6px 12px;font-size:12.5px;color:#3a3a3c;box-shadow:0 1px 3px rgba(0,0,0,.08);max-width:calc(100% - 100px)}
+.zoom{position:absolute;top:14px;right:14px;z-index:2;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.12);display:flex;flex-direction:column;overflow:hidden}
+.zoom button{border:0;background:none;padding:9px 12px;font-weight:600;cursor:pointer;font-size:16px;line-height:1}
+.zoom button+button{border-top:1px solid var(--line)}
+.zoom button.txt{font-size:12px;padding:10px 10px}
+.zoom button:hover{background:var(--soft)}
+.legend{position:absolute;right:14px;bottom:52px;z-index:2;background:rgba(255,255,255,.95);border-radius:14px;padding:10px 14px;box-shadow:0 2px 10px rgba(0,0,0,.1);font-size:12.5px;display:grid;gap:4px}
+.legend .li{display:flex;align-items:center;gap:8px;cursor:pointer;border-radius:6px;padding:1px 4px;margin:0 -4px}
+.legend .li:hover{background:var(--soft)}
+.legend .li.dim{opacity:.35}
+.legend .static{cursor:default}
+.legend .static:hover{background:none}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.scale{position:absolute;right:20px;bottom:16px;z-index:2;font-size:11.5px;color:#3a3a3c;text-align:center;width:190px}
+.scale i{display:block;height:6px;border:2px solid #3a3a3c;border-top:0;margin-top:2px}
+#map .town{font:600 15px Inter,system-ui,sans-serif;fill:#3a3a3c;paint-order:stroke;stroke:#efece4;stroke-width:5px;stroke-linejoin:round}
+#map .town.out{fill:#9a978f;font-weight:500;font-size:13px}
+#map .route{transition:opacity .2s}
+#map[data-focus] .route{opacity:.1}
+#map[data-focus="1"] .route[data-m="1"],#map[data-focus="2"] .route[data-m="2"],#map[data-focus="3"] .route[data-m="3"],#map[data-focus="4"] .route[data-m="4"]{opacity:1}
+#map .pin{cursor:pointer}
+#map .pin text{font:700 11px Inter,system-ui,sans-serif;fill:#fff;pointer-events:none}
+#map .pin:hover circle{stroke-width:3.5}
+#map.animate .route polyline{stroke-dasharray:var(--len) var(--len);animation:draw 1.1s ease-out forwards}
+#map.animate .route polyline.dash{animation:none}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+
+/* ---------- Side panel ---------- */
+.panel{height:680px;display:flex;flex-direction:column;padding:14px;min-width:0}
+.seg{display:flex;background:#f0f0f3;border-radius:12px;padding:4px;gap:2px;flex:none}
+.seg button{flex:1;border:0;background:none;padding:8px 4px;border-radius:9px;font-weight:500;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.seg button:hover{background:rgba(255,255,255,.6)}
+.seg button.on{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.13);font-weight:600}
+.tab-body{flex:1;overflow:auto;margin:12px -6px 0;padding:0 6px 4px}
+.tab{display:none}
+.tab.on{display:block}
+.lead{color:#3a3a3c;margin:4px 0 14px;line-height:1.55}
+.tab h4{font-size:15px;margin:18px 0 8px;font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+
+/* form */
+.box{background:var(--soft);border-radius:16px;padding:12px 14px}
+.box+.box{margin-top:10px}
+.box-h{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.box-h b{color:var(--accent);font-weight:600;font-size:15px}
+.box-h .chev{color:var(--faint);transition:transform .2s}
+.box.open .chev{transform:rotate(180deg)}
+.form{display:none;margin-top:10px}
+.box.open .form{display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.f label{display:block;font-size:12px;color:var(--muted);margin:0 0 4px}
+.f input,.f select{width:100%;border:0;background:#fff;border-radius:10px;padding:9px 11px;font-size:14.5px;outline:none;min-width:0}
+.f input:focus,.f select:focus{box-shadow:0 0 0 2px rgba(10,110,219,.35)}
+.f.full{grid-column:1/-1}
+.form .btn{margin-top:12px;width:100%}
+
+/* patient cards */
+.pt{background:var(--soft);border-radius:16px;padding:12px 14px;margin-top:10px;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.pt-h{display:flex;align-items:center;gap:7px}
+.pt-h .id{font-weight:700;font-size:15px}
+.pt-h .ini{color:var(--muted);font-size:14px}
+.pt-h .day{color:var(--muted);font-size:13px}
+.pt-h .x{margin-left:auto;border:0;background:none;color:var(--faint);font-size:17px;cursor:pointer;line-height:1;padding:2px 4px;border-radius:6px}
+.pt-h .x:hover{background:#e3e3e8;color:var(--ink)}
+.cat{font-size:11.5px;font-weight:600;border-radius:6px;padding:1px 6px}
+.cat.Media{background:#fde4df;color:#c93412}
+.cat.Baja{background:#e6e6ea;color:#5b5b60}
+.cat.Alta{background:#ffd7d7;color:#d0021b}
+.pt .dx{font-weight:500;font-size:15px;margin:3px 0 1px}
+.pt .addr{color:var(--muted);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 6px}
+.chip{background:#fff;border-radius:7px;padding:2px 8px;font-size:12px;border:1px solid var(--line)}
+.vis{list-style:none;margin:4px 0 6px;padding:0;display:grid;gap:3px}
+.vis li{display:grid;grid-template-columns:12px 1fr auto;gap:6px;font-size:13px;color:#3a3a3c;align-items:start}
+.vis li .dot{width:7px;height:7px;margin-top:6px}
+.vis li em{font-style:normal;color:var(--ink);text-align:right;white-space:nowrap}
+.vis li.warn{color:var(--danger)}
+.vis li.warn em{color:var(--danger)}
+.links{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;font-weight:500}
+.links a{cursor:pointer}
+.empty{color:var(--muted);text-align:center;padding:30px 10px}
+
+/* moviles */
+.mv{background:var(--soft);border-radius:16px;padding:12px 14px;margin-top:10px}
+.mv-h{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.mv-h input{flex:1;border:0;background:#fff;border-radius:10px;padding:8px 12px;font-weight:600;font-size:15px;min-width:0}
+.mv-h .x{border:0;background:none;color:var(--faint);font-size:17px;cursor:pointer}
+.staff{display:grid;grid-template-columns:1fr 54px 1fr 54px;gap:6px 10px;align-items:center;font-size:14px}
+.staff input{width:54px;border:0;background:#fff;border-radius:9px;padding:7px 10px}
+.staff .fix{text-align:right;color:var(--muted);padding-right:8px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px}
+.chk input{width:16px;height:16px;accent-color:var(--accent)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font-size:12.5px;color:var(--muted);font-weight:600;text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.tbl td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.range{display:flex;align-items:center;gap:8px}
+.range input{flex:1;accent-color:var(--accent);min-width:60px}
+.range output{font-variant-numeric:tabular-nums;font-weight:600;width:40px;text-align:right}
+
+/* ---------- Resumen IA ---------- */
+.ai{padding:2px;border-radius:22px;background:linear-gradient(110deg,#4f7cff,#a557ff 32%,#ff5f8f 66%,#ffa94d);box-shadow:var(--shadow)}
+.ai-in{background:#fff;border-radius:20px;padding:20px 24px 22px}
+.ai-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ai-ico{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#4f7cff,#c04fff 60%,#ff5f8f);display:grid;place-items:center;color:#fff;font-size:14px}
+.ai-h b{font-size:18px}
+.ai-h small{color:var(--muted);font-size:12.5px}
+.ai-lede{font-size:18px;font-weight:500;line-height:1.45;margin:12px 0 10px;max-width:980px}
+.ai-body p{margin:0 0 8px;max-width:820px;color:#2c2c2e;line-height:1.55}
+.alerts{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:14px}
+.alert{background:var(--soft);border-radius:14px;padding:12px 14px 12px 30px;position:relative;font-size:13.5px;color:#3a3a3c;line-height:1.5}
+.alert::before{content:"";position:absolute;left:13px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--danger)}
+.alert b{display:block;color:var(--ink);font-weight:600}
+
+/* ---------- Gantt ---------- */
+.gantt-card{padding:20px 22px}
+.g-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.g-legend span{display:flex;align-items:center;gap:6px}
+.g-legend i{width:18px;height:8px;border-radius:3px;display:inline-block}
+.g-inner{min-width:900px;padding-right:18px}
+.g-ticks{display:grid;grid-template-columns:180px 1fr;font-size:11.5px;color:var(--faint);margin:10px 0 4px}
+.g-ticks .t{position:relative;height:16px}
+.g-ticks .t span{position:absolute;transform:translateX(-50%)}
+.g-row{display:grid;grid-template-columns:180px 1fr;align-items:center;height:34px}
+.g-name{display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:10px}
+.g-name span{overflow:hidden;text-overflow:ellipsis}
+.g-track{position:relative;height:26px;background:#eeeef2;border-radius:7px;overflow:hidden}
+.g-track>*{position:absolute;top:0;bottom:0}
+.g-peak{background:var(--peak)}
+.g-off{background:rgba(255,255,255,.55)}
+.g-travel{top:12px!important;bottom:12px!important;background:#c7c7cc;border-radius:2px}
+.g-blk{top:4px!important;bottom:4px!important;border-radius:5px;color:#fff;font-size:10.5px;font-weight:700;padding:0 5px;display:flex;align-items:center;overflow:hidden;white-space:nowrap;cursor:default;box-shadow:0 0 0 1px rgba(255,255,255,.7)}
+.g-blk.hosp{background:#1d1d1f}
+.g-blk.wait{background:repeating-linear-gradient(135deg,#d7d7dc 0 3px,rgba(255,255,255,.4) 3px 7px);box-shadow:none}
+.g-blk:hover{filter:brightness(1.1)}
+.g-end{width:1.5px;background:#5b5b60}
+
+/* ---------- Indicators ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ind-card{padding:20px 22px}
+.ind td:first-child{width:38%}
+.ind td.v{text-align:right;font-weight:600;width:60px;white-space:nowrap}
+.ind td.v.red{color:var(--danger)}
+.ind td.n{color:var(--muted)}
+.bar{height:7px;border-radius:4px;background:#ececf0;overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%;border-radius:4px;background:var(--accent)}
+.bar i.red{background:var(--danger)}
+
+/* ---------- Route sheet ---------- */
+.mv-pick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.mv-pick button{border:0;border-radius:999px;padding:8px 14px;background:#fff;box-shadow:var(--shadow);cursor:pointer;font-weight:500;display:flex;align-items:center;gap:8px}
+.mv-pick button.on{background:var(--ink);color:#fff}
+.sheet{padding:20px 22px}
+.sheet-h{display:flex;gap:12px;align-items:flex-start}
+.sheet-h .dot{margin-top:7px}
+.sheet-h b{font-size:17px}
+.sheet-h p{margin:1px 0 0;color:var(--muted);font-size:13px}
+.sheet-stats{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:10px 0 6px}
+.sheet-stats b{color:var(--ink)}
+.rs{min-width:760px}
+.rs td{font-size:13.5px}
+.rs .hr{font-weight:700;white-space:nowrap}
+.rs .hr small{display:block;font-weight:400;color:var(--faint);font-size:11.5px}
+.rs .sub{display:block;color:var(--muted);font-size:12.5px}
+.rs .risk{color:var(--danger);font-weight:600}
+.rs .catl{font-size:11px;font-weight:700;border-radius:5px;padding:0 5px;margin:0 4px}
+.rs tr.h td{color:var(--muted)}
+.rs .km{white-space:nowrap}
+.sheet-f{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:12px;font-weight:500;font-size:13.5px}
+
+footer{color:var(--faint);font-size:12.5px;margin-top:30px;text-align:center}
+
+/* tooltip & toast */
+#tip{position:fixed;z-index:50;pointer-events:none;background:rgba(29,29,31,.94);color:#fff;font-size:12.5px;line-height:1.45;padding:8px 11px;border-radius:10px;max-width:300px;white-space:pre-line;opacity:0;transition:opacity .12s}
+#tip.on{opacity:1}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:60;background:#1d1d1f;color:#fff;padding:11px 16px;border-radius:14px;font-size:13.5px;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:all .25s;display:flex;gap:14px;align-items:center;max-width:calc(100% - 32px)}
+#toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+#toast button{background:none;border:0;color:#6fb4ff;font-weight:600;cursor:pointer;padding:0}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .workspace{grid-template-columns:1fr}
+  .panel{height:auto;max-height:none}
+  .tab-body{overflow:visible}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .two{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px 40px}
+  .brand h1{font-size:22px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi b{font-size:19px}
+  .map-card{height:420px}
+  .map-note{font-size:11.5px;padding:5px 10px}
+  .legend{font-size:10.5px;padding:7px 10px;bottom:10px;left:10px;right:10px;grid-template-columns:1fr 1fr;gap:2px 10px}
+  .legend .static{display:none}
+  .scale{display:none}
+  .sec-title{font-size:20px}
+  .ai-in{padding:16px}
+  .ai-lede{font-size:16px}
+  .grid2{grid-template-columns:1fr 1fr}
+  .seg button{font-size:12.5px}
+  .ind-card,.gantt-card,.sheet{padding:16px}
+  .ind td:first-child{width:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= HEADER ================= -->
+  <header class="top">
+    <div class="brand">
+      <div>
+        <h1>Hospitalización Domiciliaria</h1>
+        <p>Planificación y optimización de rutas de visita</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <label class="datebox">Lunes, 9 de noviembre <input type="date" value="2026-11-09" aria-label="Fecha de la jornada"></label>
+      <button class="btn ghost" id="undo" title="Deshacer el último cambio">↶ Volver</button>
+      <button class="btn primary" id="optimize">Optimizar rutas</button>
+    </div>
+  </header>
+
+  <!-- ================= KPIs ================= -->
+  <section class="kpis" aria-label="Resumen de la jornada">
+    <div class="kpi"><b id="k-pac">16 / 20</b><span>pacientes en la unidad (80 %)</span></div>
+    <div class="kpi"><b>30 de 32</b><span>visitas programadas hoy</span></div>
+    <div class="kpi"><b>4</b><span>móviles en terreno</span></div>
+    <div class="kpi"><b>430 km</b><span>9 h 50 min de traslado</span></div>
+    <div class="kpi"><b>19 h 40 min</b><span>de atención directa</span></div>
+  </section>
+
+  <!-- ================= MAP + PANEL ================= -->
+  <section class="workspace">
+    <div class="card map-card">
+      <div class="map-note">Mapa esquemático. El recorrido calle a calle se abre en Google Maps desde cada ruta.</div>
+      <div class="zoom">
+        <button id="zin" aria-label="Acercar">+</button>
+        <button id="zout" aria-label="Alejar">−</button>
+        <button id="zreset" class="txt">Valle</button>
+      </div>
+      <svg id="map" viewBox="70 20 1060 680" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa esquemático de rutas por móvil">
+        <defs>
+          <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#d9d5cb" stroke-width="3"/>
+          </pattern>
+          <radialGradient id="vig" cx="50%" cy="50%" r="70%">
+            <stop offset="60%" stop-color="#efece4" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#e4e0d5"/>
+          </radialGradient>
+        </defs>
+        <rect x="-2000" y="-2000" width="5000" height="5000" fill="#efece4"/>
+        <!-- Área fuera de cobertura (UHD Los Andes) -->
+        <path d="M860 300 L1400 260 L1400 1100 L760 1100 L730 640 Z" fill="url(#hatch)" opacity=".8"/>
+        <text class="town out" x="905" y="590">Área UHD Hosp. San Juan de Dios</text>
+        <text class="town out" x="905" y="608">· Los Andes</text>
+        <!-- Radio de acción -->
+        <circle cx="655" cy="470" r="560" fill="none" stroke="#9a978f" stroke-width="1.6" stroke-dasharray="2 9"/>
+        <!-- Ríos/esteros -->
+        <path d="M-200 600 C 120 560, 300 590, 470 520 S 760 430, 1300 470" fill="none" stroke="#bcd6ea" stroke-width="5" opacity=".7"/>
+        <!-- Caminos -->
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 655 -200 L 650 60 L 640 200 L 620 290 L 640 470" stroke="#fff" stroke-width="9"/>
+          <path d="M 655 -200 L 650 60 L 640 200 L 620 290 L 640 470" stroke="#a9cdf0" stroke-width="4"/>
+          <path d="M -200 650 L 220 560 L 655 478 L 1300 560" stroke="#a9cdf0" stroke-width="4"/>
+          <path d="M 150 546 L 380 560 L 446 556" stroke="#fff" stroke-width="5"/>
+          <path d="M 655 470 L 802 384 L 1000 300" stroke="#fff" stroke-width="5"/>
+          <path d="M 640 200 L 682 58" stroke="#fff" stroke-width="4"/>
+          <path d="M 655 470 L 690 640 L 720 900" stroke="#fff" stroke-width="5"/>
+          <!-- Ruta 5 -->
+          <path d="M -200 470 L 80 560 L 216 640 L 300 820 L 330 1000" stroke="#d9a637" stroke-width="10"/>
+          <path d="M -200 470 L 80 560 L 216 640 L 300 820 L 330 1000" stroke="#f5c95a" stroke-width="7"/>
+          <!-- Ruta 60 CH -->
+          <path d="M 216 640 C 330 610, 420 590, 520 556 S 640 480, 700 500 S 900 600, 1300 640" stroke="#d9a637" stroke-width="9"/>
+          <path d="M 216 640 C 330 610, 420 590, 520 556 S 640 480, 700 500 S 900 600, 1300 640" stroke="#f5c95a" stroke-width="6"/>
+        </g>
+        <!-- Señales -->
+        <g font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="12">
+          <rect x="231" y="690" width="22" height="20" rx="3" fill="#1f6b3a"/><text x="242" y="704" fill="#fff" text-anchor="middle">5</text>
+          <rect x="604" y="224" width="36" height="20" rx="4" fill="#fff" stroke="#8e8e93"/><text x="622" y="238" fill="#3a3a3c" text-anchor="middle">E-71</text>
+          <rect x="300" y="582" width="40" height="20" rx="4" fill="#fff" stroke="#8e8e93"/><text x="320" y="596" fill="#3a3a3c" text-anchor="middle">60 CH</text>
+        </g>
+        <!-- Pueblos -->
+        <g>
+          <text class="town" x="668" y="186">Putaendo</text>
+          <text class="town" x="556" y="530" text-anchor="end">San Felipe</text>
+          <text class="town" x="790" y="465">Santa María</text>
+          <text class="town" x="420" y="600" text-anchor="middle">Panquehue</text>
+          <text class="town" x="185" y="520">Catemu</text>
+          <text class="town" x="236" y="674">Llaillay</text>
+          <text class="town out" x="700" y="655">Rinconada</text>
+          <text class="town out" x="1010" y="520">Los Andes</text>
+        </g>
+        <g id="routes"></g>
+        <g id="pins"></g>
+      </svg>
+      <div class="legend" id="legend"></div>
+      <div class="scale">10 km<i></i></div>
+    </div>
+
+    <aside class="card panel">
+      <nav class="seg" role="tablist">
+        <button class="on" data-tab="pac" id="tab-pac">Pacientes 16</button>
+        <button data-tab="mov">Móviles</button>
+        <button data-tab="tra">Tráfico</button>
+        <button data-tab="uni">Unidad</button>
+        <button data-tab="xls">Excel</button>
+      </nav>
+      <div class="tab-body">
+
+        <!-- PACIENTES -->
+        <div class="tab on" id="pac">
+          <div class="box" id="newbox">
+            <div class="box-h" id="newtoggle"><b>Ingresar paciente</b><span class="chev">⌄</span></div>
+            <form class="form" id="newform" autocomplete="off">
+              <div class="grid2">
+                <div class="f"><label>Iniciales</label><input name="ini" placeholder="ABC" maxlength="4" required></div>
+                <div class="f"><label>Comuna</label><select name="com"><option>San Felipe</option><option>Santa María</option><option>Putaendo</option><option>Panquehue</option><option>Catemu</option><option>Llaillay</option></select></div>
+                <div class="f full"><label>Dirección</label><input name="dir" placeholder="Escribe calle y número" list="libreta"></div>
+                <div class="f"><label>Servicio de origen</label><select name="srv"><option>Medicina</option><option>Cirugía</option><option>Unidad de Emergencias</option><option>Unidad de Paciente Crítico Adulto</option><option>APS (CESFAM)</option><option>Consultorio Adosado de Especialidades (CAE)</option><option>Otro establecimiento de la red</option></select></div>
+                <div class="f"><label>Categoría</label><select name="cat"><option>Media</option><option>Baja</option><option>Alta</option></select></div>
+                <div class="f"><label>Fecha de ingreso</label><input type="date" name="fi" value="2026-11-09"></div>
+                <div class="f"><label>Alta prevista</label><input type="date" name="fa"></div>
+                <div class="f full"><label>Diagnóstico</label><input name="dx" placeholder="Ej.: neumonía adquirida en la comunidad"></div>
+                <div class="f"><label>Antibiótico EV</label><select name="atb"><option>No</option><option>c/24 h</option><option>c/12 h</option><option>c/8 h</option></select></div>
+                <div class="f"><label>Primera dosis</label><input type="time" name="d1" value="08:00"></div>
+                <div class="f"><label>Curación</label><select name="cur"><option>No</option><option>Simple</option><option>Avanzada</option></select></div>
+                <div class="f"><label>Frecuencia curación</label><select><option>Diaria</option><option>Día por medio</option><option>Dos veces por semana</option></select></div>
+                <div class="f"><label>Kinesiología</label><select name="kin"><option>No</option><option>Respiratoria</option><option>Motora</option></select></div>
+                <div class="f"><label>Disponible desde</label><input type="time" name="disp"></div>
+                <div class="f full"><label>Móvil preferente (continuidad)</label><select name="pref"><option value="">Sin preferencia</option><option>Móvil 1 · Enfermera y TENS</option><option>Móvil 2 · Enfermera y TENS</option></select></div>
+              </div>
+              <button class="btn primary" type="submit">Agregar paciente</button>
+            </form>
+            <datalist id="libreta"></datalist>
+          </div>
+          <div id="ptlist"></div>
+          <p class="muted small" style="margin:12px 2px 0">Cada paciente registra su servicio de origen en el hospital. Se puede editar, deshacer con Volver y borrar los ejemplos de prueba.</p>
+        </div>
+
+        <!-- MÓVILES -->
+        <div class="tab" id="mov">
+          <p class="lead">Cada móvil es un vehículo con conductor y su dotación clínica. El conductor acompaña al equipo durante la visita. La enfermería y los TENS pasan primero por farmacia e insumos antes de salir.</p>
+          <div id="mvlist"></div>
+          <button class="btn sm" id="addmv" style="margin-top:12px">+ Agregar móvil</button>
+        </div>
+
+        <!-- TRÁFICO (contenido inferido: no aparece en el video) -->
+        <div class="tab" id="tra">
+          <p class="lead">Velocidades y franjas horarias con que se estiman los traslados. Las horas punta se marcan en la jornada por móvil y en cada tramo de la hoja de ruta.</p>
+          <h4>Velocidad base</h4>
+          <div class="grid2">
+            <div class="f"><label>Urbana (km/h)</label><input type="number" value="28"></div>
+            <div class="f"><label>Interurbana (km/h)</label><input type="number" value="65"></div>
+            <div class="f"><label>Estacionar y llegar a la puerta (min)</label><input type="number" value="5"></div>
+            <div class="f"><label>Margen por calle sin número (min)</label><input type="number" value="4"></div>
+          </div>
+          <h4>Franjas horarias</h4>
+          <table class="tbl" id="bands"></table>
+          <label class="chk"><input type="checkbox" checked> Considerar tráfico al optimizar</label>
+          <label class="chk"><input type="checkbox" checked> Avisar si una parada puede salir de su ventana</label>
+          <p class="muted small" style="margin-top:12px">El factor multiplica el tiempo de traslado de cada tramo según la hora de salida. Conviene recalibrarlo con los tiempos reales de los conductores.</p>
+        </div>
+
+        <!-- UNIDAD -->
+        <div class="tab" id="uni">
+          <p class="lead">Ingreso médico en domicilio obligatorio si el paciente viene de APS u otro establecimiento. Todo egreso requiere alta médica. Toda persona ingresada recibe una atención de enfermería al día.</p>
+          <h4>Retornos al hospital</h4>
+          <div class="grid2">
+            <div class="f"><label>Corte de laboratorio</label><input type="time" value="12:00"></div>
+            <div class="f"><label>Colación desde</label><input type="time" value="13:00"></div>
+            <div class="f"><label>Colación y reposición (min)</label><input type="number" value="45"></div>
+            <label class="chk" style="margin-top:18px"><input type="checkbox" checked> En el hospital si está a 15 min o menos</label>
+          </div>
+          <h4>Territorio</h4>
+          <p class="muted small" style="margin:-2px 0 8px;font-weight:600">Provincia de San Felipe de Aconcagua · UHD del hospital</p>
+          <div class="grid2" id="comunas"></div>
+          <p class="lead" style="margin-top:12px">Los Andes, Calle Larga, Rinconada y San Esteban quedan fuera: las atiende la UHD del Hospital San Juan de Dios de Los Andes. Si llega un paciente de esas comunas, el sistema lo marca para derivar.</p>
+          <h4>Libreta de direcciones</h4>
+          <p class="lead" style="margin-top:0">11 direcciones guardadas. Cada domicilio fijado en el mapa queda aquí y se sugiere al escribir. Callejero sin conexión: 3.157 calles de las 10 comunas, 239 con número registrado.</p>
+        </div>
+
+        <!-- EXCEL -->
+        <div class="tab" id="xls">
+          <h4 style="margin-top:4px">Cargar pacientes desde Excel</h4>
+          <p class="lead">Archivo .xlsx o .csv con una fila por paciente. Se reconocen los encabezados Iniciales, Dirección, Comuna, Origen, Fecha ingreso, Alta prevista, Diagnóstico, Categoría, Antibiótico EV, Primera dosis, Curación, Frecuencia curación, Oxígeno, Kinesiología, Muestras hoy, Evaluación social, Alerta de seguridad y Disponible desde, en cualquier orden. La plantilla trae el formato.</p>
+          <div class="box"><input type="file" id="xfile" accept=".xlsx,.csv" style="max-width:100%"></div>
+          <button class="btn sm" id="tpl" style="margin-top:10px">Descargar plantilla</button>
+          <h4>Exportar</h4>
+          <button class="btn primary sm" id="export">Descargar rutas en Excel</button>
+          <h4>Borrar datos</h4>
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+            <button class="btn sm" id="clrdemo">Borrar pacientes de ejemplo</button>
+            <button class="btn sm" id="clrall">Borrar todos los pacientes</button>
+          </div>
+          <p class="lead" style="margin-top:12px">Pacientes, móviles y libreta de direcciones quedan guardados en este navegador. Si borras algo por error, usa «Volver» arriba.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ================= RESUMEN IA ================= -->
+  <section class="sec">
+    <p class="eyebrow">Resumen IA</p>
+    <h2 class="sec-title">Lo importante del día, con acciones concretas</h2>
+    <div class="ai"><div class="ai-in">
+      <div class="ai-h"><span class="ai-ico">✦</span><b>Resumen IA</b><small>Análisis automático hecho en el navegador con las reglas de la unidad. No envía datos.</small></div>
+      <p class="ai-lede">Lunes, 9 de noviembre. 16 pacientes en la unidad (80 % de 20 cupos). Hoy se programan 30 de 32 visitas con 4 móviles: 430 km y 9 h 50 min de traslado frente a 19 h 40 min de atención directa.</p>
+      <div class="ai-body">
+        <p>Ingresan 3 (H03, H07, H13) y egresa 1 (H04). La ocupación está bajo el 85 % que plantea la orientación técnica del MINSAL: quedan 4 cupos para recibir pacientes desde los servicios clínicos o la Unidad de Emergencia.</p>
+        <p>La optimización ahorra 23 km (5 %) y 39 min de traslado respecto de repartir las visitas en el orden de la lista, y evita 15 incumplimientos de ventana, corte de laboratorio o turno.</p>
+        <p>El médico tiene 6.0 h en terreno hoy, bajo las 6.3 h diarias que resultan de la dotación mínima de 44 h semanales.</p>
+        <p>4 visitas de enfermería cambian de móvil respecto del preferente. Se mantuvo la continuidad en el resto.</p>
+        <p>1 control de categoría baja pasa a teleconsulta (H12), sin uso de móvil.</p>
+        <p>Móvil 3 es el móvil más cargado: usa el 99 % de su turno y vuelve cerca de las 14:27 (entre 14:19 y 14:43 según el tráfico).</p>
+        <p>3 h 16 min de traslado caen en horas punta. Conviene partir por San Felipe y dejar los tramos interurbanos para después de las 09:00.</p>
+        <p>5 domicilios quedaron ubicados por calle con número aproximado. En calles largas conviene fijar el punto en el mapa una vez.</p>
+      </div>
+      <div class="alerts">
+        <div class="alert"><b>H12: atención de enfermería y atb ev dosis 1 sin programar</b>Su ventana (09:00 a 11:00) choca con otras visitas de hora fija. Cabe a las 15:21 en Móvil 2. Si el médico lo autoriza, correr la hora de la dosis a ese horario resuelve la ruta.</div>
+        <div class="alert"><b>H11: dosis fuera de horario</b>Dosis 2 de las 21:00 queda fuera del horario de la unidad (08:00 a 20:00). Opciones: adelantar la primera dosis, cambiar a esquema cada 24 h si el médico lo indica o extender el turno del móvil de tarde.</div>
+        <div class="alert"><b>1 paciente supera 10 días</b>H16 (12 días). La orientación técnica acota la estadía a 10 días: revisar plan de egreso o contrarreferencia a APS.</div>
+        <div class="alert"><b>1 parada con riesgo de atraso</b>Con tráfico pesado podrían salir de su ventana: H10 (Móvil 1).</div>
+        <div class="alert"><b>Turno al límite</b>Móvil 3 cierra con poco margen. Ante un ingreso de urgencia, su última visita sin hora fija es la primera a mover.</div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ================= JORNADA POR MÓVIL ================= -->
+  <section class="sec">
+    <p class="eyebrow">Móviles</p>
+    <h2 class="sec-title">Cada visita al móvil con la dotación necesaria</h2>
+    <div class="card gantt-card">
+      <div class="card-h">
+        <h3>Jornada por móvil</h3>
+        <div class="g-legend">
+          <span><i style="background:var(--m1)"></i>Atención</span>
+          <span><i style="background:#c7c7cc;height:4px"></i>Traslado</span>
+          <span><i style="background:repeating-linear-gradient(135deg,#d7d7dc 0 3px,#fff 3px 6px)"></i>Espera</span>
+          <span><i style="background:#1d1d1f"></i>En hospital</span>
+          <span><i style="background:var(--peak)"></i>Hora punta</span>
+        </div>
+      </div>
+      <div class="scroll-x"><div class="g-inner" id="gantt"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= NORMA ================= -->
+  <section class="sec">
+    <p class="eyebrow">Norma</p>
+    <h2 class="sec-title">Reglas de la orientación técnica del MINSAL</h2>
+    <div class="two">
+      <div class="card ind-card">
+        <div class="card-h"><h3>Indicadores de la unidad</h3><small>Orientación técnica MINSAL</small></div>
+        <div class="scroll-x"><table class="tbl ind" id="ind"></table></div>
+      </div>
+      <div class="card ind-card">
+        <div class="card-h"><h3>Dotación en terreno hoy</h3><small>Horas por estamento</small></div>
+        <div class="scroll-x"><table class="tbl" id="dot"></table></div>
+        <p class="muted small" style="margin:12px 0 0">Referencia: dotación mínima semanal de la orientación técnica dividida por 7 (médico 44 h, enfermería 88 h, TENS 88 h, kinesiología 44 h, trabajo social 22 h, conductor 88 h).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOJA DE RUTA ================= -->
+  <section class="sec">
+    <p class="eyebrow">Excel y Google Maps</p>
+    <h2 class="sec-title">Hoja de ruta para el conductor</h2>
+    <div class="mv-pick" id="mvpick"></div>
+    <div class="card sheet" id="sheet"></div>
+  </section>
+
+  <footer>Hospitalización Domiciliaria · mockup interactivo con datos de ejemplo</footer>
+</div>
+
+<div id="tip"></div>
+<div id="toast"><span id="toast-msg"></span><button id="toast-undo" hidden>Volver</button></div>
+
+<script>
+/* =====================================================================
+   DATOS DE EJEMPLO
+   ===================================================================== */
+const HOSP = [655, 470];
+
+const P = {
+  H01:{ini:'MGR',cat:'Media',dia:3,tag:'',dx:'Neumonía adquirida en la comunidad',dir:'Av. Miraflores 1450',com:'San Felipe',srv:'Medicina',tags:['ATB EV c/12 h desde 08:00','O₂','Kine ×1'],xy:[640,432]},
+  H02:{ini:'JAV',cat:'Baja',dia:5,dx:'Celulitis de pierna',dir:'Merced 120',com:'San Felipe',srv:'Medicina',aprox:true,tags:['ATB EV c/24 h desde 09:00','Curación simple'],xy:[678,496]},
+  H03:{ini:'RCT',cat:'Media',dia:1,tag:'ingreso',dx:'Infección urinaria complicada',dir:'Avenida Yungay 581',com:'San Felipe',srv:'Unidad de Emergencias',aprox:true,tags:['ATB EV c/24 h desde 14:30'],xy:[624,508]},
+  H04:{ini:'LPA',cat:'Baja',dia:5,tag:'alta hoy',dx:'Insuficiencia cardiaca descompensada',dir:'Calle Los Aromos 212',com:'Panquehue',srv:'Medicina',tags:['Alta médica hoy'],xy:[446,554]},
+  H05:{ini:'OHM',cat:'Alta',dia:2,dx:'EPOC exacerbado',dir:'Calle El Almendral 1180',com:'San Felipe',srv:'Medicina',aprox:true,tags:['O₂','Muestras hoy'],xy:[608,456]},
+  H06:{ini:'CVR',cat:'Media',dia:4,dx:'Neumonía aspirativa',dir:'Calle Prat 615',com:'Santa María',srv:'Medicina',tags:['O₂','Kine ×1','Evaluación social'],xy:[772,438]},
+  H07:{ini:'EMT',cat:'Media',dia:1,tag:'ingreso',dx:'Pielonefritis aguda',dir:"Calle O'Higgins 340",com:'Santa María',srv:'APS (CESFAM)',tags:['ATB EV c/24 h desde 13:00'],xy:[804,384]},
+  H08:{ini:'ASM',cat:'Baja',dia:3,dx:'Erisipela de pierna',dir:'Calle Comercio 288',com:'Putaendo',srv:'Cirugía',tags:['ATB EV c/24 h desde 10:30'],xy:[646,198]},
+  H09:{ini:'NPO',cat:'Baja',dia:6,dx:'Infección de herida operatoria',dir:'Camino Las Coimas 1750',com:'Putaendo',srv:'Cirugía',tags:['Control de herida'],xy:[682,58]},
+  H10:{ini:'HSV',cat:'Baja',dia:2,dx:'Infección urinaria',dir:'Camino El Tártaro s/n',com:'Putaendo',srv:'Medicina',aprox:true,tags:['ATB EV c/24 h desde 11:00'],xy:[612,282],risk:true},
+  H11:{ini:'GTR',cat:'Media',dia:4,dx:'Absceso de partes blandas',dir:'Calle Las Palmas 77',com:'Panquehue',srv:'Consultorio Adosado de Especialidades (CAE)',tags:['ATB EV c/12 h desde 09:00','Kine ×1'],xy:[524,588],
+       extra:[{serv:'ATB EV dosis 2',note:'21:00 · fuera de horario',warn:true}]},
+  H12:{ini:'PCS',cat:'Baja',dia:4,dx:'Control post neumonía grave',dir:'Calle Santo Domingo 1020',com:'San Felipe',srv:'Unidad de Paciente Crítico Adulto',tags:['ATB EV c/24 h desde 09:00','Teleconsulta'],
+       extra:[{serv:'Control médico',note:'Teleconsulta 11:30'},{serv:'Atención de enfermería + ATB EV dosis 1',note:'sin programar',warn:true}]},
+  H13:{ini:'RFQ',cat:'Media',dia:1,tag:'ingreso',dx:'Neumonía con requerimiento de oxígeno',dir:'Calle Principal 95, Chagres',com:'Catemu',srv:'Medicina',tags:['O₂ nuevo','Evaluación social'],xy:[150,546]},
+  H14:{ini:'VLP',cat:'Alta',dia:8,dx:'Insuficiencia respiratoria crónica reagudizada',dir:'Calle Balmaceda 870',com:'Llaillay',srv:'Medicina',tags:['O₂','Kine ×1'],xy:[216,640]},
+  H15:{ini:'SBN',cat:'Media',dia:3,dx:'Celulitis de pierna',dir:'Pasaje Las Acacias 33, Las Vegas',com:'Llaillay',srv:'Otro establecimiento de la red',tags:['Curación simple'],xy:[160,612]},
+  H16:{ini:'MAR',cat:'Baja',dia:12,dx:'Úlcera por presión en curación',dir:'Pasaje Los Olmos 45',com:'Santa María',srv:'Medicina',tags:['Curación avanzada','Kine ×1','Evaluación social'],xy:[730,532]},
+};
+
+const MOV = [
+  {id:1,name:'Móvil 1 · Enfermera y TENS',hex:'#1a6fe0',crew:'Enfermería, TENS y conductor',start:'08:00',end:'20:00',
+   staff:{Enfermería:1,TENS:1,Médico:0,Kinesiología:0,'Trabajo social':0},
+   stats:{km:'152,7',tras:'3 h 39',turno:'97 %',ret:1},
+   stops:[
+    {t:'08:00',type:'start',label:'Inicio de turno'},
+    {t:'08:00',type:'hosp',dur:20,label:'Hospital · Preparación: farmacia, insumos y entrega de turno',km:0},
+    {t:'08:26',p:'H01',dur:30,serv:'Atención de enfermería + ATB EV dosis 1 + Control de oxigenoterapia',win:'08:00 a 09:00',km:0.4,llega:'08:26–08:27'},
+    {t:'09:29',p:'H06',dur:20,serv:'Atención de enfermería + Control de oxigenoterapia',km:8.0,llega:'09:28–09:30'},
+    {t:'09:58',p:'H05',dur:25,serv:'Atención de enfermería + Control de oxigenoterapia + Toma de muestras',win:'08:00 a 10:45',km:4.8,llega:'09:57–10:00'},
+    {t:'10:40',type:'hosp',dur:10,label:'Hospital · Entrega de muestras',km:3.4},
+    {t:'11:11',p:'H08',dur:30,serv:'Atención de enfermería + ATB EV dosis 1',win:'09:30 a 11:30',km:17.8,llega:'11:09–11:16'},
+    {t:'12:11',p:'H10',dur:30,serv:'Atención de enfermería + ATB EV dosis 1',win:'10:15 a 12:15',risk:true,km:10.0,llega:'12:08–12:16'},
+    {t:'13:16',p:'H09',dur:20,serv:'Atención de enfermería',km:15.4,llega:'13:11–13:24'},
+    {t:'14:32',p:'H03',dur:40,serv:'Ingreso de enfermería + ATB EV dosis 1',win:'13:00 a 15:00',km:11.2,llega:'14:26–14:42'},
+    {t:'16:20',p:'H15',dur:15,serv:'Atención de enfermería',win:'08:00 a 17:45',note:'cambia de móvil',km:35.7,llega:'16:13–16:34'},
+    {t:'16:45',p:'H13',dur:50,serv:'Ingreso de enfermería + Instalación de oxígeno',win:'11:00 a 19:00',km:5.4,llega:'16:37–17:00'},
+    {t:'17:59',p:'H14',dur:15,serv:'Atención de enfermería',note:'cambia de móvil',km:8.4,llega:'17:50–18:16'},
+    {t:'19:00',p:'H01',dur:20,serv:'ATB EV dosis 2',win:'19:00 a 19:30',km:31.6,llega:'19:00–19:18'},
+    {t:'19:36',type:'end',label:'Llegada al hospital',km:0.4,llega:'19:36–19:55'},
+   ]},
+  {id:2,name:'Móvil 2 · Enfermera y TENS',hex:'#f26a10',crew:'Enfermería, TENS y conductor',start:'08:00',end:'18:00',
+   staff:{Enfermería:1,TENS:1,Médico:0,Kinesiología:0,'Trabajo social':0},
+   stats:{km:'48,0',tras:'1 h 05',turno:'73 %',ret:0},
+   stops:[
+    {t:'08:00',type:'start',label:'Inicio de turno'},
+    {t:'08:00',type:'hosp',dur:20,label:'Hospital · Preparación: farmacia, insumos y entrega de turno',km:0},
+    {t:'08:26',p:'H02',dur:45,serv:'Atención de enfermería + ATB EV dosis 1 + Curación simple',win:'08:00 a 10:00',km:0.6},
+    {t:'09:50',p:'H11',dur:40,serv:'Atención de enfermería + ATB EV dosis 1',win:'09:00 a 10:30',km:14.2},
+    {t:'11:00',p:'H04',dur:60,serv:'Atención de enfermería de alta + Educación al cuidador',km:3.1},
+    {t:'12:32',type:'wait',dur:28,label:'Espera ventana'},
+    {t:'13:00',p:'H07',dur:60,serv:'Ingreso de enfermería + ATB EV dosis 1',win:'13:00 a 15:00',km:22.5},
+    {t:'14:35',p:'H16',dur:30,serv:'Atención de enfermería + Curación avanzada',km:4.6},
+    {t:'15:20',type:'end',label:'Llegada al hospital',km:3.0},
+   ]},
+  {id:3,name:'Móvil 3 · Médico',hex:'#9a4fd6',crew:'Médico y conductor',start:'08:30',end:'14:30',
+   staff:{Enfermería:0,TENS:0,Médico:1,Kinesiología:0,'Trabajo social':0},
+   stats:{km:'130,9',tras:'3 h 02',turno:'99 %',ret:0},
+   stops:[
+    {t:'08:30',type:'start',label:'Inicio de turno'},
+    {t:'09:00',p:'H04',dur:25,serv:'Control médico + Alta médica',km:15.0},
+    {t:'09:45',p:'H05',dur:20,serv:'Control médico',km:14.0},
+    {t:'10:20',p:'H07',dur:25,serv:'Ingreso médico (viene de APS)',km:9.6},
+    {t:'10:56',p:'H01',dur:20,serv:'Control médico',km:6.8},
+    {t:'11:50',p:'H14',dur:20,serv:'Control médico',km:33.0},
+    {t:'12:40',p:'H13',dur:25,serv:'Ingreso médico',km:12.5},
+    {t:'13:30',p:'H15',dur:20,serv:'Control médico',km:9.0},
+    {t:'14:27',type:'end',label:'Llegada al hospital',km:31.0,llega:'14:19–14:43'},
+   ]},
+  {id:4,name:'Móvil 4 · Kinesiología y trabajo social',hex:'#11978f',crew:'Kinesiología, trabajo social y conductor',start:'08:00',end:'17:30',
+   staff:{Enfermería:0,TENS:0,Médico:0,Kinesiología:1,'Trabajo social':1},
+   stats:{km:'98,3',tras:'2 h 04',turno:'96 %',ret:0},
+   stops:[
+    {t:'08:00',type:'start',label:'Inicio de turno'},
+    {t:'08:36',p:'H01',dur:35,serv:'Kinesioterapia respiratoria',km:0.4},
+    {t:'09:40',p:'H06',dur:35,serv:'Kinesioterapia respiratoria',km:8.0},
+    {t:'10:40',p:'H16',dur:40,serv:'Kinesioterapia motora + Evaluación social',km:5.2},
+    {t:'12:00',p:'H13',dur:35,serv:'Evaluación social',km:33.0},
+    {t:'13:05',p:'H14',dur:40,serv:'Kinesioterapia respiratoria',km:9.6},
+    {t:'13:45',type:'wait',dur:40,label:'Colación'},
+    {t:'15:00',p:'H11',dur:40,serv:'Kinesioterapia motora',km:18.0},
+    {t:'16:15',p:'H06',dur:35,serv:'Evaluación social',km:22.0},
+    {t:'17:10',type:'end',label:'Llegada al hospital',km:2.1},
+   ]},
+];
+
+const BANDS = [
+  {name:'Punta mañana',from:'07:30',to:'09:00',f:1.40},
+  {name:'Media mañana',from:'09:00',to:'12:30',f:1.00},
+  {name:'Mediodía y colegios',from:'12:30',to:'14:30',f:1.20},
+  {name:'Tarde',from:'14:30',to:'17:30',f:1.05},
+  {name:'Punta tarde',from:'17:30',to:'20:00',f:1.40},
+];
+const PEAK = [['07:30','09:00'],['12:30','14:30'],['17:30','20:00']];
+const DEMO = new Set(Object.keys(P));
+
+/* =====================================================================
+   UTILIDADES
+   ===================================================================== */
+const $ = s => document.querySelector(s);
+const toMin = s => { const [h,m] = s.split(':').map(Number); return h*60+m; };
+const fmt = m => String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const kmf = n => n.toFixed(1).replace('.',',');
+const band = t => { const m = toMin(t); for (const b of BANDS) if (m < toMin(b.to)) return b.name; return 'Punta tarde'; };
+const movOf = id => MOV.find(m => m.id === id);
+const undoStack = [];
+
+let toastTimer;
+function toast(msg, undoable){
+  $('#toast-msg').textContent = msg;
+  $('#toast-undo').hidden = !undoable;
+  $('#toast').classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $('#toast').classList.remove('on'), 3600);
+}
+$('#toast-undo').onclick = () => doUndo();
+
+/* tooltip */
+const tip = $('#tip');
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('[data-tip]');
+  if (!el) { tip.classList.remove('on'); return; }
+  tip.textContent = el.dataset.tip; tip.classList.add('on');
+});
+document.addEventListener('mousemove', e => {
+  if (!tip.classList.contains('on')) return;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+  if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+});
+
+/* visitas por paciente */
+function visitsOf(id){
+  const out = [];
+  MOV.forEach(m => m.stops.forEach(s => { if (s.p === id) out.push({m, s}); }));
+  return out.sort((a,b) => toMin(a.s.t) - toMin(b.s.t));
+}
+
+/* =====================================================================
+   MAPA
+   ===================================================================== */
+const svg = $('#map');
+function renderMap(){
+  const routes = $('#routes'), pins = $('#pins');
+  let defs = '';
+  let r = '';
+  MOV.forEach(m => {
+    defs += `<marker id="arr${m.id}" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="${m.hex}"/></marker>`;
+    const pts = [HOSP];
+    m.stops.forEach(s => {
+      if (s.type === 'hosp' || s.type === 'end') pts.push(HOSP);
+      else if (s.p && P[s.p] && P[s.p].xy) pts.push(P[s.p].xy);
+    });
+    const off = (m.id - 2.5) * 3.4;
+    r += `<g class="route" data-m="${m.id}">`;
+    for (let i = 0; i < pts.length - 1; i++){
+      const a = pts[i], b = pts[i+1];
+      if (a[0] === b[0] && a[1] === b[1]) continue;
+      const dx = b[0]-a[0], dy = b[1]-a[1], L = Math.hypot(dx,dy);
+      const ox = -dy/L*off, oy = dx/L*off;
+      const A = [a[0]+ox, a[1]+oy], B = [b[0]+ox, b[1]+oy], M = [(A[0]+B[0])/2, (A[1]+B[1])/2];
+      const dash = (a === HOSP || b === HOSP);
+      r += `<polyline class="${dash?'dash':''}" style="--len:${Math.ceil(L)+2}" points="${A} ${M} ${B}" fill="none" stroke="${m.hex}" stroke-width="3.2" stroke-linecap="round" ${dash?'stroke-dasharray="7 6" opacity=".85"':''} marker-mid="url(#arr${m.id})"/>`;
+    }
+    r += `</g>`;
+  });
+  routes.innerHTML = `<defs>${defs}</defs>` + r;
+
+  // pines de pacientes
+  let p = '';
+  // hospital
+  p += `<g data-tip="Hospital\nBase de los 4 móviles · farmacia, insumos y laboratorio"><rect x="${HOSP[0]-11}" y="${HOSP[1]-11}" width="22" height="22" rx="6" fill="#fff" stroke="#1d1d1f" stroke-width="1.5"/><path d="M${HOSP[0]-2.5} ${HOSP[1]-7}h5v4.5h4.5v5h-4.5V${HOSP[1]+7}h-5v-4.5h-4.5v-5h4.5z" fill="#d0021b"/></g>`;
+  p += `<text class="town" x="${HOSP[0]+16}" y="${HOSP[1]+28}" style="font-size:13.5px">Hospital</text>`;
+  Object.entries(P).forEach(([id, pt]) => {
+    if (!pt.xy) return;
+    const v = visitsOf(id);
+    if (!v.length) return;
+    const first = v.slice().sort((a,b) => a.m.id - b.m.id)[0];
+    let label;
+    if (v.length > 1) label = v.length + '×';
+    else {
+      const seq = first.m.stops.filter(s => s.p);
+      label = seq.indexOf(first.s) + 1;
+    }
+    const lines = [`${id} ${pt.ini} · ${pt.cat} · día ${pt.dia}`, `${pt.dir}, ${pt.com}`, ...v.map(x => `${x.s.t}  Móvil ${x.m.id} · ${x.s.serv}`)];
+    p += `<g class="pin" data-tip="${esc(lines.join('\n'))}" data-p="${id}">
+            <circle cx="${pt.xy[0]}" cy="${pt.xy[1]}" r="12.5" fill="${first.m.hex}" stroke="#fff" stroke-width="2.5"/>
+            <text x="${pt.xy[0]}" y="${pt.xy[1]+4}" text-anchor="middle">${label}</text>
+          </g>`;
+    if (pt.risk){
+      p += `<g data-tip="${id}: riesgo de atraso con tráfico pesado"><circle cx="${pt.xy[0]-24}" cy="${pt.xy[1]-14}" r="10" fill="#fff" stroke="#d0021b" stroke-width="2.5"/><text x="${pt.xy[0]-24}" y="${pt.xy[1]-9.5}" text-anchor="middle" style="font:800 13px Inter,sans-serif;fill:#d0021b">!</text></g>`;
+    }
+  });
+  pins.innerHTML = p;
+}
+
+function renderLegend(){
+  let h = '';
+  MOV.forEach(m => h += `<div class="li" data-m="${m.id}" title="Destacar ruta"><span class="dot" style="background:${m.hex}"></span>${esc(m.name)}</div>`);
+  h += `<div class="li static"><svg width="12" height="4"><line x1="0" y1="2" x2="12" y2="2" stroke="#6e6e73" stroke-width="2" stroke-dasharray="4 3"/></svg>Tramo desde o hacia el hospital</div>`;
+  h += `<div class="li static"><span class="dot" style="border:2.5px solid #d0021b;width:11px;height:11px"></span>Derivar o fuera de radio</div>`;
+  h += `<div class="li static"><span class="dot" style="border:1.5px dashed #d0021b;width:11px;height:11px"></span>Calle no encontrada</div>`;
+  $('#legend').innerHTML = h;
+  $('#legend').querySelectorAll('.li[data-m]').forEach(li => li.onclick = () => {
+    const id = li.dataset.m;
+    if (svg.dataset.focus === id){ delete svg.dataset.focus; $('#legend').querySelectorAll('.li').forEach(x => x.classList.remove('dim')); }
+    else {
+      svg.dataset.focus = id;
+      $('#legend').querySelectorAll('.li[data-m]').forEach(x => x.classList.toggle('dim', x.dataset.m !== id));
+    }
+  });
+}
+
+/* pan & zoom */
+const VB0 = matchMedia('(max-width:640px)').matches ? {x:110,y:30,w:760,h:690} : {x:70,y:20,w:1060,h:680};
+let vb = {...VB0};
+const setVB = () => svg.setAttribute('viewBox', `${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
+setVB();
+function zoom(f, cx, cy){
+  cx ??= vb.x + vb.w/2; cy ??= vb.y + vb.h/2;
+  const nw = Math.min(2400, Math.max(220, vb.w*f)), k = nw / vb.w;
+  vb = {x: cx - (cx - vb.x)*k, y: cy - (cy - vb.y)*k, w: nw, h: vb.h*k};
+  setVB();
+}
+$('#zin').onclick = () => zoom(0.75);
+$('#zout').onclick = () => zoom(1.33);
+$('#zreset').onclick = () => { vb = {...VB0}; setVB(); };
+svg.addEventListener('wheel', e => {
+  if (!e.ctrlKey && !e.metaKey){ toast('Usa Ctrl + rueda para hacer zoom en el mapa'); return; }
+  e.preventDefault();
+  const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+  const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+  zoom(e.deltaY > 0 ? 1.12 : 0.89, p.x, p.y);
+}, {passive:false});
+let drag = null;
+svg.addEventListener('pointerdown', e => { drag = {x:e.clientX, y:e.clientY, vb:{...vb}}; svg.setPointerCapture(e.pointerId); svg.classList.add('dragging'); });
+svg.addEventListener('pointermove', e => {
+  if (!drag) return;
+  const ctm = svg.getScreenCTM(); const s = 1/ctm.a;
+  vb.x = drag.vb.x - (e.clientX - drag.x)*s; vb.y = drag.vb.y - (e.clientY - drag.y)*s; setVB();
+});
+const endDrag = () => { drag = null; svg.classList.remove('dragging'); };
+svg.addEventListener('pointerup', endDrag); svg.addEventListener('pointercancel', endDrag);
+
+/* =====================================================================
+   PESTAÑAS
+   ===================================================================== */
+document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.id === b.dataset.tab));
+});
+
+/* ---------- Pacientes ---------- */
+function updateCount(){
+  const n = Object.keys(P).length;
+  $('#tab-pac').textContent = `Pacientes ${n}`;
+  $('#k-pac').textContent = `${n} / 20`;
+  $('#k-pac').nextElementSibling.textContent = `pacientes en la unidad (${Math.round(n/20*100)} %)`;
+}
+function renderPatients(){
+  const ids = Object.keys(P);
+  if (!ids.length){ $('#ptlist').innerHTML = '<div class="empty">No hay pacientes. Ingresa uno o carga un Excel.</div>'; updateCount(); return; }
+  $('#ptlist').innerHTML = ids.map(id => {
+    const p = P[id];
+    const v = visitsOf(id);
+    const day = `día ${p.dia}${p.tag ? ' · ' + p.tag : ''}`;
+    let vis = v.map(x => `<li><span class="dot" style="background:${x.m.hex}"></span><span>${esc(x.s.serv)}</span><em>· Móvil ${x.m.id} ${x.s.t}</em></li>`).join('');
+    (p.extra || []).forEach(e => vis += `<li class="${e.warn?'warn':''}"><span class="dot" style="background:${e.warn?'var(--danger)':'#8e8e93'}"></span><span>${esc(e.serv)}</span><em>· ${esc(e.note)}</em></li>`);
+    if (!v.length && !(p.extra||[]).length) vis = `<li class="warn"><span class="dot" style="background:var(--danger)"></span><span>Sin programar</span><em>· presiona Optimizar rutas</em></li>`;
+    return `<div class="pt" data-id="${id}">
+      <div class="pt-h"><span class="id">${id}</span><span class="ini">${esc(p.ini)}</span><span class="cat ${p.cat}">${p.cat}</span><span class="day">${day}</span><button class="x" data-act="del" aria-label="Quitar ${id}">×</button></div>
+      <div class="dx">${esc(p.dx || 'Sin diagnóstico')}</div>
+      <div class="addr">${esc(p.dir || 'Sin dirección')}, ${esc(p.com)} · ${esc(p.srv)}${p.aprox ? ' · número aproximado' : ''}</div>
+      ${p.tags && p.tags.length ? `<div class="chips">${p.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>` : ''}
+      <ul class="vis">${vis}</ul>
+      <div class="links"><a data-act="edit">Editar</a><a data-act="alta">Dar de alta hoy</a><a data-act="dom">Ajustar domicilio</a></div>
+    </div>`;
+  }).join('');
+  updateCount();
+}
+$('#ptlist').addEventListener('click', e => {
+  const a = e.target.closest('[data-act]'); if (!a) return;
+  const id = a.closest('.pt').dataset.id, p = P[id];
+  if (a.dataset.act === 'del'){
+    const snapshot = {...P};
+    delete P[id];
+    undoStack.push(() => { Object.keys(P).forEach(k => delete P[k]); Object.assign(P, snapshot); });
+    renderPatients(); renderMap();
+    toast(`${id} quitado de la lista`, true);
+  } else if (a.dataset.act === 'edit'){
+    const f = $('#newform');
+    f.ini.value = p.ini; f.com.value = p.com; f.dir.value = p.dir; f.dx.value = p.dx; f.cat.value = p.cat; f.srv.value = p.srv;
+    $('#newbox').classList.add('open'); $('#newbox').scrollIntoView({behavior:'smooth', block:'start'});
+    f.dataset.edit = id; f.querySelector('button[type=submit]').textContent = `Guardar cambios de ${id}`;
+  } else if (a.dataset.act === 'alta'){
+    p.tag = 'alta hoy'; renderPatients();
+    toast(`${id}: alta hoy. Se agenda control médico de alta y atención de enfermería final.`);
+  } else if (a.dataset.act === 'dom'){
+    toast(`Haz clic en el mapa para fijar el domicilio de ${id}.`);
+  }
+});
+$('#newtoggle').onclick = () => $('#newbox').classList.toggle('open');
+$('#newform').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, snapshot = {...P};
+  if (f.dataset.edit){
+    const id = f.dataset.edit;
+    Object.assign(P[id], {ini:f.ini.value.toUpperCase(), com:f.com.value, dir:f.dir.value, dx:f.dx.value, cat:f.cat.value, srv:f.srv.value});
+    toast(`${id} actualizado`, true);
+    delete f.dataset.edit; f.querySelector('button[type=submit]').textContent = 'Agregar paciente';
+  } else {
+    let n = 1; while (P['H' + String(n).padStart(2,'0')]) n++;
+    const id = 'H' + String(n).padStart(2,'0');
+    const tags = [];
+    if (f.atb.value !== 'No') tags.push(`ATB EV ${f.atb.value} desde ${f.d1.value}`);
+    if (f.cur.value !== 'No') tags.push(`Curación ${f.cur.value.toLowerCase()}`);
+    if (f.kin.value !== 'No') tags.push('Kine ×1');
+    P[id] = {ini:f.ini.value.toUpperCase(), cat:f.cat.value, dia:1, tag:'ingreso', dx:f.dx.value, dir:f.dir.value, com:f.com.value, srv:f.srv.value, tags};
+    toast(`${id} ingresado. Presiona «Optimizar rutas» para programar sus visitas.`, true);
+  }
+  undoStack.push(() => { Object.keys(P).forEach(k => delete P[k]); Object.assign(P, snapshot); });
+  f.reset(); $('#newbox').classList.remove('open');
+  renderPatients();
+});
+$('#libreta').innerHTML = Object.values(P).slice(0, 11).map(p => `<option value="${esc(p.dir)}">`).join('');
+
+/* ---------- Móviles ---------- */
+function renderMoviles(){
+  $('#mvlist').innerHTML = MOV.map(m => `
+    <div class="mv" data-id="${m.id}">
+      <div class="mv-h"><span class="dot" style="background:${m.hex}"></span><input value="${esc(m.name)}" aria-label="Nombre del móvil"><button class="x" aria-label="Quitar móvil">×</button></div>
+      <div class="staff">
+        ${Object.entries(m.staff).map(([k,v]) => `<span>${k}</span><input type="number" min="0" max="3" value="${v}">`).join('')}
+        <span>Conductor</span><span class="fix">1</span>
+      </div>
+      <div class="grid2" style="margin-top:10px">
+        <div class="f"><label>Inicio de turno</label><input type="time" value="${m.start}"></div>
+        <div class="f"><label>Fin de turno</label><input type="time" value="${m.end}"></div>
+      </div>
+      <label class="chk"><input type="checkbox" checked> Sale a terreno este día</label>
+    </div>`).join('');
+  $('#mvlist').querySelectorAll('.mv .x').forEach(b => b.onclick = () => {
+    const card = b.closest('.mv'); card.style.opacity = .4;
+    toast('Móvil marcado para quitar. Sus visitas se reparten al optimizar.', true);
+    undoStack.push(() => { card.style.opacity = 1; });
+  });
+}
+$('#addmv').onclick = () => {
+  const d = document.createElement('div'); d.className = 'mv';
+  d.innerHTML = `<div class="mv-h"><span class="dot" style="background:#8e8e93"></span><input value="Móvil ${$('#mvlist').children.length + 1} · Nuevo"><button class="x">×</button></div>
+    <div class="staff"><span>Enfermería</span><input type="number" value="0"><span>TENS</span><input type="number" value="0"><span>Médico</span><input type="number" value="0"><span>Kinesiología</span><input type="number" value="0"><span>Trabajo social</span><input type="number" value="0"><span>Conductor</span><span class="fix">1</span></div>
+    <div class="grid2" style="margin-top:10px"><div class="f"><label>Inicio de turno</label><input type="time" value="08:00"></div><div class="f"><label>Fin de turno</label><input type="time" value="17:00"></div></div>
+    <label class="chk"><input type="checkbox" checked> Sale a terreno este día</label>`;
+  d.querySelector('.x').onclick = () => d.remove();
+  $('#mvlist').appendChild(d); d.scrollIntoView({behavior:'smooth', block:'nearest'});
+};
+
+/* ---------- Tráfico ---------- */
+$('#bands').innerHTML = `<tr><th>Franja</th><th>Desde</th><th>Hasta</th><th style="width:42%">Factor</th></tr>` +
+  BANDS.map((b,i) => `<tr><td>${b.name}</td><td>${b.from}</td><td>${b.to}</td>
+    <td><div class="range"><input type="range" min="0.8" max="1.8" step="0.05" value="${b.f}" data-i="${i}"><output>×${b.f.toFixed(2).replace('.',',')}</output></div></td></tr>`).join('');
+$('#bands').addEventListener('input', e => {
+  if (e.target.type !== 'range') return;
+  e.target.nextElementSibling.textContent = '×' + Number(e.target.value).toFixed(2).replace('.',',');
+});
+
+/* ---------- Unidad ---------- */
+$('#comunas').innerHTML = ['San Felipe','Santa María','Putaendo','Panquehue','Catemu','Llaillay']
+  .map(c => `<label class="chk" style="margin:0"><input type="checkbox" checked> ${c}</label>`).join('');
+
+/* ---------- Excel ---------- */
+function download(name, text){
+  const blob = new Blob(['﻿' + text], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+const csvCell = v => `"${String(v ?? '').replace(/"/g,'""')}"`;
+$('#tpl').onclick = () => {
+  download('plantilla-pacientes-rutas-hd.csv', ['Iniciales','Dirección','Comuna','Origen','Fecha ingreso','Alta prevista','Diagnóstico','Categoría','Antibiótico EV','Primera dosis','Curación','Frecuencia curación','Oxígeno','Kinesiología','Muestras hoy','Evaluación social','Alerta de seguridad','Disponible desde'].map(csvCell).join(';'));
+  toast('Plantilla descargada');
+};
+$('#export').onclick = () => {
+  const rows = [['Móvil','Hora','#','Paciente','Prestaciones','Dirección','Comuna','Km','Franja','Google Maps'].map(csvCell).join(';')];
+  MOV.forEach(m => {
+    let n = 0;
+    m.stops.forEach(s => {
+      if (s.type === 'start' || s.type === 'wait') return;
+      const p = s.p ? P[s.p] : null;
+      rows.push([m.name, s.t, s.p ? ++n : '', s.p ? `${s.p} ${p?.ini ?? ''}` : '', s.serv || s.label, p?.dir ?? 'Hospital', p?.com ?? 'San Felipe', s.km != null ? kmf(s.km) : '', band(s.t), mapsUrl(m)[0]].map(csvCell).join(';'));
+    });
+  });
+  download('rutas-hd-2026-11-09.csv', rows.join('\n'));
+  toast('Rutas exportadas (CSV compatible con Excel)');
+};
+$('#xfile').onchange = e => { if (e.target.files[0]) toast(`«${e.target.files[0].name}» leído: en el mockup no se importan filas.`); };
+function clearPatients(onlyDemo){
+  const snapshot = {...P};
+  Object.keys(P).forEach(k => { if (!onlyDemo || DEMO.has(k)) delete P[k]; });
+  undoStack.push(() => { Object.keys(P).forEach(k => delete P[k]); Object.assign(P, snapshot); });
+  renderPatients(); renderMap();
+  toast(onlyDemo ? 'Pacientes de ejemplo borrados' : 'Todos los pacientes borrados', true);
+}
+$('#clrdemo').onclick = () => clearPatients(true);
+$('#clrall').onclick = () => { if (confirm('¿Borrar todos los pacientes? Puedes recuperarlos con «Volver».')) clearPatients(false); };
+
+/* =====================================================================
+   GANTT
+   ===================================================================== */
+const T0 = 7*60, T1 = 21*60, SPAN = T1 - T0;
+const pc = m => ((m - T0) / SPAN * 100).toFixed(3) + '%';
+const wd = (a,b) => ((b - a) / SPAN * 100).toFixed(3) + '%';
+function renderGantt(){
+  let h = `<div class="g-ticks"><span></span><div class="t">`;
+  for (let m = T0; m <= T1; m += 60) h += `<span style="left:${pc(m)}">${fmt(m)}</span>`;
+  h += `</div></div>`;
+  MOV.forEach(m => {
+    const s = toMin(m.start), e = toMin(m.end);
+    const fin = toMin(m.stops.find(x => x.type === 'end').t);
+    h += `<div class="g-row"><div class="g-name"><span class="dot" style="background:${m.hex};width:8px;height:8px"></span><span title="${esc(m.name)}">${esc(m.name)}</span></div><div class="g-track">`;
+    PEAK.forEach(([a,b]) => h += `<span class="g-peak" style="left:${pc(toMin(a))};width:${wd(toMin(a),toMin(b))}"></span>`);
+    h += `<span class="g-off" style="left:0;width:${wd(T0,s)}"></span><span class="g-off" style="left:${pc(e)};right:0"></span>`;
+    h += `<span class="g-travel" style="left:${pc(s)};width:${wd(s,fin)}"></span>`;
+    m.stops.forEach(st => {
+      const a = toMin(st.t);
+      if (st.type === 'hosp') h += `<span class="g-blk hosp" style="left:${pc(a)};width:${wd(a,a+st.dur)}" data-tip="${esc(st.t + '–' + fmt(a+st.dur) + '\n' + st.label)}"></span>`;
+      else if (st.type === 'wait') h += `<span class="g-blk wait" style="left:${pc(a)};width:${wd(a,a+st.dur)}" data-tip="${esc(st.t + '–' + fmt(a+st.dur) + ' · ' + st.label)}"></span>`;
+      else if (st.p){
+        const p = P[st.p] || {ini:''};
+        h += `<span class="g-blk" style="left:${pc(a)};width:${wd(a,a+st.dur)};background:${m.hex}" data-tip="${esc(`${st.p} ${p.ini} · ${st.t}–${fmt(a+st.dur)}\n${st.serv}${st.win ? '\nVentana ' + st.win : ''}${st.risk ? '\n⚠ riesgo de atraso' : ''}`)}">${st.p}</span>`;
+      }
+    });
+    h += `<span class="g-end" style="left:${pc(e)}" data-tip="Fin de turno ${m.end}"></span></div></div>`;
+  });
+  $('#gantt').innerHTML = h;
+}
+
+/* =====================================================================
+   INDICADORES
+   ===================================================================== */
+$('#ind').innerHTML = [
+  ['Ocupación','80 %','Estándar mínimo 85 %, sin llegar a 100 %',true],
+  ['Pacientes en la unidad','16 / 20','Cupos programados'],
+  ['Días de estada promedio (activos)','4,0','Estadía esperada hasta 10 días'],
+  ['Pacientes sobre 10 días','1','Revisar plan de egreso',true],
+  ['Pacientes sobre 30 días','0','Indicador de alerta OT'],
+  ['Ingresos hoy','3','Visita de enfermería al ingreso'],
+  ['Egresos hoy','1','Con alta médica en domicilio'],
+  ['Visitas obligatorias sin cubrir','1','Ingreso, alta, enfermería diaria y dosis'],
+  ['Derivados o fuera de radio','0','Territorio y radio de acción'],
+  ['Teleconsultas','1','Controles de categoría baja'],
+  ['Pacientes por servicio de origen','7','Medicina 9 · Cirugía 2 · Unidad de Emergencias 1 · Unidad de Paciente Crítico Adulto 1 · APS (CESFAM) 1 · Consultorio Adosado de Especialidades (CAE) 1 · Otro establecimiento de la red 1'],
+].map(([a,v,n,red]) => `<tr><td>${a}</td><td class="v ${red?'red':''}">${v}</td><td class="n">${n}</td></tr>`).join('');
+
+$('#dot').innerHTML = `<tr><th>Estamento</th><th>En terreno</th><th>Referencia OT</th><th>Carga de visitas</th><th></th></tr>` + [
+  ['Médico',6.0,6.3,'3,5 h'],['Enfermería',22.0,12.6,'11,8 h'],['TENS',22.0,12.6,'0,3 h'],
+  ['Kinesiología',8.0,6.3,'3,3 h'],['Trabajo social',8.0,3.1,'1,5 h'],['Conductor',36.0,12.6,'—'],
+].map(([e,t,r,c]) => {
+  const pct = Math.min(1, t / r), red = t < r;
+  return `<tr><td>${e}</td><td>${kmf(t)} h</td><td>${kmf(r)} h</td><td>${c}</td><td style="width:30%;vertical-align:middle"><div class="bar" data-tip="${e}: ${kmf(t)} h en terreno de ${kmf(r)} h de referencia (${Math.round(t/r*100)} %)"><i class="${red?'red':''}" style="width:${pct*100}%"></i></div></td></tr>`;
+}).join('');
+
+/* =====================================================================
+   HOJA DE RUTA
+   ===================================================================== */
+function mapsUrl(m){
+  // un enlace por tramo (cortes en cada retorno al hospital)
+  const legs = [[]];
+  m.stops.forEach(s => {
+    if (s.type === 'hosp' && legs[legs.length-1].length) legs.push([]);
+    else if (s.p && P[s.p]) legs[legs.length-1].push(`${P[s.p].dir}, ${P[s.p].com}, Chile`);
+  });
+  const H = 'Hospital, San Felipe, Chile';
+  return legs.filter(l => l.length).map(l => 'https://www.google.com/maps/dir/' + [H, ...l, H].map(encodeURIComponent).join('/'));
+}
+let curMov = 1;
+function renderPick(){
+  $('#mvpick').innerHTML = MOV.map(m => `<button class="${m.id === curMov ? 'on' : ''}" data-id="${m.id}"><span class="dot" style="background:${m.hex}"></span>${esc(m.name)}</button>`).join('');
+  $('#mvpick').querySelectorAll('button').forEach(b => b.onclick = () => { curMov = +b.dataset.id; renderPick(); renderSheet(); });
+}
+function sheetText(m){
+  let n = 0;
+  return [m.name + ' · turno ' + m.start + '–' + m.end, ...m.stops.filter(s => s.type !== 'wait').map(s => {
+    if (s.p){ const p = P[s.p] || {}; return `${s.t}  ${++n}. ${s.p} ${p.ini ?? ''} — ${s.serv} — ${p.dir ?? ''}, ${p.com ?? ''}`; }
+    return `${s.t}  ${s.label}`;
+  })].join('\n');
+}
+function renderSheet(){
+  const m = movOf(curMov);
+  const visits = m.stops.filter(s => s.p).length;
+  let n = 0;
+  const rows = m.stops.filter(s => s.type !== 'wait').map(s => {
+    if (!s.p){
+      const llega = s.llega ? `<small>${s.llega.replace('–','–<br>')}</small>` : '';
+      return `<tr class="h"><td class="hr" style="color:var(--ink)">${s.t}${s.type==='end'?llega:''}</td><td></td><td colspan="2">${esc(s.label)}</td><td class="km">${s.km != null ? kmf(s.km) : ''}${s.type==='hosp' && s.km ? `<span class="sub">${band(s.t)}</span>` : ''}</td></tr>`;
+    }
+    const p = P[s.p] || {ini:'?',cat:'Media',dia:'?',dir:'—',com:''};
+    const a = toMin(s.t);
+    const llega = s.llega || `${fmt(a-3)}–${fmt(a+4)}`;
+    const L = p.cat[0];
+    const catStyle = p.cat === 'Media' ? 'background:#fde4df;color:#c93412' : p.cat === 'Alta' ? 'background:#ffd7d7;color:#d0021b' : 'background:#e6e6ea;color:#5b5b60';
+    return `<tr>
+      <td class="hr">${s.t}<small>llega ${llega.replace('–','–<br>')}</small></td>
+      <td>${++n}</td>
+      <td><b>${s.p}</b> ${esc(p.ini)} <span class="catl" style="${catStyle}">${L}</span> día ${p.dia} <a data-edit="${s.p}" style="margin-left:4px;cursor:pointer">Editar</a>
+        <span class="sub">${esc(s.serv)}</span>
+        ${s.win ? `<span class="sub ${s.risk?'risk':''}">ventana ${s.win}${s.risk?' · riesgo de atraso':''}</span>` : ''}
+        ${s.note ? `<span class="sub">${s.note}</span>` : ''}</td>
+      <td>${esc(p.dir)}<span class="sub">${esc(p.com)}${p.aprox ? ' · número aprox.' : ''}</span></td>
+      <td class="km">${kmf(s.km)}<span class="sub">${band(s.t)}</span></td>
+    </tr>`;
+  }).join('');
+  const urls = mapsUrl(m);
+  $('#sheet').innerHTML = `
+    <div class="sheet-h"><span class="dot" style="background:${m.hex}"></span><div><b>${esc(m.name)}</b><p>${m.crew} · turno ${m.start}–${m.end}</p></div></div>
+    <div class="sheet-stats"><span><b>${visits}</b> visitas</span><span><b>${m.stats.km}</b> km</span><span><b>${m.stats.tras}</b> traslado</span><span><b>${m.stats.turno}</b> del turno</span><span><b>${m.stats.ret}</b> retornos</span></div>
+    <div class="scroll-x"><table class="tbl rs"><tr><th style="width:90px">Hora</th><th style="width:30px">#</th><th>Paciente y prestaciones</th><th style="width:200px">Dirección</th><th style="width:100px">Km</th></tr>${rows}</table></div>
+    <div class="sheet-f">${urls.map((u,i) => `<a href="${u}" target="_blank" rel="noopener">Abrir en Google Maps · tramo ${i+1}</a>`).join('')}<button class="btn sm" id="copy">Copiar hoja de ruta</button></div>`;
+  $('#copy').onclick = async () => {
+    try { await navigator.clipboard.writeText(sheetText(m)); toast('Hoja de ruta copiada: lista para pegar en WhatsApp'); }
+    catch { toast('No se pudo copiar desde este navegador'); }
+  };
+  $('#sheet').querySelectorAll('[data-edit]').forEach(a => a.onclick = () => {
+    document.querySelector('.seg button[data-tab="pac"]').click();
+    const card = document.querySelector(`.pt[data-id="${a.dataset.edit}"]`);
+    if (card){ card.scrollIntoView({behavior:'smooth', block:'center'}); card.querySelector('[data-act="edit"]').click(); }
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+}
+
+/* =====================================================================
+   ACCIONES GLOBALES
+   ===================================================================== */
+function doUndo(){
+  const fn = undoStack.pop();
+  if (!fn){ toast('No hay cambios para deshacer'); return; }
+  fn(); renderPatients(); renderMap();
+  toast('Cambio deshecho');
+}
+$('#undo').onclick = doUndo;
+$('#optimize').onclick = () => {
+  const b = $('#optimize'); b.disabled = true; b.textContent = 'Optimizando…';
+  setTimeout(() => {
+    renderMap();
+    svg.classList.remove('animate'); void svg.getBBox(); svg.classList.add('animate');
+    b.disabled = false; b.textContent = 'Optimizar rutas';
+    toast('Rutas optimizadas: −23 km (5 %) y −39 min de traslado; 15 incumplimientos evitados.');
+  }, 650);
+};
+
+/* init */
+renderMap(); renderLegend(); renderPatients(); renderMoviles(); renderGantt(); renderPick(); renderSheet();
+</script>
+</body>
+</html>

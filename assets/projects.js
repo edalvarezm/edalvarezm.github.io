@@ -167,11 +167,13 @@
       card.className='gate-card';
       card.innerHTML=
         '<div class="top"><div class="ic"><i class="ti ti-'+p.icon+'" aria-hidden="true"></i></div>'+
-        '<span class="lockpill"><i class="ti ti-lock" aria-hidden="true"></i>'+t('need_creds')+'</span></div>'+
+        (p.public
+          ? '<span class="lockpill"><i class="ti ti-world" aria-hidden="true"></i>'+(L==='en'?'open access':'acceso abierto')+'</span></div>'
+          : '<span class="lockpill"><i class="ti ti-lock" aria-hidden="true"></i>'+t('need_creds')+'</span></div>')+
         '<h3>'+(p.title[L]||p.title.es)+'</h3>'+
         '<p class="cat">'+(p.cat?(p.cat[L]||p.cat.es):'')+'</p>'+
         '<button class="btn btn-primary open-proj"><i class="ti ti-lock-open" aria-hidden="true"></i>'+t('open_project')+'</button>';
-      card.querySelector('.open-proj').addEventListener('click',function(){ openModal(p); });
+      card.querySelector('.open-proj').addEventListener('click',function(){ if(p.public) openPublic(p); else openModal(p); });
       grid.appendChild(card);
     });
     autoOpenFromHash();
@@ -189,7 +191,7 @@
     var p=(window.PROJECTS||[]).find(function(x){return x.id===m[1];});
     if(!p) return;
     autoOpened=true;
-    openModal(p);
+    if(p.public) openPublic(p); else openModal(p);
   }
 
   var modal, mUser, mPass, mErr, mTitle, mBtn, mForm, mGoogleOnly;
@@ -273,6 +275,17 @@
     var blob=new Blob([html],{type:'text/html'});
     vURL=URL.createObjectURL(blob);
     vFrame.src=vURL;
+    viewer.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  // proyecto de acceso abierto (sin credenciales): se muestra en el visor, apuntando al HTML publicado
+  function openPublic(p){
+    ensureViewer();
+    var L=window.LANG||'es';
+    vTitle.textContent=(p.title[L]||p.title.es);
+    startSession(p,'acceso abierto');
+    if(vURL){ URL.revokeObjectURL(vURL); vURL=null; }
+    vFrame.src=p.url;
     viewer.classList.add('open');
     document.body.style.overflow='hidden';
   }

@@ -1,14 +1,14 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "items": [
     {
       "topic": "conservacion",
-      "source": "Mongabay",
+      "source": "SBAP",
       "date": "nov 2026",
-      "lang": "EN",
-      "url": "https://news.mongabay.com/short-article/2026/11/global-biodiversity-summit-ends-with-shortfall-of-funding-for-africa-despite-30x30-push/",
-      "title": "Global biodiversity summit ends with shortfall of funding for Africa, despite 30×30 push",
-      "summary": "COP17 closed with unresolved funding gaps for African conservation despite the push to protect 30% by 2030."
+      "lang": "ES",
+      "url": "https://sbap.gob.cl/sala-de-prensa/noticias-y-comunicados/detalle/2026/11/20/servicio-y-fondo-naturaleza-chile-avanzan-en-estrategia-conjunta-para-financiar-la-conservaci%C3%B3n-de-%C3%A1reas-protegidas",
+      "title": "Servicio y Fondo Naturaleza Chile avanzan en estrategia conjunta para financiar la conservación de áreas protegidas",
+      "summary": "SBAP y Fondo Naturaleza Chile coordinan una estrategia para asegurar financiamiento de largo plazo a las áreas protegidas."
     },
     {
       "topic": "distritos",
@@ -21,48 +21,48 @@
     },
     {
       "topic": "redes",
-      "source": "ISCI",
-      "date": "jul 2026",
-      "lang": "ES",
-      "url": "https://isci.cl/noticias/andres-weintraub-ingresa-al-ifors-hall-of-fame-por-su-trayectoria-e-impacto-en-la-investigacion-de-operaciones",
-      "title": "Andrés Weintraub ingresa al IFORS Hall of Fame por su trayectoria e impacto en la investigación de operaciones",
-      "summary": "Andrés Weintraub fue incorporado al IFORS Hall of Fame durante el congreso mundial realizado en Viena."
+      "source": "Quanta Magazine",
+      "date": "nov 2026",
+      "lang": "EN",
+      "url": "https://www.quantamagazine.org/network-researchers-nail-down-theory-of-perfect-resilience-20261120/",
+      "title": "Network Researchers Nail Down Theory of ‘Perfect Resilience’",
+      "summary": "Computer scientists show four simple network structures explain when routing can survive any link failures without loops."
     },
     {
       "topic": "salud",
-      "source": "Minsal",
-      "date": "oct 2026",
-      "lang": "ES",
-      "url": "https://www.minsal.cl/salud-aumentara-su-presupuesto-en-47-para-2027-ministra-chomali-destaca-foco-en-gestion-eficiencia-y-reduccion-de-listas-de-espera/",
-      "title": "Salud aumentará su presupuesto en 4,7% para 2027: Ministra Chomali destaca foco en gestión, eficiencia y reducción de listas de espera",
-      "summary": "Presupuesto 2027 prioriza gestión, eficiencia y reducción de listas de espera."
+      "source": "OPS/OMS",
+      "date": "nov 2026",
+      "lang": "EN",
+      "url": "https://www.paho.org/en/news/20-11-2026-paho-director-reaffirms-cooperation-peru-strengthen-health-system-and-address",
+      "title": "PAHO Director reaffirms cooperation with Peru to strengthen the health system and address health priorities",
+      "summary": "PAHO's Director visited Peru to strengthen technical cooperation on health-system priorities, dengue and measles."
     },
     {
       "topic": "energia",
-      "source": "CNE",
+      "source": "Nature",
       "date": "nov 2026",
-      "lang": "ES",
-      "url": "https://www.cne.cl/prensa/prensa-2026/11-noviembre-2026/carlos-barria-inaugura-encuentro-sobre-el-futuro-energetico-de-chile-marcado-por-la-electrificacion-y-la-inteligencia-artificial/",
-      "title": "Carlos Barría inaugura encuentro sobre el futuro energético de Chile marcado por la electrificación y la inteligencia artificial",
-      "summary": "La CNE inauguró «Chile Energía 2030», encuentro sobre electrificación, inteligencia artificial y centros de datos."
+      "lang": "EN",
+      "url": "https://www.nature.com/articles/d41586-026-03708-6",
+      "title": "How to make AI data centres more sustainable",
+      "summary": "Nature argues data-centre expansion must not rely on fossil fuels, given its huge and growing power demand."
     },
     {
       "topic": "lineas",
       "source": "Supply Chain Dive",
       "date": "nov 2026",
       "lang": "EN",
-      "url": "https://www.supplychaindive.com/news/ups-teamsters-contract-expires-in-2028-shippers-should-prepare-now/874374/",
-      "title": "UPS’ Teamsters contract expires in 2028. Shippers should prepare now.",
-      "summary": "With UPS's Teamsters contract ending in 2028, shippers should diversify carriers and review contract terms now."
+      "url": "https://www.supplychaindive.com/news/walmarts-sub-30-minute-delivery-volume-surges-in-q3/875339/",
+      "title": "Walmart’s sub-30-minute delivery volume surges in Q3",
+      "summary": "Walmart's ultra-fast deliveries surged in Q3; faster in-store picking could shorten delivery times further."
     },
     {
       "topic": "educacion",
       "source": "Times Higher Education",
       "date": "nov 2026",
       "lang": "EN",
-      "url": "https://www.timeshighereducation.com/news/students-face-conflict-interest-tef-submissions",
-      "title": "Students face ‘conflict of interest’ in TEF submissions",
-      "summary": "Student input to the UK's Teaching Excellence Framework raises conflict-of-interest concerns in quality assessment."
+      "url": "https://www.timeshighereducation.com/news/beefed-regulatory-powers-undermine-institutional-autonomy",
+      "title": "Beefed-up regulatory powers ‘undermine institutional autonomy’",
+      "summary": "Australia's fast-tracked expansion of the quality regulator Teqsa's powers draws accusations of regulatory overreach."
     }
   ]
 }

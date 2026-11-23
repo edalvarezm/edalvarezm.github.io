@@ -1,6 +1,74 @@
 {
   "snapshots": [
     {
+      "date": "2026-11-16",
+      "items": [
+        {
+          "topic": "conservacion",
+          "source": "Mongabay",
+          "date": "nov 2026",
+          "lang": "EN",
+          "url": "https://news.mongabay.com/short-article/2026/11/global-biodiversity-summit-ends-with-shortfall-of-funding-for-africa-despite-30x30-push/",
+          "title": "Global biodiversity summit ends with shortfall of funding for Africa, despite 30×30 push",
+          "summary": "COP17 closed with unresolved funding gaps for African conservation despite the push to protect 30% by 2030."
+        },
+        {
+          "topic": "distritos",
+          "source": "The Conversation",
+          "date": "nov 2026",
+          "lang": "EN",
+          "url": "https://theconversation.com/republican-gerrymandering-worked-pretty-well-in-texas-and-florida-even-if-it-backfired-in-north-carolina-and-ohio-295944",
+          "title": "Republican gerrymandering worked pretty well in Texas and Florida, even if it backfired in North Carolina and Ohio",
+          "summary": "Post-midterm analysis of how mid-decade redistricting paid off in some states and backfired in others."
+        },
+        {
+          "topic": "redes",
+          "source": "ISCI",
+          "date": "jul 2026",
+          "lang": "ES",
+          "url": "https://isci.cl/noticias/andres-weintraub-ingresa-al-ifors-hall-of-fame-por-su-trayectoria-e-impacto-en-la-investigacion-de-operaciones",
+          "title": "Andrés Weintraub ingresa al IFORS Hall of Fame por su trayectoria e impacto en la investigación de operaciones",
+          "summary": "Andrés Weintraub fue incorporado al IFORS Hall of Fame durante el congreso mundial realizado en Viena."
+        },
+        {
+          "topic": "salud",
+          "source": "Minsal",
+          "date": "oct 2026",
+          "lang": "ES",
+          "url": "https://www.minsal.cl/salud-aumentara-su-presupuesto-en-47-para-2027-ministra-chomali-destaca-foco-en-gestion-eficiencia-y-reduccion-de-listas-de-espera/",
+          "title": "Salud aumentará su presupuesto en 4,7% para 2027: Ministra Chomali destaca foco en gestión, eficiencia y reducción de listas de espera",
+          "summary": "Presupuesto 2027 prioriza gestión, eficiencia y reducción de listas de espera."
+        },
+        {
+          "topic": "energia",
+          "source": "CNE",
+          "date": "nov 2026",
+          "lang": "ES",
+          "url": "https://www.cne.cl/prensa/prensa-2026/11-noviembre-2026/carlos-barria-inaugura-encuentro-sobre-el-futuro-energetico-de-chile-marcado-por-la-electrificacion-y-la-inteligencia-artificial/",
+          "title": "Carlos Barría inaugura encuentro sobre el futuro energético de Chile marcado por la electrificación y la inteligencia artificial",
+          "summary": "La CNE inauguró «Chile Energía 2030», encuentro sobre electrificación, inteligencia artificial y centros de datos."
+        },
+        {
+          "topic": "lineas",
+          "source": "Supply Chain Dive",
+          "date": "nov 2026",
+          "lang": "EN",
+          "url": "https://www.supplychaindive.com/news/ups-teamsters-contract-expires-in-2028-shippers-should-prepare-now/874374/",
+          "title": "UPS’ Teamsters contract expires in 2028. Shippers should prepare now.",
+          "summary": "With UPS's Teamsters contract ending in 2028, shippers should diversify carriers and review contract terms now."
+        },
+        {
+          "topic": "educacion",
+          "source": "Times Higher Education",
+          "date": "nov 2026",
+          "lang": "EN",
+          "url": "https://www.timeshighereducation.com/news/students-face-conflict-interest-tef-submissions",
+          "title": "Students face ‘conflict of interest’ in TEF submissions",
+          "summary": "Student input to the UK's Teaching Excellence Framework raises conflict-of-interest concerns in quality assessment."
+        }
+      ]
+    },
+    {
       "date": "2026-11-09",
       "items": [
         {

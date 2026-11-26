@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="author" content="Eduardo Álvarez Miranda">
+<title>Noticias USACH 2019-2026 | Acceso</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#EEF0FB;color:#1d2333;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#fff;border:1px solid #CAD0F2;border-radius:10px;padding:28px 28px 24px;width:100%;max-width:380px;box-shadow:0 4px 18px rgba(48,71,199,.08)}
+h1{font-size:18px;color:#3047C7;margin:0 0 4px}
+p.sub{font-size:13px;margin:0 0 20px;color:#4c5470}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+input{width:100%;font:inherit;font-size:14px;padding:9px 10px;border:1px solid #CAD0F2;border-radius:6px;background:#fff}
+input:focus{outline:2px solid #3047C7;outline-offset:1px}
+button{margin-top:18px;width:100%;font:inherit;font-weight:600;font-size:14px;padding:10px;border:0;border-radius:6px;background:#3047C7;color:#fff;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+.msg{min-height:18px;margin-top:12px;font-size:13px}
+.msg.err{color:#c23a1f}
+.foot{margin-top:18px;font-size:11.5px;color:#7d849c}
+</style>
+</head>
+<body>
+<form class="card" id="f" autocomplete="on">
+  <h1>Redes de noticias USACH <span style="white-space:nowrap">2019-2026</span></h1>
+  <p class="sub">Acceso restringido. Ingrese su usuario y contraseña.</p>
+  <label for="u">Usuario</label>
+  <input id="u" name="username" autocomplete="username" required autofocus>
+  <label for="p">Contraseña</label>
+  <input id="p" name="password" type="password" autocomplete="current-password" required>
+  <button id="b" type="submit">Ingresar</button>
+  <div class="msg" id="m" role="status"></div>
+  <div class="foot">Eduardo Álvarez Miranda</div>
+</form>
+<script>
+(function(){
+  var enc=new TextEncoder(),dec=new TextDecoder(),KEY='noticias-usach-k';
+  function b2u(b){var s=atob(b),u=new Uint8Array(s.length);for(var i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u;}
+  function u2b(u){var s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);}
+  var dataP=null;
+  function getData(){if(!dataP)dataP=fetch('data.enc.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('net');return r.json();});return dataP;}
+  async function openWith(data,raw){
+    var k=await crypto.subtle.importKey('raw',raw,{name:'AES-GCM'},false,['decrypt']);
+    var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b2u(data.content.iv)},k,b2u(data.content.ct));
+    var html=dec.decode(pt);
+    document.open();document.write(html);document.close();
+  }
+  async function unlock(data,user,pass){
+    var e=(data.users||[]).find(function(x){return x.u.toLowerCase()===user;});
+    if(!e)throw new Error('auth');
+    var base=await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']);
+    var kek=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b2u(e.salt),iterations:data.iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    var raw;
+    try{raw=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:b2u(e.iv)},kek,b2u(e.wk)));}catch(x){throw new Error('auth');}
+    return raw;
+  }
+  var f=document.getElementById('f'),b=document.getElementById('b'),m=document.getElementById('m');
+  try{var saved=sessionStorage.getItem(KEY);
+    if(saved){m.textContent='Abriendo...';getData().then(function(d){return openWith(d,b2u(saved));}).catch(function(){try{sessionStorage.removeItem(KEY);}catch(x){}m.textContent='';});}
+  }catch(x){}
+  f.addEventListener('submit',async function(ev){
+    ev.preventDefault();
+    var user=document.getElementById('u').value.trim().toLowerCase(),pass=document.getElementById('p').value;
+    b.disabled=true;m.className='msg';m.textContent='Verificando...';
+    try{
+      var data=await getData();
+      var raw=await unlock(data,user,pass);
+      try{sessionStorage.setItem(KEY,u2b(raw));}catch(x){}
+      m.textContent='Abriendo...';
+      await openWith(data,raw);
+    }catch(err){
+      b.disabled=false;m.className='msg err';
+      m.textContent=err.message==='auth'?'Usuario o contraseña incorrectos.':'No fue posible cargar el contenido. Intente de nuevo.';
+      if(err.message!=='auth')dataP=null;
+    }
+  });
+})();
+</script>
+</body>
+</html>

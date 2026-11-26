@@ -5,6 +5,14 @@
    ========================================================================== */
 window.PROJECTS = [
   {
+    id:"redes-rp4",
+    icon:"affiliate",
+    public:true,
+    url:"projects/redes-rp4.html",
+    title:{es:"Redes de colaboración y temas del RP4 Conservación y Bienestar Humano (IEB)",en:"Collaboration and research-topic networks of IEB's RP4 Conservation and Human Well-being"},
+    cat:{es:"Medioambiente · Instituto de Ecología y Biodiversidad",en:"Environment · Institute of Ecology and Biodiversity"}
+  },
+  {
     id:"revalidacion-titulos",
     icon:"certificate",
     file:"projects/revalidacion-titulos.enc.json",
